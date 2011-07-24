@@ -21,15 +21,32 @@ namespace PuttyManager.Domain
         public string Message { get; private set; }
     }
 
-    public class PuttyLink
+    public enum EConnectionState
     {
-        public enum EConnectionState
-        {
-            Inactive,
-            Intermediate,
-            Active
-        }
+        Inactive,
+        Intermediate,
+        Active
+    }
 
+    public interface IPuttyLink
+    {
+        HostInfo Host { get; }
+        string LastError { get; }
+        EConnectionState ConnectionState { get; }
+
+        /// <summary>
+        /// В случае, если процесс запущен асинхронно (методом AsyncStart), события будут срабатывать из асинхронного потока.
+        /// Поэтому нужно продумать Threadsafe, для изменения состояния формы лучше использовать Control.BeginInvoke()
+        /// </summary>
+        event EventHandler ConnectionStateChanged;
+
+        void AsyncStart();
+        void Start();
+        void Stop();
+    }
+
+    public class PuttyLink : IPuttyLink
+    {
         private const string PlinkLocation = "plink.exe";
         private const string ShellStartedMessage = "Started a shell/command";
 

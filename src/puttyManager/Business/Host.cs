@@ -6,30 +6,32 @@ using PuttyManager.Domain;
 
 namespace PuttyManager.Business
 {
-    class Host
+    public class Host
     {
         public Host(HostInfo info)
         {
             Info = info;
+            _puttyLink = new PuttyLink(Info);
         }
         
         public HostInfo Info { get; private set; }
+        public IPuttyLink Link { get { return _puttyLink; } }
 
-        private PuttyLink _sshLink;
+        private PuttyLink _puttyLink;
 
-        public bool IsOpen { get { return (_sshLink != null); } }
+        //public bool IsOpen { get { return (_sshLink != null); } }
 
         public void Open()
         {
-            _sshLink = new PuttyLink(Info);
-            _sshLink.AsyncStart();
+            _puttyLink = new PuttyLink(Info);
+            _puttyLink.AsyncStart();
         }
 
         public void Close()
         {
-            if (IsOpen)
-                _sshLink.Stop();
-            _sshLink = null;
+            if (_puttyLink.ConnectionState != EConnectionState.Inactive)
+                _puttyLink.Stop();
+            _puttyLink = null;
         }
     }
 }

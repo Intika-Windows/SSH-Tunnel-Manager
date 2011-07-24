@@ -28,6 +28,7 @@ namespace PuttyManager.Domain
 
         protected EncryptedSettings()
         {
+            Hosts = new List<HostInfo>();
         }
 
         public static EncryptedSettings Instance
@@ -99,13 +100,8 @@ namespace PuttyManager.Domain
 
         #region Serialized data
 
-        private List<HostInfo> _hosts = new List<HostInfo>();
-
         // Информация о хостах, отсортированная топологической сортировкой. Меньший индекс = меньше зависимостей.
-        public List<HostInfo> Hosts
-        {
-            get { return _hosts; }
-        }
+        public List<HostInfo> Hosts { get; set; }
 
         #endregion
 
@@ -159,7 +155,7 @@ namespace PuttyManager.Domain
                 host.DependsOn = hostsByName[depStr];
             }
 
-            settings._hosts = DevExpress.Utils.Algorithms.TopologicalSort(settings.Hosts, new HostInfoComparer()).Reverse().ToList();
+            settings.Hosts = DevExpress.Utils.Algorithms.TopologicalSort(settings.Hosts, new HostInfoComparer()).Reverse().ToList();
 
             xmlStream.Seek(0, SeekOrigin.Begin);
             return settings;

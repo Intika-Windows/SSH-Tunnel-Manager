@@ -9,12 +9,10 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:TrayForm.cs" caret="4630" fromTop="33" />
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Properties/f:Settings.Designer.cs" caret="0" fromTop="0" />
       <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:app.config" caret="2000" fromTop="11" />
       <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PasswordDialog.Designer.cs" caret="0" fromTop="0" />
       <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PasswordDialog.cs" caret="637" fromTop="26" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Ext/f:DXTopoligicalSort.cs" caret="0" fromTop="0" />
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Config/f:AutoRecovery_old.xml" caret="3974" fromTop="35" />
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Util/f:WinApi.cs" caret="817" fromTop="22" />
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Util/f:CryptoHelper.cs" caret="0" fromTop="0" />
@@ -32,45 +30,47 @@
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:HostInfoComparer.cs" caret="0" fromTop="0" />
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:TunnelInfo.cs" caret="0" fromTop="0" />
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:Enums.cs" caret="0" fromTop="0" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="772" fromTop="0" />
       <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:Program.cs" caret="2659" fromTop="50" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="0" fromTop="0" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:HostInfo.cs" caret="409" fromTop="15" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:EncryptedSettings.cs" caret="3907" fromTop="0" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14275" fromTop="45" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="792" fromTop="24" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Ext/f:DXTopoligicalSort.cs" caret="0" fromTop="0" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14351" fromTop="29" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="777" fromTop="30" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1336" fromTop="36" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:HostInfo.cs" caret="1323" fromTop="46" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="683" fromTop="0" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:EncryptedSettings.cs" caret="3645" fromTop="22" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:HostsManager.cs" caret="391" fromTop="14" />
     </RecentFiles>
     <RecentEdits>
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="3351" fromTop="43" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14082" fromTop="34" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14068" fromTop="33" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14323" fromTop="41" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14491" fromTop="46" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="6530" fromTop="28" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="6530" fromTop="33" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="6548" fromTop="41" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="6528" fromTop="21" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="6984" fromTop="35" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="6820" fromTop="30" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7854" fromTop="49" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="8761" fromTop="49" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7167" fromTop="25" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7429" fromTop="30" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7661" fromTop="35" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="2080" fromTop="33" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="1834" fromTop="27" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="7465" fromTop="0" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="0" fromTop="0" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:HostInfo.cs" caret="1936" fromTop="12" />
       <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="3365" fromTop="48" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="12260" fromTop="48" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="12230" fromTop="48" />
       <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:Program.cs" caret="2655" fromTop="50" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="767" fromTop="18" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1216" fromTop="28" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:EncryptedSettings.cs" caret="2655" fromTop="29" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="936" fromTop="24" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="792" fromTop="24" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1295" fromTop="24" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1358" fromTop="18" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1807" fromTop="28" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1527" fromTop="24" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="167" fromTop="7" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:HostsManager.cs" caret="192" fromTop="9" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:EncryptedSettings.cs" caret="2871" fromTop="28" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:HostsManager.cs" caret="564" fromTop="19" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="546" fromTop="21" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="771" fromTop="33" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7109" fromTop="29" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7333" fromTop="34" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7561" fromTop="39" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14351" fromTop="29" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="400" fromTop="15" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="495" fromTop="19" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="302" fromTop="12" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="1294" fromTop="31" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="685" fromTop="14" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="777" fromTop="30" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1886" fromTop="26" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1324" fromTop="30" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1322" fromTop="33" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="581" fromTop="17" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1010" fromTop="26" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="730" fromTop="23" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1105" fromTop="31" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1336" fromTop="36" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -89,18 +89,18 @@
       <Item value="bool" priority="27" />
       <Item value="IntPtr`0" priority="2" />
       <Item value="int" priority="0" />
-      <Item value="return" priority="83" />
+      <Item value="return" priority="84" />
       <Item value="true" priority="23" />
-      <Item value="var" priority="76" />
+      <Item value="var" priority="77" />
       <Item value="GetWindowText`0" priority="2" />
-      <Item value="new" priority="63" />
+      <Item value="new" priority="66" />
       <Item value="StringBuilder`0" priority="2" />
       <Item value="sb" priority="5" />
       <Item value="if" priority="73" />
       <Item value="text" priority="6" />
       <Item value="string" priority="80" />
       <Item value="className" priority="0" />
-      <Item value="public" priority="90" />
+      <Item value="public" priority="92" />
       <Item value="List" priority="5" />
       <Item value="foreach" priority="16" />
       <Item value="_puttyWindows" priority="0" />
@@ -110,7 +110,7 @@
       <Item value="uint" priority="0" />
       <Item value="out" priority="9" />
       <Item value="proc" priority="4" />
-      <Item value="void" priority="30" />
+      <Item value="void" priority="31" />
       <Item value="Process`0" priority="4" />
       <Item value="ProcessStartInfo`0" priority="0" />
       <Item value="i" priority="2" />
@@ -137,14 +137,14 @@
       <Item value="static" priority="16" />
       <Item value="Properties" priority="4" />
       <Item value="Settings`0" priority="4" />
-      <Item value="ctor" priority="9" />
+      <Item value="ctor" priority="10" />
       <Item value="PuttyWindow`0" priority="3" />
       <Item value="wnd" priority="0" />
       <Item value="w" priority="0" />
       <Item value="NotifyIcon" priority="0" />
       <Item value="override" priority="5" />
       <Item value="_theNotifyIcon" priority="5" />
-      <Item value="value" priority="11" />
+      <Item value="value" priority="12" />
       <Item value="Icon`0" priority="1" />
       <Item value="Icon" priority="0" />
       <Item value="base" priority="2" />
@@ -159,7 +159,7 @@
       <Item value="protected" priority="0" />
       <Item value="hideShowClick`0" priority="0" />
       <Item value="Text" priority="4" />
-      <Item value="PuttyManager" priority="1" />
+      <Item value="PuttyManager" priority="2" />
       <Item value="using" priority="8" />
       <Item value="PuttyWindowsManager" priority="0" />
       <Item value="false" priority="25" />
@@ -342,7 +342,7 @@
       <Item value="DialogResult" priority="3" />
       <Item value="AcceptButton" priority="0" />
       <Item value="checkBoxSavePwd" priority="0" />
-      <Item value="EncryptedSettings`0" priority="18" />
+      <Item value="EncryptedSettings`0" priority="21" />
       <Item value="getXmlConfigStream`0" priority="0" />
       <Item value="pwdValid" priority="0" />
       <Item value="try" priority="2" />
@@ -381,7 +381,7 @@
       <Item value="XmlIgnore" priority="1" />
       <Item value="DataMember" priority="0" />
       <Item value="TunnelInfo`0" priority="3" />
-      <Item value="h" priority="8" />
+      <Item value="h" priority="9" />
       <Item value="FileMode`0" priority="0" />
       <Item value="Write" priority="0" />
       <Item value="XmlRoot" priority="0" />
@@ -401,11 +401,11 @@
       <Item value="Result" priority="0" />
       <Item value="host" priority="8" />
       <Item value="PuttyLink" priority="1" />
-      <Item value="_sshLink" priority="3" />
+      <Item value="_sshLink" priority="4" />
       <Item value="IsOpen" priority="0" />
       <Item value="PlinkLocation" priority="0" />
       <Item value="EConnectionState`0" priority="2" />
-      <Item value="Inactive" priority="3" />
+      <Item value="Inactive" priority="4" />
       <Item value="EConnectionTest`0" priority="0" />
       <Item value="ConnectionTest" priority="0" />
       <Item value="EchoCommand" priority="1" />
@@ -425,7 +425,7 @@
       <Item value="ConnectionStateChanged" priority="1" />
       <Item value="EventArgs`0" priority="1" />
       <Item value="Link" priority="0" />
-      <Item value="HostDialog`0" priority="0" />
+      <Item value="HostDialog`0" priority="1" />
       <Item value="errorProvider" priority="0" />
       <Item value="ErrorProvider" priority="7" />
       <Item value="ValidHostnameRegex" priority="0" />
@@ -560,11 +560,19 @@
       <Item value="exitToolStripMenuItem" priority="0" />
       <Item value="TreeNodeCollection`0" priority="0" />
       <Item value="hostsGridView" priority="3" />
-      <Item value="dt" priority="3" />
+      <Item value="dt" priority="5" />
       <Item value="hgwHostnameColumn" priority="0" />
       <Item value="hgwStatusColumn" priority="0" />
       <Item value="contextMenuStripHost" priority="0" />
       <Item value="hgwStatusIconColumn" priority="0" />
+      <Item value="DomainUpDown`0" priority="0" />
+      <Item value="Domain" priority="0" />
+      <Item value="_hosts" priority="0" />
+      <Item value="ESettingsSource`0" priority="0" />
+      <Item value="Hosts" priority="0" />
+      <Item value="IPuttyLink`0" priority="0" />
+      <Item value="SshLink" priority="0" />
+      <Item value="hgwIdColumn" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Text.StringBuilder">
       <Item value="ToString`0" priority="1" />
@@ -604,7 +612,7 @@
       <Item value="ToDictionary`3" priority="0" />
       <Item value="SelectMany`3" priority="0" />
       <Item value="Contains`0" priority="1" />
-      <Item value="Select`2" priority="2" />
+      <Item value="Select`2" priority="4" />
       <Item value="Remove`0" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@PuttyManager.WinApi">
@@ -655,7 +663,7 @@
       <Item value="Equals`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
-      <Item value="ToList`1" priority="6" />
+      <Item value="ToList`1" priority="8" />
       <Item value="Where`1" priority="2" />
       <Item value="FirstOrDefault`1" priority="4" />
       <Item value="Any`1" priority="0" />
@@ -729,12 +737,12 @@
       <Item value="AddRange`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Data.DataTable">
-      <Item value="Columns" priority="2" />
-      <Item value="Rows" priority="6" />
+      <Item value="Columns" priority="3" />
+      <Item value="Rows" priority="8" />
       <Item value="NewRow`0" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Data.DataColumnCollection">
-      <Item value="Add`0" priority="1" />
+      <Item value="Add`0" priority="2" />
       <Item value="Clear`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Windows.Forms.DataGridView">
@@ -744,7 +752,7 @@
       <Item value="Rows" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewTextBoxColumn">
-      <Item value="DataPropertyName" priority="2" />
+      <Item value="DataPropertyName" priority="3" />
       <Item value="Visible" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Text.RegularExpressions.Regex">
@@ -1062,13 +1070,13 @@
       <Item value="uniqString`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@PuttyManager.Domain.EncryptedSettings">
-      <Item value="Instance" priority="8" />
+      <Item value="Instance" priority="11" />
       <Item value="Initialize`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:PuttyManager.Domain.EncryptedSettings">
       <Item value="ChangePassword`0" priority="0" />
-      <Item value="Hosts" priority="6" />
-      <Item value="Save`0" priority="1" />
+      <Item value="Hosts" priority="8" />
+      <Item value="Save`0" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Xml.XmlWriter">
       <Item value="Close`0" priority="0" />
@@ -1111,7 +1119,7 @@
       <Item value="AsyncStart`0" priority="2" />
       <Item value="Result" priority="0" />
       <Item value="Stop`0" priority="0" />
-      <Item value="ConnectionState" priority="1" />
+      <Item value="ConnectionState" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Exception">
       <Item value="Message" priority="1" />
@@ -1263,6 +1271,9 @@
     <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventArgs">
       <Item value="ContextMenuStrip" priority="0" />
       <Item value="RowIndex" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.Business.Host">
+      <Item value="Info" priority="0" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>

@@ -44,6 +44,7 @@
             this.contextMenuStripHost = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hgwIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hgwStatusIconColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.hgwHostnameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hgwStatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +70,7 @@
             this.hostsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.hostsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.hostsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.hgwIdColumn,
             this.hgwStatusIconColumn,
             this.hgwHostnameColumn,
             this.hgwStatusColumn});
@@ -203,6 +205,12 @@
             this.removeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.removeToolStripMenuItem.Text = "&Remove";
             // 
+            // hgwIdColumn
+            // 
+            this.hgwIdColumn.HeaderText = "Id";
+            this.hgwIdColumn.Name = "hgwIdColumn";
+            this.hgwIdColumn.ReadOnly = true;
+            // 
             // hgwStatusIconColumn
             // 
             this.hgwStatusIconColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -274,6 +282,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripHost;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hgwIdColumn;
         private System.Windows.Forms.DataGridViewImageColumn hgwStatusIconColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hgwHostnameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hgwStatusColumn;

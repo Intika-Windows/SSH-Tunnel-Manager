@@ -165,17 +165,17 @@ namespace PuttyManagerGui
                     continue;
                 switch (host.Link.ConnectionState)
                 {
-                case PuttyLink.EConnectionState.Inactive:
+                case EConnectionState.Inactive:
                     if (node.ImageIndex == 0) return;
                     node.ImageIndex = 0;
                     node.SelectedImageIndex = 0;
                     break;
-                case PuttyLink.EConnectionState.Intermediate:
+                case EConnectionState.Intermediate:
                     if (node.ImageIndex == 1) return;
                     node.ImageIndex = 1;
                     node.SelectedImageIndex = 1;
                     break;
-                case PuttyLink.EConnectionState.Active:
+                case EConnectionState.Active:
                     if (node.ImageIndex == 2) return;
                     node.ImageIndex = 2;
                     node.SelectedImageIndex = 2;
@@ -363,7 +363,7 @@ namespace PuttyManagerGui
 
             if (host == null || node == null) return;
 
-            if (host.Link.ConnectionState == PuttyLink.EConnectionState.Inactive)
+            if (host.Link.ConnectionState == EConnectionState.Inactive)
             {
                 host.Link.AsyncStart();
                 

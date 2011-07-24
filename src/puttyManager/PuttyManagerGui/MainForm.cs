@@ -6,23 +6,36 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PuttyManager.Business;
+using PuttyManager.Domain;
 using PuttyManagerGui.Properties;
 
 namespace PuttyManagerGui
 {
     public partial class MainForm : Form
     {
+        private const string HgwIdColumnName = "hgwIdColumn";
+        private const string HgwStatusIconColumnName = "hgwStatusIconColumn";
+        private const string HgwHostnameColumnName = "hgwHostnameColumn";
+        private const string HgwStatusColumnName = "hgwStatusColumn";
+
         public MainForm()
         {
             InitializeComponent();
 
+            hgwIdColumn.DataPropertyName = HgwIdColumnName;
+            hgwStatusIconColumn.DataPropertyName = HgwStatusIconColumnName;
+            hgwHostnameColumn.DataPropertyName = HgwHostnameColumnName;
+            hgwStatusColumn.DataPropertyName = HgwStatusColumnName;
+
+            var hostsManager = new HostsManager();
+
             var dt = new DataTable();
-            dt.Columns.Add("statusIcon", typeof(Image));
-            dt.Columns.Add("hostname");
-            dt.Columns.Add("status");
-            hgwStatusIconColumn.DataPropertyName = "statusIcon";
-            hgwHostnameColumn.DataPropertyName = "hostname";
-            hgwStatusColumn.DataPropertyName = "status";
+            dt.Columns.Add(HgwIdColumnName);
+            dt.Columns.Add(HgwStatusIconColumnName, typeof(Image));
+            dt.Columns.Add(HgwHostnameColumnName);
+            dt.Columns.Add(HgwStatusColumnName);
+            
             dt.Rows.Add(Resources.tick_circle, "hostname1", "status1");
             dt.Rows.Add(Resources.server_up, "hostname2", "status2");
             dt.Rows.Add(Resources.server_up, "hostname3", "status3");
