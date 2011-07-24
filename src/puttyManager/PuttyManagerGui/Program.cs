@@ -61,7 +61,7 @@ namespace PuttyManagerGui
                     Settings.Default.Save();
                 }
 
-                Application.Run(new PuttyManagerForm());
+                Application.Run(new MainForm());
             }
             else
             {

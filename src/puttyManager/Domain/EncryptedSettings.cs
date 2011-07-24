@@ -97,6 +97,8 @@ namespace PuttyManager.Domain
 
         #endregion
 
+        #region Serialized data
+
         private List<HostInfo> _hosts = new List<HostInfo>();
 
         // Информация о хостах, отсортированная топологической сортировкой. Меньший индекс = меньше зависимостей.
@@ -104,6 +106,8 @@ namespace PuttyManager.Domain
         {
             get { return _hosts; }
         }
+
+        #endregion
 
         public void Save()
         {
