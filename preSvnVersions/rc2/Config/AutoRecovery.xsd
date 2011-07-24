@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AutoRecovery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="PuttyInstance">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Hostname" type="xs:string" />
+              <xs:element name="MachineName" type="xs:string" />
+              <xs:element name="Port" type="xs:integer" />
+              <xs:element name="Login" type="xs:string" />
+              <xs:element name="Password" type="xs:string" />
+              <xs:element name="Tunnels">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="Tunnel">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="LocalPort" type="xs:integer" />
+                          <xs:element minOccurs="0" name="RemoteHostname" type="xs:string" />
+                          <xs:element minOccurs="0" name="RemotePort" type="xs:integer" />
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                        <xs:attribute name="type" type="tunnelType" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="DependsOn" type="xs:string" />
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="tunnelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Local"/>
+      <xs:enumeration value="Remote"/>
+      <xs:enumeration value="Dynamic"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

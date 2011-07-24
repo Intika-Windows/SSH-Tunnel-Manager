@@ -1,0 +1,1256 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:TrayForm.cs" caret="4630" fromTop="33" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Properties/f:Settings.Designer.cs" caret="0" fromTop="0" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:app.config" caret="2000" fromTop="11" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PasswordDialog.Designer.cs" caret="0" fromTop="0" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PasswordDialog.cs" caret="637" fromTop="26" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Ext/f:DXTopoligicalSort.cs" caret="0" fromTop="0" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Enums.cs" caret="0" fromTop="0" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:Enums.cs" caret="192" fromTop="9" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/f:Settings.cs" caret="0" fromTop="0" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Config/f:AutoRecovery_old.xml" caret="3974" fromTop="35" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Util/f:WinApi.cs" caret="817" fromTop="22" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Util/f:CryptoHelper.cs" caret="0" fromTop="0" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Util/f:ExtensionMethods.cs" caret="0" fromTop="0" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/f:PuttyWindowsManager.cs" caret="4453" fromTop="0" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/f:PuttyWindow.cs" caret="6317" fromTop="25" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:Program.cs" caret="1455" fromTop="21" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:HostInfoComparer.cs" caret="0" fromTop="0" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:TunnelInfo.cs" caret="760" fromTop="21" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="425" fromTop="18" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:Validator.cs" caret="4331" fromTop="28" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:HostDialog.Designer.cs" caret="23779" fromTop="20" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:HostDialog.cs" caret="5734" fromTop="34" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:HostInfo.cs" caret="1050" fromTop="34" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/d:Properties/f:Resources.Designer.cs" caret="0" fromTop="0" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.Designer.cs" caret="71" fromTop="2" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:EncryptedSettings.cs" caret="3145" fromTop="37" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="3541" fromTop="43" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/f:settings.xml" caret="1858" fromTop="38" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="1581" fromTop="22" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="13550" fromTop="55" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:HostInfo.cs" caret="1050" fromTop="34" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="13680" fromTop="40" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="12638" fromTop="24" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="11514" fromTop="16" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="11745" fromTop="28" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="12992" fromTop="26" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="12512" fromTop="13" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="3353" fromTop="51" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="12240" fromTop="28" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="12056" fromTop="28" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="3351" fromTop="43" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="3249" fromTop="38" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14082" fromTop="34" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14068" fromTop="33" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14323" fromTop="41" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14491" fromTop="46" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="6530" fromTop="28" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="6530" fromTop="33" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="6548" fromTop="41" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="6528" fromTop="21" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="6984" fromTop="35" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="6820" fromTop="30" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7854" fromTop="49" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="8761" fromTop="49" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7167" fromTop="25" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7429" fromTop="30" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7661" fromTop="35" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="2080" fromTop="33" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="1834" fromTop="27" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir>D:\Program Files\NUnit 2.5.10\bin\net-2.0\</NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="private" priority="38" />
+      <Item value="bool" priority="27" />
+      <Item value="IntPtr`0" priority="2" />
+      <Item value="int" priority="0" />
+      <Item value="return" priority="83" />
+      <Item value="true" priority="22" />
+      <Item value="var" priority="75" />
+      <Item value="GetWindowText`0" priority="2" />
+      <Item value="new" priority="62" />
+      <Item value="StringBuilder`0" priority="2" />
+      <Item value="sb" priority="5" />
+      <Item value="if" priority="73" />
+      <Item value="text" priority="6" />
+      <Item value="string" priority="80" />
+      <Item value="className" priority="0" />
+      <Item value="public" priority="90" />
+      <Item value="List" priority="5" />
+      <Item value="foreach" priority="16" />
+      <Item value="_puttyWindows" priority="0" />
+      <Item value="GetPuttyWindows`0" priority="1" />
+      <Item value="DestroyHandle`0" priority="0" />
+      <Item value="hwnd" priority="4" />
+      <Item value="uint" priority="0" />
+      <Item value="out" priority="9" />
+      <Item value="proc" priority="4" />
+      <Item value="void" priority="30" />
+      <Item value="Process`0" priority="4" />
+      <Item value="ProcessStartInfo`0" priority="0" />
+      <Item value="i" priority="2" />
+      <Item value="Application`0" priority="7" />
+      <Item value="ProcessStartInfo" priority="2" />
+      <Item value="s" priority="1" />
+      <Item value="WinApi`0" priority="4" />
+      <Item value="e" priority="29" />
+      <Item value="childHwnd" priority="1" />
+      <Item value="puttyBadWindows" priority="0" />
+      <Item value="theNotifyIcon" priority="0" />
+      <Item value="object" priority="1" />
+      <Item value="MouseEventArgs`0" priority="0" />
+      <Item value="MouseButtons`0" priority="1" />
+      <Item value="hideToTray`0" priority="1" />
+      <Item value="Hide`0" priority="0" />
+      <Item value="WindowState" priority="0" />
+      <Item value="Minimized" priority="0" />
+      <Item value="else" priority="17" />
+      <Item value="restoreFromTray`0" priority="0" />
+      <Item value="class" priority="6" />
+      <Item value="PuttyManager`0" priority="2" />
+      <Item value="getPuttyWindows`0" priority="0" />
+      <Item value="static" priority="16" />
+      <Item value="Properties" priority="4" />
+      <Item value="Settings`0" priority="4" />
+      <Item value="ctor" priority="9" />
+      <Item value="PuttyWindow`0" priority="3" />
+      <Item value="wnd" priority="0" />
+      <Item value="w" priority="0" />
+      <Item value="NotifyIcon" priority="0" />
+      <Item value="override" priority="5" />
+      <Item value="_theNotifyIcon" priority="5" />
+      <Item value="value" priority="11" />
+      <Item value="Icon`0" priority="1" />
+      <Item value="Icon" priority="0" />
+      <Item value="base" priority="2" />
+      <Item value="event" priority="1" />
+      <Item value="MouseEventHandler`0" priority="0" />
+      <Item value="add" priority="0" />
+      <Item value="remove" priority="0" />
+      <Item value="ContextMenuStrip" priority="0" />
+      <Item value="ContextMenuStrip`0" priority="2" />
+      <Item value="TrayMouseClick" priority="0" />
+      <Item value="theNotifyIcon_MouseClick`0" priority="0" />
+      <Item value="protected" priority="0" />
+      <Item value="hideShowClick`0" priority="0" />
+      <Item value="Text" priority="4" />
+      <Item value="PuttyManager" priority="1" />
+      <Item value="using" priority="8" />
+      <Item value="PuttyWindowsManager" priority="0" />
+      <Item value="false" priority="25" />
+      <Item value="Hwnd" priority="1" />
+      <Item value="iAmBad" priority="1" />
+      <Item value="PuttyWindowsManager`0" priority="15" />
+      <Item value="pw" priority="5" />
+      <Item value="putty" priority="0" />
+      <Item value="TrayContextMenuStrip" priority="2" />
+      <Item value="_hideShowToolStripMenuItem" priority="0" />
+      <Item value="_exitToolStripMenuItem" priority="0" />
+      <Item value="DataTable`0" priority="0" />
+      <Item value="puttiesGridView" priority="0" />
+      <Item value="wgwUserColumn" priority="0" />
+      <Item value="WgwUserColumn" priority="0" />
+      <Item value="typeof" priority="2" />
+      <Item value="_windowsTable" priority="8" />
+      <Item value="DataTable" priority="0" />
+      <Item value="m" priority="3" />
+      <Item value="username" priority="2" />
+      <Item value="null" priority="15" />
+      <Item value="machineName" priority="2" />
+      <Item value="window" priority="6" />
+      <Item value="row" priority="2" />
+      <Item value="windowsGridView" priority="4" />
+      <Item value="dr" priority="1" />
+      <Item value="wgwHwndColumn" priority="0" />
+      <Item value="WgwHwndColumn" priority="2" />
+      <Item value="WgwStatusColumn" priority="0" />
+      <Item value="ColorDepth`0" priority="0" />
+      <Item value="StatusInactive" priority="1" />
+      <Item value="this" priority="7" />
+      <Item value="switch" priority="5" />
+      <Item value="case" priority="1" />
+      <Item value="break" priority="4" />
+      <Item value="updateWindowsTable`0" priority="0" />
+      <Item value="ConfigurationManager`0" priority="2" />
+      <Item value="const" priority="3" />
+      <Item value="StatusConfigurationWindow" priority="0" />
+      <Item value="autorecoveryToolStripMenuItem" priority="0" />
+      <Item value="wgwShowColumn" priority="0" />
+      <Item value="DataGridViewTriState`0" priority="0" />
+      <Item value="wgwHideColumn" priority="0" />
+      <Item value="DataGridViewAutoSizeColumnMode`0" priority="0" />
+      <Item value="_username" priority="0" />
+      <Item value="fullMachineName" priority="2" />
+      <Item value="port" priority="2" />
+      <Item value="for" priority="0" />
+      <Item value="Where`1" priority="0" />
+      <Item value="fwdKey" priority="0" />
+      <Item value="_puttyArguments" priority="0" />
+      <Item value="dot" priority="0" />
+      <Item value="_machineName" priority="1" />
+      <Item value="ItemBoundsPortion`0" priority="0" />
+      <Item value="args" priority="3" />
+      <Item value="readonly" priority="3" />
+      <Item value="KeepAliveConnectionData`0" priority="1" />
+      <Item value="params" priority="0" />
+      <Item value="Forwardings" priority="0" />
+      <Item value="_keepAliveData" priority="3" />
+      <Item value="KeepAliveConnectionData" priority="0" />
+      <Item value="hostname" priority="3" />
+      <Item value="password" priority="2" />
+      <Item value="select" priority="4" />
+      <Item value="Hostname" priority="1" />
+      <Item value="item" priority="4" />
+      <Item value="Login" priority="1" />
+      <Item value="Password" priority="6" />
+      <Item value="Port" priority="1" />
+      <Item value="Tunnels" priority="0" />
+      <Item value="Tunnel`0" priority="0" />
+      <Item value="Name" priority="2" />
+      <Item value="aTunnel" priority="0" />
+      <Item value="enum" priority="5" />
+      <Item value="ToolTip`0" priority="0" />
+      <Item value="Type" priority="3" />
+      <Item value="tunnel" priority="8" />
+      <Item value="FileStyleUriParser`0" priority="2" />
+      <Item value="TunnelType`0" priority="4" />
+      <Item value="LocalPort" priority="5" />
+      <Item value="RemoteHostname" priority="3" />
+      <Item value="DependsOn" priority="0" />
+      <Item value="dependsOn" priority="2" />
+      <Item value="t" priority="8" />
+      <Item value="puttyInstance" priority="2" />
+      <Item value="p" priority="23" />
+      <Item value="PuttyInstanceData`0" priority="8" />
+      <Item value="Select`2" priority="1" />
+      <Item value="RemotePort" priority="2" />
+      <Item value="thr" priority="8" />
+      <Item value="NotImplementedException`0" priority="0" />
+      <Item value="default" priority="1" />
+      <Item value="Form`0" priority="0" />
+      <Item value="FormatException`0" priority="2" />
+      <Item value="PuttyArgument" priority="0" />
+      <Item value="autoRecoveryItems" priority="0" />
+      <Item value="depStr" priority="0" />
+      <Item value="data" priority="1" />
+      <Item value="instanceData" priority="2" />
+      <Item value="Length" priority="3" />
+      <Item value="HasGoodPutty`0" priority="0" />
+      <Item value="HasStrangePutty`0" priority="0" />
+      <Item value="puttyData" priority="2" />
+      <Item value="badDependencies" priority="0" />
+      <Item value="continue" priority="1" />
+      <Item value="StringComparison`0" priority="1" />
+      <Item value="System" priority="1" />
+      <Item value="Linq" priority="0" />
+      <Item value="ManagementObject`0" priority="0" />
+      <Item value="retObject" priority="0" />
+      <Item value="Process" priority="0" />
+      <Item value="results" priority="0" />
+      <Item value="cmdArgs" priority="0" />
+      <Item value="pattern" priority="0" />
+      <Item value="pid" priority="1" />
+      <Item value="ProcessCommandLine" priority="0" />
+      <Item value="_instanceData" priority="3" />
+      <Item value="equals" priority="0" />
+      <Item value="as" priority="5" />
+      <Item value="_manager" priority="0" />
+      <Item value="InstanceData" priority="0" />
+      <Item value="LoaderOptimization`0" priority="0" />
+      <Item value="xmlDoc" priority="0" />
+      <Item value="ConfigXmlDocument`0" priority="0" />
+      <Item value="xmlDocument" priority="4" />
+      <Item value="XDocument`0" priority="0" />
+      <Item value="ElementInformation`0" priority="2" />
+      <Item value="CryptoStorage`0" priority="3" />
+      <Item value="SecurityIDType`0" priority="0" />
+      <Item value="Security" priority="0" />
+      <Item value="Cryptography" priority="0" />
+      <Item value="SymmetricAlgorithm`0" priority="0" />
+      <Item value="algorithm" priority="0" />
+      <Item value="Stream`0" priority="2" />
+      <Item value="inStream" priority="4" />
+      <Item value="csEncrypt" priority="0" />
+      <Item value="MemoryStream`0" priority="5" />
+      <Item value="Encoding`0" priority="6" />
+      <Item value="bytes" priority="1" />
+      <Item value="Begin" priority="6" />
+      <Item value="EncryptAes`0" priority="0" />
+      <Item value="outStream" priority="2" />
+      <Item value="result" priority="0" />
+      <Item value="Crypto`0" priority="1" />
+      <Item value="enc" priority="0" />
+      <Item value="source" priority="0" />
+      <Item value="File`0" priority="5" />
+      <Item value="appPath" priority="4" />
+      <Item value="EncryptedConfigFile" priority="2" />
+      <Item value="inputXml" priority="4" />
+      <Item value="ConfigAutorecoveryXml" priority="1" />
+      <Item value="Exception`0" priority="3" />
+      <Item value="EConfigMode`0" priority="2" />
+      <Item value="ArgumentOutOfRangeException`0" priority="0" />
+      <Item value="ConfigMode" priority="0" />
+      <Item value="ExplicitXml" priority="1" />
+      <Item value="SeekOrigin`0" priority="0" />
+      <Item value="CryptoStorage" priority="1" />
+      <Item value="_instance" priority="5" />
+      <Item value="PasswordDialog`0" priority="1" />
+      <Item value="pwdDlg" priority="3" />
+      <Item value="DataGridViewEditMode`0" priority="0" />
+      <Item value="textBoxPwd1" priority="1" />
+      <Item value="pwd1" priority="0" />
+      <Item value="buttonEnter" priority="0" />
+      <Item value="goodPwd" priority="0" />
+      <Item value="labelReq" priority="0" />
+      <Item value="labelCre" priority="0" />
+      <Item value="labelAgain" priority="0" />
+      <Item value="textBoxPwd2" priority="0" />
+      <Item value="_mode" priority="1" />
+      <Item value="RequestPassword" priority="3" />
+      <Item value="Size" priority="2" />
+      <Item value="res" priority="2" />
+      <Item value="OK" priority="2" />
+      <Item value="labelPwd" priority="0" />
+      <Item value="labelPwdReq" priority="0" />
+      <Item value="textBoxPwd" priority="2" />
+      <Item value="Close`0" priority="2" />
+      <Item value="DialogResult" priority="3" />
+      <Item value="AcceptButton" priority="0" />
+      <Item value="checkBoxSavePwd" priority="0" />
+      <Item value="EncryptedSettings`0" priority="18" />
+      <Item value="getXmlConfigStream`0" priority="0" />
+      <Item value="pwdValid" priority="0" />
+      <Item value="try" priority="2" />
+      <Item value="pwdDlgMode" priority="0" />
+      <Item value="storedPwd" priority="0" />
+      <Item value="MessageBox`0" priority="2" />
+      <Item value="treeViewHosts" priority="11" />
+      <Item value="hostData" priority="7" />
+      <Item value="Dictionary" priority="1" />
+      <Item value="TreeNode`0" priority="5" />
+      <Item value="Tag" priority="0" />
+      <Item value="hostToNode" priority="0" />
+      <Item value="node" priority="6" />
+      <Item value="ImageList`0" priority="0" />
+      <Item value="imageList" priority="1" />
+      <Item value="Image`0" priority="0" />
+      <Item value="Resources`0" priority="1" />
+      <Item value="Serializable" priority="1" />
+      <Item value="HostInfo`0" priority="11" />
+      <Item value="serializer" priority="1" />
+      <Item value="stream" priority="10" />
+      <Item value="List&lt;HostInfo&gt;" priority="1" />
+      <Item value="other" priority="0" />
+      <Item value="settings" priority="2" />
+      <Item value="EncryptedSourceExist" priority="0" />
+      <Item value="SettingsSource" priority="0" />
+      <Item value="_serializer" priority="0" />
+      <Item value="ExplicitXmlSettingsFile" priority="0" />
+      <Item value="explicitXmlStream" priority="0" />
+      <Item value="writer" priority="1" />
+      <Item value="XmlWriterSettings" priority="0" />
+      <Item value="Encoding" priority="0" />
+      <Item value="NewLineHandling" priority="0" />
+      <Item value="NewLineHandling`0" priority="0" />
+      <Item value="Indent" priority="0" />
+      <Item value="XmlIgnore" priority="1" />
+      <Item value="DataMember" priority="0" />
+      <Item value="TunnelInfo`0" priority="3" />
+      <Item value="h" priority="8" />
+      <Item value="FileMode`0" priority="0" />
+      <Item value="Write" priority="0" />
+      <Item value="XmlRoot" priority="0" />
+      <Item value="do" priority="0" />
+      <Item value="while" priority="1" />
+      <Item value="ProcessCmdKey`0" priority="0" />
+      <Item value="Hidden" priority="0" />
+      <Item value="textBox1" priority="0" />
+      <Item value="_output" priority="0" />
+      <Item value="_process" priority="4" />
+      <Item value="Stop`0" priority="0" />
+      <Item value="link" priority="1" />
+      <Item value="finally" priority="0" />
+      <Item value="PuttyLinkResult`0" priority="2" />
+      <Item value="_isActive" priority="0" />
+      <Item value="volatile" priority="0" />
+      <Item value="Result" priority="0" />
+      <Item value="host" priority="8" />
+      <Item value="PuttyLink" priority="1" />
+      <Item value="_sshLink" priority="3" />
+      <Item value="IsOpen" priority="0" />
+      <Item value="PlinkLocation" priority="0" />
+      <Item value="EConnectionState`0" priority="2" />
+      <Item value="Inactive" priority="3" />
+      <Item value="EConnectionTest`0" priority="0" />
+      <Item value="ConnectionTest" priority="0" />
+      <Item value="EchoCommand" priority="1" />
+      <Item value="ConnectionState" priority="5" />
+      <Item value="Active" priority="1" />
+      <Item value="buffer" priority="0" />
+      <Item value="Debug`0" priority="0" />
+      <Item value="_connectionState" priority="0" />
+      <Item value="LastError" priority="1" />
+      <Item value="RedirectStandardError" priority="0" />
+      <Item value="ShellStartedMessage" priority="0" />
+      <Item value="Interlocked`0" priority="0" />
+      <Item value="_lastError" priority="0" />
+      <Item value="DataGridViewCellValidatingEventArgs`0" priority="1" />
+      <Item value="Thread`0" priority="0" />
+      <Item value="EventHandler`0" priority="0" />
+      <Item value="ConnectionStateChanged" priority="1" />
+      <Item value="EventArgs`0" priority="1" />
+      <Item value="Link" priority="0" />
+      <Item value="HostDialog`0" priority="0" />
+      <Item value="errorProvider" priority="0" />
+      <Item value="ErrorProvider" priority="7" />
+      <Item value="ValidHostnameRegex" priority="0" />
+      <Item value="ValidPortRegex" priority="1" />
+      <Item value="withPort" priority="0" />
+      <Item value="ValidHostnameAndPort" priority="0" />
+      <Item value="ValidHostnameOnly" priority="1" />
+      <Item value="Singleline" priority="0" />
+      <Item value="RegexOptions`0" priority="1" />
+      <Item value="ValidIpAddressRegex" priority="0" />
+      <Item value="Regex`0" priority="1" />
+      <Item value="Regex" priority="0" />
+      <Item value="_validHostnameOnly" priority="0" />
+      <Item value="control" priority="17" />
+      <Item value="Control`0" priority="11" />
+      <Item value="Func" priority="2" />
+      <Item value="Tuple`0" priority="2" />
+      <Item value="List&lt;Tuple&gt;" priority="0" />
+      <Item value="Dictionary&lt;Control,Tuple&lt;Func&lt;Control,string&gt;,Func&lt;Control,string,bool&gt;&gt;&gt;" priority="0" />
+      <Item value="textSelector" priority="1" />
+      <Item value="validatorMethod" priority="0" />
+      <Item value="pair" priority="3" />
+      <Item value="validator" priority="1" />
+      <Item value="good" priority="0" />
+      <Item value="_controls" priority="1" />
+      <Item value="Validator`0" priority="0" />
+      <Item value="Validator" priority="1" />
+      <Item value="textBoxHostname" priority="1" />
+      <Item value="c" priority="1" />
+      <Item value="_regexHostnameAndPort" priority="0" />
+      <Item value="textBoxSourcePort" priority="3" />
+      <Item value="_validator" priority="1" />
+      <Item value="ErrorProvider`0" priority="0" />
+      <Item value="tuple" priority="0" />
+      <Item value="Cancel" priority="1" />
+      <Item value="_afterValidateControls" priority="1" />
+      <Item value="theGoodProvider" priority="2" />
+      <Item value="textBoxName" priority="2" />
+      <Item value="textBoxLogin" priority="2" />
+      <Item value="listBoxTunnels" priority="6" />
+      <Item value="textBoxDestination" priority="3" />
+      <Item value="radioButtonLocal" priority="3" />
+      <Item value="YesNo" priority="0" />
+      <Item value="Yes" priority="0" />
+      <Item value="showErrors" priority="0" />
+      <Item value="_tunnelValidator" priority="5" />
+      <Item value="theErrorProvider" priority="1" />
+      <Item value="radioButtonRemote" priority="2" />
+      <Item value="Remote" priority="1" />
+      <Item value="radioButtonDynamic" priority="1" />
+      <Item value="Question" priority="0" />
+      <Item value="_currentHost" priority="12" />
+      <Item value="HostInfo" priority="0" />
+      <Item value="dst" priority="1" />
+      <Item value="srcPort" priority="0" />
+      <Item value="dstPort" priority="0" />
+      <Item value="tunnelType" priority="0" />
+      <Item value="textBoxDestHost" priority="1" />
+      <Item value="textBoxTunnelName" priority="1" />
+      <Item value="name" priority="0" />
+      <Item value="List&lt;TunnelInfo&gt;" priority="1" />
+      <Item value="Local" priority="0" />
+      <Item value="strType" priority="1" />
+      <Item value="SetGood`0" priority="0" />
+      <Item value="GoodValidationText" priority="0" />
+      <Item value="SetError`0" priority="0" />
+      <Item value="ret" priority="0" />
+      <Item value="alias" priority="0" />
+      <Item value="buttonRemoveTunnel" priority="1" />
+      <Item value="Brushes`0" priority="0" />
+      <Item value="Brush`0" priority="0" />
+      <Item value="StringFormat`0" priority="0" />
+      <Item value="ragne" priority="0" />
+      <Item value="RectangleF" priority="1" />
+      <Item value="rect" priority="1" />
+      <Item value="SizeF" priority="0" />
+      <Item value="format" priority="0" />
+      <Item value="StringFormat" priority="0" />
+      <Item value="StringFormatFlags`0" priority="0" />
+      <Item value="Alignment" priority="0" />
+      <Item value="Far" priority="1" />
+      <Item value="LineAlignment" priority="0" />
+      <Item value="ValidateNotNullOrWhitespaces`0" priority="0" />
+      <Item value="ValidateOnlyOneWord`0" priority="0" />
+      <Item value="comboBoxDependsOn" priority="4" />
+      <Item value="Concat`1" priority="0" />
+      <Item value="resetAddTunnelGroup`0" priority="0" />
+      <Item value="textBoxPort" priority="0" />
+      <Item value="textBoxPassword" priority="0" />
+      <Item value="dependsOnHost" priority="0" />
+      <Item value="DependsOnStr" priority="2" />
+      <Item value="buttonAddTunnel" priority="0" />
+      <Item value="flowLayoutPanelMain" priority="1" />
+      <Item value="labelRecentlyAdded" priority="0" />
+      <Item value="_labelRecentlyAdded" priority="5" />
+      <Item value="Color`0" priority="0" />
+      <Item value="_recentlyAddedHosts" priority="2" />
+      <Item value="raText" priority="0" />
+      <Item value="Anchor" priority="0" />
+      <Item value="AnchorStyles`0" priority="3" />
+      <Item value="Margin" priority="0" />
+      <Item value="Padding" priority="0" />
+      <Item value="Math`0" priority="0" />
+      <Item value="fillHostsTree`0" priority="0" />
+      <Item value="StartupDependsOn" priority="0" />
+      <Item value="hd" priority="0" />
+      <Item value="hiParent" priority="1" />
+      <Item value="removeHost`0" priority="0" />
+      <Item value="MessageBoxButtons`0" priority="0" />
+      <Item value="Warning" priority="0" />
+      <Item value="recursive" priority="1" />
+      <Item value="hostNode" priority="1" />
+      <Item value="treeNodes" priority="2" />
+      <Item value="from" priority="0" />
+      <Item value="in" priority="0" />
+      <Item value="let" priority="1" />
+      <Item value="where" priority="0" />
+      <Item value="hi" priority="1" />
+      <Item value="hosts" priority="0" />
+      <Item value="menu" priority="5" />
+      <Item value="toolStripButtonDeleteHostRecursively" priority="0" />
+      <Item value="PuttyManagerGui" priority="0" />
+      <Item value="menuItem" priority="1" />
+      <Item value="toolStripButtonAddHost_Click`0" priority="0" />
+      <Item value="toolStripButtonDeleteHost" priority="0" />
+      <Item value="message" priority="1" />
+      <Item value="hostInfo" priority="1" />
+      <Item value="ToolStripMenuItem`0" priority="0" />
+      <Item value="menuItemAddHost" priority="0" />
+      <Item value="menuItemDeleteHost" priority="0" />
+      <Item value="menuItemDeleteHostRecursive" priority="0" />
+      <Item value="exitToolStripMenuItem" priority="0" />
+      <Item value="TreeNodeCollection`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.StringBuilder">
+      <Item value="ToString`0" priority="1" />
+      <Item value="AppendFormat`0" priority="1" />
+      <Item value="Clear`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="IsNullOrEmpty`0" priority="4" />
+      <Item value="Format`0" priority="11" />
+      <Item value="Compare`0" priority="0" />
+      <Item value="Equals`0" priority="0" />
+      <Item value="IsNullOrWhiteSpace`0" priority="4" />
+      <Item value="Join`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="Contains`0" priority="6" />
+      <Item value="StartsWith`0" priority="0" />
+      <Item value="IndexOf`0" priority="0" />
+      <Item value="Substring`0" priority="0" />
+      <Item value="GetHashCode`0" priority="0" />
+      <Item value="Equals`0" priority="0" />
+      <Item value="ToMemoryStream`0" priority="1" />
+      <Item value="EndsWith`0" priority="0" />
+      <Item value="Split`0" priority="1" />
+      <Item value="Normalize`0" priority="0" />
+      <Item value="PadLeft`0" priority="2" />
+      <Item value="Trim`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Add`0" priority="5" />
+      <Item value="Where`1" priority="3" />
+      <Item value="Count" priority="1" />
+      <Item value="ToArray`0" priority="2" />
+      <Item value="ToString`0" priority="0" />
+      <Item value="FirstOrDefault`1" priority="0" />
+      <Item value="Find`0" priority="0" />
+      <Item value="ToDictionary`3" priority="0" />
+      <Item value="SelectMany`3" priority="0" />
+      <Item value="Contains`0" priority="1" />
+      <Item value="Select`2" priority="2" />
+      <Item value="Remove`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManager.WinApi">
+      <Item value="WM_CLOSE" priority="0" />
+      <Item value="SW_SHOWMINIMIZED" priority="1" />
+      <Item value="SW_RESTORE" priority="0" />
+      <Item value="SW_HIDE" priority="0" />
+      <Item value="ShowWindowAsync`0" priority="0" />
+      <Item value="SW_SHOWNORMAL" priority="0" />
+      <Item value="EnumChildWindows`0" priority="0" />
+      <Item value="GetParent`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Diagnostics.Process">
+      <Item value="GetProcessById`0" priority="0" />
+      <Item value="Start`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Diagnostics.Process">
+      <Item value="Kill`0" priority="2" />
+      <Item value="WaitForInputIdle`0" priority="1" />
+      <Item value="MainWindowTitle" priority="0" />
+      <Item value="MainWindowHandle" priority="0" />
+      <Item value="ProcessName" priority="1" />
+      <Item value="StartInfo" priority="3" />
+      <Item value="HasExited" priority="0" />
+      <Item value="WaitForExit`0" priority="1" />
+      <Item value="BeginOutputReadLine`0" priority="1" />
+      <Item value="StandardInput" priority="1" />
+      <Item value="StandardOutput" priority="3" />
+      <Item value="OutputDataReceived" priority="0" />
+      <Item value="ErrorDataReceived" priority="1" />
+      <Item value="BeginErrorReadLine`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Diagnostics.ProcessStartInfo">
+      <Item value="FileName" priority="1" />
+      <Item value="Arguments" priority="1" />
+      <Item value="CreateNoWindow" priority="0" />
+      <Item value="Password" priority="0" />
+      <Item value="WindowStyle" priority="0" />
+      <Item value="RedirectStandardError" priority="0" />
+      <Item value="Verb" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.Application">
+      <Item value="StartupPath" priority="4" />
+      <Item value="DoEvents`0" priority="0" />
+      <Item value="ProductName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.EventArgs">
+      <Item value="Equals`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="ToList`1" priority="6" />
+      <Item value="Where`1" priority="2" />
+      <Item value="FirstOrDefault`1" priority="4" />
+      <Item value="Any`1" priority="0" />
+      <Item value="Contains`1" priority="0" />
+      <Item value="ToArray`1" priority="5" />
+      <Item value="Equals`0" priority="0" />
+      <Item value="Concat`1" priority="1" />
+      <Item value="Select`2" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.NotifyIcon">
+      <Item value="BalloonTipClosed" priority="0" />
+      <Item value="Click" priority="0" />
+      <Item value="MouseClick" priority="2" />
+      <Item value="Text" priority="0" />
+      <Item value="Icon" priority="0" />
+      <Item value="ContextMenuStrip" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.MouseEventArgs">
+      <Item value="Button" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.MouseButtons">
+      <Item value="Left" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManager.Properties.Settings">
+      <Item value="Default" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.Properties.Settings">
+      <Item value="PuttyArguments" priority="0" />
+      <Item value="Username" priority="0" />
+      <Item value="MachineName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.PuttyWindow">
+      <Item value="ClassName" priority="0" />
+      <Item value="Kill`0" priority="0" />
+      <Item value="Hwnd" priority="3" />
+      <Item value="Text" priority="2" />
+      <Item value="User" priority="0" />
+      <Item value="MachineName" priority="3" />
+      <Item value="Inactive" priority="1" />
+      <Item value="Show`0" priority="0" />
+      <Item value="Strange" priority="1" />
+      <Item value="StatusText" priority="0" />
+      <Item value="Process" priority="0" />
+      <Item value="Hostname" priority="0" />
+      <Item value="Port" priority="0" />
+      <Item value="Equals`0" priority="0" />
+      <Item value="InstanceData" priority="0" />
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Form">
+      <Item value="Icon" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManager.PuttyWindowsManager">
+      <Item value="KillInactivePuttyWindows`0" priority="1" />
+      <Item value="GetPuttyWindows`0" priority="2" />
+      <Item value="HasGoodPutty`0" priority="1" />
+      <Item value="CreatePuttyInstance`0" priority="0" />
+      <Item value="KillAllPutties`0" priority="0" />
+      <Item value="ShowAllPutties`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManagerGui.Properties.Settings">
+      <Item value="Default" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ContextMenuStrip">
+      <Item value="Items" priority="7" />
+      <Item value="Opening" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ToolStripItemCollection">
+      <Item value="Add`0" priority="4" />
+      <Item value="Clear`0" priority="0" />
+      <Item value="AddRange`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.DataTable">
+      <Item value="Columns" priority="1" />
+      <Item value="Rows" priority="5" />
+      <Item value="NewRow`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.DataColumnCollection">
+      <Item value="Add`0" priority="0" />
+      <Item value="Clear`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridView">
+      <Item value="AutoGenerateColumns" priority="0" />
+      <Item value="DataSource" priority="0" />
+      <Item value="Columns" priority="1" />
+      <Item value="Rows" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewTextBoxColumn">
+      <Item value="DataPropertyName" priority="0" />
+      <Item value="Visible" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Text.RegularExpressions.Regex">
+      <Item value="Match`0" priority="3" />
+      <Item value="IsMatch`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.RegularExpressions.Match">
+      <Item value="Success" priority="1" />
+      <Item value="Groups" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.RegularExpressions.Group">
+      <Item value="Value" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IntPtr">
+      <Item value="ToString`0" priority="2" />
+      <Item value="ToInt32`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.DataRowCollection">
+      <Item value="Add`0" priority="1" />
+      <Item value="Cast`1" priority="2" />
+      <Item value="Remove`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Object">
+      <Item value="ToString`0" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewCellFormattingEventArgs">
+      <Item value="RowIndex" priority="0" />
+      <Item value="ColumnIndex" priority="3" />
+      <Item value="CellStyle" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewColumn">
+      <Item value="Name" priority="0" />
+      <Item value="DataPropertyName" priority="0" />
+      <Item value="Index" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewCellStyle">
+      <Item value="ForeColor" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Drawing.Color">
+      <Item value="FromArgb`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewRow">
+      <Item value="Cells" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewCell">
+      <Item value="Value" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManagerGui.PuttyManagerForm">
+      <Item value="wgwShowColumn" priority="1" />
+      <Item value="wgwKillColumn" priority="0" />
+      <Item value="wgwHideColumn" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewButtonColumn">
+      <Item value="Text" priority="0" />
+      <Item value="UseColumnTextForButtonValue" priority="0" />
+      <Item value="Width" priority="2" />
+      <Item value="Resizable" priority="0" />
+      <Item value="AutoSizeMode" priority="0" />
+      <Item value="FillWeight" priority="0" />
+      <Item value="MinimumWidth" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewCellEventArgs">
+      <Item value="RowIndex" priority="1" />
+      <Item value="ColumnIndex" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Int32">
+      <Item value="Parse`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Configuration.ConfigurationManager">
+      <Item value="AppSettings" priority="2" />
+      <Item value="OpenExeConfiguration`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ToolStripMenuItem">
+      <Item value="Checked" priority="0" />
+      <Item value="Click" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.DataGridViewTriState">
+      <Item value="False" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.DataGridViewAutoSizeColumnMode">
+      <Item value="DisplayedCells" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Specialized.NameValueCollection">
+      <Item value="AllKeys" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.KeepAliveConnectionData">
+      <Item value="PuttyArguments" priority="0" />
+      <Item value="Login" priority="0" />
+      <Item value="MachineName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.Linq.XDocument">
+      <Item value="Descendants`0" priority="0" />
+      <Item value="Root" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.Linq.XElement">
+      <Item value="Element`0" priority="8" />
+      <Item value="Value" priority="6" />
+      <Item value="Elements`0" priority="1" />
+      <Item value="Attribute`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.Linq.XAttribute">
+      <Item value="Value" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Enum">
+      <Item value="Parse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.Tunnel">
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.PuttyInstanceData">
+      <Item value="Name" priority="1" />
+      <Item value="DependsOnStr" priority="0" />
+      <Item value="DependsOn" priority="6" />
+      <Item value="MachineName" priority="0" />
+      <Item value="Login" priority="2" />
+      <Item value="Hostname" priority="2" />
+      <Item value="Password" priority="0" />
+      <Item value="Port" priority="1" />
+      <Item value="Equals`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.KeyValuePair`2">
+      <Item value="Value" priority="5" />
+      <Item value="Key" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.Dictionary`2">
+      <Item value="ContainsKey`0" priority="1" />
+      <Item value="Values" priority="0" />
+      <Item value="Add`0" priority="0" />
+      <Item value="Keys" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.Dictionary`2+ValueCollection">
+      <Item value="Cast`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IList`1">
+      <Item value="Reverse`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.StringComparison">
+      <Item value="CurrentCultureIgnoreCase" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Management.ManagementObjectCollection">
+      <Item value="Cast`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManager.PuttyInstanceData">
+      <Item value="FromPuttyArguments`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.XmlDocument">
+      <Item value="LoadXml`0" priority="0" />
+      <Item value="Schemas" priority="0" />
+      <Item value="Validate`0" priority="0" />
+      <Item value="XmlResolver" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.Schema.XmlSchemaSet">
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.Schema.ValidationEventArgs">
+      <Item value="Exception" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.XmlResolver">
+      <Item value="Credentials" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.ICredentials">
+      <Item value="Equals`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManager.CryptoStorage">
+      <Item value="PuttyInstancesData" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Security.Cryptography.SymmetricAlgorithm">
+      <Item value="Create`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.Stream">
+      <Item value="CopyTo`0" priority="0" />
+      <Item value="Seek`0" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.MemoryStream">
+      <Item value="Write`0" priority="0" />
+      <Item value="Seek`0" priority="3" />
+      <Item value="ToArray`0" priority="3" />
+      <Item value="CopyTo`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Text.Encoding">
+      <Item value="UTF8" priority="5" />
+      <Item value="Default" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.Encoding">
+      <Item value="GetBytes`0" priority="0" />
+      <Item value="GetString`0" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Convert">
+      <Item value="ToBase64String`0" priority="0" />
+      <Item value="FromBase64String`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManager.Util.Crypto">
+      <Item value="EncryptStringAes`0" priority="0" />
+      <Item value="DecryptStringAes`0" priority="0" />
+      <Item value="DecryptAes`0" priority="0" />
+      <Item value="EncryptAes`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.File">
+      <Item value="Exists`0" priority="1" />
+      <Item value="OpenRead`0" priority="1" />
+      <Item value="OpenWrite`0" priority="1" />
+      <Item value="Delete`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManager.CryptoStorage+EConfigMode">
+      <Item value="ExplicitXml" priority="0" />
+      <Item value="EncryptedXml" priority="0" />
+      <Item value="Invalid" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.SeekOrigin">
+      <Item value="Begin" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManagerGui.PasswordDialog">
+      <Item value="ShowDialog`0" priority="0" />
+      <Item value="Setup`0" priority="0" />
+      <Item value="Password" priority="0" />
+      <Item value="SavePassword" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManagerGui.PasswordDialog">
+      <Item value="EMode`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManagerGui.PasswordDialog+EMode">
+      <Item value="CreatePassword" priority="2" />
+      <Item value="RequestPassword" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TextBox">
+      <Item value="Text" priority="14" />
+      <Item value="Visible" priority="2" />
+      <Item value="AppendText`0" priority="0" />
+      <Item value="Enabled" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Button">
+      <Item value="Enabled" priority="1" />
+      <Item value="Text" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Label">
+      <Item value="Visible" priority="4" />
+      <Item value="ForeColor" priority="0" />
+      <Item value="Text" priority="1" />
+      <Item value="Size" priority="2" />
+      <Item value="PreferredHeight" priority="0" />
+      <Item value="PreferredWidth" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManager.EncryptedSettings">
+      <Item value="ConfigMode" priority="0" />
+      <Item value="EncryptedFileExist" priority="1" />
+      <Item value="CheckPassword`0" priority="0" />
+      <Item value="Instance" priority="4" />
+      <Item value="RemoveEncryptedFile`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.CheckBox">
+      <Item value="Checked" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManagerGui.Properties.Settings">
+      <Item value="EncryptedSettingsPassword" priority="0" />
+      <Item value="Save`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.MessageBox">
+      <Item value="Show`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.EncryptedSettings">
+      <Item value="Initialize`0" priority="0" />
+      <Item value="PuttyInstancesData" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TreeView">
+      <Item value="Nodes" priority="4" />
+      <Item value="Sorted" priority="1" />
+      <Item value="ExpandAll`0" priority="0" />
+      <Item value="ImageList" priority="0" />
+      <Item value="SelectedNode" priority="4" />
+      <Item value="ContextMenuStrip" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TreeNodeCollection">
+      <Item value="Clear`0" priority="1" />
+      <Item value="Add`0" priority="1" />
+      <Item value="Count" priority="0" />
+      <Item value="Cast`1" priority="1" />
+      <Item value="AddRange`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TreeNode">
+      <Item value="Nodes" priority="4" />
+      <Item value="Tag" priority="3" />
+      <Item value="Remove`0" priority="0" />
+      <Item value="ImageIndex" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.HostData">
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ImageList">
+      <Item value="Images" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ImageList+ImageCollection">
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Drawing.Image">
+      <Item value="FromFile`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManagerGui.Properties.Resources">
+      <Item value="ResourceManager" priority="1" />
+      <Item value="server" priority="0" />
+      <Item value="server__plus" priority="0" />
+      <Item value="server__minus" priority="0" />
+      <Item value="servers__minus" priority="0" />
+      <Item value="brightness" priority="0" />
+      <Item value="tick_circle" priority="0" />
+      <Item value="server_down" priority="0" />
+      <Item value="server_up_warnings" priority="0" />
+      <Item value="server_up" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.Serialization.XmlSerializer">
+      <Item value="Deserialize`0" priority="2" />
+      <Item value="Serialize`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.HostInfo">
+      <Item value="uniqString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManager.Domain.EncryptedSettings">
+      <Item value="Instance" priority="8" />
+      <Item value="Initialize`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.Domain.EncryptedSettings">
+      <Item value="ChangePassword`0" priority="0" />
+      <Item value="Hosts" priority="6" />
+      <Item value="Save`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.XmlWriter">
+      <Item value="Close`0" priority="0" />
+      <Item value="Flush`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.Business.TunnelInfo">
+      <Item value="Name" priority="1" />
+      <Item value="RemoteHostname" priority="0" />
+      <Item value="Type" priority="1" />
+      <Item value="LocalPort" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Runtime.Serialization.DataContractSerializer">
+      <Item value="WriteObject`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.XmlDictionaryWriter">
+      <Item value="Close`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.Business.HostInfo">
+      <Item value="Name" priority="8" />
+      <Item value="DependsOnStr" priority="0" />
+      <Item value="Login" priority="1" />
+      <Item value="Hostname" priority="2" />
+      <Item value="Tunnels" priority="5" />
+      <Item value="Port" priority="1" />
+      <Item value="Password" priority="0" />
+      <Item value="DependsOn" priority="1" />
+      <Item value="ToString`0" priority="2" />
+      <Item value="Link" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.FileMode">
+      <Item value="Create" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Diagnostics.DataReceivedEventArgs">
+      <Item value="Data" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.StreamWriter">
+      <Item value="Write`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.Domain.PuttyLink">
+      <Item value="AsyncStart`0" priority="2" />
+      <Item value="Result" priority="0" />
+      <Item value="Stop`0" priority="0" />
+      <Item value="ConnectionState" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Exception">
+      <Item value="Message" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManager.Domain.PuttyLink+EConnectionState">
+      <Item value="Intermediate" priority="0" />
+      <Item value="Active" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Diagnostics.Debug">
+      <Item value="WriteLine`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.StreamReader">
+      <Item value="EndOfStream" priority="0" />
+      <Item value="ReadToEnd`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Threading.Interlocked">
+      <Item value="Exchange`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Threading.Thread">
+      <Item value="Sleep`0" priority="0" />
+      <Item value="CurrentThread" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.EventArgs">
+      <Item value="Empty" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManagerGui.HostDialog">
+      <Item value="ShowDialog`0" priority="0" />
+      <Item value="StartupDependsOn" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ErrorProvider">
+      <Item value="DataSource" priority="0" />
+      <Item value="SetError`0" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Text.RegularExpressions.RegexOptions">
+      <Item value="IgnoreCase" priority="0" />
+      <Item value="Compiled" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.RegularExpressions.Regex">
+      <Item value="IsMatch`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Tuple">
+      <Item value="Create`8" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Tuple`2">
+      <Item value="Item1" priority="1" />
+      <Item value="Item2" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManagerGui.Validator">
+      <Item value="AddControl`0" priority="0" />
+      <Item value="ValidateHostname`0" priority="0" />
+      <Item value="ValidateHostnameAndPort`0" priority="0" />
+      <Item value="ValidateControl`0" priority="0" />
+      <Item value="ValidateControls`0" priority="2" />
+      <Item value="Reset`0" priority="1" />
+      <Item value="SetError`0" priority="0" />
+      <Item value="ValidateNotNullOrWhitespaces`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Control">
+      <Item value="Text" priority="0" />
+      <Item value="Validating" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListBox">
+      <Item value="Items" priority="3" />
+      <Item value="SelectedItems" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListBox+ObjectCollection">
+      <Item value="Clear`0" priority="0" />
+      <Item value="Add`0" priority="0" />
+      <Item value="Remove`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.RadioButton">
+      <Item value="Checked" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DialogResult">
+      <Item value="Cancel" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManager.Business.TunnelType">
+      <Item value="Local" priority="0" />
+      <Item value="Remote" priority="0" />
+      <Item value="Dynamic" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DrawItemEventArgs">
+      <Item value="ForeColor" priority="0" />
+      <Item value="DrawBackground`0" priority="0" />
+      <Item value="Graphics" priority="3" />
+      <Item value="Font" priority="0" />
+      <Item value="Bounds" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Graphics">
+      <Item value="MeasureCharacterRanges`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Font">
+      <Item value="Bold" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Drawing.StringFormat">
+      <Item value="GenericTypographic" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Region">
+      <Item value="GetRegionData`0" priority="0" />
+      <Item value="GetBounds`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.RectangleF">
+      <Item value="Size" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Rectangle">
+      <Item value="Height" priority="0" />
+      <Item value="Inflate`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.SizeF">
+      <Item value="Width" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ComboBox">
+      <Item value="Items" priority="1" />
+      <Item value="SelectedIndex" priority="0" />
+      <Item value="SelectedItem" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ComboBox+ObjectCollection">
+      <Item value="Clear`0" priority="0" />
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.FlowLayoutPanel">
+      <Item value="Controls" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Control+ControlCollection">
+      <Item value="Add`0" priority="0" />
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.AnchorStyles">
+      <Item value="Left" priority="0" />
+      <Item value="Right" priority="0" />
+      <Item value="Top" priority="0" />
+      <Item value="Bottom" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Size">
+      <Item value="Width" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Math">
+      <Item value="Ceiling`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.MessageBoxButtons">
+      <Item value="OKCancel" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TreeNodeMouseClickEventArgs">
+      <Item value="Node" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ComponentModel.CancelEventArgs">
+      <Item value="Cancel" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>
