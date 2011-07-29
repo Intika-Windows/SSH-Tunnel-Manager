@@ -44,10 +44,12 @@
             this.contextMenuStripHost = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hgwIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hgwStatusIconColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.hgwNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hgwUsernameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hgwHostnameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hgwStatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hgwDependsOnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.hostsGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -70,10 +72,12 @@
             this.hostsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.hostsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.hostsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.hgwIdColumn,
             this.hgwStatusIconColumn,
+            this.hgwNameColumn,
+            this.hgwUsernameColumn,
             this.hgwHostnameColumn,
-            this.hgwStatusColumn});
+            this.hgwStatusColumn,
+            this.hgwDependsOnColumn});
             this.hostsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hostsGridView.Location = new System.Drawing.Point(0, 0);
             this.hostsGridView.MultiSelect = false;
@@ -205,12 +209,6 @@
             this.removeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.removeToolStripMenuItem.Text = "&Remove";
             // 
-            // hgwIdColumn
-            // 
-            this.hgwIdColumn.HeaderText = "Id";
-            this.hgwIdColumn.Name = "hgwIdColumn";
-            this.hgwIdColumn.ReadOnly = true;
-            // 
             // hgwStatusIconColumn
             // 
             this.hgwStatusIconColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -222,6 +220,24 @@
             this.hgwStatusIconColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.hgwStatusIconColumn.Width = 25;
             // 
+            // hgwNameColumn
+            // 
+            this.hgwNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.hgwNameColumn.FillWeight = 20F;
+            this.hgwNameColumn.HeaderText = "Unique Name";
+            this.hgwNameColumn.MinimumWidth = 20;
+            this.hgwNameColumn.Name = "hgwNameColumn";
+            this.hgwNameColumn.ReadOnly = true;
+            this.hgwNameColumn.Width = 97;
+            // 
+            // hgwUsernameColumn
+            // 
+            this.hgwUsernameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.hgwUsernameColumn.HeaderText = "Username";
+            this.hgwUsernameColumn.Name = "hgwUsernameColumn";
+            this.hgwUsernameColumn.ReadOnly = true;
+            this.hgwUsernameColumn.Width = 80;
+            // 
             // hgwHostnameColumn
             // 
             this.hgwHostnameColumn.FillWeight = 95.02126F;
@@ -231,10 +247,18 @@
             // 
             // hgwStatusColumn
             // 
+            this.hgwStatusColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.hgwStatusColumn.FillWeight = 95.02126F;
             this.hgwStatusColumn.HeaderText = "Status";
             this.hgwStatusColumn.Name = "hgwStatusColumn";
             this.hgwStatusColumn.ReadOnly = true;
+            this.hgwStatusColumn.Width = 62;
+            // 
+            // hgwDependsOnColumn
+            // 
+            this.hgwDependsOnColumn.HeaderText = "Depends On";
+            this.hgwDependsOnColumn.Name = "hgwDependsOnColumn";
+            this.hgwDependsOnColumn.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -282,9 +306,11 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripHost;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hgwIdColumn;
         private System.Windows.Forms.DataGridViewImageColumn hgwStatusIconColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hgwNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hgwUsernameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hgwHostnameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hgwStatusColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hgwDependsOnColumn;
     }
 }

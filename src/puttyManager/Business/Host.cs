@@ -16,12 +16,29 @@ namespace PuttyManager.Business
         
         public HostInfo Info { get; private set; }
         public IPuttyLink Link { get { return _puttyLink; } }
+        public HostStatus Status
+        {
+            get
+            {
+                switch (Link.ConnectionState)
+                {
+                case EConnectionState.Inactive:
+                    return HostStatus.Stopped;
+                case EConnectionState.Intermediate:
+                    return HostStatus.Unknown;
+                case EConnectionState.Active:
+                    return HostStatus.Started;
+                default:
+                    throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
 
         private PuttyLink _puttyLink;
 
         //public bool IsOpen { get { return (_sshLink != null); } }
 
-        public void Open()
+        /*public void Open()
         {
             _puttyLink = new PuttyLink(Info);
             _puttyLink.AsyncStart();
@@ -32,6 +49,6 @@ namespace PuttyManager.Business
             if (_puttyLink.ConnectionState != EConnectionState.Inactive)
                 _puttyLink.Stop();
             _puttyLink = null;
-        }
+        }*/
     }
 }

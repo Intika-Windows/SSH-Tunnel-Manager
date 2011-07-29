@@ -8,11 +8,6 @@ namespace PuttyManager.Business
     [Serializable]
     public class HostInfo
     {
-        public HostInfo()
-        {
-            Link = new PuttyLink(this);
-        }
-
         private readonly List<TunnelInfo> _tunnels = new List<TunnelInfo>();
         private HostInfo _dependsOn;
 
@@ -21,7 +16,7 @@ namespace PuttyManager.Business
         public string Hostname { get; set; }
         public string MachineName { get; set; }
         public string Port { get; set; }
-        public string Login { get; set; }
+        public string Username { get; set; }
         public string Password { get; set; }
         public List<TunnelInfo> Tunnels
         {
@@ -40,8 +35,7 @@ namespace PuttyManager.Business
             }
         }
 
-        [XmlIgnore]
-        public PuttyLink Link { get; private set; }
+        public string HostAndPort { get { return string.Format("{0}:{1}", Hostname, Port); } }
 
         public override bool Equals(object obj)
         {

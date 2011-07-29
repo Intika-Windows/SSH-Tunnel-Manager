@@ -196,7 +196,7 @@ namespace PuttyManager.Domain
         {
             // example: -ssh username@domainName -P 22 -pw password -D 5000 -L 44333:username.dyndns.org:44333
 
-            var args = String.Format("-ssh {0}@{1} -P {2} -pw {3} -v", Host.Login, Host.Hostname, Host.Port, Host.Password);
+            var args = String.Format("-ssh {0}@{1} -P {2} -pw {3} -v", Host.Username, Host.Hostname, Host.Port, Host.Password);
             var sb = new StringBuilder(args);
             foreach (var tunnelArg in Host.Tunnels.Select(tunnelArguments))
             {

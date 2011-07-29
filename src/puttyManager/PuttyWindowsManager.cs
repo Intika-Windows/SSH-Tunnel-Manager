@@ -54,7 +54,7 @@ namespace PuttyManager
         /// <returns></returns>
         public static bool HasGoodPutty(HostInfo puttyInfo)
         {
-            var lookedText = String.Format("{0}@{1}:", puttyInfo.Login, puttyInfo.MachineName);
+            var lookedText = String.Format("{0}@{1}:", puttyInfo.Username, puttyInfo.MachineName);
             var anyGoodPutty = GetPuttyWindows().Any(pw => pw.Text.Contains(lookedText));
             return anyGoodPutty;
         }
@@ -128,14 +128,14 @@ namespace PuttyManager
         /// <returns></returns>
         public static HostInfo FromPuttyArguments(string args)
         {
-            const string pattern = @"""[^""]+""\s+-ssh\s+(?<Login>[^@]+)@(?<Hostname>[^\s]+)\s+-P\s+(?<Port>\d+)\s+-pw\s+(?<Password>[^\s]+)";
+            const string pattern = @"""[^""]+""\s+-ssh\s+(?<Username>[^@]+)@(?<Hostname>[^\s]+)\s+-P\s+(?<Port>\d+)\s+-pw\s+(?<Password>[^\s]+)";
             var m = Regex.Match(args, pattern);
             if (!m.Success)
                 return null;
 
             var pid = new HostInfo
                           {
-                              Login = m.Groups["Login"].Value,
+                              Username = m.Groups["Username"].Value,
                               Hostname = m.Groups["Hostname"].Value,
                               Port = m.Groups["Port"].Value,
                               Password = m.Groups["Password"].Value
@@ -147,7 +147,7 @@ namespace PuttyManager
         {
             // example: -ssh username@domainName -P 22 -pw password -D 5000 -L 44333:username.dyndns.org:44333
 
-            var args = String.Format("-ssh {0}@{1} -P {2} -pw {3}", host.Login, host.Hostname, host.Port, host.Password);
+            var args = String.Format("-ssh {0}@{1} -P {2} -pw {3}", host.Username, host.Hostname, host.Port, host.Password);
             var sb = new StringBuilder(args);
             foreach (var arg in host.Tunnels.Select(PuttyTunnelArguments))
             {

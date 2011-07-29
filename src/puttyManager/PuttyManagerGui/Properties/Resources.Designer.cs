@@ -88,6 +88,41 @@ namespace PuttyManagerGui.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap brightness_small {
+            get {
+                object obj = ResourceManager.GetObject("brightness_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap control {
+            get {
+                object obj = ResourceManager.GetObject("control", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap control_000_small {
+            get {
+                object obj = ResourceManager.GetObject("control_000_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap control_stop_square {
+            get {
+                object obj = ResourceManager.GetObject("control_stop_square", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap control_stop_square_small {
+            get {
+                object obj = ResourceManager.GetObject("control_stop_square_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap server__minus {
             get {
                 object obj = ResourceManager.GetObject("server__minus", resourceCulture);

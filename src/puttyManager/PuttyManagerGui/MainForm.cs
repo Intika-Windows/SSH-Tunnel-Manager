@@ -14,32 +14,69 @@ namespace PuttyManagerGui
 {
     public partial class MainForm : Form
     {
-        private const string HgwIdColumnName = "hgwIdColumn";
         private const string HgwStatusIconColumnName = "hgwStatusIconColumn";
+        private const string HgwNameColumnName = "hgwNameColumn";
+        private const string HgwUsernameColumnName = "hgwUsernameColumn";
         private const string HgwHostnameColumnName = "hgwHostnameColumn";
         private const string HgwStatusColumnName = "hgwStatusColumn";
+        private const string HgwDependsOnColumnName = "hgwDependsOnColumn";
+
+        private readonly HostsManager _hostsManager = new HostsManager();
+        private DataTable _dataTableHosts;
 
         public MainForm()
         {
             InitializeComponent();
 
-            hgwIdColumn.DataPropertyName = HgwIdColumnName;
             hgwStatusIconColumn.DataPropertyName = HgwStatusIconColumnName;
+            hgwNameColumn.DataPropertyName = HgwNameColumnName;
+            hgwUsernameColumn.DataPropertyName = HgwUsernameColumnName;
             hgwHostnameColumn.DataPropertyName = HgwHostnameColumnName;
             hgwStatusColumn.DataPropertyName = HgwStatusColumnName;
+            hgwDependsOnColumn.DataPropertyName = HgwDependsOnColumnName;
 
-            var hostsManager = new HostsManager();
+            fillHostsTable();
+        }
 
-            var dt = new DataTable();
-            dt.Columns.Add(HgwIdColumnName);
-            dt.Columns.Add(HgwStatusIconColumnName, typeof(Image));
-            dt.Columns.Add(HgwHostnameColumnName);
-            dt.Columns.Add(HgwStatusColumnName);
-            
-            dt.Rows.Add(Resources.tick_circle, "hostname1", "status1");
-            dt.Rows.Add(Resources.server_up, "hostname2", "status2");
-            dt.Rows.Add(Resources.server_up, "hostname3", "status3");
-            hostsGridView.DataSource = dt;
+        private void fillHostsTable()
+        {
+            _dataTableHosts = new DataTable();
+            _dataTableHosts.Columns.Add(HgwStatusIconColumnName, typeof(Image));
+            _dataTableHosts.Columns.Add(HgwNameColumnName);
+            _dataTableHosts.Columns.Add(HgwUsernameColumnName);
+            _dataTableHosts.Columns.Add(HgwHostnameColumnName);
+            _dataTableHosts.Columns.Add(HgwStatusColumnName);
+            _dataTableHosts.Columns.Add(HgwDependsOnColumnName);
+            hostsGridView.DataSource = _dataTableHosts;
+
+            foreach (var host in _hostsManager.Hosts)
+            {
+                var row = _dataTableHosts.NewRow();
+                row[HgwStatusIconColumnName] = statusIcon(host.Status);
+                row[HgwNameColumnName] = host.Info.Name;
+                row[HgwUsernameColumnName] = host.Info.Username;
+                row[HgwHostnameColumnName] = host.Info.HostAndPort;
+                row[HgwStatusColumnName] = host.Status;
+                row[HgwDependsOnColumnName] = host.Info.DependsOnStr;
+                _dataTableHosts.Rows.Add(row);
+            }
+        }
+
+        private static Bitmap statusIcon(HostStatus status)
+        {
+            switch (status)
+            {
+            case HostStatus.Disabled:
+                throw new NotImplementedException();
+            case HostStatus.Stopped:
+                return Resources.control_stop_square;
+            case HostStatus.Unknown:
+                return Resources.brightness_small;
+            case HostStatus.Started:
+                return Resources.control;
+            default:
+                throw new ArgumentOutOfRangeException("status");
+            }
         }
 
         private void hostsGridView_RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)

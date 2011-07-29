@@ -7,4 +7,12 @@ namespace PuttyManager.Business
         Remote,
         Dynamic
     }
+
+    public enum HostStatus
+    {
+        Disabled,
+        Stopped,
+        Unknown,
+        Started
+    }
 }

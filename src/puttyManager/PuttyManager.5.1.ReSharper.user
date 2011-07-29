@@ -17,60 +17,60 @@
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Util/f:WinApi.cs" caret="817" fromTop="22" />
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Util/f:CryptoHelper.cs" caret="0" fromTop="0" />
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Util/f:ExtensionMethods.cs" caret="0" fromTop="0" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/f:PuttyWindowsManager.cs" caret="4453" fromTop="0" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/f:PuttyWindow.cs" caret="6317" fromTop="25" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/f:PuttyWindowsManager.cs" caret="4456" fromTop="0" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/f:PuttyWindow.cs" caret="6320" fromTop="25" />
       <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:Validator.cs" caret="4331" fromTop="28" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:HostDialog.Designer.cs" caret="23779" fromTop="20" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:HostDialog.cs" caret="5734" fromTop="34" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:HostDialog.Designer.cs" caret="31714" fromTop="20" />
       <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/d:Properties/f:Resources.Designer.cs" caret="0" fromTop="0" />
       <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.Designer.cs" caret="71" fromTop="2" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/f:settings.xml" caret="0" fromTop="0" />
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/f:Settings.cs" caret="0" fromTop="0" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Enums.cs" caret="0" fromTop="0" />
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:HostInfoComparer.cs" caret="0" fromTop="0" />
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:TunnelInfo.cs" caret="0" fromTop="0" />
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:Enums.cs" caret="0" fromTop="0" />
       <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:Program.cs" caret="2659" fromTop="50" />
       <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Ext/f:DXTopoligicalSort.cs" caret="0" fromTop="0" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14351" fromTop="29" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="777" fromTop="30" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1336" fromTop="36" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:HostInfo.cs" caret="1323" fromTop="46" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="683" fromTop="0" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:EncryptedSettings.cs" caret="3645" fromTop="22" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:HostsManager.cs" caret="391" fromTop="14" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:HostDialog.cs" caret="289" fromTop="10" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14474" fromTop="32" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="2846" fromTop="0" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Enums.cs" caret="128" fromTop="7" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:HostsManager.cs" caret="193" fromTop="7" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="344" fromTop="15" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:HostInfo.cs" caret="186" fromTop="7" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/f:settings.xml" caret="321" fromTop="6" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:EncryptedSettings.cs" caret="4080" fromTop="28" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="2058" fromTop="16" />
     </RecentFiles>
     <RecentEdits>
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="3365" fromTop="48" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="12230" fromTop="48" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:Program.cs" caret="2655" fromTop="50" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1358" fromTop="18" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1807" fromTop="28" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1527" fromTop="24" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="167" fromTop="7" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:HostsManager.cs" caret="192" fromTop="9" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:EncryptedSettings.cs" caret="2871" fromTop="28" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:HostsManager.cs" caret="564" fromTop="19" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="546" fromTop="21" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="771" fromTop="33" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7109" fromTop="29" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7333" fromTop="34" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7561" fromTop="39" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14351" fromTop="29" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="400" fromTop="15" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="495" fromTop="19" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="302" fromTop="12" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="1294" fromTop="31" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:PuttyLink.cs" caret="685" fromTop="14" />
-      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="777" fromTop="30" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1886" fromTop="26" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1324" fromTop="30" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1322" fromTop="33" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="581" fromTop="17" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1010" fromTop="26" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="730" fromTop="23" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1105" fromTop="31" />
-      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1336" fromTop="36" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:HostsManager.cs" caret="383" fromTop="12" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:HostsManager.cs" caret="469" fromTop="15" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="364" fromTop="6" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1472" fromTop="29" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="2624" fromTop="39" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="3504" fromTop="39" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="574" fromTop="17" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="858" fromTop="22" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1149" fromTop="30" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1180" fromTop="31" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="1776" fromTop="41" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="2508" fromTop="43" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:HostDialog.cs" caret="12748" fromTop="10" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:HostInfo.cs" caret="201" fromTop="8" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:HostInfo.cs" caret="1130" fromTop="27" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7035" fromTop="29" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="7829" fromTop="47" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14324" fromTop="28" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:PuttyManagerForm.cs" caret="14474" fromTop="32" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="1135" fromTop="23" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="1457" fromTop="34" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Enums.cs" caret="237" fromTop="14" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="1008" fromTop="21" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Business/f:Host.cs" caret="876" fromTop="28" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="2238" fromTop="25" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="3110" fromTop="35" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="2675" fromTop="29" />
+      <File id="ECBAB375-F86D-45C3-9532-65D7EC4EDC25/f:MainForm.cs" caret="2844" fromTop="34" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/f:settings.xml" caret="321" fromTop="6" />
+      <File id="61383C43-B2A4-4523-8AB5-B97423183CE3/d:Domain/f:EncryptedSettings.cs" caret="5564" fromTop="30" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -85,11 +85,11 @@
   </UnitTestRunnerNUnit>
   <CompletionStatisticsManager>
     <ItemStatistics item="Default">
-      <Item value="private" priority="38" />
+      <Item value="private" priority="39" />
       <Item value="bool" priority="27" />
       <Item value="IntPtr`0" priority="2" />
       <Item value="int" priority="0" />
-      <Item value="return" priority="84" />
+      <Item value="return" priority="88" />
       <Item value="true" priority="23" />
       <Item value="var" priority="77" />
       <Item value="GetWindowText`0" priority="2" />
@@ -98,11 +98,11 @@
       <Item value="sb" priority="5" />
       <Item value="if" priority="73" />
       <Item value="text" priority="6" />
-      <Item value="string" priority="80" />
+      <Item value="string" priority="81" />
       <Item value="className" priority="0" />
-      <Item value="public" priority="92" />
+      <Item value="public" priority="96" />
       <Item value="List" priority="5" />
-      <Item value="foreach" priority="16" />
+      <Item value="foreach" priority="17" />
       <Item value="_puttyWindows" priority="0" />
       <Item value="GetPuttyWindows`0" priority="1" />
       <Item value="DestroyHandle`0" priority="0" />
@@ -148,7 +148,7 @@
       <Item value="Icon`0" priority="1" />
       <Item value="Icon" priority="0" />
       <Item value="base" priority="2" />
-      <Item value="event" priority="1" />
+      <Item value="event" priority="2" />
       <Item value="MouseEventHandler`0" priority="0" />
       <Item value="add" priority="0" />
       <Item value="remove" priority="0" />
@@ -183,7 +183,7 @@
       <Item value="null" priority="15" />
       <Item value="machineName" priority="2" />
       <Item value="window" priority="6" />
-      <Item value="row" priority="2" />
+      <Item value="row" priority="3" />
       <Item value="windowsGridView" priority="4" />
       <Item value="dr" priority="1" />
       <Item value="wgwHwndColumn" priority="0" />
@@ -192,7 +192,7 @@
       <Item value="ColorDepth`0" priority="0" />
       <Item value="StatusInactive" priority="1" />
       <Item value="this" priority="7" />
-      <Item value="switch" priority="5" />
+      <Item value="switch" priority="6" />
       <Item value="case" priority="1" />
       <Item value="break" priority="4" />
       <Item value="updateWindowsTable`0" priority="0" />
@@ -233,7 +233,7 @@
       <Item value="Tunnel`0" priority="0" />
       <Item value="Name" priority="2" />
       <Item value="aTunnel" priority="0" />
-      <Item value="enum" priority="5" />
+      <Item value="enum" priority="6" />
       <Item value="ToolTip`0" priority="0" />
       <Item value="Type" priority="3" />
       <Item value="tunnel" priority="8" />
@@ -249,8 +249,8 @@
       <Item value="PuttyInstanceData`0" priority="8" />
       <Item value="Select`2" priority="1" />
       <Item value="RemotePort" priority="2" />
-      <Item value="thr" priority="8" />
-      <Item value="NotImplementedException`0" priority="0" />
+      <Item value="thr" priority="9" />
+      <Item value="NotImplementedException`0" priority="1" />
       <Item value="default" priority="1" />
       <Item value="Form`0" priority="0" />
       <Item value="FormatException`0" priority="2" />
@@ -266,7 +266,7 @@
       <Item value="badDependencies" priority="0" />
       <Item value="continue" priority="1" />
       <Item value="StringComparison`0" priority="1" />
-      <Item value="System" priority="1" />
+      <Item value="System" priority="2" />
       <Item value="Linq" priority="0" />
       <Item value="ManagementObject`0" priority="0" />
       <Item value="retObject" priority="0" />
@@ -359,9 +359,9 @@
       <Item value="ImageList`0" priority="0" />
       <Item value="imageList" priority="1" />
       <Item value="Image`0" priority="0" />
-      <Item value="Resources`0" priority="1" />
+      <Item value="Resources`0" priority="4" />
       <Item value="Serializable" priority="1" />
-      <Item value="HostInfo`0" priority="11" />
+      <Item value="HostInfo`0" priority="12" />
       <Item value="serializer" priority="1" />
       <Item value="stream" priority="10" />
       <Item value="List&lt;HostInfo&gt;" priority="1" />
@@ -370,7 +370,7 @@
       <Item value="EncryptedSourceExist" priority="0" />
       <Item value="SettingsSource" priority="0" />
       <Item value="_serializer" priority="0" />
-      <Item value="ExplicitXmlSettingsFile" priority="0" />
+      <Item value="ExplicitXmlSettingsFile" priority="1" />
       <Item value="explicitXmlStream" priority="0" />
       <Item value="writer" priority="1" />
       <Item value="XmlWriterSettings" priority="0" />
@@ -399,7 +399,7 @@
       <Item value="_isActive" priority="0" />
       <Item value="volatile" priority="0" />
       <Item value="Result" priority="0" />
-      <Item value="host" priority="8" />
+      <Item value="host" priority="14" />
       <Item value="PuttyLink" priority="1" />
       <Item value="_sshLink" priority="4" />
       <Item value="IsOpen" priority="0" />
@@ -423,8 +423,8 @@
       <Item value="Thread`0" priority="0" />
       <Item value="EventHandler`0" priority="0" />
       <Item value="ConnectionStateChanged" priority="1" />
-      <Item value="EventArgs`0" priority="1" />
-      <Item value="Link" priority="0" />
+      <Item value="EventArgs`0" priority="2" />
+      <Item value="Link" priority="1" />
       <Item value="HostDialog`0" priority="1" />
       <Item value="errorProvider" priority="0" />
       <Item value="ErrorProvider" priority="7" />
@@ -573,6 +573,18 @@
       <Item value="IPuttyLink`0" priority="0" />
       <Item value="SshLink" priority="0" />
       <Item value="hgwIdColumn" priority="0" />
+      <Item value="EventHandler" priority="0" />
+      <Item value="Host`0" priority="1" />
+      <Item value="Collections" priority="0" />
+      <Item value="ObjectModel" priority="0" />
+      <Item value="ObservableCollection" priority="0" />
+      <Item value="ObservableCollection&lt;Host&gt;" priority="0" />
+      <Item value="hgwDependsOnColumn" priority="0" />
+      <Item value="hgwUsernameColumn" priority="0" />
+      <Item value="_dataTableHosts" priority="0" />
+      <Item value="Bitmap`0" priority="0" />
+      <Item value="HostStatus`0" priority="0" />
+      <Item value="status" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Text.StringBuilder">
       <Item value="ToString`0" priority="1" />
@@ -614,6 +626,7 @@
       <Item value="Contains`0" priority="1" />
       <Item value="Select`2" priority="4" />
       <Item value="Remove`0" priority="1" />
+      <Item value="AsReadOnly`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@PuttyManager.WinApi">
       <Item value="WM_CLOSE" priority="0" />
@@ -738,8 +751,8 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Data.DataTable">
       <Item value="Columns" priority="3" />
-      <Item value="Rows" priority="8" />
-      <Item value="NewRow`0" priority="1" />
+      <Item value="Rows" priority="9" />
+      <Item value="NewRow`0" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Data.DataColumnCollection">
       <Item value="Add`0" priority="2" />
@@ -771,7 +784,7 @@
       <Item value="ToInt32`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Data.DataRowCollection">
-      <Item value="Add`0" priority="2" />
+      <Item value="Add`0" priority="3" />
       <Item value="Cast`1" priority="2" />
       <Item value="Remove`0" priority="0" />
     </ItemStatistics>
@@ -1061,6 +1074,9 @@
       <Item value="server_down" priority="0" />
       <Item value="server_up_warnings" priority="0" />
       <Item value="server_up" priority="1" />
+      <Item value="control_stop_square" priority="0" />
+      <Item value="brightness_small" priority="0" />
+      <Item value="control" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Xml.Serialization.XmlSerializer">
       <Item value="Deserialize`0" priority="2" />
@@ -1095,14 +1111,14 @@
       <Item value="Close`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:PuttyManager.Business.HostInfo">
-      <Item value="Name" priority="8" />
+      <Item value="Name" priority="10" />
       <Item value="DependsOnStr" priority="0" />
-      <Item value="Login" priority="1" />
-      <Item value="Hostname" priority="2" />
+      <Item value="Login" priority="2" />
+      <Item value="Hostname" priority="3" />
       <Item value="Tunnels" priority="5" />
       <Item value="Port" priority="1" />
       <Item value="Password" priority="0" />
-      <Item value="DependsOn" priority="1" />
+      <Item value="DependsOn" priority="2" />
       <Item value="ToString`0" priority="2" />
       <Item value="Link" priority="2" />
     </ItemStatistics>
@@ -1273,7 +1289,19 @@
       <Item value="RowIndex" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:PuttyManager.Business.Host">
-      <Item value="Info" priority="0" />
+      <Item value="Info" priority="6" />
+      <Item value="Link" priority="0" />
+      <Item value="Status" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.Domain.HostsManager">
+      <Item value="Hosts" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PuttyManager.Domain.IPuttyLink">
+      <Item value="ConnectionState" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PuttyManager.Business.HostStatus">
+      <Item value="Stopped" priority="0" />
+      <Item value="Unknown" priority="0" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>

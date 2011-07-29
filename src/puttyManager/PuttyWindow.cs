@@ -190,7 +190,7 @@ namespace PuttyManager
         {
             var pid = InstanceInfo;
             if (pid != null)
-                return string.Format("{0}@{1}:{2}", pid.Login, pid.Hostname, pid.Port);
+                return string.Format("{0}@{1}:{2}", pid.Username, pid.Hostname, pid.Port);
             return string.Format("Hwnd = {0}", Hwnd);
         }
     }

@@ -184,7 +184,7 @@ namespace PuttyManagerGui
             _currentHost.Name = textBoxName.Text.Trim();
             _currentHost.Hostname = textBoxHostname.Text.Trim();
             _currentHost.Port = textBoxPort.Text.Trim();
-            _currentHost.Login = textBoxLogin.Text;
+            _currentHost.Username = textBoxLogin.Text;
             _currentHost.Password = textBoxPassword.Text;
             var dependsOnHost = comboBoxDependsOn.SelectedItem as HostInfo;
             if (dependsOnHost != null)

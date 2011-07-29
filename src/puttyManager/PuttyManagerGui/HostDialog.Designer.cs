@@ -41,12 +41,17 @@
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label11;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HostDialog));
+            this.textBoxDestHost = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.radioButtonDynamic = new System.Windows.Forms.RadioButton();
             this.buttonRemoveTunnel = new System.Windows.Forms.Button();
             this.radioButtonRemote = new System.Windows.Forms.RadioButton();
             this.buttonAddTunnel = new System.Windows.Forms.Button();
             this.radioButtonLocal = new System.Windows.Forms.RadioButton();
             this.listBoxTunnels = new System.Windows.Forms.ListBox();
+            this.textBoxTunnelName = new System.Windows.Forms.TextBox();
+            this.textBoxDestPort = new System.Windows.Forms.TextBox();
             this.textBoxSourcePort = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxHostname = new System.Windows.Forms.TextBox();
@@ -63,11 +68,6 @@
             this.buttonAddHost = new System.Windows.Forms.Button();
             this.theErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.theGoodProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.textBoxTunnelName = new System.Windows.Forms.TextBox();
-            this.textBoxDestHost = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBoxDestPort = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -106,9 +106,9 @@
             label2.Location = new System.Drawing.Point(0, 32);
             label2.Margin = new System.Windows.Forms.Padding(0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(58, 13);
+            label2.Size = new System.Drawing.Size(32, 13);
             label2.TabIndex = 2;
-            label2.Text = "Hostname:";
+            label2.Text = "Host:";
             // 
             // label3
             // 
@@ -117,9 +117,9 @@
             label3.Location = new System.Drawing.Point(0, 58);
             label3.Margin = new System.Windows.Forms.Padding(0);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(36, 13);
+            label3.Size = new System.Drawing.Size(58, 13);
             label3.TabIndex = 3;
-            label3.Text = "Login:";
+            label3.Text = "Username:";
             // 
             // label5
             // 
@@ -159,9 +159,9 @@
             label9.AutoSize = true;
             label9.Location = new System.Drawing.Point(12, 158);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(65, 13);
+            label9.Size = new System.Drawing.Size(44, 13);
             label9.TabIndex = 5;
-            label9.Text = "Source port:";
+            label9.Text = "Source:";
             // 
             // label10
             // 
@@ -202,6 +202,40 @@
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             groupBox1.Text = "Tunnels:";
+            // 
+            // textBoxDestHost
+            // 
+            this.textBoxDestHost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.theGoodProvider.SetIconAlignment(this.textBoxDestHost, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.theErrorProvider.SetIconAlignment(this.textBoxDestHost, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.theGoodProvider.SetIconPadding(this.textBoxDestHost, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxDestHost, -20);
+            this.textBoxDestHost.Location = new System.Drawing.Point(93, 181);
+            this.textBoxDestHost.MaxLength = 255;
+            this.textBoxDestHost.Name = "textBoxDestHost";
+            this.textBoxDestHost.Size = new System.Drawing.Size(145, 20);
+            this.textBoxDestHost.TabIndex = 10;
+            this.textBoxDestHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(243, 158);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(10, 13);
+            this.label13.TabIndex = 7;
+            this.label13.Text = ":";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(243, 184);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(10, 13);
+            this.label12.TabIndex = 11;
+            this.label12.Text = ":";
             // 
             // radioButtonDynamic
             // 
@@ -274,22 +308,65 @@
             this.listBoxTunnels.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxTunnels_DrawItem);
             this.listBoxTunnels.SelectedIndexChanged += new System.EventHandler(this.listBoxTunnels_SelectedIndexChanged);
             // 
+            // textBoxTunnelName
+            // 
+            this.textBoxTunnelName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.theGoodProvider.SetIconPadding(this.textBoxTunnelName, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxTunnelName, -20);
+            this.textBoxTunnelName.Location = new System.Drawing.Point(93, 130);
+            this.textBoxTunnelName.MaxLength = 255;
+            this.textBoxTunnelName.Name = "textBoxTunnelName";
+            this.textBoxTunnelName.Size = new System.Drawing.Size(219, 20);
+            this.textBoxTunnelName.TabIndex = 4;
+            // 
+            // label6
+            // 
+            label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(12, 133);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(32, 13);
+            label6.TabIndex = 3;
+            label6.Text = "Alias:";
+            // 
+            // textBoxDestPort
+            // 
+            this.textBoxDestPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.theGoodProvider.SetIconPadding(this.textBoxDestPort, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxDestPort, -20);
+            this.textBoxDestPort.Location = new System.Drawing.Point(256, 181);
+            this.textBoxDestPort.MaxLength = 5;
+            this.textBoxDestPort.Name = "textBoxDestPort";
+            this.textBoxDestPort.Size = new System.Drawing.Size(57, 20);
+            this.textBoxDestPort.TabIndex = 12;
+            // 
             // textBoxSourcePort
             // 
             this.textBoxSourcePort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.theErrorProvider.SetIconPadding(this.textBoxSourcePort, -20);
             this.theGoodProvider.SetIconPadding(this.textBoxSourcePort, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxSourcePort, -20);
             this.textBoxSourcePort.Location = new System.Drawing.Point(255, 155);
             this.textBoxSourcePort.MaxLength = 5;
             this.textBoxSourcePort.Name = "textBoxSourcePort";
             this.textBoxSourcePort.Size = new System.Drawing.Size(57, 20);
             this.textBoxSourcePort.TabIndex = 8;
             // 
+            // label11
+            // 
+            label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label11.Location = new System.Drawing.Point(169, 158);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(70, 14);
+            label11.TabIndex = 6;
+            label11.Text = "localhost";
+            // 
             // textBoxName
             // 
             this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.theGoodProvider.SetIconPadding(this.textBoxName, -20);
             this.theErrorProvider.SetIconPadding(this.textBoxName, -20);
+            this.theGoodProvider.SetIconPadding(this.textBoxName, -20);
             this.textBoxName.Location = new System.Drawing.Point(96, 3);
             this.textBoxName.MaxLength = 255;
             this.textBoxName.Name = "textBoxName";
@@ -299,8 +376,8 @@
             // textBoxHostname
             // 
             this.textBoxHostname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.theErrorProvider.SetIconPadding(this.textBoxHostname, -20);
             this.theGoodProvider.SetIconPadding(this.textBoxHostname, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxHostname, -20);
             this.textBoxHostname.Location = new System.Drawing.Point(3, 3);
             this.textBoxHostname.MaxLength = 255;
             this.textBoxHostname.Name = "textBoxHostname";
@@ -321,8 +398,8 @@
             // 
             this.textBoxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.theGoodProvider.SetIconPadding(this.textBoxLogin, -20);
             this.theErrorProvider.SetIconPadding(this.textBoxLogin, -20);
+            this.theGoodProvider.SetIconPadding(this.textBoxLogin, -20);
             this.textBoxLogin.Location = new System.Drawing.Point(96, 55);
             this.textBoxLogin.MaxLength = 255;
             this.textBoxLogin.Name = "textBoxLogin";
@@ -333,8 +410,8 @@
             // 
             this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.theGoodProvider.SetIconPadding(this.textBoxPassword, -20);
             this.theErrorProvider.SetIconPadding(this.textBoxPassword, -20);
+            this.theGoodProvider.SetIconPadding(this.textBoxPassword, -20);
             this.textBoxPassword.Location = new System.Drawing.Point(96, 81);
             this.textBoxPassword.MaxLength = 255;
             this.textBoxPassword.Name = "textBoxPassword";
@@ -402,8 +479,8 @@
             // textBoxPort
             // 
             this.textBoxPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.theErrorProvider.SetIconPadding(this.textBoxPort, -20);
             this.theGoodProvider.SetIconPadding(this.textBoxPort, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxPort, -20);
             this.textBoxPort.Location = new System.Drawing.Point(171, 3);
             this.textBoxPort.MaxLength = 5;
             this.textBoxPort.Name = "textBoxPort";
@@ -472,83 +549,6 @@
             this.theGoodProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.theGoodProvider.ContainerControl = this;
             this.theGoodProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("theGoodProvider.Icon")));
-            // 
-            // label6
-            // 
-            label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(12, 133);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(32, 13);
-            label6.TabIndex = 3;
-            label6.Text = "Alias:";
-            // 
-            // textBoxTunnelName
-            // 
-            this.textBoxTunnelName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.theErrorProvider.SetIconPadding(this.textBoxTunnelName, -20);
-            this.theGoodProvider.SetIconPadding(this.textBoxTunnelName, -20);
-            this.textBoxTunnelName.Location = new System.Drawing.Point(93, 130);
-            this.textBoxTunnelName.MaxLength = 255;
-            this.textBoxTunnelName.Name = "textBoxTunnelName";
-            this.textBoxTunnelName.Size = new System.Drawing.Size(219, 20);
-            this.textBoxTunnelName.TabIndex = 4;
-            // 
-            // label11
-            // 
-            label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            label11.AutoSize = true;
-            label11.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            label11.Location = new System.Drawing.Point(169, 158);
-            label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(70, 14);
-            label11.TabIndex = 6;
-            label11.Text = "localhost";
-            // 
-            // textBoxDestHost
-            // 
-            this.textBoxDestHost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.theGoodProvider.SetIconAlignment(this.textBoxDestHost, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-            this.theErrorProvider.SetIconAlignment(this.textBoxDestHost, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-            this.theErrorProvider.SetIconPadding(this.textBoxDestHost, -20);
-            this.theGoodProvider.SetIconPadding(this.textBoxDestHost, -20);
-            this.textBoxDestHost.Location = new System.Drawing.Point(93, 181);
-            this.textBoxDestHost.MaxLength = 255;
-            this.textBoxDestHost.Name = "textBoxDestHost";
-            this.textBoxDestHost.Size = new System.Drawing.Size(145, 20);
-            this.textBoxDestHost.TabIndex = 10;
-            this.textBoxDestHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(243, 184);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(10, 13);
-            this.label12.TabIndex = 11;
-            this.label12.Text = ":";
-            // 
-            // textBoxDestPort
-            // 
-            this.textBoxDestPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.theErrorProvider.SetIconPadding(this.textBoxDestPort, -20);
-            this.theGoodProvider.SetIconPadding(this.textBoxDestPort, -20);
-            this.textBoxDestPort.Location = new System.Drawing.Point(256, 181);
-            this.textBoxDestPort.MaxLength = 5;
-            this.textBoxDestPort.Name = "textBoxDestPort";
-            this.textBoxDestPort.Size = new System.Drawing.Size(57, 20);
-            this.textBoxDestPort.TabIndex = 12;
-            // 
-            // label13
-            // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(243, 158);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(10, 13);
-            this.label13.TabIndex = 7;
-            this.label13.Text = ":";
             // 
             // HostDialog
             // 

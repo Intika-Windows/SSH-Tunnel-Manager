@@ -163,7 +163,7 @@ namespace PuttyManagerGui
                 var host = node.Tag as HostInfo;
                 if (host == null)
                     continue;
-                switch (host.Link.ConnectionState)
+                /*switch (host.Link.ConnectionState)
                 {
                 case EConnectionState.Inactive:
                     if (node.ImageIndex == 0) return;
@@ -181,7 +181,7 @@ namespace PuttyManagerGui
                     node.SelectedImageIndex = 2;
                     break;
                 }
-                updateHostsTree(node.Nodes);
+                updateHostsTree(node.Nodes);*/
             }
         }
 
@@ -363,11 +363,11 @@ namespace PuttyManagerGui
 
             if (host == null || node == null) return;
 
-            if (host.Link.ConnectionState == EConnectionState.Inactive)
+            /*if (host.Link.ConnectionState == EConnectionState.Inactive)
             {
                 host.Link.AsyncStart();
                 
-            }
+            }*/
         }
     }
 }
