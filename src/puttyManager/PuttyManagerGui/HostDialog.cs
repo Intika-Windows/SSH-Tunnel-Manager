@@ -102,7 +102,7 @@ namespace PuttyManagerGui
                 var alias = text;
 
                 var aliases = _committedHosts.Where(h => h != _currentHost).SelectMany(h => h.Tunnels).Select(t => t.Name).Concat(
-                    listBoxTunnels.Items.Cast<TunnelInfo>().Select(t => t.Name)).ToList();
+                    tunnels().Select(t => t.Name)).ToList();
 
                 if (aliases.Contains(alias))
                 {
@@ -157,7 +157,7 @@ namespace PuttyManagerGui
                     var port = text;
 
                     var ports = _committedHosts.Where(h => h != _currentHost).SelectMany(h => h.Tunnels).Select(t => t.LocalPort).Concat(
-                                listBoxTunnels.Items.Cast<TunnelInfo>().Select(t => t.LocalPort)).ToList();
+                                tunnels().Select(t => t.LocalPort)).ToList();
 
                     if (ports.Contains(port))
                     {
@@ -298,8 +298,8 @@ namespace PuttyManagerGui
                 else
                     comboBoxDependsOn.SelectedIndex = 0;
 
-                listBoxTunnels.Items.Clear();
-                buttonRemoveTunnel.Enabled = false;
+                tunnelsGridView.Rows.Clear();
+                buttonRemoveTunnel.Enabled = tunnelsGridView.SelectedRows.Count > 0;
 
                 _hostValidator.Reset();
                 resetAddTunnelGroup();
@@ -335,9 +335,12 @@ namespace PuttyManagerGui
                 comboBoxDependsOn.SelectedItem = _currentHost.DependsOn;
             }
 
-            listBoxTunnels.Items.Clear();
-            listBoxTunnels.Items.AddRange(_currentHost.Tunnels.ToArray());
-            buttonRemoveTunnel.Enabled = listBoxTunnels.SelectedIndex >= 0;
+            tunnelsGridView.Rows.Clear();
+            foreach (var tunnel in _currentHost.Tunnels)
+            {
+                addTunnel(tunnel);
+            }
+            buttonRemoveTunnel.Enabled = tunnelsGridView.SelectedRows.Count > 0;
 
             _hostValidator.Reset();
             resetAddTunnelGroup();
@@ -357,7 +360,8 @@ namespace PuttyManagerGui
             }
 
             _currentHost.Tunnels.Clear();
-            _currentHost.Tunnels.AddRange(listBoxTunnels.Items.Cast<TunnelInfo>());
+            //_currentHost.Tunnels.AddRange(listBoxTunnels.Items.Cast<TunnelInfo>());
+            _currentHost.Tunnels.AddRange(tunnels());
         }
 
         private void resetAddTunnelGroup()
@@ -371,6 +375,29 @@ namespace PuttyManagerGui
         }
 
         #region Tunnels
+
+        private void addTunnel(TunnelInfo tunnel)
+        {
+            var row = new DataGridViewRow();
+            row.Cells.Add(new DataGridViewTextBoxCell {Value = tunnel.Name});
+            row.Cells.Add(new DataGridViewTextBoxCell {Value = tunnel.Type.ToString()[0]});
+            row.Cells.Add(new DataGridViewTextBoxCell {Value = tunnel.LocalPort});
+            row.Cells.Add(new DataGridViewTextBoxCell {Value = tunnel.RemoteHostname});
+            row.Cells.Add(new DataGridViewTextBoxCell {Value = tunnel.RemotePort});
+            row.Tag = tunnel;
+            tunnelsGridView.Rows.Add(row);
+        }
+
+        private TunnelInfo selectedTunnel()
+        {
+            var tunnel = tunnelsGridView.SelectedRows.Cast<DataGridViewRow>().Select(r => r.Tag as TunnelInfo).FirstOrDefault();
+            return tunnel;
+        }
+
+        private List<TunnelInfo> tunnels()
+        {
+            return tunnelsGridView.Rows.Cast<DataGridViewRow>().Select(r => (TunnelInfo) r.Tag).ToList();
+        }
 
         private void radioButtonDynamic_CheckedChanged(object sender, EventArgs e)
         {
@@ -401,17 +428,20 @@ namespace PuttyManagerGui
 
             var tunnel = new TunnelInfo {Name = name, LocalPort = srcPort, RemoteHostname = dstHost, RemotePort = dstPort, Type = tunnelType};
 
-            listBoxTunnels.Items.Add(tunnel);
+            addTunnel(tunnel);
             Modified = true;
             resetAddTunnelGroup();
         }
 
         private void buttonRemoveTunnel_Click(object sender, EventArgs e)
         {
-            var tunnel = listBoxTunnels.SelectedItem as TunnelInfo;
+            var row = tunnelsGridView.SelectedRows.Cast<DataGridViewRow>().FirstOrDefault();
+            if (row == null) return;
+            var tunnel = row.Tag as TunnelInfo;
             if (tunnel == null) return;
 
-            listBoxTunnels.Items.Remove(tunnel);
+            //listBoxTunnels.Items.Remove(tunnel);
+            tunnelsGridView.Rows.Remove(row);
             textBoxTunnelName.Text = tunnel.Name;
             textBoxSourcePort.Text = tunnel.LocalPort;
             textBoxDestHost.Text = tunnel.RemoteHostname;
@@ -431,29 +461,14 @@ namespace PuttyManagerGui
             Modified = true;
         }
 
-        private void listBoxTunnels_SelectedIndexChanged(object sender, EventArgs e)
+        private void tunnelsGridView_SelectionChanged(object sender, EventArgs e)
         {
-            var tunnel = listBoxTunnels.SelectedItem as TunnelInfo;
-            buttonRemoveTunnel.Enabled = tunnel != null;
-        }
-
-        private void listBoxTunnels_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            var text = listBoxTunnels.Items[e.Index].ToString();
-
-            e.DrawBackground();
-
-            // Draw the current item text based on the current Font and the custom brush settings.
-            var rect = e.Bounds;
-            rect.Inflate(-5, 0);
-            e.Graphics.DrawString(text, e.Font, new SolidBrush(e.ForeColor), rect,
-                                  new StringFormat {Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Far});
-
-            // If the ListBox has focus, draw a focus rectangle around the selected item.
-            e.DrawFocusRectangle();
+            buttonRemoveTunnel.Enabled = selectedTunnel() != null;
         }
 
         #endregion
+
+        #region Edit host
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
@@ -473,5 +488,7 @@ namespace PuttyManagerGui
             DialogResult = DialogResult.OK;
             Close();
         }
+
+        #endregion
     }
 }
