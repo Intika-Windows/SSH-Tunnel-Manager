@@ -22,7 +22,20 @@ namespace PuttyManager.Business
         {
             get { return _tunnels; }
         }
-        public string DependsOnStr { get; set; }
+
+        private string _dependsOnStr;
+        public string DependsOnStr
+        {
+            get
+            {
+                if (DependsOn != null)
+                {
+                    DependsOnStr = DependsOn.Name;
+                }
+                return _dependsOnStr;
+            }
+            set { _dependsOnStr = value; }
+        }
 
         [XmlIgnore]
         public HostInfo DependsOn
@@ -33,6 +46,20 @@ namespace PuttyManager.Business
                 _dependsOn = value;
                 DependsOnStr = value != null ? value.Name : null;
             }
+        }
+
+        public bool DeepDependsOn(HostInfo host)
+        {
+            if (host == null) throw new ArgumentNullException("host");
+
+            for (HostInfo dependency = DependsOn; dependency != null; dependency = dependency.DependsOn)
+            {
+                if (dependency == host)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public string HostAndPort { get { return string.Format("{0}:{1}", Hostname, Port); } }

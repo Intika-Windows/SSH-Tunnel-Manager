@@ -34,7 +34,18 @@ namespace PuttyManager.Business
             }
         }
 
-        private PuttyLink _puttyLink;
+        private IViewModel<Host> _viewModel;
+        public IViewModel<Host> ViewModel
+        {
+            get { return _viewModel; }
+            set
+            {
+                _viewModel = value;
+                _viewModel.Model = this;
+            }
+        }
+
+        private readonly PuttyLink _puttyLink;
 
         //public bool IsOpen { get { return (_sshLink != null); } }
 

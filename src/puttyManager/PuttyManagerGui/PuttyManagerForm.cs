@@ -271,7 +271,7 @@ namespace PuttyManagerGui
 
         private void addHost()
         {
-            var hd = new HostDialog();
+            var hd = new HostDialog(HostDialog.EMode.AddHost, null);
             HostInfo hiParent;
             if (treeViewHosts.SelectedNode != null && (hiParent = treeViewHosts.SelectedNode.Tag as HostInfo) != null)
             {

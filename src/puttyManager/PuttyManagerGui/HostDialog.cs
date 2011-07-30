@@ -18,12 +18,27 @@ namespace PuttyManagerGui
         private readonly Validator _tunnelValidator;
 
         private HostInfo _currentHost;
-        private List<HostInfo> _recentlyAddedHosts = new List<HostInfo>();
+        private HostInfo _startupDependsOn;
+        private readonly List<HostInfo> _createdHosts = new List<HostInfo>();
         private Label _labelRecentlyAdded;
+        private bool _modified;
+        private List<HostInfo> _committedHosts;
 
-        public HostDialog()
+        public enum EMode
         {
+            AddHost,
+            EditHost
+        }
+
+        public HostDialog(EMode mode, List<HostInfo> committedHosts)
+        {
+            if (committedHosts == null) throw new ArgumentNullException("committedHosts");
+
             InitializeComponent();
+            _committedHosts = committedHosts;
+            Mode = mode;
+
+            // validators
             _hostValidator = new Validator(theErrorProvider, theGoodProvider);
             _hostValidator.AddControl(textBoxName, validateAlias);
             _hostValidator.AddControl(textBoxHostname, _hostValidator.ValidateHostname);
@@ -36,6 +51,28 @@ namespace PuttyManagerGui
             _tunnelValidator.AddControl(textBoxDestHost, validateTunnelDestinationHost);
             _tunnelValidator.AddControl(textBoxDestPort, validateTunnelDestinationPort);
             _tunnelValidator.AddControl(textBoxTunnelName, validateTunnelAlias);
+            // style for selected mode
+            if (mode == EMode.AddHost)
+            {
+                flowLayoutPanelAddHost.Visible = true;
+                flowLayoutPanelEditHost.Visible = false;
+                AcceptButton = buttonAddHost;
+                CancelButton = buttonClose;
+            }
+            else
+            {
+                flowLayoutPanelAddHost.Visible = false;
+                flowLayoutPanelEditHost.Visible = true;
+                AcceptButton = buttonOk;
+                CancelButton = buttonCancel;
+            }
+            // modified check
+            textBoxName.TextChanged += delegate { Modified = true; };
+            textBoxHostname.TextChanged += delegate { Modified = true; };
+            textBoxPort.TextChanged += delegate { Modified = true; };
+            textBoxLogin.TextChanged += delegate { Modified = true; };
+            textBoxPassword.TextChanged += delegate { Modified = true; };
+            comboBoxDependsOn.SelectedIndexChanged += delegate { Modified = true; };
         }
 
         #region Validators
@@ -46,7 +83,7 @@ namespace PuttyManagerGui
             {
                 var alias = text;
 
-                var aliases = EncryptedSettings.Instance.Hosts.Select(h => h.Name).ToList();
+                var aliases = _committedHosts.Where(h => h != _currentHost).Select(h => h.Name).ToList();
 
                 if (aliases.Contains(alias))
                 {
@@ -64,8 +101,8 @@ namespace PuttyManagerGui
             {
                 var alias = text;
 
-                var aliases = EncryptedSettings.Instance.Hosts.SelectMany(h => h.Tunnels).Select(t => t.Name).Concat(
-                    _currentHost.Tunnels.Select(t => t.Name)).ToList();
+                var aliases = _committedHosts.Where(h => h != _currentHost).SelectMany(h => h.Tunnels).Select(t => t.Name).Concat(
+                    listBoxTunnels.Items.Cast<TunnelInfo>().Select(t => t.Name)).ToList();
 
                 if (aliases.Contains(alias))
                 {
@@ -118,10 +155,9 @@ namespace PuttyManagerGui
                 if (_tunnelValidator.ValidatePort(control, text))
                 {
                     var port = text;
-                    var hosts = EncryptedSettings.Instance.Hosts;
 
-                    var ports = hosts.SelectMany(h => h.Tunnels).Select(t => t.LocalPort).Concat(
-                                _currentHost.Tunnels.Select(t => t.LocalPort)).ToList();
+                    var ports = _committedHosts.Where(h => h != _currentHost).SelectMany(h => h.Tunnels).Select(t => t.LocalPort).Concat(
+                                listBoxTunnels.Items.Cast<TunnelInfo>().Select(t => t.LocalPort)).ToList();
 
                     if (ports.Contains(port))
                     {
@@ -143,14 +179,53 @@ namespace PuttyManagerGui
 
         #endregion
 
-        public HostInfo StartupDependsOn { get; set; }
+        public EMode Mode { get; private set; }
+
+        public HostInfo StartupDependsOn
+        {
+            get { return _startupDependsOn; }
+            set
+            {
+                if (Mode != EMode.AddHost)
+                    throw new InvalidOperationException("Only allowed in AddHost mode.");
+                _startupDependsOn = value;
+            }
+        }
+
+        public HostInfo Host
+        {
+            get { return _currentHost; }
+            set
+            {
+                if (Mode != EMode.EditHost)
+                    throw new InvalidOperationException("Only allowed in EditHost mode.");
+                _currentHost = value;
+            }
+        }
+
+        public HostInfo[] CreatedHosts
+        {
+            get { return _createdHosts.ToArray(); }
+        }
+
+        private bool Modified
+        {
+            get { return _modified; }
+            set
+            {
+                _modified = value;
+                buttonApply.Enabled = _modified;
+            }
+        }
 
         private void HostDialog_Load(object sender, EventArgs e)
         {
             reset();
-            if (StartupDependsOn != null)
-                comboBoxDependsOn.SelectedItem = StartupDependsOn;
+            _createdHosts.Clear();
+            Modified = false;
         }
+
+        #region Add host
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
@@ -181,22 +256,13 @@ namespace PuttyManagerGui
             }
 
             // Adding host
-            _currentHost.Name = textBoxName.Text.Trim();
-            _currentHost.Hostname = textBoxHostname.Text.Trim();
-            _currentHost.Port = textBoxPort.Text.Trim();
-            _currentHost.Username = textBoxLogin.Text;
-            _currentHost.Password = textBoxPassword.Text;
-            var dependsOnHost = comboBoxDependsOn.SelectedItem as HostInfo;
-            if (dependsOnHost != null)
-            {
-                _currentHost.DependsOn = dependsOnHost;
-            }
+            formToHost();
 
-            EncryptedSettings.Instance.Hosts.Add(_currentHost);
-            EncryptedSettings.Instance.Save();
+            /*EncryptedSettings.Instance.Hosts.Add(_currentHost);
+            EncryptedSettings.Instance.Save();*/
+            _createdHosts.Add(_currentHost);
 
             // Update gui and reset
-            _recentlyAddedHosts.Add(_currentHost);
             if (_labelRecentlyAdded == null)
             {
                 _labelRecentlyAdded = new Label {ForeColor = Color.FromArgb(20,146,20), Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom, Margin = new Padding(3,3,3,0)};
@@ -210,23 +276,88 @@ namespace PuttyManagerGui
             reset();
         }
 
+        #endregion
+
         private void reset()
         {
-            _currentHost = new HostInfo();
+            if (Mode == EMode.AddHost)
+            {
+                _currentHost = new HostInfo();
 
-            textBoxName.Text = "";
-            textBoxHostname.Text = "";
-            textBoxPort.Text = "";
-            textBoxLogin.Text = "";
-            textBoxPassword.Text = "";
-            listBoxTunnels.Items.Clear();
-            buttonRemoveTunnel.Enabled = false;
-            _hostValidator.Reset();
+                textBoxName.Text = "";
+                textBoxHostname.Text = "";
+                textBoxPort.Text = "";
+                textBoxLogin.Text = "";
+                textBoxPassword.Text = "";
+
+                comboBoxDependsOn.Items.Clear();
+                var hosts = _committedHosts.Where(h => h != _currentHost && !h.DeepDependsOn(_currentHost)).OrderBy(h => h.Name);
+                comboBoxDependsOn.Items.AddRange(new[] { "None" }.Concat<object>(hosts).ToArray());
+                if (StartupDependsOn != null)
+                    comboBoxDependsOn.SelectedItem = StartupDependsOn;
+                else
+                    comboBoxDependsOn.SelectedIndex = 0;
+
+                listBoxTunnels.Items.Clear();
+                buttonRemoveTunnel.Enabled = false;
+
+                _hostValidator.Reset();
+                resetAddTunnelGroup();
+                Text = @"Add New Host - SSH Tunnel Manager";
+            }
+            else // Edit mode
+            {
+                hostToForm();
+                Text = @"Edit Host - SSH Tunnel Manager";
+            }
+        }
+
+        private void hostToForm()
+        {
+            if (_currentHost == null)
+                throw new FormatException(@"Host has not been set correctly.");
+
+            textBoxName.Text = _currentHost.Name;
+            textBoxHostname.Text = _currentHost.Hostname;
+            textBoxPort.Text = _currentHost.Port;
+            textBoxLogin.Text = _currentHost.Username;
+            textBoxPassword.Text = _currentHost.Password;
+
             comboBoxDependsOn.Items.Clear();
-            comboBoxDependsOn.Items.AddRange(new[] { "None"}.Concat<object>(EncryptedSettings.Instance.Hosts.OrderBy(h => h.Name)).ToArray());
-            comboBoxDependsOn.SelectedIndex = 0;
-            
+            var hosts = _committedHosts.Where(h => h != _currentHost && !h.DeepDependsOn(_currentHost)).OrderBy(h => h.Name);
+            comboBoxDependsOn.Items.AddRange(new[] { "None" }.Concat<object>(hosts).ToArray());
+            if (_currentHost.DependsOn == null)
+            {
+                comboBoxDependsOn.SelectedIndex = 0;
+            }
+            else
+            {
+                comboBoxDependsOn.SelectedItem = _currentHost.DependsOn;
+            }
+
+            listBoxTunnels.Items.Clear();
+            listBoxTunnels.Items.AddRange(_currentHost.Tunnels.ToArray());
+            buttonRemoveTunnel.Enabled = listBoxTunnels.SelectedIndex >= 0;
+
+            _hostValidator.Reset();
             resetAddTunnelGroup();
+        }
+
+        private void formToHost()
+        {
+            _currentHost.Name = textBoxName.Text.Trim();
+            _currentHost.Hostname = textBoxHostname.Text.Trim();
+            _currentHost.Port = textBoxPort.Text.Trim();
+            _currentHost.Username = textBoxLogin.Text.Trim();
+            _currentHost.Password = textBoxPassword.Text.Trim();
+            var dependsOnHost = comboBoxDependsOn.SelectedItem as HostInfo;
+            if (dependsOnHost != null)
+            {
+                _currentHost.DependsOn = dependsOnHost;
+            }
+
+            _currentHost.Tunnels.Clear();
+            _currentHost.Tunnels.AddRange(listBoxTunnels.Items.Cast<TunnelInfo>());
         }
 
         private void resetAddTunnelGroup()
@@ -271,7 +402,7 @@ namespace PuttyManagerGui
             var tunnel = new TunnelInfo {Name = name, LocalPort = srcPort, RemoteHostname = dstHost, RemotePort = dstPort, Type = tunnelType};
 
             listBoxTunnels.Items.Add(tunnel);
-            _currentHost.Tunnels.Add(tunnel);
+            Modified = true;
             resetAddTunnelGroup();
         }
 
@@ -280,7 +411,6 @@ namespace PuttyManagerGui
             var tunnel = listBoxTunnels.SelectedItem as TunnelInfo;
             if (tunnel == null) return;
 
-            _currentHost.Tunnels.Remove(tunnel);
             listBoxTunnels.Items.Remove(tunnel);
             textBoxTunnelName.Text = tunnel.Name;
             textBoxSourcePort.Text = tunnel.LocalPort;
@@ -298,6 +428,7 @@ namespace PuttyManagerGui
                 radioButtonDynamic.Checked = true;
                 break;
             }
+            Modified = true;
         }
 
         private void listBoxTunnels_SelectedIndexChanged(object sender, EventArgs e)
@@ -323,5 +454,24 @@ namespace PuttyManagerGui
         }
 
         #endregion
+
+        private void buttonApply_Click(object sender, EventArgs e)
+        {
+            formToHost();
+            Modified = false;
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            formToHost();
+            DialogResult = DialogResult.OK;
+            Close();
+        }
     }
 }

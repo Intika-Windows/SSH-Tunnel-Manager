@@ -63,11 +63,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBoxPort = new System.Windows.Forms.TextBox();
             this.flowLayoutPanelMain = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanelAddHost = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonAddHost = new System.Windows.Forms.Button();
             this.theErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.theGoodProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.flowLayoutPanelEditHost = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonApply = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonOk = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -83,9 +87,10 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanelMain.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanelAddHost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.theGoodProvider)).BeginInit();
+            this.flowLayoutPanelEditHost.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -208,12 +213,12 @@
             this.textBoxDestHost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.theGoodProvider.SetIconAlignment(this.textBoxDestHost, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
             this.theErrorProvider.SetIconAlignment(this.textBoxDestHost, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-            this.theGoodProvider.SetIconPadding(this.textBoxDestHost, -20);
             this.theErrorProvider.SetIconPadding(this.textBoxDestHost, -20);
+            this.theGoodProvider.SetIconPadding(this.textBoxDestHost, -20);
             this.textBoxDestHost.Location = new System.Drawing.Point(93, 181);
             this.textBoxDestHost.MaxLength = 255;
             this.textBoxDestHost.Name = "textBoxDestHost";
-            this.textBoxDestHost.Size = new System.Drawing.Size(145, 20);
+            this.textBoxDestHost.Size = new System.Drawing.Size(147, 20);
             this.textBoxDestHost.TabIndex = 10;
             this.textBoxDestHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -274,7 +279,7 @@
             // buttonAddTunnel
             // 
             this.buttonAddTunnel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAddTunnel.Location = new System.Drawing.Point(237, 204);
+            this.buttonAddTunnel.Location = new System.Drawing.Point(238, 204);
             this.buttonAddTunnel.Name = "buttonAddTunnel";
             this.buttonAddTunnel.Size = new System.Drawing.Size(75, 23);
             this.buttonAddTunnel.TabIndex = 16;
@@ -311,8 +316,8 @@
             // textBoxTunnelName
             // 
             this.textBoxTunnelName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.theGoodProvider.SetIconPadding(this.textBoxTunnelName, -20);
             this.theErrorProvider.SetIconPadding(this.textBoxTunnelName, -20);
+            this.theGoodProvider.SetIconPadding(this.textBoxTunnelName, -20);
             this.textBoxTunnelName.Location = new System.Drawing.Point(93, 130);
             this.textBoxTunnelName.MaxLength = 255;
             this.textBoxTunnelName.Name = "textBoxTunnelName";
@@ -332,8 +337,8 @@
             // textBoxDestPort
             // 
             this.textBoxDestPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.theGoodProvider.SetIconPadding(this.textBoxDestPort, -20);
             this.theErrorProvider.SetIconPadding(this.textBoxDestPort, -20);
+            this.theGoodProvider.SetIconPadding(this.textBoxDestPort, -20);
             this.textBoxDestPort.Location = new System.Drawing.Point(256, 181);
             this.textBoxDestPort.MaxLength = 5;
             this.textBoxDestPort.Name = "textBoxDestPort";
@@ -343,8 +348,8 @@
             // textBoxSourcePort
             // 
             this.textBoxSourcePort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.theGoodProvider.SetIconPadding(this.textBoxSourcePort, -20);
             this.theErrorProvider.SetIconPadding(this.textBoxSourcePort, -20);
+            this.theGoodProvider.SetIconPadding(this.textBoxSourcePort, -20);
             this.textBoxSourcePort.Location = new System.Drawing.Point(255, 155);
             this.textBoxSourcePort.MaxLength = 5;
             this.textBoxSourcePort.Name = "textBoxSourcePort";
@@ -356,7 +361,7 @@
             label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             label11.AutoSize = true;
             label11.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            label11.Location = new System.Drawing.Point(169, 158);
+            label11.Location = new System.Drawing.Point(173, 158);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(70, 14);
             label11.TabIndex = 6;
@@ -365,8 +370,8 @@
             // textBoxName
             // 
             this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.theErrorProvider.SetIconPadding(this.textBoxName, -20);
             this.theGoodProvider.SetIconPadding(this.textBoxName, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxName, -20);
             this.textBoxName.Location = new System.Drawing.Point(96, 3);
             this.textBoxName.MaxLength = 255;
             this.textBoxName.Name = "textBoxName";
@@ -376,8 +381,8 @@
             // textBoxHostname
             // 
             this.textBoxHostname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.theGoodProvider.SetIconPadding(this.textBoxHostname, -20);
             this.theErrorProvider.SetIconPadding(this.textBoxHostname, -20);
+            this.theGoodProvider.SetIconPadding(this.textBoxHostname, -20);
             this.textBoxHostname.Location = new System.Drawing.Point(3, 3);
             this.textBoxHostname.MaxLength = 255;
             this.textBoxHostname.Name = "textBoxHostname";
@@ -398,8 +403,8 @@
             // 
             this.textBoxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.theErrorProvider.SetIconPadding(this.textBoxLogin, -20);
             this.theGoodProvider.SetIconPadding(this.textBoxLogin, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxLogin, -20);
             this.textBoxLogin.Location = new System.Drawing.Point(96, 55);
             this.textBoxLogin.MaxLength = 255;
             this.textBoxLogin.Name = "textBoxLogin";
@@ -410,8 +415,8 @@
             // 
             this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.theErrorProvider.SetIconPadding(this.textBoxPassword, -20);
             this.theGoodProvider.SetIconPadding(this.textBoxPassword, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxPassword, -20);
             this.textBoxPassword.Location = new System.Drawing.Point(96, 81);
             this.textBoxPassword.MaxLength = 255;
             this.textBoxPassword.Name = "textBoxPassword";
@@ -448,6 +453,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(324, 368);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -479,8 +485,8 @@
             // textBoxPort
             // 
             this.textBoxPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.theGoodProvider.SetIconPadding(this.textBoxPort, -20);
             this.theErrorProvider.SetIconPadding(this.textBoxPort, -20);
+            this.theGoodProvider.SetIconPadding(this.textBoxPort, -20);
             this.textBoxPort.Location = new System.Drawing.Point(171, 3);
             this.textBoxPort.MaxLength = 5;
             this.textBoxPort.Name = "textBoxPort";
@@ -492,31 +498,33 @@
             this.flowLayoutPanelMain.AutoSize = true;
             this.flowLayoutPanelMain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanelMain.Controls.Add(this.tableLayoutPanel1);
-            this.flowLayoutPanelMain.Controls.Add(this.flowLayoutPanel2);
+            this.flowLayoutPanelMain.Controls.Add(this.flowLayoutPanelAddHost);
+            this.flowLayoutPanelMain.Controls.Add(this.flowLayoutPanelEditHost);
             this.flowLayoutPanelMain.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelMain.Location = new System.Drawing.Point(12, 12);
             this.flowLayoutPanelMain.Margin = new System.Windows.Forms.Padding(12);
             this.flowLayoutPanelMain.Name = "flowLayoutPanelMain";
-            this.flowLayoutPanelMain.Size = new System.Drawing.Size(324, 394);
+            this.flowLayoutPanelMain.Size = new System.Drawing.Size(324, 420);
             this.flowLayoutPanelMain.TabIndex = 5;
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelAddHost
             // 
-            this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel2.Controls.Add(this.buttonClose);
-            this.flowLayoutPanel2.Controls.Add(this.buttonAddHost);
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 368);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(324, 26);
-            this.flowLayoutPanel2.TabIndex = 1;
+            this.flowLayoutPanelAddHost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelAddHost.AutoSize = true;
+            this.flowLayoutPanelAddHost.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanelAddHost.Controls.Add(this.buttonClose);
+            this.flowLayoutPanelAddHost.Controls.Add(this.buttonAddHost);
+            this.flowLayoutPanelAddHost.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanelAddHost.Location = new System.Drawing.Point(0, 368);
+            this.flowLayoutPanelAddHost.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelAddHost.Name = "flowLayoutPanelAddHost";
+            this.flowLayoutPanelAddHost.Size = new System.Drawing.Size(324, 26);
+            this.flowLayoutPanelAddHost.TabIndex = 1;
             // 
             // buttonClose
             // 
             this.buttonClose.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonClose.Location = new System.Drawing.Point(249, 3);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
             this.buttonClose.Name = "buttonClose";
@@ -550,6 +558,56 @@
             this.theGoodProvider.ContainerControl = this;
             this.theGoodProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("theGoodProvider.Icon")));
             // 
+            // flowLayoutPanelEditHost
+            // 
+            this.flowLayoutPanelEditHost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelEditHost.AutoSize = true;
+            this.flowLayoutPanelEditHost.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanelEditHost.Controls.Add(this.buttonApply);
+            this.flowLayoutPanelEditHost.Controls.Add(this.buttonCancel);
+            this.flowLayoutPanelEditHost.Controls.Add(this.buttonOk);
+            this.flowLayoutPanelEditHost.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanelEditHost.Location = new System.Drawing.Point(0, 394);
+            this.flowLayoutPanelEditHost.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelEditHost.Name = "flowLayoutPanelEditHost";
+            this.flowLayoutPanelEditHost.Size = new System.Drawing.Size(324, 26);
+            this.flowLayoutPanelEditHost.TabIndex = 6;
+            this.flowLayoutPanelEditHost.Visible = false;
+            // 
+            // buttonApply
+            // 
+            this.buttonApply.Location = new System.Drawing.Point(249, 3);
+            this.buttonApply.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
+            this.buttonApply.Name = "buttonApply";
+            this.buttonApply.Size = new System.Drawing.Size(75, 23);
+            this.buttonApply.TabIndex = 0;
+            this.buttonApply.Text = "Apply";
+            this.buttonApply.UseVisualStyleBackColor = true;
+            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Location = new System.Drawing.Point(168, 3);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 0;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // buttonOk
+            // 
+            this.buttonOk.Location = new System.Drawing.Point(87, 3);
+            this.buttonOk.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.buttonOk.Name = "buttonOk";
+            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.TabIndex = 0;
+            this.buttonOk.Text = "OK";
+            this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
+            // 
             // HostDialog
             // 
             this.AcceptButton = this.buttonAddHost;
@@ -557,6 +615,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CancelButton = this.buttonClose;
             this.ClientSize = new System.Drawing.Size(458, 617);
             this.Controls.Add(this.flowLayoutPanelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -575,9 +634,10 @@
             this.panel1.PerformLayout();
             this.flowLayoutPanelMain.ResumeLayout(false);
             this.flowLayoutPanelMain.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanelAddHost.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.theErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.theGoodProvider)).EndInit();
+            this.flowLayoutPanelEditHost.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -601,7 +661,7 @@
         private System.Windows.Forms.RadioButton radioButtonRemote;
         private System.Windows.Forms.RadioButton radioButtonLocal;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMain;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAddHost;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonAddHost;
         private System.Windows.Forms.TextBox textBoxPort;
@@ -612,5 +672,9 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxTunnelName;
         private System.Windows.Forms.TextBox textBoxDestPort;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEditHost;
+        private System.Windows.Forms.Button buttonApply;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button buttonOk;
     }
 }

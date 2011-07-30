@@ -53,11 +53,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\Host.cs" />
+    <Compile Include="Business\IViewModel.cs" />
     <Compile Include="Domain\EncryptedSettings.cs" />
     <Compile Include="Business\Enums.cs" />
     <Compile Include="Domain\Enums.cs" />
     <Compile Include="Domain\HostsManager.cs" />
     <Compile Include="Domain\PuttyLink.cs" />
+    <Compile Include="Ext\BLW\AggregateBindingListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ext\BLW\BindingListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ext\BLW\CompositeItemFilter.cs" />
+    <Compile Include="Ext\BLW\IItemFilter.cs" />
+    <Compile Include="Ext\BLW\INotifyingEditableObject.cs" />
+    <Compile Include="Ext\BLW\InvalidSourceListException.cs" />
+    <Compile Include="Ext\BLW\MultiSourceIndexList.cs" />
+    <Compile Include="Ext\BLW\ObjectView.cs" />
+    <Compile Include="Ext\BLW\ProvidedViewPropertyDescriptor.cs" />
     <Compile Include="Ext\DXTopoligicalSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Business\HostInfo.cs" />
@@ -81,6 +95,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Content Include="Config\AutoRecovery_old.xsd">
       <SubType>Designer</SubType>
