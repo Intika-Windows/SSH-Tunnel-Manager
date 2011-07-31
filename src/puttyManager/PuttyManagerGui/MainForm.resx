@@ -117,6 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="label1.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="label2.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="label7.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="label9.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="label5.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
   <metadata name="hgwStatusIconColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -145,14 +160,14 @@
     <value>237, 17</value>
   </metadata>
   <metadata name="imageListStates.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>681, 17</value>
+    <value>540, 20</value>
   </metadata>
   <data name="imageListStates.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACy
-        CAAAAk1TRnQBSQFMAgEBBAEAAQgBAAEIAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADa
+        CAAAAk1TRnQBSQFMAgEBBAEAASgBAAEoAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -181,22 +196,34 @@
         AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
         AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
         AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD//8A/wD/AP8A/wAqAAH/
-        AfQDGwH0Af8ZAAG7BbQBuwkAAbsFtAG7CAAB/wHzARoDeQEaAfMB/woAAbsB8QwAAbQB2gTZAbQJAAG0
-        AdoE2QG0CAAB9AEaAXkDWAF5ARoB9AoAArQB8gsAAbQB2gOzAdQBtAkAAbQB2gOzAdQBtAgAARsBmQF5
-        BFgBmQEbCgABtAHaAbQB8goAAbQB2wOzArQJAAG0AdsDswK0CAABGwF5AXoEWAF5ARsKAAG0AdsB3AG0
-        CgABtAHcAtsBtAHbAbQJAAG0AdwC2wG0AdsBtAgAAfMBmQGaAnoCeQGZAfMKAAG0AdwBtAHyCgABugXc
-        AboJAAG6BdwBuggAAfQBGgGZA6ABmQEaAfQKAAK6AfMLAAEJBdsBCQkAAQkF2wEJCAAB/wH0ARoDmQEa
-        AfQB/woAAQkB8ywAAf8C9AEbAvQB/9UAAUIBTQE+BwABPgMAASgDAAFAAwABIAMAAQEBAAEBBgABARYA
-        A/+BACT/AfABHwL/AfABHwHwAR8B4AEPAfwB/wHwAR8B8AEfAeABDwH8AX8B8AEfAfABHwHgAQ8B/AE/
-        AfABHwHwAR8B4AEPAfwBPwHwAR8B8AEfAeABDwH8AT8B8AEfAfABHwHgAQ8B/AF/AfABHwHwAR8B4AEP
-        AfwF/wHwAR8a/ws=
+        AfQDGwH0Af8ZAAG7BbQBuwkAAbsFtAG7CAAB/wHzARoDeQEaAfMB/wkAAfMBmAFyAZgB8woAAbQB2gTZ
+        AbQJAAG0AdoE2QG0CAAB9AEaAXkDWAF5ARoB9AgAAfMBcgGYAVQBVQFyAfMJAAG0AdoDswHUAbQJAAG0
+        AdoDswHUAbQIAAEbAZkBeQRYAZkBGwgAApgB8AHxAU4BVQGYCQABtAHbA7MCtAkAAbQB2wOzArQIAAEb
+        AXkBegRYAXkBGwgAAZcB/wFOAZgB8QFOAZcJAAG0AdwC2wG0AdsBtAkAAbQB3ALbAbQB2wG0CAAB8wGZ
+        AZoCegJ5AZkB8wgAAZgBlwJVAZgB/wGYCQABugXcAboJAAG6BdwBuggAAfQBGgGZA6ABmQEaAfQIAAHz
+        BZcB8wkAAQkF2wEJCQABCQXbAQkIAAH/AfQBGgOZARoB9AH/CQAB8wGYAZcBmAHzKgAB/wL0ARsC9AH/
+        1QABQgFNAT4HAAE+AwABKAMAAUADAAEgAwABAQEAAQEGAAEBFgAD/4EAJP8B8AEfAv8B8AEfAfABHwHg
+        AQ8B+AE/AfABHwHwAR8B4AEPAfABHwHwAR8B8AEfAeABDwHwAR8B8AEfAfABHwHgAQ8B8AEfAfABHwHw
+        AR8B4AEPAfABHwHwAR8B8AEfAeABDwHwAR8B8AEfAfABHwHgAQ8B+AE/BP8B8AEfGv8L
 </value>
   </data>
+  <metadata name="tgvNameColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="tgvTypeColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="tgvSrcPortColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="tgvDstHostColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="tgvDstPortColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="contextMenuStripHost.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>353, 17</value>
-  </metadata>
-  <metadata name="directorySearcher1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>527, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

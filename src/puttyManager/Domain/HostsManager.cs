@@ -13,6 +13,7 @@ namespace PuttyManager.Domain
 {
     public class HostsManager<THostViewModel> where THostViewModel : IViewModel<Host>, new()
     {
+        private THostViewModel _addingNewHost;
 
         public HostsManager()
         {
@@ -23,9 +24,16 @@ namespace PuttyManager.Domain
                                                             return viewModel;
                                                         }).ToList();
             Hosts = new BindingListView<THostViewModel>(hosts);
+            Hosts.AddingNew += (o, e) => { e.NewObject = _addingNewHost; };
         }
 
         public BindingListView<THostViewModel> Hosts { get; private set; }
+        public void AddHost(THostViewModel host)
+        {
+            _addingNewHost = host;
+            Hosts.AddNew();
+            Hosts.EndNew(Hosts.Count - 1);
+        }
 
         public List<HostInfo> HostInfoList
         {

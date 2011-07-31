@@ -18,9 +18,9 @@ namespace PuttyManager.Business
         public override string ToString()
         {
             var strType = Type == TunnelType.Local ? "L" : (Type == TunnelType.Remote ? "R" : "D");
-            var dstHost = string.Format("{0}:{1}", RemoteHostname, RemotePort);
+            var dstHost = Type == TunnelType.Dynamic ? "" : string.Format(" {0}:{1}", RemoteHostname, RemotePort);
             var srcPort = strType + LocalPort;
-            var ret = string.Format(@"{0} [ {1} {2} ]", Name, srcPort, dstHost);
+            var ret = string.Format(@"{0} [ {1}{2} ]", Name, srcPort, dstHost);
             return ret;
         }
     }

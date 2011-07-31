@@ -24,7 +24,6 @@ namespace PuttyManagerGui
         private const string HgwDependsOnColumnName = "hgwDependsOnColumn";*/
 
         private readonly HostsManager<HostViewModel> _hostsManager = new HostsManager<HostViewModel>();
-        //private DataTable _dataTableHosts;
         private readonly BindingSource _bindingSource;
 
         public MainForm()
@@ -41,6 +40,10 @@ namespace PuttyManagerGui
             fillHostsTable();
             _hostsManager.Hosts.CollectionChanged += hostsCollectionChanged;*/
 
+            foreach (var host in _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(o => o.Object))
+            {
+                host.StatusChanged += onHostStatusChanged;
+            }
             _bindingSource = new BindingSource(_hostsManager, "Hosts");
             
             hostsGridView.AutoGenerateColumns = false;
@@ -51,9 +54,66 @@ namespace PuttyManagerGui
             hgwStatusColumn.DataPropertyName = "Status";
             hgwDependsOnColumn.DataPropertyName = "DependsOn";
             hostsGridView.DataSource = _bindingSource;
+            _bindingSource.CurrentItemChanged += delegate { updateCurrentHostDetails(); };
+            updateCurrentHostDetails();
             
             treeViewFilter.ExpandAll();
             treeViewFilter.SelectedNode = treeViewFilter.Nodes[0];
+            ActiveControl = hostsGridView;
+        }
+
+        private void onHostStatusChanged(object sender, EventArgs e)
+        {
+            // This handler executing not in UI thread.
+            Invoke((Action)delegate
+            {
+                var hvm = (HostViewModel)sender;
+                updateHost(hvm);
+                if (_bindingSource.Current == hvm)
+                {
+                    updateCurrentHostDetails();
+                }
+                updateFilter(treeViewFilter.SelectedNode);
+            });
+        }
+
+        private void updateCurrentHostDetails()
+        {
+            var ov = _bindingSource.Current as ObjectView<HostViewModel>;
+            if (ov == null)
+            {
+                splitContainerV1.Panel2Collapsed = true;
+                return;
+            }
+
+            var h = ov.Object;
+            // bottom split panel
+            splitContainerV1.Panel2Collapsed = false;
+            labelUniqName.Text = h.Name;
+            labelUsername.Text = h.Username;
+            labelHost.Text = h.Hostname;
+            labelStatus.Text = h.Status;
+            labelStatus.ForeColor = h.StatusColor;
+            labelDependsOn.Text = string.IsNullOrWhiteSpace(h.DependsOn) ? "-" : h.DependsOn;
+            tunnelsGridView.Rows.Clear();
+            foreach (var tunnel in h.Model.Info.Tunnels)
+            {
+                var row = new DataGridViewRow();
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = tunnel.Name });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = tunnel.Type.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = tunnel.LocalPort });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = tunnel.RemoteHostname });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = tunnel.RemotePort });
+                row.Tag = tunnel;
+                tunnelsGridView.Rows.Add(row);
+            }
+            // menus
+            toolStripButtonStart.Enabled = h.Model.Status == HostStatus.Stopped;
+            toolStripButtonStop.Enabled = h.Model.Status != HostStatus.Stopped;
+            // edit buttons
+            bool canEdit = h.Model.Status == HostStatus.Stopped;
+            toolStripMenuItemEditHost.Enabled = canEdit;
+            toolStripButtonEditHost.Enabled = canEdit;
         }
 
         /*private void fillHostsTable()
@@ -116,7 +176,7 @@ namespace PuttyManagerGui
 
         private void hostsGridView_RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
         {
-            hostsGridView.Rows[e.RowIndex].Selected = true;
+            _bindingSource.Position = _bindingSource.Find("Name", hostsGridView.Rows[e.RowIndex].Cells[hgwNameColumn.Name].Value.ToString());
             e.ContextMenuStrip = contextMenuStripHost;
         }
 
@@ -162,12 +222,17 @@ namespace PuttyManagerGui
             hd.ShowDialog(this);
             foreach (var host in hd.CreatedHosts)
             {
-                _bindingSource.Add(new ObjectView<HostViewModel>(new HostViewModel(new Host(host)), _hostsManager.Hosts));
+                var hvm = new HostViewModel(new Host(host));
+                _hostsManager.AddHost(hvm);
+                hvm.StatusChanged += onHostStatusChanged;
             }
         }
 
         private void editHost(HostViewModel host)
         {
+            if (host.Model.Status != HostStatus.Stopped)
+                return;
+
             var hd = new HostDialog(HostDialog.EMode.EditHost, _hostsManager.HostInfoList) {Host = host.Model.Info};
             hd.ShowDialog(this);
 
@@ -179,6 +244,11 @@ namespace PuttyManagerGui
                 _bindingSource.ResetItem(index);
             }
 
+            updateHost(host);
+        }
+
+        private void updateHost(HostViewModel host)
+        {
             var index2 = _bindingSource.IndexOf(host);
             _bindingSource.ResetItem(index2);
         }
@@ -200,6 +270,7 @@ namespace PuttyManagerGui
                 foreach (var host1 in hosts)
                 {
                     _bindingSource.Remove(host1);
+                    host1.StatusChanged -= onHostStatusChanged;
                 }
             } else
             {
@@ -209,6 +280,7 @@ namespace PuttyManagerGui
                     return;
 
                 _bindingSource.Remove(host);
+                host.StatusChanged -= onHostStatusChanged;
             }
         }
 
@@ -219,13 +291,15 @@ namespace PuttyManagerGui
 
         private void treeViewFilter_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            switch (int.Parse(e.Node.Tag.ToString()))
+            updateFilter(e.Node);
+        }
+
+        private void updateFilter(TreeNode node)
+        {
+            switch (int.Parse(node.Tag.ToString()))
             {
             case -1:
                 _hostsManager.Hosts.RemoveFilter();
-                break;
-            case 0:
-                _hostsManager.Hosts.ApplyFilter(m => m.Model.Status == HostStatus.Disabled);
                 break;
             case 1:
                 _hostsManager.Hosts.ApplyFilter(m => m.Model.Status == HostStatus.Stopped);
@@ -252,6 +326,34 @@ namespace PuttyManagerGui
         private void toolStripMenuItemEditHost_Click(object sender, EventArgs e)
         {
             editHost(selectedHostViewModel());
+        }
+
+        private void toolStripButtonStart_Click(object sender, EventArgs e)
+        {
+            ((ObjectView<HostViewModel>)_bindingSource.Current).Object.Model.Link.AsyncStart();
+        }
+
+        private void toolStripButtonStop_Click(object sender, EventArgs e)
+        {
+            ((ObjectView<HostViewModel>)_bindingSource.Current).Object.Model.Link.Stop();
+        }
+
+        private void hostsGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            if (hostsGridView.Columns[e.ColumnIndex].Name == hgwStatusColumn.Name)
+            {
+                HostViewModel host;
+                //if ((host = hostsGridView.Rows[e.RowIndex].Tag as HostViewModel) == null) // buffering
+                {
+                    var name = hostsGridView.Rows[e.RowIndex].Cells[hgwNameColumn.Name].Value.ToString();
+                    host = _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(v => v.Object).First(m => m.Name == name);
+                    hostsGridView.Rows[e.RowIndex].Tag = host;
+                }
+                e.CellStyle.ForeColor = host.StatusColor;
+            }
         }
     }
 }

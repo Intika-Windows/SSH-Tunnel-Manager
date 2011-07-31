@@ -12,6 +12,7 @@ namespace PuttyManager.Business
         {
             Info = info;
             _puttyLink = new PuttyLink(Info);
+            _puttyLink.ConnectionStateChanged += delegate { onStatusChanged(); };
         }
         
         public HostInfo Info { get; private set; }
@@ -33,6 +34,7 @@ namespace PuttyManager.Business
                 }
             }
         }
+        public event EventHandler StatusChanged;
 
         private IViewModel<Host> _viewModel;
         public IViewModel<Host> ViewModel
@@ -46,6 +48,14 @@ namespace PuttyManager.Business
         }
 
         private readonly PuttyLink _puttyLink;
+
+        private void onStatusChanged()
+        {
+            if (StatusChanged != null)
+            {
+                StatusChanged(this, EventArgs.Empty);
+            }
+        }
 
         //public bool IsOpen { get { return (_sshLink != null); } }
 

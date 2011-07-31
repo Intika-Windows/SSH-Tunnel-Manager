@@ -41,6 +41,12 @@
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label11;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HostDialog));
+            this.tunnelsGridView = new System.Windows.Forms.DataGridView();
+            this.tgvNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tgvTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tgvSrcPortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tgvDstHostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tgvDstPortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxDestHost = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -71,12 +77,6 @@
             this.buttonOk = new System.Windows.Forms.Button();
             this.theErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.theGoodProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.tunnelsGridView = new System.Windows.Forms.DataGridView();
-            this.tgvNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tgvTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tgvSrcPortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tgvDstHostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tgvDstPortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -89,6 +89,7 @@
             label6 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tunnelsGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanelMain.SuspendLayout();
@@ -96,7 +97,6 @@
             this.flowLayoutPanelEditHost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.theGoodProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tunnelsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -214,13 +214,82 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Tunnels:";
             // 
+            // tunnelsGridView
+            // 
+            this.tunnelsGridView.AllowUserToAddRows = false;
+            this.tunnelsGridView.AllowUserToDeleteRows = false;
+            this.tunnelsGridView.AllowUserToResizeRows = false;
+            this.tunnelsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tunnelsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tunnelsGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.tunnelsGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.tunnelsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.tunnelsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tunnelsGridView.ColumnHeadersVisible = false;
+            this.tunnelsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tgvNameColumn,
+            this.tgvTypeColumn,
+            this.tgvSrcPortColumn,
+            this.tgvDstHostColumn,
+            this.tgvDstPortColumn});
+            this.tunnelsGridView.Location = new System.Drawing.Point(8, 40);
+            this.tunnelsGridView.MultiSelect = false;
+            this.tunnelsGridView.Name = "tunnelsGridView";
+            this.tunnelsGridView.ReadOnly = true;
+            this.tunnelsGridView.RowHeadersVisible = false;
+            this.tunnelsGridView.RowTemplate.Height = 18;
+            this.tunnelsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tunnelsGridView.Size = new System.Drawing.Size(304, 69);
+            this.tunnelsGridView.TabIndex = 6;
+            this.tunnelsGridView.SelectionChanged += new System.EventHandler(this.tunnelsGridView_SelectionChanged);
+            // 
+            // tgvNameColumn
+            // 
+            this.tgvNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tgvNameColumn.HeaderText = "Alias";
+            this.tgvNameColumn.Name = "tgvNameColumn";
+            this.tgvNameColumn.ReadOnly = true;
+            // 
+            // tgvTypeColumn
+            // 
+            this.tgvTypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.tgvTypeColumn.HeaderText = "Type";
+            this.tgvTypeColumn.Name = "tgvTypeColumn";
+            this.tgvTypeColumn.ReadOnly = true;
+            this.tgvTypeColumn.Width = 5;
+            // 
+            // tgvSrcPortColumn
+            // 
+            this.tgvSrcPortColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.tgvSrcPortColumn.HeaderText = "Src Port";
+            this.tgvSrcPortColumn.Name = "tgvSrcPortColumn";
+            this.tgvSrcPortColumn.ReadOnly = true;
+            this.tgvSrcPortColumn.Width = 5;
+            // 
+            // tgvDstHostColumn
+            // 
+            this.tgvDstHostColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.tgvDstHostColumn.HeaderText = "Dst Host";
+            this.tgvDstHostColumn.Name = "tgvDstHostColumn";
+            this.tgvDstHostColumn.ReadOnly = true;
+            this.tgvDstHostColumn.Width = 5;
+            // 
+            // tgvDstPortColumn
+            // 
+            this.tgvDstPortColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.tgvDstPortColumn.HeaderText = "Dst Port";
+            this.tgvDstPortColumn.Name = "tgvDstPortColumn";
+            this.tgvDstPortColumn.ReadOnly = true;
+            this.tgvDstPortColumn.Width = 5;
+            // 
             // textBoxDestHost
             // 
             this.textBoxDestHost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.theGoodProvider.SetIconAlignment(this.textBoxDestHost, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
             this.theErrorProvider.SetIconAlignment(this.textBoxDestHost, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-            this.theErrorProvider.SetIconPadding(this.textBoxDestHost, -20);
             this.theGoodProvider.SetIconPadding(this.textBoxDestHost, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxDestHost, -20);
             this.textBoxDestHost.Location = new System.Drawing.Point(93, 181);
             this.textBoxDestHost.MaxLength = 255;
             this.textBoxDestHost.Name = "textBoxDestHost";
@@ -309,8 +378,8 @@
             // textBoxTunnelName
             // 
             this.textBoxTunnelName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.theErrorProvider.SetIconPadding(this.textBoxTunnelName, -20);
             this.theGoodProvider.SetIconPadding(this.textBoxTunnelName, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxTunnelName, -20);
             this.textBoxTunnelName.Location = new System.Drawing.Point(93, 130);
             this.textBoxTunnelName.MaxLength = 255;
             this.textBoxTunnelName.Name = "textBoxTunnelName";
@@ -330,8 +399,8 @@
             // textBoxDestPort
             // 
             this.textBoxDestPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.theErrorProvider.SetIconPadding(this.textBoxDestPort, -20);
             this.theGoodProvider.SetIconPadding(this.textBoxDestPort, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxDestPort, -20);
             this.textBoxDestPort.Location = new System.Drawing.Point(256, 181);
             this.textBoxDestPort.MaxLength = 5;
             this.textBoxDestPort.Name = "textBoxDestPort";
@@ -341,8 +410,8 @@
             // textBoxSourcePort
             // 
             this.textBoxSourcePort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.theErrorProvider.SetIconPadding(this.textBoxSourcePort, -20);
             this.theGoodProvider.SetIconPadding(this.textBoxSourcePort, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxSourcePort, -20);
             this.textBoxSourcePort.Location = new System.Drawing.Point(255, 155);
             this.textBoxSourcePort.MaxLength = 5;
             this.textBoxSourcePort.Name = "textBoxSourcePort";
@@ -363,8 +432,8 @@
             // textBoxName
             // 
             this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.theGoodProvider.SetIconPadding(this.textBoxName, -20);
             this.theErrorProvider.SetIconPadding(this.textBoxName, -20);
+            this.theGoodProvider.SetIconPadding(this.textBoxName, -20);
             this.textBoxName.Location = new System.Drawing.Point(96, 3);
             this.textBoxName.MaxLength = 255;
             this.textBoxName.Name = "textBoxName";
@@ -374,8 +443,8 @@
             // textBoxHostname
             // 
             this.textBoxHostname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.theErrorProvider.SetIconPadding(this.textBoxHostname, -20);
             this.theGoodProvider.SetIconPadding(this.textBoxHostname, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxHostname, -20);
             this.textBoxHostname.Location = new System.Drawing.Point(3, 3);
             this.textBoxHostname.MaxLength = 255;
             this.textBoxHostname.Name = "textBoxHostname";
@@ -396,8 +465,8 @@
             // 
             this.textBoxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.theGoodProvider.SetIconPadding(this.textBoxLogin, -20);
             this.theErrorProvider.SetIconPadding(this.textBoxLogin, -20);
+            this.theGoodProvider.SetIconPadding(this.textBoxLogin, -20);
             this.textBoxLogin.Location = new System.Drawing.Point(96, 55);
             this.textBoxLogin.MaxLength = 255;
             this.textBoxLogin.Name = "textBoxLogin";
@@ -408,8 +477,8 @@
             // 
             this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.theGoodProvider.SetIconPadding(this.textBoxPassword, -20);
             this.theErrorProvider.SetIconPadding(this.textBoxPassword, -20);
+            this.theGoodProvider.SetIconPadding(this.textBoxPassword, -20);
             this.textBoxPassword.Location = new System.Drawing.Point(96, 81);
             this.textBoxPassword.MaxLength = 255;
             this.textBoxPassword.Name = "textBoxPassword";
@@ -478,8 +547,8 @@
             // textBoxPort
             // 
             this.textBoxPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.theErrorProvider.SetIconPadding(this.textBoxPort, -20);
             this.theGoodProvider.SetIconPadding(this.textBoxPort, -20);
+            this.theErrorProvider.SetIconPadding(this.textBoxPort, -20);
             this.textBoxPort.Location = new System.Drawing.Point(171, 3);
             this.textBoxPort.MaxLength = 5;
             this.textBoxPort.Name = "textBoxPort";
@@ -601,75 +670,6 @@
             this.theGoodProvider.ContainerControl = this;
             this.theGoodProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("theGoodProvider.Icon")));
             // 
-            // tunnelsGridView
-            // 
-            this.tunnelsGridView.AllowUserToAddRows = false;
-            this.tunnelsGridView.AllowUserToDeleteRows = false;
-            this.tunnelsGridView.AllowUserToResizeRows = false;
-            this.tunnelsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tunnelsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.tunnelsGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.tunnelsGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.tunnelsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.tunnelsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tunnelsGridView.ColumnHeadersVisible = false;
-            this.tunnelsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.tgvNameColumn,
-            this.tgvTypeColumn,
-            this.tgvSrcPortColumn,
-            this.tgvDstHostColumn,
-            this.tgvDstPortColumn});
-            this.tunnelsGridView.Location = new System.Drawing.Point(8, 40);
-            this.tunnelsGridView.MultiSelect = false;
-            this.tunnelsGridView.Name = "tunnelsGridView";
-            this.tunnelsGridView.ReadOnly = true;
-            this.tunnelsGridView.RowHeadersVisible = false;
-            this.tunnelsGridView.RowTemplate.Height = 18;
-            this.tunnelsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tunnelsGridView.Size = new System.Drawing.Size(304, 69);
-            this.tunnelsGridView.TabIndex = 6;
-            this.tunnelsGridView.SelectionChanged += new System.EventHandler(this.tunnelsGridView_SelectionChanged);
-            // 
-            // tgvNameColumn
-            // 
-            this.tgvNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tgvNameColumn.HeaderText = "Alias";
-            this.tgvNameColumn.Name = "tgvNameColumn";
-            this.tgvNameColumn.ReadOnly = true;
-            // 
-            // tgvTypeColumn
-            // 
-            this.tgvTypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.tgvTypeColumn.HeaderText = "Type";
-            this.tgvTypeColumn.Name = "tgvTypeColumn";
-            this.tgvTypeColumn.ReadOnly = true;
-            this.tgvTypeColumn.Width = 5;
-            // 
-            // tgvSrcPortColumn
-            // 
-            this.tgvSrcPortColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.tgvSrcPortColumn.HeaderText = "Src Port";
-            this.tgvSrcPortColumn.Name = "tgvSrcPortColumn";
-            this.tgvSrcPortColumn.ReadOnly = true;
-            this.tgvSrcPortColumn.Width = 5;
-            // 
-            // tgvDstHostColumn
-            // 
-            this.tgvDstHostColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.tgvDstHostColumn.HeaderText = "Dst Host";
-            this.tgvDstHostColumn.Name = "tgvDstHostColumn";
-            this.tgvDstHostColumn.ReadOnly = true;
-            this.tgvDstHostColumn.Width = 5;
-            // 
-            // tgvDstPortColumn
-            // 
-            this.tgvDstPortColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.tgvDstPortColumn.HeaderText = "Dst Port";
-            this.tgvDstPortColumn.Name = "tgvDstPortColumn";
-            this.tgvDstPortColumn.ReadOnly = true;
-            this.tgvDstPortColumn.Width = 5;
-            // 
             // HostDialog
             // 
             this.AcceptButton = this.buttonAddHost;
@@ -690,6 +690,7 @@
             this.Load += new System.EventHandler(this.HostDialog_Load);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tunnelsGridView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -700,7 +701,6 @@
             this.flowLayoutPanelEditHost.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.theErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.theGoodProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tunnelsGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

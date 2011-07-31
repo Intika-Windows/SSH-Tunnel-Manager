@@ -123,6 +123,13 @@ namespace PuttyManagerGui.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap exclamation_small {
+            get {
+                object obj = ResourceManager.GetObject("exclamation_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap server__minus {
             get {
                 object obj = ResourceManager.GetObject("server__minus", resourceCulture);
@@ -182,6 +189,13 @@ namespace PuttyManagerGui.Properties {
         internal static System.Drawing.Bitmap tick_circle {
             get {
                 object obj = ResourceManager.GetObject("tick_circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tick_small_circle {
+            get {
+                object obj = ResourceManager.GetObject("tick_small_circle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

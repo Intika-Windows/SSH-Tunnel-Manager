@@ -10,7 +10,6 @@ namespace PuttyManager.Business
 
     public enum HostStatus
     {
-        Disabled,
         Stopped,
         Unknown,
         Started

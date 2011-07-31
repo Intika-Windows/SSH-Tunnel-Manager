@@ -149,32 +149,21 @@ namespace PuttyManagerGui
 
         private bool validateTunnelSourcePort(Control control, string text)
         {
-            if (radioButtonLocal.Checked || radioButtonRemote.Checked)
+            if (_tunnelValidator.ValidatePort(control, text))
             {
-                // local or remote
-                if (_tunnelValidator.ValidatePort(control, text))
+                var port = text;
+
+                var ports = _committedHosts.Where(h => h != _currentHost).SelectMany(h => h.Tunnels).Select(t => t.LocalPort).Concat(
+                            tunnels().Select(t => t.LocalPort)).ToList();
+
+                if (ports.Contains(port))
                 {
-                    var port = text;
-
-                    var ports = _committedHosts.Where(h => h != _currentHost).SelectMany(h => h.Tunnels).Select(t => t.LocalPort).Concat(
-                                tunnels().Select(t => t.LocalPort)).ToList();
-
-                    if (ports.Contains(port))
-                    {
-                        _tunnelValidator.SetError(control, @"Local port is busy by another tunnel.");
-                        return false;
-                    }
-                    return true;
+                    _tunnelValidator.SetError(control, @"Local port is busy by another tunnel.");
+                    return false;
                 }
-                return false;
+                return true;
             }
-            // dynamic
-            if (!string.IsNullOrWhiteSpace(text))
-            {
-                _tunnelValidator.SetError(control, @"Hostname should be empty for dynamic tunnels.");
-                return false;
-            }
-            return true;
+            return false;
         }
 
         #endregion

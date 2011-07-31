@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using PuttyManager.Business;
@@ -25,13 +26,14 @@ namespace PuttyManager.Domain
     {
         Inactive,
         Intermediate,
+        ActiveWithWarnings,
         Active
     }
 
     public interface IPuttyLink
     {
         HostInfo Host { get; }
-        string LastError { get; }
+        string LastStartError { get; }
         EConnectionState ConnectionState { get; }
 
         /// <summary>
@@ -51,7 +53,7 @@ namespace PuttyManager.Domain
         private const string ShellStartedMessage = "Started a shell/command";
 
         private volatile Process _process;
-        private volatile string _lastError;
+        private volatile string _lastStartError;
         private volatile EConnectionState _connectionState = EConnectionState.Inactive;
 
         public PuttyLink(HostInfo host)
@@ -62,12 +64,12 @@ namespace PuttyManager.Domain
 
         public HostInfo Host { get; private set; }
 
-        public string LastError
+        public string LastStartError
         {
-            get { return _lastError; }
+            get { return _lastStartError; }
             private set
             {
-                _lastError = value; // "Reads and writes of the following data types are atomic: bool, char, byte, sbyte, short, ushort, uint, int, float, and reference types."
+                _lastStartError = value; // "Reads and writes of the following data types are atomic: bool, char, byte, sbyte, short, ushort, uint, int, float, and reference types."
             }
         }
 
@@ -88,6 +90,8 @@ namespace PuttyManager.Domain
         /// </summary>
         public event EventHandler ConnectionStateChanged;
 
+        public Dictionary<TunnelInfo, ForwardingResult> ForwardingResults { get; private set; }
+
         private void onConnectionStateChanged()
         {
             if (ConnectionStateChanged != null)
@@ -96,15 +100,27 @@ namespace PuttyManager.Domain
 
         public void AsyncStart()
         {
+            if (ConnectionState != EConnectionState.Inactive)
+            {
+                throw new InvalidOperationException("Link already started.");
+            }
             Thread thread = new Thread(Start) {IsBackground = true};
             thread.Start();
         }
 
         public void Start()
         {
+            if (ConnectionState != EConnectionState.Inactive)
+            {
+                throw new InvalidOperationException("Link already started.");
+            }
             try
             {
                 ConnectionState = EConnectionState.Intermediate;
+                LastStartError = "";
+
+                // fill results dic
+                ForwardingResults = Host.Tunnels.ToDictionary(t => t, t => ForwardingResult.CreateSuccess());
 
                 // Процесс
                 _process = new Process
@@ -121,11 +137,7 @@ namespace PuttyManager.Domain
                                        }
                                };
 
-                _process.ErrorDataReceived += (o, args) =>
-                    {
-                        if (args.Data != null && args.Data.Contains(ShellStartedMessage))
-                            ConnectionState = EConnectionState.Active;
-                    };
+                _process.ErrorDataReceived += errorDataHandler;
                 _process.Start();
                 _process.BeginErrorReadLine();
                 Debug.WriteLine("Plink: Started!");
@@ -133,6 +145,7 @@ namespace PuttyManager.Domain
                 //_process.StandardInput.AutoFlush = true;
 
                 var buffer = new StringBuilder();
+                bool passwordProvided = false;
                 while (!_process.HasExited)
                 {
                     while (_process.StandardOutput.Peek() >= 0)
@@ -151,21 +164,18 @@ namespace PuttyManager.Domain
                         Stop();
                         // _process.StandardInput.WriteLine(username);
                         //throw new Exception("Invalid username.");
-                        LastError = "Invalid username.";
+                        LastStartError = "Invalid username.";
                     }
-                    else if (data.Contains("password:"))
+                    else if (data.Contains("password:") && !passwordProvided)
                     {
-                        // Неверный пароль (Доступ запрещен)
-                        Stop();
-                        // _process.StandardInput.WriteLine(form.Password);
-                        //throw new Exception("Access Denied.");
-                        LastError = "Access Denied.";
+                        _process.StandardInput.WriteLine(Host.Password);
+                        passwordProvided = true;
                     }
                 }
             }
             catch (Exception e)
             {
-                LastError = e.Message;
+                LastStartError = e.Message;
                 //Result = new PuttyLinkResult(false, e.Message);
                 return;
             }
@@ -177,8 +187,56 @@ namespace PuttyManager.Domain
             //Result = new PuttyLinkResult(true);
         }
 
+        private void errorDataHandler(object o, DataReceivedEventArgs args)
+        {
+            if (args.Data == null)
+                return;
+            // LOCAL tunnels error
+            var m = Regex.Match(args.Data, @"Local port (?<srcPort>\d+) forwarding to (?<dstHost>[^:]+):(?<dstPort>\d+) failed: (?<errorString>.*)", RegexOptions.IgnoreCase);
+            if (m.Success)
+            {
+                var srcPort = m.Groups["srcPort"].Value;
+                var dstHost = m.Groups["dstHost"].Value;
+                var dstPort = m.Groups["dstPort"].Value;
+                var errorString = m.Groups["errorString"].Value;
+                var tunnel = Host.Tunnels.FirstOrDefault(
+                    t => t.LocalPort == srcPort && t.RemoteHostname == dstHost && t.RemotePort == dstPort && t.Type == TunnelType.Local);
+                if (tunnel != null)
+                {
+                    ForwardingResults[tunnel] = ForwardingResult.CreateFailed(errorString);
+                }
+            }
+            // DYNAMIC tunnels error
+            m = Regex.Match(args.Data, @"Local port (?<srcPort>\d+) SOCKS dynamic forwarding failed: (?<errorString>.*)", RegexOptions.IgnoreCase);
+            if (m.Success)
+            {
+                var srcPort = m.Groups["srcPort"].Value;
+                var errorString = m.Groups["errorString"].Value;
+                var tunnel = Host.Tunnels.FirstOrDefault(
+                    t => t.LocalPort == srcPort && t.Type == TunnelType.Dynamic);
+                if (tunnel != null)
+                {
+                    ForwardingResults[tunnel] = ForwardingResult.CreateFailed(errorString);
+                }
+            }
+            // Access denied error
+            if (args.Data.Contains("Access denied"))
+            {
+                // Неверный пароль (Доступ запрещен)
+                LastStartError = "Access Denied.";
+                Stop();
+            }
+            // connection establishing
+            if (args.Data.Contains(ShellStartedMessage))
+            {
+                ConnectionState = EConnectionState.Active;
+            }
+        }
+
         public void Stop()
         {
+            if (ConnectionState == EConnectionState.Inactive)
+                return;
             Debug.WriteLine("Plink: Stopping!");
             try
             {
@@ -196,7 +254,8 @@ namespace PuttyManager.Domain
         {
             // example: -ssh username@domainName -P 22 -pw password -D 5000 -L 44333:username.dyndns.org:44333
 
-            var args = String.Format("-ssh {0}@{1} -P {2} -pw {3} -v", Host.Username, Host.Hostname, Host.Port, Host.Password);
+            //var args = String.Format("-ssh {0}@{1} -P {2} -pw {3} -v", Host.Username, Host.Hostname, Host.Port, Host.Password);
+            var args = String.Format("-ssh {0}@{1} -P {2} -v", Host.Username, Host.Hostname, Host.Port);
             var sb = new StringBuilder(args);
             foreach (var tunnelArg in Host.Tunnels.Select(tunnelArguments))
             {
@@ -221,6 +280,26 @@ namespace PuttyManager.Domain
                 default:
                     throw new FormatException("Некорректный тип туннеля.");
             }
+        }
+    }
+
+    public class ForwardingResult
+    {
+        private ForwardingResult(bool success, string errorString = null)
+        {
+            Success = success;
+            ErrorString = errorString;
+        }
+
+        public static ForwardingResult CreateSuccess() { return new ForwardingResult(true); }
+        public static ForwardingResult CreateFailed(string errorString) { return new ForwardingResult(false, errorString); }
+
+        public bool Success { get; private set; }
+        public string ErrorString { get; private set; }
+
+        public override string ToString()
+        {
+            return Success ? "Succeed" : ErrorString;
         }
     }
 }
