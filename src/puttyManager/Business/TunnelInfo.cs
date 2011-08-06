@@ -15,6 +15,17 @@ namespace PuttyManager.Business
         public string RemoteHostname { get; set; }
         public string RemotePort { get; set; }
 
+        public string SimpleString
+        {
+            get
+            {
+                var strType = Type.ToString()[0];
+                var dstHost = Type == TunnelType.Dynamic ? "" : string.Format(":{0}:{1}", RemoteHostname, RemotePort);
+                var ret = string.Format(@"{0}{1}{2}", strType, LocalPort, dstHost);
+                return ret;
+            }
+        }
+
         public override string ToString()
         {
             var strType = Type == TunnelType.Local ? "L" : (Type == TunnelType.Remote ? "R" : "D");

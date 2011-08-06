@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -20,6 +21,16 @@ namespace PuttyManagerGui
         [STAThread]
         static void Main()
         {
+            Logger.Log.Fatal("fatal_1");
+            try
+            {
+                throw new Exception("asd");
+            }
+            catch (Exception e)
+            {
+                Logger.Log.Fatal("fatal_1", e);
+            }
+            Logger.Log.Debug("debug_msg");
             /*var enc = CryptoHelper.EncryptStringAes("Hello, World!...", "qwerty7");
             var ret = CryptoHelper.DecryptStringAes(enc, "qwerty7");*/
 

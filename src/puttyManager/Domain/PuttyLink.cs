@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using PuttyManager.Business;
+using PuttyManager.Util;
 
 namespace PuttyManager.Domain
 {
@@ -69,7 +70,13 @@ namespace PuttyManager.Domain
             get { return _lastStartError; }
             private set
             {
+                if (value == _lastStartError)
+                    return;
                 _lastStartError = value; // "Reads and writes of the following data types are atomic: bool, char, byte, sbyte, short, ushort, uint, int, float, and reference types."
+                if (!string.IsNullOrEmpty(value))
+                {
+                    Logger.Log.ErrorFormat("[{0}] {1}", Host.Name, value);
+                }
             }
         }
 
@@ -90,7 +97,7 @@ namespace PuttyManager.Domain
         /// </summary>
         public event EventHandler ConnectionStateChanged;
 
-        public Dictionary<TunnelInfo, ForwardingResult> ForwardingResults { get; private set; }
+        //public Dictionary<TunnelInfo, ForwardingResult> ForwardingResults { get; private set; }
 
         private void onConnectionStateChanged()
         {
@@ -120,7 +127,7 @@ namespace PuttyManager.Domain
                 LastStartError = "";
 
                 // fill results dic
-                ForwardingResults = Host.Tunnels.ToDictionary(t => t, t => ForwardingResult.CreateSuccess());
+                //ForwardingResults = Host.Tunnels.ToDictionary(t => t, t => ForwardingResult.CreateSuccess());
 
                 // Процесс
                 _process = new Process
@@ -203,7 +210,8 @@ namespace PuttyManager.Domain
                     t => t.LocalPort == srcPort && t.RemoteHostname == dstHost && t.RemotePort == dstPort && t.Type == TunnelType.Local);
                 if (tunnel != null)
                 {
-                    ForwardingResults[tunnel] = ForwardingResult.CreateFailed(errorString);
+                    //ForwardingResults[tunnel] = ForwardingResult.CreateFailed(errorString);
+                    Logger.Log.WarnFormat("[{0}] [{1}] {2}", Host.Name, tunnel.SimpleString, errorString);
                 }
             }
             // DYNAMIC tunnels error
@@ -216,7 +224,8 @@ namespace PuttyManager.Domain
                     t => t.LocalPort == srcPort && t.Type == TunnelType.Dynamic);
                 if (tunnel != null)
                 {
-                    ForwardingResults[tunnel] = ForwardingResult.CreateFailed(errorString);
+                    //ForwardingResults[tunnel] = ForwardingResult.CreateFailed(errorString);
+                    Logger.Log.WarnFormat("[{0}] [{1}] {2}", Host.Name, tunnel.SimpleString, errorString);
                 }
             }
             // Access denied error
@@ -283,7 +292,7 @@ namespace PuttyManager.Domain
         }
     }
 
-    public class ForwardingResult
+    /*public class ForwardingResult
     {
         private ForwardingResult(bool success, string errorString = null)
         {
@@ -301,5 +310,5 @@ namespace PuttyManager.Domain
         {
             return Success ? "Succeed" : ErrorString;
         }
-    }
+    }*/
 }

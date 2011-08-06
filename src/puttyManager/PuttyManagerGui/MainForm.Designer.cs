@@ -51,11 +51,17 @@
             this.hgwDependsOnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newHostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.killConnectionsExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonAddHost = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonRemoveHost = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonEditHost = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonStart = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonStop = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainerH1 = new System.Windows.Forms.SplitContainer();
             this.treeViewFilter = new System.Windows.Forms.TreeView();
@@ -74,12 +80,6 @@
             this.tgvDstHostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgvDstPortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStripHost = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripButtonAddHost = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonRemoveHost = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonEditHost = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonStart = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonStop = new System.Windows.Forms.ToolStripButton();
-            this.newHostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemEditHost = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRemoveHost = new System.Windows.Forms.ToolStripMenuItem();
             label1 = new System.Windows.Forms.Label();
@@ -254,6 +254,13 @@
             this.actionsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.actionsToolStripMenuItem.Text = "Actions";
             // 
+            // newHostToolStripMenuItem
+            // 
+            this.newHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__plus;
+            this.newHostToolStripMenuItem.Name = "newHostToolStripMenuItem";
+            this.newHostToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.newHostToolStripMenuItem.Text = "&New host...";
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -286,10 +293,60 @@
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripButtonAddHost
+            // 
+            this.toolStripButtonAddHost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAddHost.Image = global::PuttyManagerGui.Properties.Resources.server__plus;
+            this.toolStripButtonAddHost.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddHost.Name = "toolStripButtonAddHost";
+            this.toolStripButtonAddHost.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonAddHost.Text = "New host...";
+            this.toolStripButtonAddHost.Click += new System.EventHandler(this.toolStripButtonAddHost_Click);
+            // 
+            // toolStripButtonRemoveHost
+            // 
+            this.toolStripButtonRemoveHost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonRemoveHost.Image = global::PuttyManagerGui.Properties.Resources.server__minus;
+            this.toolStripButtonRemoveHost.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonRemoveHost.Name = "toolStripButtonRemoveHost";
+            this.toolStripButtonRemoveHost.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonRemoveHost.Text = "Remove Host";
+            this.toolStripButtonRemoveHost.Click += new System.EventHandler(this.toolStripButtonRemoveHost_Click);
+            // 
+            // toolStripButtonEditHost
+            // 
+            this.toolStripButtonEditHost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonEditHost.Image = global::PuttyManagerGui.Properties.Resources.server__pencil;
+            this.toolStripButtonEditHost.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEditHost.Name = "toolStripButtonEditHost";
+            this.toolStripButtonEditHost.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonEditHost.Text = "Edit Host...";
+            this.toolStripButtonEditHost.Click += new System.EventHandler(this.toolStripButtonEditHost_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButtonStart
+            // 
+            this.toolStripButtonStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonStart.Image = global::PuttyManagerGui.Properties.Resources.control;
+            this.toolStripButtonStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonStart.Name = "toolStripButtonStart";
+            this.toolStripButtonStart.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonStart.Text = "Start";
+            this.toolStripButtonStart.Click += new System.EventHandler(this.toolStripButtonStart_Click);
+            // 
+            // toolStripButtonStop
+            // 
+            this.toolStripButtonStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonStop.Image = global::PuttyManagerGui.Properties.Resources.control_stop_square;
+            this.toolStripButtonStop.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonStop.Name = "toolStripButtonStop";
+            this.toolStripButtonStop.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonStop.Text = "Stop";
+            this.toolStripButtonStop.Click += new System.EventHandler(this.toolStripButtonStop_Click);
             // 
             // statusStrip1
             // 
@@ -533,63 +590,6 @@
             this.contextMenuStripHost.Name = "contextMenuStripHost";
             this.contextMenuStripHost.Size = new System.Drawing.Size(118, 48);
             // 
-            // toolStripButtonAddHost
-            // 
-            this.toolStripButtonAddHost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddHost.Image = global::PuttyManagerGui.Properties.Resources.server__plus;
-            this.toolStripButtonAddHost.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddHost.Name = "toolStripButtonAddHost";
-            this.toolStripButtonAddHost.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonAddHost.Text = "New host...";
-            this.toolStripButtonAddHost.Click += new System.EventHandler(this.toolStripButtonAddHost_Click);
-            // 
-            // toolStripButtonRemoveHost
-            // 
-            this.toolStripButtonRemoveHost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonRemoveHost.Image = global::PuttyManagerGui.Properties.Resources.server__minus;
-            this.toolStripButtonRemoveHost.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonRemoveHost.Name = "toolStripButtonRemoveHost";
-            this.toolStripButtonRemoveHost.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonRemoveHost.Text = "Remove Host";
-            this.toolStripButtonRemoveHost.Click += new System.EventHandler(this.toolStripButtonRemoveHost_Click);
-            // 
-            // toolStripButtonEditHost
-            // 
-            this.toolStripButtonEditHost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonEditHost.Image = global::PuttyManagerGui.Properties.Resources.server__pencil;
-            this.toolStripButtonEditHost.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonEditHost.Name = "toolStripButtonEditHost";
-            this.toolStripButtonEditHost.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonEditHost.Text = "Edit Host...";
-            this.toolStripButtonEditHost.Click += new System.EventHandler(this.toolStripButtonEditHost_Click);
-            // 
-            // toolStripButtonStart
-            // 
-            this.toolStripButtonStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonStart.Image = global::PuttyManagerGui.Properties.Resources.control;
-            this.toolStripButtonStart.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonStart.Name = "toolStripButtonStart";
-            this.toolStripButtonStart.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonStart.Text = "Start";
-            this.toolStripButtonStart.Click += new System.EventHandler(this.toolStripButtonStart_Click);
-            // 
-            // toolStripButtonStop
-            // 
-            this.toolStripButtonStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonStop.Image = global::PuttyManagerGui.Properties.Resources.control_stop_square;
-            this.toolStripButtonStop.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonStop.Name = "toolStripButtonStop";
-            this.toolStripButtonStop.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonStop.Text = "Stop";
-            this.toolStripButtonStop.Click += new System.EventHandler(this.toolStripButtonStop_Click);
-            // 
-            // newHostToolStripMenuItem
-            // 
-            this.newHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__plus;
-            this.newHostToolStripMenuItem.Name = "newHostToolStripMenuItem";
-            this.newHostToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.newHostToolStripMenuItem.Text = "&New host...";
-            // 
             // toolStripMenuItemEditHost
             // 
             this.toolStripMenuItemEditHost.Image = global::PuttyManagerGui.Properties.Resources.server__pencil;
@@ -617,6 +617,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(620, 440);
             this.Name = "MainForm";
             this.Text = "SSH Tunnel Manager";
             ((System.ComponentModel.ISupportInitialize)(this.hostsGridView)).EndInit();
