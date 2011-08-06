@@ -42,6 +42,7 @@
             treeNode2,
             treeNode3});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.hostsGridView = new System.Windows.Forms.DataGridView();
             this.hgwStatusIconColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.hgwNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +68,8 @@
             this.treeViewFilter = new System.Windows.Forms.TreeView();
             this.imageListStates = new System.Windows.Forms.ImageList(this.components);
             this.splitContainerV1 = new System.Windows.Forms.SplitContainer();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelUniqName = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
@@ -74,14 +77,16 @@
             this.labelHost = new System.Windows.Forms.Label();
             this.labelStatus = new System.Windows.Forms.Label();
             this.tunnelsGridView = new System.Windows.Forms.DataGridView();
+            this.tabPageLog = new System.Windows.Forms.TabPage();
+            this.contextMenuStripHost = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemEditHost = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemRemoveHost = new System.Windows.Forms.ToolStripMenuItem();
             this.tgvNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgvTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgvSrcPortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgvDstHostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgvDstPortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStripHost = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemEditHost = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemRemoveHost = new System.Windows.Forms.ToolStripMenuItem();
+            this.listBoxLog = new System.Windows.Forms.ListBox();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
@@ -98,8 +103,11 @@
             this.splitContainerV1.Panel1.SuspendLayout();
             this.splitContainerV1.Panel2.SuspendLayout();
             this.splitContainerV1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPageGeneral.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tunnelsGridView)).BeginInit();
+            this.tabPageLog.SuspendLayout();
             this.contextMenuStripHost.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,7 +134,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(444, 3);
+            label7.Location = new System.Drawing.Point(436, 3);
             label7.Margin = new System.Windows.Forms.Padding(3);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(40, 13);
@@ -136,7 +144,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(226, 3);
+            label9.Location = new System.Drawing.Point(222, 3);
             label9.Margin = new System.Windows.Forms.Padding(3);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(70, 13);
@@ -146,7 +154,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(226, 22);
+            label5.Location = new System.Drawing.Point(222, 22);
             label5.Margin = new System.Windows.Forms.Padding(3);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(32, 13);
@@ -175,7 +183,7 @@
             this.hostsGridView.Name = "hostsGridView";
             this.hostsGridView.RowHeadersVisible = false;
             this.hostsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.hostsGridView.Size = new System.Drawing.Size(630, 213);
+            this.hostsGridView.Size = new System.Drawing.Size(632, 213);
             this.hostsGridView.TabIndex = 0;
             this.hostsGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.hostsGridView_CellFormatting);
             this.hostsGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.hostsGridView_CellMouseDoubleClick);
@@ -371,7 +379,6 @@
             this.splitContainerH1.Panel2.Controls.Add(this.splitContainerV1);
             this.splitContainerH1.Size = new System.Drawing.Size(770, 398);
             this.splitContainerH1.SplitterDistance = 134;
-            this.splitContainerH1.SplitterWidth = 6;
             this.splitContainerH1.TabIndex = 4;
             // 
             // treeViewFilter
@@ -428,11 +435,32 @@
             // 
             // splitContainerV1.Panel2
             // 
-            this.splitContainerV1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainerV1.Size = new System.Drawing.Size(630, 398);
+            this.splitContainerV1.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainerV1.Size = new System.Drawing.Size(632, 398);
             this.splitContainerV1.SplitterDistance = 213;
-            this.splitContainerV1.SplitterWidth = 6;
             this.splitContainerV1.TabIndex = 1;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPageGeneral);
+            this.tabControl1.Controls.Add(this.tabPageLog);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(632, 181);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tabPageGeneral
+            // 
+            this.tabPageGeneral.Controls.Add(this.tableLayoutPanel1);
+            this.tabPageGeneral.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGeneral.Name = "tabPageGeneral";
+            this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.tabPageGeneral.Size = new System.Drawing.Size(624, 155);
+            this.tabPageGeneral.TabIndex = 0;
+            this.tabPageGeneral.Text = "General";
+            this.tabPageGeneral.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -455,13 +483,13 @@
             this.tableLayoutPanel1.Controls.Add(this.tunnelsGridView, 0, 2);
             this.tableLayoutPanel1.Controls.Add(label5, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(630, 179);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(618, 152);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // labelUniqName
@@ -487,7 +515,7 @@
             // labelDependsOn
             // 
             this.labelDependsOn.AutoSize = true;
-            this.labelDependsOn.Location = new System.Drawing.Point(302, 3);
+            this.labelDependsOn.Location = new System.Drawing.Point(298, 3);
             this.labelDependsOn.Margin = new System.Windows.Forms.Padding(3);
             this.labelDependsOn.Name = "labelDependsOn";
             this.labelDependsOn.Size = new System.Drawing.Size(33, 13);
@@ -497,7 +525,7 @@
             // labelHost
             // 
             this.labelHost.AutoSize = true;
-            this.labelHost.Location = new System.Drawing.Point(302, 22);
+            this.labelHost.Location = new System.Drawing.Point(298, 22);
             this.labelHost.Margin = new System.Windows.Forms.Padding(3);
             this.labelHost.Name = "labelHost";
             this.labelHost.Size = new System.Drawing.Size(33, 13);
@@ -507,7 +535,7 @@
             // labelStatus
             // 
             this.labelStatus.AutoSize = true;
-            this.labelStatus.Location = new System.Drawing.Point(490, 3);
+            this.labelStatus.Location = new System.Drawing.Point(482, 3);
             this.labelStatus.Margin = new System.Windows.Forms.Padding(3);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(33, 13);
@@ -522,7 +550,16 @@
             this.tunnelsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tunnelsGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tunnelsGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.tunnelsGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tunnelsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tunnelsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tunnelsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tunnelsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tgvNameColumn,
@@ -532,23 +569,61 @@
             this.tgvDstPortColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.tunnelsGridView, 6);
             this.tunnelsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tunnelsGridView.Location = new System.Drawing.Point(0, 41);
-            this.tunnelsGridView.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.tunnelsGridView.EnableHeadersVisualStyles = false;
+            this.tunnelsGridView.Location = new System.Drawing.Point(3, 41);
+            this.tunnelsGridView.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
             this.tunnelsGridView.MultiSelect = false;
             this.tunnelsGridView.Name = "tunnelsGridView";
             this.tunnelsGridView.ReadOnly = true;
             this.tunnelsGridView.RowHeadersVisible = false;
             this.tunnelsGridView.RowTemplate.Height = 18;
             this.tunnelsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tunnelsGridView.Size = new System.Drawing.Size(630, 138);
+            this.tunnelsGridView.Size = new System.Drawing.Size(615, 111);
             this.tunnelsGridView.TabIndex = 7;
+            this.tunnelsGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tunnelsGridView_CellFormatting);
+            this.tunnelsGridView.SelectionChanged += new System.EventHandler(this.tunnelsGridView_SelectionChanged);
+            // 
+            // tabPageLog
+            // 
+            this.tabPageLog.Controls.Add(this.listBoxLog);
+            this.tabPageLog.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLog.Name = "tabPageLog";
+            this.tabPageLog.Size = new System.Drawing.Size(624, 155);
+            this.tabPageLog.TabIndex = 1;
+            this.tabPageLog.Text = "Log";
+            this.tabPageLog.UseVisualStyleBackColor = true;
+            // 
+            // contextMenuStripHost
+            // 
+            this.contextMenuStripHost.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemEditHost,
+            this.toolStripMenuItemRemoveHost});
+            this.contextMenuStripHost.Name = "contextMenuStripHost";
+            this.contextMenuStripHost.Size = new System.Drawing.Size(118, 48);
+            // 
+            // toolStripMenuItemEditHost
+            // 
+            this.toolStripMenuItemEditHost.Image = global::PuttyManagerGui.Properties.Resources.server__pencil;
+            this.toolStripMenuItemEditHost.Name = "toolStripMenuItemEditHost";
+            this.toolStripMenuItemEditHost.Size = new System.Drawing.Size(117, 22);
+            this.toolStripMenuItemEditHost.Text = "&Edit...";
+            this.toolStripMenuItemEditHost.Click += new System.EventHandler(this.toolStripMenuItemEditHost_Click);
+            // 
+            // toolStripMenuItemRemoveHost
+            // 
+            this.toolStripMenuItemRemoveHost.Image = global::PuttyManagerGui.Properties.Resources.server__minus;
+            this.toolStripMenuItemRemoveHost.Name = "toolStripMenuItemRemoveHost";
+            this.toolStripMenuItemRemoveHost.Size = new System.Drawing.Size(117, 22);
+            this.toolStripMenuItemRemoveHost.Text = "&Remove";
+            this.toolStripMenuItemRemoveHost.Click += new System.EventHandler(this.toolStripMenuItemRemoveHost_Click);
             // 
             // tgvNameColumn
             // 
             this.tgvNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tgvNameColumn.HeaderText = "Alias";
+            this.tgvNameColumn.HeaderText = "Tunnel";
             this.tgvNameColumn.Name = "tgvNameColumn";
             this.tgvNameColumn.ReadOnly = true;
+            this.tgvNameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // tgvTypeColumn
             // 
@@ -582,29 +657,18 @@
             this.tgvDstPortColumn.ReadOnly = true;
             this.tgvDstPortColumn.Width = 76;
             // 
-            // contextMenuStripHost
+            // listBoxLog
             // 
-            this.contextMenuStripHost.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemEditHost,
-            this.toolStripMenuItemRemoveHost});
-            this.contextMenuStripHost.Name = "contextMenuStripHost";
-            this.contextMenuStripHost.Size = new System.Drawing.Size(118, 48);
-            // 
-            // toolStripMenuItemEditHost
-            // 
-            this.toolStripMenuItemEditHost.Image = global::PuttyManagerGui.Properties.Resources.server__pencil;
-            this.toolStripMenuItemEditHost.Name = "toolStripMenuItemEditHost";
-            this.toolStripMenuItemEditHost.Size = new System.Drawing.Size(117, 22);
-            this.toolStripMenuItemEditHost.Text = "&Edit...";
-            this.toolStripMenuItemEditHost.Click += new System.EventHandler(this.toolStripMenuItemEditHost_Click);
-            // 
-            // toolStripMenuItemRemoveHost
-            // 
-            this.toolStripMenuItemRemoveHost.Image = global::PuttyManagerGui.Properties.Resources.server__minus;
-            this.toolStripMenuItemRemoveHost.Name = "toolStripMenuItemRemoveHost";
-            this.toolStripMenuItemRemoveHost.Size = new System.Drawing.Size(117, 22);
-            this.toolStripMenuItemRemoveHost.Text = "&Remove";
-            this.toolStripMenuItemRemoveHost.Click += new System.EventHandler(this.toolStripMenuItemRemoveHost_Click);
+            this.listBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxLog.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBoxLog.FormattingEnabled = true;
+            this.listBoxLog.IntegralHeight = false;
+            this.listBoxLog.Location = new System.Drawing.Point(0, 0);
+            this.listBoxLog.Margin = new System.Windows.Forms.Padding(0);
+            this.listBoxLog.Name = "listBoxLog";
+            this.listBoxLog.Size = new System.Drawing.Size(624, 155);
+            this.listBoxLog.TabIndex = 0;
+            this.listBoxLog.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxLog_DrawItem);
             // 
             // MainForm
             // 
@@ -633,9 +697,12 @@
             this.splitContainerV1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerV1)).EndInit();
             this.splitContainerV1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPageGeneral.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tunnelsGridView)).EndInit();
+            this.tabPageLog.ResumeLayout(false);
             this.contextMenuStripHost.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -677,12 +744,16 @@
         private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.Label labelDependsOn;
         private System.Windows.Forms.DataGridView tunnelsGridView;
+        private System.Windows.Forms.ToolStripButton toolStripButtonStart;
+        private System.Windows.Forms.ToolStripButton toolStripButtonStop;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPageGeneral;
+        private System.Windows.Forms.TabPage tabPageLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvTypeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvSrcPortColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstHostColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstPortColumn;
-        private System.Windows.Forms.ToolStripButton toolStripButtonStart;
-        private System.Windows.Forms.ToolStripButton toolStripButtonStop;
+        private System.Windows.Forms.ListBox listBoxLog;
     }
 }

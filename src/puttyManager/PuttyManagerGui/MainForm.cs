@@ -10,11 +10,12 @@ using System.Windows.Forms;
 using PuttyManager.Business;
 using PuttyManager.Domain;
 using PuttyManager.Ext.BLW;
+using PuttyManager.Util;
 using PuttyManagerGui.Properties;
 
 namespace PuttyManagerGui
 {
-    public partial class MainForm : Form
+    public partial class MainForm : TrayForm
     {
         /*private const string HgwStatusIconColumnName = "hgwStatusIconColumn";
         private const string HgwNameColumnName = "hgwNameColumn";
@@ -25,6 +26,7 @@ namespace PuttyManagerGui
 
         private readonly HostsManager<HostViewModel> _hostsManager = new HostsManager<HostViewModel>();
         private readonly BindingSource _bindingSource;
+        private static readonly Color _darkRedColor = Color.FromArgb(165, 0, 0);
 
         public MainForm()
         {
@@ -60,6 +62,30 @@ namespace PuttyManagerGui
             treeViewFilter.ExpandAll();
             treeViewFilter.SelectedNode = treeViewFilter.Nodes[0];
             ActiveControl = hostsGridView;
+
+            DelegateAppender.SyncObject = this;
+            DelegateAppender.OnAppend += onLogAppended;
+        }
+
+        private void onLogAppended(object sender, LogAppendedEventArgs e)
+        {
+            object o;
+            if (!e.Properties.TryGetValue("Host", out o))
+            {
+                return;
+            }
+
+            var h = (HostInfo) o;
+            h.AddEventToLog(e.AppendedData);
+            if (((ObjectView<HostViewModel>)_bindingSource.Current).Object.Model.Info == h)
+            {
+                // this is current Host
+                if (listBoxLog.Items.Count >= HostInfo.EventLogMaxSize)
+                {
+                    listBoxLog.Items.RemoveAt(0);
+                }
+                listBoxLog.Items.Add(e.AppendedData);
+            }
         }
 
         private void onHostStatusChanged(object sender, EventArgs e)
@@ -74,6 +100,11 @@ namespace PuttyManagerGui
                     updateCurrentHostDetails();
                 }
                 updateFilter(treeViewFilter.SelectedNode);
+                if (hvm.Model.Status == HostStatus.Stopped && !string.IsNullOrEmpty(hvm.Model.Link.LastStartError))
+                {
+                    // host stopped with error
+                    TrayIcon.ShowBalloonTip(2000, Util.AssemblyTitle, string.Format("[{0}] {1}", hvm.Name, hvm.Model.Link.LastStartError), ToolTipIcon.Error);
+                }
             });
         }
 
@@ -88,6 +119,7 @@ namespace PuttyManagerGui
 
             var h = ov.Object;
             // bottom split panel
+            // general
             splitContainerV1.Panel2Collapsed = false;
             labelUniqName.Text = h.Name;
             labelUsername.Text = h.Username;
@@ -107,6 +139,9 @@ namespace PuttyManagerGui
                 row.Tag = tunnel;
                 tunnelsGridView.Rows.Add(row);
             }
+            // log
+            listBoxLog.Items.Clear();
+            listBoxLog.Items.AddRange(h.Model.Info.EventLog.ToArray());
             // menus
             toolStripButtonStart.Enabled = h.Model.Status == HostStatus.Stopped;
             toolStripButtonStop.Enabled = h.Model.Status != HostStatus.Stopped;
@@ -308,7 +343,7 @@ namespace PuttyManagerGui
                 _hostsManager.Hosts.ApplyFilter(m => m.Model.Status == HostStatus.Unknown);
                 break;
             case 3:
-                _hostsManager.Hosts.ApplyFilter(m => m.Model.Status == HostStatus.Started);
+                _hostsManager.Hosts.ApplyFilter(m => m.Model.Status == HostStatus.Started || m.Model.Status == HostStatus.StartedWithWarnings);
                 break;
             }
         }
@@ -353,6 +388,55 @@ namespace PuttyManagerGui
                     hostsGridView.Rows[e.RowIndex].Tag = host;
                 }
                 e.CellStyle.ForeColor = host.StatusColor;
+            }
+        }
+
+        private void tunnelsGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (tunnelsGridView.SelectedRows.Count > 0)
+            {
+                tunnelsGridView.ClearSelection();
+            }
+        }
+
+        private void listBoxLog_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+
+            e.DrawBackground();
+            Brush myBrush = Brushes.Black;
+            var text = ((ListBox) sender).Items[e.Index].ToString();
+
+            if (text.StartsWith("ERROR", StringComparison.CurrentCultureIgnoreCase) ||
+                text.StartsWith("FATAL", StringComparison.CurrentCultureIgnoreCase))
+            {
+                myBrush = new SolidBrush(_darkRedColor);
+            }
+            else if (text.StartsWith("WARN", StringComparison.CurrentCultureIgnoreCase))
+            {
+                myBrush = new SolidBrush(Color.FromArgb(181, 166, 16));
+            }
+
+            e.Graphics.DrawString(text, e.Font, myBrush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+        }
+
+        private void tunnelsGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            var host = ((ObjectView<HostViewModel>) _bindingSource.Current).Object.Model;
+            if (host.Status != HostStatus.StartedWithWarnings)
+                return;
+            var tname = tunnelsGridView.Rows[e.RowIndex].Cells[tgvNameColumn.Name].Value.ToString();
+            var result = host.Link.ForwardingResults.FirstOrDefault(p => p.Key.Name == tname);
+            if (result.Value == null)
+                return;
+            if (!result.Value.Success)
+            {
+                e.CellStyle.ForeColor = _darkRedColor;
             }
         }
     }

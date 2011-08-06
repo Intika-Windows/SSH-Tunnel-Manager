@@ -12,6 +12,7 @@ namespace PuttyManager.Business
     {
         Stopped,
         Unknown,
+        StartedWithWarnings,
         Started
     }
 }

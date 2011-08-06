@@ -38,6 +38,10 @@ namespace PuttyManagerGui
             _exitToolStripMenuItem.Size = new Size(173, 22);
             _exitToolStripMenuItem.Text = @"&Exit";
             _exitToolStripMenuItem.Click += exitClick;
+
+            TrayContextMenuStrip.Items.Add(_hideShowToolStripMenuItem);
+            TrayContextMenuStrip.Items.Add("-");
+            TrayContextMenuStrip.Items.Add(_exitToolStripMenuItem);
         }
 
         public override string Text
@@ -59,6 +63,8 @@ namespace PuttyManagerGui
                 _theNotifyIcon.Icon = value;
             }
         }
+
+        public NotifyIcon TrayIcon { get { return _theNotifyIcon; } }
 
         public event MouseEventHandler TrayMouseClick
         {
@@ -110,7 +116,7 @@ namespace PuttyManagerGui
             if (!_timeToExit && e.CloseReason == CloseReason.UserClosing)
             {
                 // Просто спрятать
-                _theNotifyIcon.ShowBalloonTip(2000, Text, Text + " has minimized here.", ToolTipIcon.Info);
+                _theNotifyIcon.ShowBalloonTip(2000, Util.AssemblyTitle, Text + " has minimized here.", ToolTipIcon.Info);
 
                 hideToTray();
 

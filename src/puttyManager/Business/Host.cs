@@ -27,6 +27,8 @@ namespace PuttyManager.Business
                     return HostStatus.Stopped;
                 case EConnectionState.Intermediate:
                     return HostStatus.Unknown;
+                case EConnectionState.ActiveWithWarnings:
+                    return HostStatus.StartedWithWarnings;
                 case EConnectionState.Active:
                     return HostStatus.Started;
                 default:

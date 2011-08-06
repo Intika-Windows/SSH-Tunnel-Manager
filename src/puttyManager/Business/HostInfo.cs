@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Xml.Serialization;
 using PuttyManager.Domain;
 
@@ -64,6 +65,25 @@ namespace PuttyManager.Business
 
         public string HostAndPort { get { return string.Format("{0}:{1}", Hostname, Port); } }
 
+        #region Event Log
+
+        private readonly List<string> _eventLog = new List<string>();
+        public const int EventLogMaxSize = 100;
+
+        [XmlIgnore]
+        public ReadOnlyCollection<string> EventLog { get { return _eventLog.AsReadOnly(); } }
+
+        public void AddEventToLog(string eventMessage)
+        {
+            if (_eventLog.Count >= EventLogMaxSize)
+            {
+                _eventLog.RemoveAt(0);
+            }
+            _eventLog.Add(eventMessage);
+        }
+
+        #endregion
+
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType())
@@ -89,7 +109,7 @@ namespace PuttyManager.Business
 
         private string uniqString()
         {
-            return string.Format("{0}:{1}", Hostname, Port);
+            return string.Format("{0}@{1}:{2}", Username, Hostname, Port);
         }
     }
 }
