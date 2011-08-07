@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using PuttyManager.Business;
 using PuttyManager.Domain;
@@ -17,13 +18,6 @@ namespace PuttyManagerGui
 {
     public partial class MainForm : TrayForm
     {
-        /*private const string HgwStatusIconColumnName = "hgwStatusIconColumn";
-        private const string HgwNameColumnName = "hgwNameColumn";
-        private const string HgwUsernameColumnName = "hgwUsernameColumn";
-        private const string HgwHostnameColumnName = "hgwHostnameColumn";
-        private const string HgwStatusColumnName = "hgwStatusColumn";
-        private const string HgwDependsOnColumnName = "hgwDependsOnColumn";*/
-
         private readonly HostsManager<HostViewModel> _hostsManager = new HostsManager<HostViewModel>();
         private readonly BindingSource _bindingSource;
         private static readonly Color _darkRedColor = Color.FromArgb(165, 0, 0);
@@ -31,16 +25,6 @@ namespace PuttyManagerGui
         public MainForm()
         {
             InitializeComponent();
-
-            /*hgwStatusIconColumn.DataPropertyName = HgwStatusIconColumnName;
-            hgwNameColumn.DataPropertyName = HgwNameColumnName;
-            hgwUsernameColumn.DataPropertyName = HgwUsernameColumnName;
-            hgwHostnameColumn.DataPropertyName = HgwHostnameColumnName;
-            hgwStatusColumn.DataPropertyName = HgwStatusColumnName;
-            hgwDependsOnColumn.DataPropertyName = HgwDependsOnColumnName;
-
-            fillHostsTable();
-            _hostsManager.Hosts.CollectionChanged += hostsCollectionChanged;*/
 
             foreach (var host in _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(o => o.Object))
             {
@@ -77,7 +61,8 @@ namespace PuttyManagerGui
 
             var h = (HostInfo) o;
             h.AddEventToLog(e.AppendedData);
-            if (((ObjectView<HostViewModel>)_bindingSource.Current).Object.Model.Info == h)
+            if (_bindingSource.Current != null && 
+                ((ObjectView<HostViewModel>)_bindingSource.Current).Object.Model.Info == h)
             {
                 // this is current Host
                 if (listBoxLog.Items.Count >= HostInfo.EventLogMaxSize)
@@ -143,12 +128,14 @@ namespace PuttyManagerGui
             listBoxLog.Items.Clear();
             listBoxLog.Items.AddRange(h.Model.Info.EventLog.ToArray());
             // menus
-            toolStripButtonStart.Enabled = h.Model.Status == HostStatus.Stopped;
-            toolStripButtonStop.Enabled = h.Model.Status != HostStatus.Stopped;
+            bool hostStopped = h.Model.Status == HostStatus.Stopped;
+            toolStripButtonStart.Enabled = hostStopped;
+            toolStripButtonStop.Enabled = !hostStopped;
             // edit buttons
-            bool canEdit = h.Model.Status == HostStatus.Stopped;
+            bool canEdit = hostStopped;
             toolStripMenuItemEditHost.Enabled = canEdit;
             toolStripButtonEditHost.Enabled = canEdit;
+            editHostToolStripMenuItem.Enabled = canEdit;
         }
 
         /*private void fillHostsTable()
@@ -209,27 +196,6 @@ namespace PuttyManagerGui
             }
         }*/
 
-        private void hostsGridView_RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
-        {
-            _bindingSource.Position = _bindingSource.Find("Name", hostsGridView.Rows[e.RowIndex].Cells[hgwNameColumn.Name].Value.ToString());
-            e.ContextMenuStrip = contextMenuStripHost;
-        }
-
-        private void toolStripButtonAddHost_Click(object sender, EventArgs e)
-        {
-            addHost();
-        }
-
-        private void toolStripMenuItemRemoveHost_Click(object sender, EventArgs e)
-        {
-            removeHost();
-        }
-
-        private void toolStripButtonRemoveHost_Click(object sender, EventArgs e)
-        {
-            removeHost();
-        }
-
         private HostInfo selectedHostInfo()
         {
             var hostvm = selectedHostViewModel();
@@ -247,6 +213,15 @@ namespace PuttyManagerGui
             }
             return null;
         }
+
+        private HostViewModel currentHostViewModel()
+        {
+            if (_bindingSource.Current == null)
+                return null;
+            return ((ObjectView<HostViewModel>) _bindingSource.Current).Object;
+        }
+
+        #region Commands
 
         private void addHost()
         {
@@ -291,21 +266,31 @@ namespace PuttyManagerGui
         private void removeHost()
         {
             var host = selectedHostViewModel();
-            var hosts = _hostsManager.DependentHosts(host);
+            var depHostsDeep = _hostsManager.DependentHosts(host, true);
+            var depHosts = _hostsManager.DependentHosts(host, false);
 
-            if (hosts.Count > 0)
+            if (depHosts.Count > 0)
             {
-                var res1 = MessageBox.Show(this, string.Format(@"Host '{0}' have following dependencies:{1}{1}{2}{1}{1}Are you sure you want to remove the selected host and this dependencies?", 
-                    host.Name, Environment.NewLine, string.Join(Environment.NewLine, hosts.Select(h => h.Name))), 
+                var res1 = MessageBox.Show(this, string.Format(@"Following hosts depends on host '{0}':{1}{1}{2}{1}{1}Are you sure you want to remove the selected host?", 
+                    host.Name, Environment.NewLine, string.Join(Environment.NewLine, depHostsDeep.Select(h => h.Name))), 
                     Util.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res1 == DialogResult.No)
                     return;
 
+                new Thread(delegate()
+                               {
+                                   host.Model.Link.Stop();
+                                   host.Model.Link.WaitForStop();
+                               }).Start();
+
                 _bindingSource.Remove(host);
-                foreach (var host1 in hosts)
+                host.StatusChanged -= onHostStatusChanged;
+
+                foreach (var host1 in depHosts)
                 {
-                    _bindingSource.Remove(host1);
-                    host1.StatusChanged -= onHostStatusChanged;
+                    host1.Model.Info.DependsOn = null;
+                    /*_bindingSource.Remove(host1);
+                    host1.StatusChanged -= onHostStatusChanged;*/
                 }
             } else
             {
@@ -314,15 +299,55 @@ namespace PuttyManagerGui
                 if (res2 == DialogResult.No)
                     return;
 
+                new Thread(delegate()
+                               {
+                                   host.Model.Link.Stop();
+                                   host.Model.Link.WaitForStop();
+                               }).Start();
+
                 _bindingSource.Remove(host);
                 host.StatusChanged -= onHostStatusChanged;
             }
         }
 
-        private void toolStripButtonEditHost_Click(object sender, EventArgs e)
+        private void startHost()
         {
-            editHost(selectedHostViewModel());
+            var viewmodel = ((ObjectView<HostViewModel>) _bindingSource.Current).Object;
+            var host = viewmodel.Model.Info;
+
+            // building dependency list
+            var depList = new List<Host>();
+            for (var parent = host.DependsOn; parent != null; parent = parent.DependsOn)
+            {
+                var h =
+                    _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(v => v.Object.Model).First(
+                        m => m.Info == parent);
+                depList.Insert(0, h);
+            }
+
+            if (depList.All(h => h.Status == HostStatus.Started || h.Status == HostStatus.StartedWithWarnings))
+            {
+                // All hosts is started or started with warnings
+                viewmodel.Model.Link.AsyncStart();
+            }
+            else
+            {
+                var result = MessageBox.Show(this, string.Format(
+                    "Some hosts what host '{0}' depends on are down. Start recursively?",
+                    host.Name), Util.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                    return;
+                Thread t = new Thread(() => startHostAndParentHosts(viewmodel, depList));
+                t.Start();
+            }
         }
+
+        private void stopHost()
+        {
+            ((ObjectView<HostViewModel>) _bindingSource.Current).Object.Model.Link.Stop();
+        }
+
+        #endregion
 
         private void treeViewFilter_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -348,29 +373,128 @@ namespace PuttyManagerGui
             }
         }
 
-        private void hostsGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex < 0)
-                return;
-            var name = hostsGridView.Rows[e.RowIndex].Cells[hgwNameColumn.Name].Value.ToString();
-            var host = _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(m => m.Object).First(m => m.Name == name);
-            
-            editHost(host);
-        }
+        #region Hosts Context Menu
 
         private void toolStripMenuItemEditHost_Click(object sender, EventArgs e)
         {
             editHost(selectedHostViewModel());
         }
 
+        private void toolStripMenuItemRemoveHost_Click(object sender, EventArgs e)
+        {
+            removeHost();
+        }
+
+        #endregion
+
+        #region ToolBar
+
+        private void toolStripButtonAddHost_Click(object sender, EventArgs e)
+        {
+            addHost();
+        }
+
+        private void toolStripButtonRemoveHost_Click(object sender, EventArgs e)
+        {
+            removeHost();
+        }
+
+        private void toolStripButtonEditHost_Click(object sender, EventArgs e)
+        {
+            editHost(selectedHostViewModel());
+        }
+
         private void toolStripButtonStart_Click(object sender, EventArgs e)
         {
-            ((ObjectView<HostViewModel>)_bindingSource.Current).Object.Model.Link.AsyncStart();
+            startHost();
         }
 
         private void toolStripButtonStop_Click(object sender, EventArgs e)
         {
-            ((ObjectView<HostViewModel>)_bindingSource.Current).Object.Model.Link.Stop();
+            stopHost();
+        }
+
+        #endregion
+
+        #region Main Menu
+
+        private void addHostToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addHost();
+        }
+
+        private void editHostToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editHost(selectedHostViewModel());
+        }
+
+        private void removeHostToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            removeHost();
+        }
+
+        private void startToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            startHost();
+        }
+
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            stopHost();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var activeHosts = _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Where(
+                    o => o.Object.Model.Status != HostStatus.Stopped).Select(o => o.Object.Model).ToList();
+            foreach (var host in activeHosts)
+            {
+                host.Link.Stop();
+            }
+            ReallyClose();
+        }
+
+        private void keepConnectionsExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReallyClose();
+        }
+
+        #endregion
+
+        private static void startHostAndParentHosts(HostViewModel viewmodel, List<Host> depList)
+        {
+            foreach (var h1 in depList)
+            {
+                if (h1.Link.ConnectionState == EConnectionState.Intermediate)
+                {
+                    h1.Link.Stop();
+                    if (!h1.Link.WaitForStop())
+                    {
+                        MessageBox.Show(
+                            string.Format(
+                                "STOP action for host '{0}' timed out. Terminating actions chain.",
+                                h1.Info.Name),
+                            Util.AssemblyTitle, MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                if (h1.Link.ConnectionState == EConnectionState.Inactive)
+                {
+                    h1.Link.AsyncStart();
+                    if (!h1.Link.WaitForStart())
+                    {
+                        MessageBox.Show(
+                            string.Format(
+                                "START action for host '{0}' timed out. Terminating actions chain.",
+                                h1.Info.Name),
+                            Util.AssemblyTitle, MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+            }
+            viewmodel.Model.Link.AsyncStart();
         }
 
         private void hostsGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -391,11 +515,55 @@ namespace PuttyManagerGui
             }
         }
 
+        private void hostsGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+            var name = hostsGridView.Rows[e.RowIndex].Cells[hgwNameColumn.Name].Value.ToString();
+            var host = _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(m => m.Object).First(m => m.Name == name);
+            
+            editHost(host);
+        }
+
+        private void hostsGridView_RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
+        {
+            _bindingSource.Position = _bindingSource.Find("Name", hostsGridView.Rows[e.RowIndex].Cells[hgwNameColumn.Name].Value.ToString());
+            var host = currentHostViewModel();
+
+            var strip = new ContextMenuStrip();
+            if (host.Model.Status == HostStatus.Stopped)
+                strip.Items.Add("Start", Resources.control, delegate { startHost(); });
+            else
+                strip.Items.Add("Stop", Resources.control_stop_square, delegate { stopHost(); });
+            strip.Items.Add("-");
+            strip.Items.Add("&Edit...", Resources.server__pencil, toolStripMenuItemEditHost_Click);
+            strip.Items.Add("&Remove", Resources.server__minus, toolStripMenuItemRemoveHost_Click);
+            e.ContextMenuStrip = strip;
+        }
+
         private void tunnelsGridView_SelectionChanged(object sender, EventArgs e)
         {
             if (tunnelsGridView.SelectedRows.Count > 0)
             {
                 tunnelsGridView.ClearSelection();
+            }
+        }
+
+        private void tunnelsGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            var host = ((ObjectView<HostViewModel>) _bindingSource.Current).Object.Model;
+            if (host.Status != HostStatus.StartedWithWarnings)
+                return;
+            var tname = tunnelsGridView.Rows[e.RowIndex].Cells[tgvNameColumn.Name].Value.ToString();
+            var result = host.Link.ForwardingResults.FirstOrDefault(p => p.Key.Name == tname);
+            if (result.Value == null)
+                return;
+            if (!result.Value.Success)
+            {
+                e.CellStyle.ForeColor = _darkRedColor;
             }
         }
 
@@ -422,22 +590,18 @@ namespace PuttyManagerGui
             e.DrawFocusRectangle();
         }
 
-        private void tunnelsGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex < 0)
-                return;
-
-            var host = ((ObjectView<HostViewModel>) _bindingSource.Current).Object.Model;
-            if (host.Status != HostStatus.StartedWithWarnings)
-                return;
-            var tname = tunnelsGridView.Rows[e.RowIndex].Cells[tgvNameColumn.Name].Value.ToString();
-            var result = host.Link.ForwardingResults.FirstOrDefault(p => p.Key.Name == tname);
-            if (result.Value == null)
-                return;
-            if (!result.Value.Success)
+            // two options: remove dangerous events what can be triggered after disposing or check 'IsDisposed' inside them. 
+            // First option selected, but careful with racing problem.
+            // In both events racing problem solving via handling pending events in DoEvents().
+            // It processing already running methods (which was started before this code) before start disposing.
+            DelegateAppender.OnAppend -= onLogAppended;
+            foreach (var host in _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(o => o.Object))
             {
-                e.CellStyle.ForeColor = _darkRedColor;
+                host.StatusChanged -= onHostStatusChanged;
             }
+            Application.DoEvents();
         }
     }
 }

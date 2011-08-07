@@ -76,7 +76,7 @@ namespace PuttyManagerGui
 
         private void fillHostsTree()
         {
-            treeViewHosts.Nodes.Clear();
+            /*treeViewHosts.Nodes.Clear();
             treeViewHosts.Sorted = true;
             var hostToNode = new Dictionary<HostInfo, TreeNode>();
             foreach (var host in EncryptedSettings.Instance.Hosts)
@@ -91,7 +91,7 @@ namespace PuttyManagerGui
                 }
                 hostToNode[host] = node;
             }
-            treeViewHosts.ExpandAll();
+            treeViewHosts.ExpandAll();*/
         }
 
         private void fillWindowsTable()
@@ -261,7 +261,7 @@ namespace PuttyManagerGui
             Settings.Default.EncryptedSettingsPassword = pwdDlg.SavePassword ? pwdDlg.Password : "";
             Settings.Default.Save();
 
-            EncryptedSettings.Instance.ChangePassword(pwdDlg.Password);
+            //EncryptedSettings.Instance.ChangePassword(pwdDlg.Password);
         }
 
         private void toolStripButtonAddHost_Click(object sender, EventArgs e)
@@ -309,7 +309,7 @@ namespace PuttyManagerGui
             }
 
             deleteHostImpl(node, recursive);
-            EncryptedSettings.Instance.Save();
+            //EncryptedSettings.Instance.Save();
         }
 
         private void deleteHostImpl(TreeNode hostNode, bool recursive)
@@ -338,7 +338,7 @@ namespace PuttyManagerGui
                     host.DependsOn = null;
                 }
             }
-            EncryptedSettings.Instance.Hosts.Remove(hostInfo);
+            //EncryptedSettings.Instance.Hosts.Remove(hostInfo);
             hostNode.Remove();
         }
 

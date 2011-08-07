@@ -1,4 +1,8 @@
-﻿namespace PuttyManagerGui
+﻿using System.Linq;
+using PuttyManager.Ext.BLW;
+using PuttyManager.Util;
+
+namespace PuttyManagerGui
 {
     partial class MainForm
     {
@@ -50,20 +54,25 @@
             this.hgwHostnameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hgwStatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hgwDependsOnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newHostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addHostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editHostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeHostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.keepConnectionsExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.killConnectionsExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.theToolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonAddHost = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRemoveHost = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonEditHost = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonStart = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonStop = new System.Windows.Forms.ToolStripButton();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.theStatusStrip = new System.Windows.Forms.StatusStrip();
             this.splitContainerH1 = new System.Windows.Forms.SplitContainer();
             this.treeViewFilter = new System.Windows.Forms.TreeView();
             this.imageListStates = new System.Windows.Forms.ImageList(this.components);
@@ -77,24 +86,24 @@
             this.labelHost = new System.Windows.Forms.Label();
             this.labelStatus = new System.Windows.Forms.Label();
             this.tunnelsGridView = new System.Windows.Forms.DataGridView();
-            this.tabPageLog = new System.Windows.Forms.TabPage();
-            this.contextMenuStripHost = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemEditHost = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemRemoveHost = new System.Windows.Forms.ToolStripMenuItem();
             this.tgvNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgvTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgvSrcPortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgvDstHostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgvDstPortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageLog = new System.Windows.Forms.TabPage();
             this.listBoxLog = new System.Windows.Forms.ListBox();
+            this.contextMenuStripHost = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemEditHost = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemRemoveHost = new System.Windows.Forms.ToolStripMenuItem();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.hostsGridView)).BeginInit();
-            this.menuStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.mainMenuStrip.SuspendLayout();
+            this.theToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerH1)).BeginInit();
             this.splitContainerH1.Panel1.SuspendLayout();
             this.splitContainerH1.Panel2.SuspendLayout();
@@ -241,65 +250,112 @@
             this.hgwDependsOnColumn.Name = "hgwDependsOnColumn";
             this.hgwDependsOnColumn.ReadOnly = true;
             // 
-            // menuStrip1
+            // mainMenuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.actionsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(770, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuStrip.Name = "mainMenuStrip";
+            this.mainMenuStrip.Size = new System.Drawing.Size(770, 24);
+            this.mainMenuStrip.TabIndex = 1;
+            this.mainMenuStrip.Text = "menuStrip1";
             // 
             // actionsToolStripMenuItem
             // 
             this.actionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newHostToolStripMenuItem,
+            this.addHostToolStripMenuItem,
+            this.editHostToolStripMenuItem,
+            this.removeHostToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.startToolStripMenuItem,
+            this.stopToolStripMenuItem,
             this.toolStripSeparator1,
-            this.exitToolStripMenuItem,
-            this.killConnectionsExitToolStripMenuItem});
+            this.keepConnectionsExitToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
-            this.actionsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.actionsToolStripMenuItem.Text = "Actions";
+            this.actionsToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.actionsToolStripMenuItem.Text = "Action";
             // 
-            // newHostToolStripMenuItem
+            // addHostToolStripMenuItem
             // 
-            this.newHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__plus;
-            this.newHostToolStripMenuItem.Name = "newHostToolStripMenuItem";
-            this.newHostToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.newHostToolStripMenuItem.Text = "&New host...";
+            this.addHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__plus;
+            this.addHostToolStripMenuItem.Name = "addHostToolStripMenuItem";
+            this.addHostToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.addHostToolStripMenuItem.Text = "&Add host...";
+            this.addHostToolStripMenuItem.Click += new System.EventHandler(this.addHostToolStripMenuItem_Click);
+            // 
+            // editHostToolStripMenuItem
+            // 
+            this.editHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__pencil;
+            this.editHostToolStripMenuItem.Name = "editHostToolStripMenuItem";
+            this.editHostToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.editHostToolStripMenuItem.Text = "&Edit host...";
+            this.editHostToolStripMenuItem.Click += new System.EventHandler(this.editHostToolStripMenuItem_Click);
+            // 
+            // removeHostToolStripMenuItem
+            // 
+            this.removeHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__minus;
+            this.removeHostToolStripMenuItem.Name = "removeHostToolStripMenuItem";
+            this.removeHostToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.removeHostToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.removeHostToolStripMenuItem.Text = "&Remove host";
+            this.removeHostToolStripMenuItem.Click += new System.EventHandler(this.removeHostToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(206, 6);
+            // 
+            // startToolStripMenuItem
+            // 
+            this.startToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.control;
+            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.startToolStripMenuItem.Text = "&Start";
+            this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
+            // 
+            // stopToolStripMenuItem
+            // 
+            this.stopToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.control_stop_square;
+            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.stopToolStripMenuItem.Text = "S&top";
+            this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(189, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(206, 6);
+            // 
+            // keepConnectionsExitToolStripMenuItem
+            // 
+            this.keepConnectionsExitToolStripMenuItem.Name = "keepConnectionsExitToolStripMenuItem";
+            this.keepConnectionsExitToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.keepConnectionsExitToolStripMenuItem.Text = "E&xit but keep connections";
+            this.keepConnectionsExitToolStripMenuItem.Click += new System.EventHandler(this.keepConnectionsExitToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.exitToolStripMenuItem.Text = "&Exit";
+            this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.exitToolStripMenuItem.Text = "Ex&it";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // killConnectionsExitToolStripMenuItem
+            // theToolStrip
             // 
-            this.killConnectionsExitToolStripMenuItem.Name = "killConnectionsExitToolStripMenuItem";
-            this.killConnectionsExitToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.killConnectionsExitToolStripMenuItem.Text = "&Kill connections && Exit";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.theToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonAddHost,
             this.toolStripButtonRemoveHost,
             this.toolStripButtonEditHost,
             this.toolStripSeparator3,
             this.toolStripButtonStart,
             this.toolStripButtonStop});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(770, 25);
-            this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
+            this.theToolStrip.Location = new System.Drawing.Point(0, 24);
+            this.theToolStrip.Name = "theToolStrip";
+            this.theToolStrip.Size = new System.Drawing.Size(770, 25);
+            this.theToolStrip.TabIndex = 2;
+            this.theToolStrip.Text = "toolStrip1";
             // 
             // toolStripButtonAddHost
             // 
@@ -356,13 +412,13 @@
             this.toolStripButtonStop.Text = "Stop";
             this.toolStripButtonStop.Click += new System.EventHandler(this.toolStripButtonStop_Click);
             // 
-            // statusStrip1
+            // theStatusStrip
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 447);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(770, 22);
-            this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip1";
+            this.theStatusStrip.Location = new System.Drawing.Point(0, 447);
+            this.theStatusStrip.Name = "theStatusStrip";
+            this.theStatusStrip.Size = new System.Drawing.Size(770, 22);
+            this.theStatusStrip.TabIndex = 3;
+            this.theStatusStrip.Text = "statusStrip1";
             // 
             // splitContainerH1
             // 
@@ -583,40 +639,6 @@
             this.tunnelsGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tunnelsGridView_CellFormatting);
             this.tunnelsGridView.SelectionChanged += new System.EventHandler(this.tunnelsGridView_SelectionChanged);
             // 
-            // tabPageLog
-            // 
-            this.tabPageLog.Controls.Add(this.listBoxLog);
-            this.tabPageLog.Location = new System.Drawing.Point(4, 22);
-            this.tabPageLog.Name = "tabPageLog";
-            this.tabPageLog.Size = new System.Drawing.Size(624, 155);
-            this.tabPageLog.TabIndex = 1;
-            this.tabPageLog.Text = "Log";
-            this.tabPageLog.UseVisualStyleBackColor = true;
-            // 
-            // contextMenuStripHost
-            // 
-            this.contextMenuStripHost.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemEditHost,
-            this.toolStripMenuItemRemoveHost});
-            this.contextMenuStripHost.Name = "contextMenuStripHost";
-            this.contextMenuStripHost.Size = new System.Drawing.Size(118, 48);
-            // 
-            // toolStripMenuItemEditHost
-            // 
-            this.toolStripMenuItemEditHost.Image = global::PuttyManagerGui.Properties.Resources.server__pencil;
-            this.toolStripMenuItemEditHost.Name = "toolStripMenuItemEditHost";
-            this.toolStripMenuItemEditHost.Size = new System.Drawing.Size(117, 22);
-            this.toolStripMenuItemEditHost.Text = "&Edit...";
-            this.toolStripMenuItemEditHost.Click += new System.EventHandler(this.toolStripMenuItemEditHost_Click);
-            // 
-            // toolStripMenuItemRemoveHost
-            // 
-            this.toolStripMenuItemRemoveHost.Image = global::PuttyManagerGui.Properties.Resources.server__minus;
-            this.toolStripMenuItemRemoveHost.Name = "toolStripMenuItemRemoveHost";
-            this.toolStripMenuItemRemoveHost.Size = new System.Drawing.Size(117, 22);
-            this.toolStripMenuItemRemoveHost.Text = "&Remove";
-            this.toolStripMenuItemRemoveHost.Click += new System.EventHandler(this.toolStripMenuItemRemoveHost_Click);
-            // 
             // tgvNameColumn
             // 
             this.tgvNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -657,6 +679,16 @@
             this.tgvDstPortColumn.ReadOnly = true;
             this.tgvDstPortColumn.Width = 76;
             // 
+            // tabPageLog
+            // 
+            this.tabPageLog.Controls.Add(this.listBoxLog);
+            this.tabPageLog.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLog.Name = "tabPageLog";
+            this.tabPageLog.Size = new System.Drawing.Size(624, 155);
+            this.tabPageLog.TabIndex = 1;
+            this.tabPageLog.Text = "Log";
+            this.tabPageLog.UseVisualStyleBackColor = true;
+            // 
             // listBoxLog
             // 
             this.listBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -670,25 +702,50 @@
             this.listBoxLog.TabIndex = 0;
             this.listBoxLog.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxLog_DrawItem);
             // 
+            // contextMenuStripHost
+            // 
+            this.contextMenuStripHost.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemEditHost,
+            this.toolStripMenuItemRemoveHost});
+            this.contextMenuStripHost.Name = "contextMenuStripHost";
+            this.contextMenuStripHost.Size = new System.Drawing.Size(118, 48);
+            // 
+            // toolStripMenuItemEditHost
+            // 
+            this.toolStripMenuItemEditHost.Image = global::PuttyManagerGui.Properties.Resources.server__pencil;
+            this.toolStripMenuItemEditHost.Name = "toolStripMenuItemEditHost";
+            this.toolStripMenuItemEditHost.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemEditHost.Text = "&Edit...";
+            this.toolStripMenuItemEditHost.Click += new System.EventHandler(this.toolStripMenuItemEditHost_Click);
+            // 
+            // toolStripMenuItemRemoveHost
+            // 
+            this.toolStripMenuItemRemoveHost.Image = global::PuttyManagerGui.Properties.Resources.server__minus;
+            this.toolStripMenuItemRemoveHost.Name = "toolStripMenuItemRemoveHost";
+            this.toolStripMenuItemRemoveHost.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemRemoveHost.Text = "&Remove";
+            this.toolStripMenuItemRemoveHost.Click += new System.EventHandler(this.toolStripMenuItemRemoveHost_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 469);
             this.Controls.Add(this.splitContainerH1);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.theStatusStrip);
+            this.Controls.Add(this.theToolStrip);
+            this.Controls.Add(this.mainMenuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.mainMenuStrip;
             this.MinimumSize = new System.Drawing.Size(620, 440);
             this.Name = "MainForm";
             this.Text = "SSH Tunnel Manager";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.hostsGridView)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.mainMenuStrip.ResumeLayout(false);
+            this.mainMenuStrip.PerformLayout();
+            this.theToolStrip.ResumeLayout(false);
+            this.theToolStrip.PerformLayout();
             this.splitContainerH1.Panel1.ResumeLayout(false);
             this.splitContainerH1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerH1)).EndInit();
@@ -712,14 +769,14 @@
         #endregion
 
         private System.Windows.Forms.DataGridView hostsGridView;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem actionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newHostToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addHostToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem killConnectionsExitToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripMenuItem keepConnectionsExitToolStripMenuItem;
+        private System.Windows.Forms.ToolStrip theToolStrip;
+        private System.Windows.Forms.StatusStrip theStatusStrip;
         private System.Windows.Forms.SplitContainer splitContainerH1;
         private System.Windows.Forms.SplitContainer splitContainerV1;
         private System.Windows.Forms.ToolStripButton toolStripButtonAddHost;
@@ -755,5 +812,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstHostColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstPortColumn;
         private System.Windows.Forms.ListBox listBoxLog;
+        private System.Windows.Forms.ToolStripMenuItem editHostToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeHostToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
     }
 }

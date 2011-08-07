@@ -37,7 +37,7 @@ namespace PuttyManager
                     var instanceData = PuttyWindowsManager.FromPuttyArguments(ProcessCommandLine);
                     if (instanceData == null) 
                         return null;
-                    _instanceInfo = EncryptedSettings.Instance.Hosts.Find(instanceData.Equals) ?? instanceData;
+                    //_instanceInfo = EncryptedSettings.Instance.Hosts.Find(instanceData.Equals) ?? instanceData; TODO
                 }
                 return _instanceInfo;
             }

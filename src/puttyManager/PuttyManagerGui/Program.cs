@@ -39,7 +39,10 @@ namespace PuttyManagerGui
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                var storedPwd = Settings.Default.EncryptedSettingsPassword;
+                new StartUpDialog().ShowDialog();
+                return;
+
+                /*var storedPwd = Settings.Default.EncryptedSettingsPassword;
                 if (!(EncryptedSettings.EncryptedSourceExist &&
                       !string.IsNullOrWhiteSpace(storedPwd)  &&
                       EncryptedSettings.Initialize(storedPwd)))
@@ -60,7 +63,7 @@ namespace PuttyManagerGui
 
                     Settings.Default.EncryptedSettingsPassword = pwdDlg.SavePassword ? pwdDlg.Password : "";
                     Settings.Default.Save();
-                }
+                }*/
 
                 Application.Run(new MainForm());
             }

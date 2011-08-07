@@ -53,7 +53,8 @@ namespace PuttyManager.Util
                 if (SyncObject == null || !SyncObject.InvokeRequired)
                 {
                     OnAppend(this, ea);
-                } else
+                }
+                else
                 {
                     SyncObject.Invoke(OnAppend, new object[] { this, ea });
                 }

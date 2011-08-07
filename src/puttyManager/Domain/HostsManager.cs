@@ -17,13 +17,13 @@ namespace PuttyManager.Domain
 
         public HostsManager()
         {
-            var hosts = EncryptedSettings.Instance.Hosts.Select(delegate(HostInfo h)
+            /*var hosts = EncryptedSettings.Instance.Hosts.Select(delegate(HostInfo h)
                                                         {
                                                             var viewModel = new THostViewModel();
                                                             viewModel.Model = new Host(h) { ViewModel = viewModel };
                                                             return viewModel;
                                                         }).ToList();
-            Hosts = new BindingListView<THostViewModel>(hosts);
+            Hosts = new BindingListView<THostViewModel>(hosts);*/
             Hosts.AddingNew += (o, e) => { e.NewObject = _addingNewHost; };
         }
 
@@ -55,22 +55,23 @@ namespace PuttyManager.Domain
             var viewModel = (IViewModel<Host>)Activator.CreateInstance(_viewModelType);
         }*/
 
-        public List<THostViewModel> DependentHosts(THostViewModel host)
+        public List<THostViewModel> DependentHosts(THostViewModel host, bool deep)
         {
             var result = new List<THostViewModel>();
             var thisTier = Hosts.Cast<ObjectView<THostViewModel>>().Where(m => m.Object.Model.Info.DependsOn == host.Model.Info).Select(h => h.Object).ToList();
             result.AddRange(thisTier);
-            foreach (var htt in thisTier)
-            {
-                result.AddRange(DependentHosts(htt));
-            }
+            if (deep)
+                foreach (var htt in thisTier)
+                {
+                    result.AddRange(DependentHosts(htt, true));
+                }
             return result;
         }
 
         public void Save()
         {
-            EncryptedSettings.Instance.Hosts = Hosts.Cast<ObjectView<THostViewModel>>().Select(h => h.Object.Model.Info).ToList();
-            EncryptedSettings.Instance.Save();
+            /*EncryptedSettings.Instance.Hosts = Hosts.Cast<ObjectView<THostViewModel>>().Select(h => h.Object.Model.Info).ToList();
+            EncryptedSettings.Instance.Save();*/
         }
     }
 }

@@ -113,12 +113,12 @@ namespace PuttyManager
         public static void AutoRecovery()
         {
             // Проходим по топологии, если можем - создаем инстанц. Все элементы иерархии должны иметь финальное состояние Good (не Strange).
-            foreach (var hostData in EncryptedSettings.Instance.Hosts.Where(
+            /*foreach (var hostData in EncryptedSettings.Instance.Hosts.Where(
                                         hostData => !HasGoodPutty(hostData) && !HasStrangePutty(hostData) &&
                                             (hostData.DependsOn == null || HasGoodPutty(hostData.DependsOn))))
             {
                 CreatePuttyInstance(hostData);
-            }
+            }*/
         }
 
         /// <summary>

@@ -47,6 +47,8 @@ namespace PuttyManager.Domain
         void AsyncStart();
         void Start();
         void Stop();
+        bool WaitForStop(int seconds = 10);
+        bool WaitForStart(int seconds = 20);
     }
 
     public class PuttyLink : IPuttyLink
@@ -81,25 +83,46 @@ namespace PuttyManager.Domain
             }
         }
 
+        private readonly ManualResetEventSlim _eventStopped = new ManualResetEventSlim(true);
+        private readonly ManualResetEventSlim _eventStarted = new ManualResetEventSlim(false);
+
         public EConnectionState ConnectionState
         {
             get { return _connectionState; }
             private set
             {
+                if (_connectionState == value)
+                    return;
+
                 if (_connectionState == EConnectionState.Inactive && value == EConnectionState.Intermediate)
                     Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Starting...");
-                else if (_connectionState == EConnectionState.Intermediate && value == EConnectionState.Active)
+                else if (value == EConnectionState.Active)
                     Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Started");
-                else if (_connectionState == EConnectionState.Intermediate && value == EConnectionState.ActiveWithWarnings)
+                else if (value == EConnectionState.ActiveWithWarnings)
                     Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Started with warnings");
-                else if ((_connectionState == EConnectionState.Active ||
-                          _connectionState == EConnectionState.ActiveWithWarnings || 
-                          _connectionState == EConnectionState.Intermediate) && 
-                         value == EConnectionState.Inactive)
+                else if (value == EConnectionState.Inactive)
+                {
                     Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Stopped");
+                }
                 
                 _connectionState = value;
                 onConnectionStateChanged();
+
+                if (_connectionState == EConnectionState.Inactive)
+                {
+                    _eventStopped.Set();
+                } else
+                {
+                    _eventStopped.Reset();
+                }
+                if (_connectionState == EConnectionState.Active || 
+                    _connectionState == EConnectionState.ActiveWithWarnings)
+                {
+                    _eventStarted.Set();
+                } else
+                {
+                    _eventStarted.Reset();
+                }
             }
         }
 
@@ -267,6 +290,12 @@ namespace PuttyManager.Domain
                 LastStartError = "Access Denied";
                 Stop();
             }
+            // Fatal errors
+            m = Regex.Match(args.Data, @"^FATAL ERROR:\s*(?<msg>.*)$");
+            if (m.Success)
+            {
+                LastStartError = m.Groups["msg"].Value;
+            }
             // connection establishing
             if (args.Data.Contains(ShellStartedMessage))
             {
@@ -293,6 +322,16 @@ namespace PuttyManager.Domain
             catch (Exception)
             {
             }
+        }
+
+        public bool WaitForStop(int seconds = 10)
+        {
+            return _eventStopped.Wait(seconds * 1000);
+        }
+
+        public bool WaitForStart(int seconds = 20)
+        {
+            return _eventStarted.Wait(seconds * 1000);
         }
 
         private string arguments()
