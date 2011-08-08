@@ -39,7 +39,7 @@ namespace PuttyManagerGui
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                new StartUpDialog().ShowDialog();
+                var res = new StartUpDialog().ShowDialog();
                 return;
 
                 /*var storedPwd = Settings.Default.EncryptedSettingsPassword;

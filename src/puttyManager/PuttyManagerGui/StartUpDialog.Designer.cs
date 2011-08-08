@@ -28,252 +28,276 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label5;
+            System.Windows.Forms.Label label6;
+            System.Windows.Forms.Label label7;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartUpDialog));
-            this.label3 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.buttonNewFileBrowse = new System.Windows.Forms.Button();
+            this.textBoxNewPassword = new System.Windows.Forms.TextBox();
+            this.textBoxNewFile = new System.Windows.Forms.TextBox();
+            this.textBoxNewPasswordConfirm = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.radioButtonCreateStorage = new System.Windows.Forms.RadioButton();
+            this.radioButtonOpenStorage = new System.Windows.Forms.RadioButton();
+            this.tableLayoutPanelCreate = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelOpen = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonExistingFileBrowse = new System.Windows.Forms.Button();
+            this.textBoxOpenPassword = new System.Windows.Forms.TextBox();
+            this.textBoxExistingFile = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.lineSeparator1 = new PuttyManagerGui.LineSeparator();
+            this.buttonExit = new System.Windows.Forms.Button();
+            this.buttonCreate = new System.Windows.Forms.Button();
+            this.buttonOpen = new System.Windows.Forms.Button();
+            this.theOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.theSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.theGoodProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.theErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.labelError = new System.Windows.Forms.Label();
+            this.theLineSeparator = new PuttyManagerGui.LineSeparator();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanelCreate.SuspendLayout();
+            this.tableLayoutPanelOpen.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.theGoodProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.theErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Encrypted Storage File:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(3, 6);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(117, 13);
+            label3.TabIndex = 2;
+            label3.Text = "Encrypted Storage File:";
+            label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button4
+            // buttonNewFileBrowse
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.buttonNewFileBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(301, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(28, 20);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "...";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonNewFileBrowse.Location = new System.Drawing.Point(301, 3);
+            this.buttonNewFileBrowse.Name = "buttonNewFileBrowse";
+            this.buttonNewFileBrowse.Size = new System.Drawing.Size(28, 20);
+            this.buttonNewFileBrowse.TabIndex = 4;
+            this.buttonNewFileBrowse.Text = "...";
+            this.buttonNewFileBrowse.UseVisualStyleBackColor = true;
+            this.buttonNewFileBrowse.Click += new System.EventHandler(this.buttonNewFileBrowse_Click);
             // 
-            // textBox3
+            // textBoxNewPassword
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tableLayoutPanel1.SetColumnSpan(this.textBox3, 2);
-            this.textBox3.Location = new System.Drawing.Point(126, 29);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(203, 20);
-            this.textBox3.TabIndex = 3;
+            this.textBoxNewPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tableLayoutPanelCreate.SetColumnSpan(this.textBoxNewPassword, 2);
+            this.textBoxNewPassword.Location = new System.Drawing.Point(126, 29);
+            this.textBoxNewPassword.Name = "textBoxNewPassword";
+            this.textBoxNewPassword.Size = new System.Drawing.Size(203, 20);
+            this.textBoxNewPassword.TabIndex = 3;
+            this.textBoxNewPassword.UseSystemPasswordChar = true;
             // 
             // label4
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Password:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(3, 32);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(56, 13);
+            label4.TabIndex = 2;
+            label4.Text = "Password:";
+            label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox4
+            // textBoxNewFile
             // 
-            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox4.Location = new System.Drawing.Point(126, 3);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(169, 20);
-            this.textBox4.TabIndex = 3;
+            this.textBoxNewFile.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.theErrorProvider.SetIconPadding(this.textBoxNewFile, 34);
+            this.theGoodProvider.SetIconPadding(this.textBoxNewFile, 34);
+            this.textBoxNewFile.Location = new System.Drawing.Point(126, 3);
+            this.textBoxNewFile.Name = "textBoxNewFile";
+            this.textBoxNewFile.Size = new System.Drawing.Size(169, 20);
+            this.textBoxNewFile.TabIndex = 3;
             // 
             // label5
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 58);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Confirm Password:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(3, 58);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(94, 13);
+            label5.TabIndex = 2;
+            label5.Text = "Confirm Password:";
+            label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox5
+            // textBoxNewPasswordConfirm
             // 
-            this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tableLayoutPanel1.SetColumnSpan(this.textBox5, 2);
-            this.textBox5.Location = new System.Drawing.Point(126, 55);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(203, 20);
-            this.textBox5.TabIndex = 3;
+            this.textBoxNewPasswordConfirm.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tableLayoutPanelCreate.SetColumnSpan(this.textBoxNewPasswordConfirm, 2);
+            this.textBoxNewPasswordConfirm.Location = new System.Drawing.Point(126, 55);
+            this.textBoxNewPasswordConfirm.Name = "textBoxNewPasswordConfirm";
+            this.textBoxNewPasswordConfirm.Size = new System.Drawing.Size(203, 20);
+            this.textBoxNewPasswordConfirm.TabIndex = 3;
+            this.textBoxNewPasswordConfirm.UseSystemPasswordChar = true;
             // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.radioButton2);
-            this.groupBox3.Controls.Add(this.radioButton1);
+            this.groupBox3.Controls.Add(this.radioButtonCreateStorage);
+            this.groupBox3.Controls.Add(this.radioButtonOpenStorage);
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(332, 65);
+            this.groupBox3.Size = new System.Drawing.Size(344, 65);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Source:";
             // 
-            // radioButton1
+            // radioButtonCreateStorage
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(12, 38);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(142, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Open an existing storage";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonCreateStorage.AutoSize = true;
+            this.radioButtonCreateStorage.Location = new System.Drawing.Point(12, 15);
+            this.radioButtonCreateStorage.Name = "radioButtonCreateStorage";
+            this.radioButtonCreateStorage.Size = new System.Drawing.Size(117, 17);
+            this.radioButtonCreateStorage.TabIndex = 0;
+            this.radioButtonCreateStorage.TabStop = true;
+            this.radioButtonCreateStorage.Text = "Create new storage";
+            this.radioButtonCreateStorage.UseVisualStyleBackColor = true;
+            this.radioButtonCreateStorage.CheckedChanged += new System.EventHandler(this.radioButtonCreateStorage_CheckedChanged);
             // 
-            // radioButton2
+            // radioButtonOpenStorage
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(12, 15);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(117, 17);
-            this.radioButton2.TabIndex = 0;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Create new storage";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonOpenStorage.AutoSize = true;
+            this.radioButtonOpenStorage.Location = new System.Drawing.Point(12, 38);
+            this.radioButtonOpenStorage.Name = "radioButtonOpenStorage";
+            this.radioButtonOpenStorage.Size = new System.Drawing.Size(142, 17);
+            this.radioButtonOpenStorage.TabIndex = 0;
+            this.radioButtonOpenStorage.TabStop = true;
+            this.radioButtonOpenStorage.Text = "Open an existing storage";
+            this.radioButtonOpenStorage.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanelCreate
             // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button4, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox5, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox3, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox4, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 74);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(332, 78);
-            this.tableLayoutPanel1.TabIndex = 8;
+            this.tableLayoutPanelCreate.AutoSize = true;
+            this.tableLayoutPanelCreate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanelCreate.ColumnCount = 4;
+            this.tableLayoutPanelCreate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelCreate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelCreate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelCreate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.tableLayoutPanelCreate.Controls.Add(label3, 0, 0);
+            this.tableLayoutPanelCreate.Controls.Add(label4, 0, 1);
+            this.tableLayoutPanelCreate.Controls.Add(this.buttonNewFileBrowse, 2, 0);
+            this.tableLayoutPanelCreate.Controls.Add(label5, 0, 2);
+            this.tableLayoutPanelCreate.Controls.Add(this.textBoxNewPasswordConfirm, 1, 2);
+            this.tableLayoutPanelCreate.Controls.Add(this.textBoxNewPassword, 1, 1);
+            this.tableLayoutPanelCreate.Controls.Add(this.textBoxNewFile, 1, 0);
+            this.tableLayoutPanelCreate.Location = new System.Drawing.Point(3, 74);
+            this.tableLayoutPanelCreate.Name = "tableLayoutPanelCreate";
+            this.tableLayoutPanelCreate.RowCount = 3;
+            this.tableLayoutPanelCreate.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelCreate.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelCreate.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelCreate.Size = new System.Drawing.Size(344, 78);
+            this.tableLayoutPanelCreate.TabIndex = 8;
             // 
-            // tableLayoutPanel2
+            // tableLayoutPanelOpen
             // 
-            this.tableLayoutPanel2.AutoSize = true;
-            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label7, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button5, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.textBox7, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.textBox8, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 158);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(332, 52);
-            this.tableLayoutPanel2.TabIndex = 8;
+            this.tableLayoutPanelOpen.AutoSize = true;
+            this.tableLayoutPanelOpen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanelOpen.ColumnCount = 4;
+            this.tableLayoutPanelOpen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelOpen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelOpen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelOpen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.tableLayoutPanelOpen.Controls.Add(label6, 0, 0);
+            this.tableLayoutPanelOpen.Controls.Add(label7, 0, 1);
+            this.tableLayoutPanelOpen.Controls.Add(this.buttonExistingFileBrowse, 2, 0);
+            this.tableLayoutPanelOpen.Controls.Add(this.textBoxOpenPassword, 1, 1);
+            this.tableLayoutPanelOpen.Controls.Add(this.textBoxExistingFile, 1, 0);
+            this.tableLayoutPanelOpen.Location = new System.Drawing.Point(3, 158);
+            this.tableLayoutPanelOpen.Name = "tableLayoutPanelOpen";
+            this.tableLayoutPanelOpen.RowCount = 2;
+            this.tableLayoutPanelOpen.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelOpen.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelOpen.Size = new System.Drawing.Size(344, 52);
+            this.tableLayoutPanelOpen.TabIndex = 8;
             // 
             // label6
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 6);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Encrypted Storage File:";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(3, 6);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(117, 13);
+            label6.TabIndex = 2;
+            label6.Text = "Encrypted Storage File:";
+            label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label7
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 32);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Password:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(3, 32);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(56, 13);
+            label7.TabIndex = 2;
+            label7.Text = "Password:";
+            label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button5
+            // buttonExistingFileBrowse
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.buttonExistingFileBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(301, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(28, 20);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "...";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonExistingFileBrowse.Location = new System.Drawing.Point(301, 3);
+            this.buttonExistingFileBrowse.Name = "buttonExistingFileBrowse";
+            this.buttonExistingFileBrowse.Size = new System.Drawing.Size(28, 20);
+            this.buttonExistingFileBrowse.TabIndex = 4;
+            this.buttonExistingFileBrowse.Text = "...";
+            this.buttonExistingFileBrowse.UseVisualStyleBackColor = true;
+            this.buttonExistingFileBrowse.Click += new System.EventHandler(this.buttonExistingFileBrowse_Click);
             // 
-            // textBox7
+            // textBoxOpenPassword
             // 
-            this.textBox7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tableLayoutPanel2.SetColumnSpan(this.textBox7, 2);
-            this.textBox7.Location = new System.Drawing.Point(126, 29);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(203, 20);
-            this.textBox7.TabIndex = 3;
+            this.textBoxOpenPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tableLayoutPanelOpen.SetColumnSpan(this.textBoxOpenPassword, 2);
+            this.textBoxOpenPassword.Location = new System.Drawing.Point(126, 29);
+            this.textBoxOpenPassword.Name = "textBoxOpenPassword";
+            this.textBoxOpenPassword.Size = new System.Drawing.Size(203, 20);
+            this.textBoxOpenPassword.TabIndex = 3;
+            this.textBoxOpenPassword.UseSystemPasswordChar = true;
             // 
-            // textBox8
+            // textBoxExistingFile
             // 
-            this.textBox8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox8.Location = new System.Drawing.Point(126, 3);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(169, 20);
-            this.textBox8.TabIndex = 3;
+            this.textBoxExistingFile.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.theErrorProvider.SetIconPadding(this.textBoxExistingFile, 34);
+            this.theGoodProvider.SetIconPadding(this.textBoxExistingFile, 34);
+            this.textBoxExistingFile.Location = new System.Drawing.Point(126, 3);
+            this.textBoxExistingFile.Name = "textBoxExistingFile";
+            this.textBoxExistingFile.Size = new System.Drawing.Size(169, 20);
+            this.textBoxExistingFile.TabIndex = 3;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.Controls.Add(this.groupBox3);
-            this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel1);
-            this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel2);
-            this.flowLayoutPanel1.Controls.Add(this.lineSeparator1);
+            this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanelCreate);
+            this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanelOpen);
+            this.flowLayoutPanel1.Controls.Add(this.theLineSeparator);
+            this.flowLayoutPanel1.Controls.Add(this.labelError);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(338, 256);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(350, 269);
             this.flowLayoutPanel1.TabIndex = 9;
             // 
             // flowLayoutPanel2
@@ -283,55 +307,90 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel2.Controls.Add(this.button2);
-            this.flowLayoutPanel2.Controls.Add(this.button3);
-            this.flowLayoutPanel2.Controls.Add(this.button7);
+            this.flowLayoutPanel2.Controls.Add(this.buttonExit);
+            this.flowLayoutPanel2.Controls.Add(this.buttonCreate);
+            this.flowLayoutPanel2.Controls.Add(this.buttonOpen);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 224);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 237);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(332, 29);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(344, 29);
             this.flowLayoutPanel2.TabIndex = 10;
             // 
-            // button2
+            // buttonExit
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(254, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Exit";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonExit.Location = new System.Drawing.Point(266, 3);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(75, 23);
+            this.buttonExit.TabIndex = 2;
+            this.buttonExit.Text = "Exit";
+            this.buttonExit.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonCreate
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(173, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Create";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCreate.Location = new System.Drawing.Point(185, 3);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreate.TabIndex = 1;
+            this.buttonCreate.Text = "Create";
+            this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
-            // button7
+            // buttonOpen
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Location = new System.Drawing.Point(92, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 3;
-            this.button7.Text = "Open";
-            this.button7.UseVisualStyleBackColor = true;
+            this.buttonOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOpen.Location = new System.Drawing.Point(104, 3);
+            this.buttonOpen.Name = "buttonOpen";
+            this.buttonOpen.Size = new System.Drawing.Size(75, 23);
+            this.buttonOpen.TabIndex = 3;
+            this.buttonOpen.Text = "Open";
+            this.buttonOpen.UseVisualStyleBackColor = true;
+            this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             // 
-            // lineSeparator1
+            // theOpenFileDialog
             // 
-            this.lineSeparator1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.theOpenFileDialog.DefaultExt = "*.est";
+            this.theOpenFileDialog.Filter = "Storage files|*.est|All files|*.*";
+            // 
+            // theSaveFileDialog
+            // 
+            this.theSaveFileDialog.DefaultExt = "*.est";
+            this.theSaveFileDialog.Filter = "Storage files|*.est|All files|*.*";
+            // 
+            // theGoodProvider
+            // 
+            this.theGoodProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.theGoodProvider.ContainerControl = this;
+            this.theGoodProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("theGoodProvider.Icon")));
+            // 
+            // theErrorProvider
+            // 
+            this.theErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.theErrorProvider.ContainerControl = this;
+            this.theErrorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("theErrorProvider.Icon")));
+            // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelError.Location = new System.Drawing.Point(3, 221);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(53, 13);
+            this.labelError.TabIndex = 11;
+            this.labelError.Text = "Error Text";
+            // 
+            // theLineSeparator
+            // 
+            this.theLineSeparator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lineSeparator1.Location = new System.Drawing.Point(3, 216);
-            this.lineSeparator1.MaximumSize = new System.Drawing.Size(2000, 2);
-            this.lineSeparator1.MinimumSize = new System.Drawing.Size(0, 2);
-            this.lineSeparator1.Name = "lineSeparator1";
-            this.lineSeparator1.Size = new System.Drawing.Size(332, 2);
-            this.lineSeparator1.TabIndex = 10;
+            this.theLineSeparator.Location = new System.Drawing.Point(3, 216);
+            this.theLineSeparator.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.theLineSeparator.MinimumSize = new System.Drawing.Size(0, 2);
+            this.theLineSeparator.Name = "theLineSeparator";
+            this.theLineSeparator.Size = new System.Drawing.Size(344, 2);
+            this.theLineSeparator.TabIndex = 10;
             // 
             // StartUpDialog
             // 
@@ -339,6 +398,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CancelButton = this.buttonExit;
             this.ClientSize = new System.Drawing.Size(452, 411);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -350,13 +410,15 @@
             this.Text = "Storage Selection - SSH Tunnel Manager";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanelCreate.ResumeLayout(false);
+            this.tableLayoutPanelCreate.PerformLayout();
+            this.tableLayoutPanelOpen.ResumeLayout(false);
+            this.tableLayoutPanelOpen.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.theGoodProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.theErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,28 +426,28 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonNewFileBrowse;
+        private System.Windows.Forms.TextBox textBoxNewPassword;
+        private System.Windows.Forms.TextBox textBoxNewFile;
+        private System.Windows.Forms.TextBox textBoxNewPasswordConfirm;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.RadioButton radioButtonCreateStorage;
+        private System.Windows.Forms.RadioButton radioButtonOpenStorage;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelCreate;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelOpen;
+        private System.Windows.Forms.Button buttonExistingFileBrowse;
+        private System.Windows.Forms.TextBox textBoxOpenPassword;
+        private System.Windows.Forms.TextBox textBoxExistingFile;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private LineSeparator lineSeparator1;
+        private LineSeparator theLineSeparator;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.Button buttonCreate;
+        private System.Windows.Forms.Button buttonOpen;
+        private System.Windows.Forms.OpenFileDialog theOpenFileDialog;
+        private System.Windows.Forms.SaveFileDialog theSaveFileDialog;
+        private System.Windows.Forms.ErrorProvider theGoodProvider;
+        private System.Windows.Forms.ErrorProvider theErrorProvider;
+        private System.Windows.Forms.Label labelError;
     }
 }

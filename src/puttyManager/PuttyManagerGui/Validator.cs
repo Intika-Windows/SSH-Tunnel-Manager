@@ -44,9 +44,10 @@ namespace PuttyManagerGui
             control.Validating += onValidating;
         }
 
-        public void AddControl(TextBox textBox, Func<Control, string, bool> validatorMethod)
+        public void AddControl(TextBox textBox, Func<Control, string, bool> validatorMethod, bool textChangedValidate = false)
         {
             AddControl(textBox, c => c.Text, validatorMethod);
+            textBox.TextChanged += delegate { if (_afterValidateControls) ValidateControl(textBox); };
         }
 
         public bool ValidateControl(Control control)
