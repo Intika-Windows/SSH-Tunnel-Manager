@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
@@ -55,12 +56,22 @@ namespace PuttyManager.Domain
             using (var inputXml = new MemoryStream())
             {
                 // get decrypted stream
-                using (var file = File.OpenRead(filename))
-                    CryptoHelper.DecryptAes(file, inputXml, password);
+                try
+                {
+                    using (var file = File.OpenRead(filename))
+                        CryptoHelper.DecryptAes(file, inputXml, password);
+                }
+                catch (CryptographicException e)
+                {
+                    if (e.Message == "Padding is invalid and cannot be removed.") 
+                        // In most cases this means what password is invalid, but also can mean what storage is broken.
+                        throw new EncryptedStorageException("Invalid password.");
+                    throw;
+                }
                 inputXml.Seek(0, SeekOrigin.Begin);
                 var buffer = new byte[_passwordCheckString.Length];
                 var readed = inputXml.Read(buffer, 0, buffer.Length);
-                if (readed != buffer.Length || _passwordCheckString.SequenceEqual(buffer))
+                if (readed != buffer.Length || !_passwordCheckString.SequenceEqual(buffer))
                 {
                     throw new EncryptedStorageException("Invalid password.");
                 }
@@ -87,6 +98,7 @@ namespace PuttyManager.Domain
         public void Save(string filename, string password)
         {
             var stream = new MemoryStream();
+            stream.Write(_passwordCheckString, 0, _passwordCheckString.Length);
             XmlWriter writer = XmlWriter.Create(stream, new XmlWriterSettings { Encoding = Encoding.UTF8, Indent = true });
             _serializer.Serialize(writer, Data);
             writer.Flush();

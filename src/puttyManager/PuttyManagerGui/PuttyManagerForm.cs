@@ -245,7 +245,7 @@ namespace PuttyManagerGui
 
         private void removePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Settings.Default.EncryptedSettingsPassword = "";
+            Settings.Default.EncryptedStorageFile = "";
             Settings.Default.Save();
             MessageBox.Show(this, @"Password has been removed.", @"PuTTY Manager");
         }
@@ -258,7 +258,7 @@ namespace PuttyManagerGui
             if (res != DialogResult.OK)
                 return;
 
-            Settings.Default.EncryptedSettingsPassword = pwdDlg.SavePassword ? pwdDlg.Password : "";
+            Settings.Default.EncryptedStorageFile = pwdDlg.SavePassword ? pwdDlg.Password : "";
             Settings.Default.Save();
 
             //EncryptedSettings.Instance.ChangePassword(pwdDlg.Password);

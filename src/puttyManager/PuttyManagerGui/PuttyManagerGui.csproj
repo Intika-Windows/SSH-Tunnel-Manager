@@ -60,6 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangePasswordDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePasswordDialog.Designer.cs">
+      <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="HostDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </Compile>
     <Compile Include="Util.cs" />
     <Compile Include="Validator.cs" />
+    <EmbeddedResource Include="ChangePasswordDialog.resx">
+      <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HostDialog.resx">
       <DependentUpon>HostDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +217,9 @@
   <ItemGroup>
     <None Include="Resources\exclamation_small.png" />
     <None Include="Resources\tick_small_circle.png" />
+    <None Include="Resources\database.png" />
+    <None Include="Resources\databases__arrow.png" />
+    <None Include="Resources\key__arrow.png" />
     <Content Include="terminal.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

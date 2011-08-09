@@ -18,14 +18,16 @@ namespace PuttyManagerGui
 {
     public partial class MainForm : TrayForm
     {
-        private readonly HostsManager<HostViewModel> _hostsManager = new HostsManager<HostViewModel>();
+        private readonly HostsManager<HostViewModel> _hostsManager;
         private readonly BindingSource _bindingSource;
         private static readonly Color _darkRedColor = Color.FromArgb(165, 0, 0);
 
-        public MainForm()
+        public MainForm(HostsManager<HostViewModel> manager)
         {
+            if (manager == null) throw new ArgumentNullException("manager");
             InitializeComponent();
 
+            _hostsManager = manager;
             foreach (var host in _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(o => o.Object))
             {
                 host.StatusChanged += onHostStatusChanged;
@@ -50,6 +52,8 @@ namespace PuttyManagerGui
             DelegateAppender.SyncObject = this;
             DelegateAppender.OnAppend += onLogAppended;
         }
+
+        public bool ChangeSourceRequested { get; private set; }
 
         private void onLogAppended(object sender, LogAppendedEventArgs e)
         {
@@ -99,6 +103,15 @@ namespace PuttyManagerGui
             if (ov == null)
             {
                 splitContainerV1.Panel2Collapsed = true;
+                toolStripButtonStart.Enabled = false;
+                startToolStripMenuItem.Enabled = false;
+                toolStripButtonStop.Enabled = false;
+                stopToolStripMenuItem.Enabled = false;
+                toolStripMenuItemEditHost.Enabled = false;
+                toolStripButtonEditHost.Enabled = false;
+                editHostToolStripMenuItem.Enabled = false;
+                toolStripButtonRemoveHost.Enabled = false;
+                removeHostToolStripMenuItem.Enabled = false;
                 return;
             }
 
@@ -136,6 +149,9 @@ namespace PuttyManagerGui
             toolStripMenuItemEditHost.Enabled = canEdit;
             toolStripButtonEditHost.Enabled = canEdit;
             editHostToolStripMenuItem.Enabled = canEdit;
+            // remove buttons
+            toolStripButtonRemoveHost.Enabled = true;
+            removeHostToolStripMenuItem.Enabled = true;
         }
 
         /*private void fillHostsTable()
@@ -266,6 +282,8 @@ namespace PuttyManagerGui
         private void removeHost()
         {
             var host = selectedHostViewModel();
+            if (host == null)
+                return;
             var depHostsDeep = _hostsManager.DependentHosts(host, true);
             var depHosts = _hostsManager.DependentHosts(host, false);
 
@@ -345,6 +363,17 @@ namespace PuttyManagerGui
         private void stopHost()
         {
             ((ObjectView<HostViewModel>) _bindingSource.Current).Object.Model.Link.Stop();
+        }
+
+        private void exit()
+        {
+            var activeHosts = _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Where(
+                o => o.Object.Model.Status != HostStatus.Stopped).Select(o => o.Object.Model).ToList();
+            foreach (var host in activeHosts)
+            {
+                host.Link.Stop();
+            }
+            ReallyClose();
         }
 
         #endregion
@@ -445,13 +474,7 @@ namespace PuttyManagerGui
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var activeHosts = _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Where(
-                    o => o.Object.Model.Status != HostStatus.Stopped).Select(o => o.Object.Model).ToList();
-            foreach (var host in activeHosts)
-            {
-                host.Link.Stop();
-            }
-            ReallyClose();
+            exit();
         }
 
         private void keepConnectionsExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -602,6 +625,24 @@ namespace PuttyManagerGui
                 host.StatusChanged -= onHostStatusChanged;
             }
             Application.DoEvents();
+        }
+
+        private void changeStorageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeSourceRequested = true;
+            exit();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var pwdDlg = new PasswordDialog();
+            pwdDlg.Setup(PasswordDialog.EMode.CreatePassword);
+            var res = pwdDlg.ShowDialog(this);
+            if (res == DialogResult.Cancel)
+                return;
+            var password = pwdDlg.Password;
+            var savePass = pwdDlg.SavePassword;
+            //_hostsManager.Password
         }
     }
 }

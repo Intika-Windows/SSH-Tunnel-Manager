@@ -39,33 +39,29 @@ namespace PuttyManagerGui
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                var res = new StartUpDialog().ShowDialog();
-                return;
+                var startUpDlg = new StartUpDialog();
+                if (startUpDlg.DialogRequired && startUpDlg.ShowDialog() == DialogResult.Cancel)
+                    return;
 
-                /*var storedPwd = Settings.Default.EncryptedSettingsPassword;
-                if (!(EncryptedSettings.EncryptedSourceExist &&
-                      !string.IsNullOrWhiteSpace(storedPwd)  &&
-                      EncryptedSettings.Initialize(storedPwd)))
+                var hm = new HostsManager<HostViewModel>(startUpDlg.Storage, startUpDlg.Filename, startUpDlg.Password);
+
+                // changeSource request handling
+                while (true)
                 {
-                    // Если файла нет || файл есть но нет сохраненного пасса || есть файл, пасс, но пасс не подошел
-                    var pwdDlgMode = EncryptedSettings.EncryptedSourceExist
-                                         ? PasswordDialog.EMode.RequestPassword
-                                         : PasswordDialog.EMode.CreatePassword;
-                    PasswordDialog pwdDlg;
-                    do
+                    var mainForm = new MainForm(hm);
+                    Application.Run(mainForm);
+
+                    if (mainForm.ChangeSourceRequested)
                     {
-                        pwdDlg = new PasswordDialog();
-                        pwdDlg.Setup(pwdDlgMode);
-                        var res = pwdDlg.ShowDialog();
-                        if (res != DialogResult.OK)
+                        startUpDlg = new StartUpDialog();
+                        if (startUpDlg.ShowDialog() == DialogResult.Cancel)
                             return;
-                    } while (!EncryptedSettings.Initialize(pwdDlg.Password));
-
-                    Settings.Default.EncryptedSettingsPassword = pwdDlg.SavePassword ? pwdDlg.Password : "";
-                    Settings.Default.Save();
-                }*/
-
-                Application.Run(new MainForm());
+                        hm = new HostsManager<HostViewModel>(startUpDlg.Storage, startUpDlg.Filename, startUpDlg.Password);
+                    } else
+                    {
+                        break;
+                    }
+                };
             }
             else
             {

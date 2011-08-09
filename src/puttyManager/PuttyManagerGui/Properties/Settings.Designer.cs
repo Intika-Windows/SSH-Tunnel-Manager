@@ -35,12 +35,24 @@ namespace PuttyManagerGui.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string EncryptedSettingsPassword {
+        public string EncryptedStorageFile {
             get {
-                return ((string)(this["EncryptedSettingsPassword"]));
+                return ((string)(this["EncryptedStorageFile"]));
             }
             set {
-                this["EncryptedSettingsPassword"] = value;
+                this["EncryptedStorageFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EncryptedStoragePassword {
+            get {
+                return ((string)(this["EncryptedStoragePassword"]));
+            }
+            set {
+                this["EncryptedStoragePassword"] = value;
             }
         }
     }

@@ -123,9 +123,30 @@ namespace PuttyManagerGui.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap database {
+            get {
+                object obj = ResourceManager.GetObject("database", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap databases__arrow {
+            get {
+                object obj = ResourceManager.GetObject("databases__arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap exclamation_small {
             get {
                 object obj = ResourceManager.GetObject("exclamation_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap key__arrow {
+            get {
+                object obj = ResourceManager.GetObject("key__arrow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -5,7 +5,10 @@
     <Setting Name="StartSingleInstanceOnly" Type="System.Boolean" Scope="Application">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="EncryptedSettingsPassword" Type="System.String" Scope="User">
+    <Setting Name="EncryptedStorageFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="EncryptedStoragePassword" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

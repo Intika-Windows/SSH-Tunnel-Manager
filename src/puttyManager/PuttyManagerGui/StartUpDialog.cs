@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using PuttyManager.Domain;
+using PuttyManagerGui.Properties;
 
 namespace PuttyManagerGui
 {
@@ -30,6 +32,36 @@ namespace PuttyManagerGui
             _validatorOpen.AddControl(textBoxOpenPassword, validateOpenPassword);
 
             Error = null;
+
+            // Stored settings loading
+            var lastFile = Settings.Default.EncryptedStorageFile;
+            var lastFileEmpty = string.IsNullOrEmpty(lastFile);
+            var lastPass = Settings.Default.EncryptedStoragePassword;
+            var lastPassEmpty = string.IsNullOrEmpty(lastPass);
+            if (!lastFileEmpty)
+            {
+                radioButtonOpenStorage.Checked = true;
+                textBoxExistingFile.Text = lastFile;
+            }
+            if (!lastPassEmpty)
+            {
+                textBoxOpenPassword.Text = lastPass;
+                checkBoxSavePassOpen.Checked = true;
+            }
+            if (!lastFileEmpty && !lastPassEmpty)
+            {
+                // Both file and pass was saved last time
+                try
+                {
+                    Storage = new EncryptedStorage(lastFile, lastPass);
+                    Filename = lastFile;
+                    Password = lastPass;
+                }
+                catch (Exception e)
+                {
+                    Error = e.Message;
+                }
+            }
         }
 
         #region Validators
@@ -136,10 +168,18 @@ namespace PuttyManagerGui
             get { return labelError.Text; }
             set
             {
-                labelError.Visible = !string.IsNullOrWhiteSpace(value);
+                var isSet = !string.IsNullOrWhiteSpace(value);
+                labelError.Visible = isSet;
+                if (isSet)
+                    _validatorOpen.Reset(); // reset validator marks before global error setting (looks strange when they both enabled).
                 labelError.Text = value;
             }
         }
+
+        public string Filename { get; private set; }
+        public string Password { get; private set; }
+        public EncryptedStorage Storage { get; private set; }
+        public bool DialogRequired { get { return Storage == null; } }
 
         private void buttonNewFileBrowse_Click(object sender, EventArgs e)
         {
@@ -161,6 +201,27 @@ namespace PuttyManagerGui
         {
             if (!_validatorCreate.ValidateControls())
                 return;
+
+            var filename = textBoxNewFile.Text;
+            var password = textBoxNewPassword.Text;
+            var savePass = checkBoxSavePassNew.Checked;
+            try
+            {
+                var storage = new EncryptedStorage();
+                storage.Save(filename, password);
+                Storage = storage;
+                Filename = filename;
+                Password = password;
+                Settings.Default.EncryptedStorageFile = filename;
+                Settings.Default.EncryptedStoragePassword = savePass ? password : null;
+                Settings.Default.Save();
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+            }
         }
 
         private void buttonOpen_Click(object sender, EventArgs e)
@@ -168,7 +229,24 @@ namespace PuttyManagerGui
             if (!_validatorOpen.ValidateControls())
                 return;
 
-            Error = "Test";
+            var filename = textBoxExistingFile.Text;
+            var password = textBoxOpenPassword.Text;
+            var savePass = checkBoxSavePassOpen.Checked;
+            try
+            {
+                Storage = new EncryptedStorage(filename, password);
+                Filename = filename;
+                Password = password;
+                Settings.Default.EncryptedStorageFile = filename;
+                Settings.Default.EncryptedStoragePassword = savePass ? password : null;
+                Settings.Default.Save();
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message.TrimEnd('.');
+            }
         }
     }
 }

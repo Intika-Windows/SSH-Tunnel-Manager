@@ -48,6 +48,7 @@
             this.textBoxOpenPassword = new System.Windows.Forms.TextBox();
             this.textBoxExistingFile = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelError = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonCreate = new System.Windows.Forms.Button();
@@ -56,8 +57,9 @@
             this.theSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.theGoodProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.theErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.labelError = new System.Windows.Forms.Label();
+            this.checkBoxSavePassNew = new System.Windows.Forms.CheckBox();
             this.theLineSeparator = new PuttyManagerGui.LineSeparator();
+            this.checkBoxSavePassOpen = new System.Windows.Forms.CheckBox();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
@@ -83,6 +85,50 @@
             label3.Text = "Encrypted Storage File:";
             label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label4
+            // 
+            label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(3, 32);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(56, 13);
+            label4.TabIndex = 2;
+            label4.Text = "Password:";
+            label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label5
+            // 
+            label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(3, 58);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(94, 13);
+            label5.TabIndex = 2;
+            label5.Text = "Confirm Password:";
+            label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label6
+            // 
+            label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(3, 6);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(117, 13);
+            label6.TabIndex = 2;
+            label6.Text = "Encrypted Storage File:";
+            label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(3, 32);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(56, 13);
+            label7.TabIndex = 2;
+            label7.Text = "Password:";
+            label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // buttonNewFileBrowse
             // 
             this.buttonNewFileBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -105,37 +151,15 @@
             this.textBoxNewPassword.TabIndex = 3;
             this.textBoxNewPassword.UseSystemPasswordChar = true;
             // 
-            // label4
-            // 
-            label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(3, 32);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(56, 13);
-            label4.TabIndex = 2;
-            label4.Text = "Password:";
-            label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // textBoxNewFile
             // 
             this.textBoxNewFile.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.theErrorProvider.SetIconPadding(this.textBoxNewFile, 34);
             this.theGoodProvider.SetIconPadding(this.textBoxNewFile, 34);
+            this.theErrorProvider.SetIconPadding(this.textBoxNewFile, 34);
             this.textBoxNewFile.Location = new System.Drawing.Point(126, 3);
             this.textBoxNewFile.Name = "textBoxNewFile";
             this.textBoxNewFile.Size = new System.Drawing.Size(169, 20);
             this.textBoxNewFile.TabIndex = 3;
-            // 
-            // label5
-            // 
-            label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(3, 58);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(94, 13);
-            label5.TabIndex = 2;
-            label5.Text = "Confirm Password:";
-            label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBoxNewPasswordConfirm
             // 
@@ -163,6 +187,7 @@
             // radioButtonCreateStorage
             // 
             this.radioButtonCreateStorage.AutoSize = true;
+            this.radioButtonCreateStorage.Checked = true;
             this.radioButtonCreateStorage.Location = new System.Drawing.Point(12, 15);
             this.radioButtonCreateStorage.Name = "radioButtonCreateStorage";
             this.radioButtonCreateStorage.Size = new System.Drawing.Size(117, 17);
@@ -179,7 +204,6 @@
             this.radioButtonOpenStorage.Name = "radioButtonOpenStorage";
             this.radioButtonOpenStorage.Size = new System.Drawing.Size(142, 17);
             this.radioButtonOpenStorage.TabIndex = 0;
-            this.radioButtonOpenStorage.TabStop = true;
             this.radioButtonOpenStorage.Text = "Open an existing storage";
             this.radioButtonOpenStorage.UseVisualStyleBackColor = true;
             // 
@@ -195,17 +219,19 @@
             this.tableLayoutPanelCreate.Controls.Add(label3, 0, 0);
             this.tableLayoutPanelCreate.Controls.Add(label4, 0, 1);
             this.tableLayoutPanelCreate.Controls.Add(this.buttonNewFileBrowse, 2, 0);
+            this.tableLayoutPanelCreate.Controls.Add(this.checkBoxSavePassNew, 0, 3);
             this.tableLayoutPanelCreate.Controls.Add(label5, 0, 2);
             this.tableLayoutPanelCreate.Controls.Add(this.textBoxNewPasswordConfirm, 1, 2);
             this.tableLayoutPanelCreate.Controls.Add(this.textBoxNewPassword, 1, 1);
             this.tableLayoutPanelCreate.Controls.Add(this.textBoxNewFile, 1, 0);
             this.tableLayoutPanelCreate.Location = new System.Drawing.Point(3, 74);
             this.tableLayoutPanelCreate.Name = "tableLayoutPanelCreate";
-            this.tableLayoutPanelCreate.RowCount = 3;
+            this.tableLayoutPanelCreate.RowCount = 4;
             this.tableLayoutPanelCreate.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelCreate.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelCreate.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelCreate.Size = new System.Drawing.Size(344, 78);
+            this.tableLayoutPanelCreate.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelCreate.Size = new System.Drawing.Size(344, 104);
             this.tableLayoutPanelCreate.TabIndex = 8;
             // 
             // tableLayoutPanelOpen
@@ -220,37 +246,17 @@
             this.tableLayoutPanelOpen.Controls.Add(label6, 0, 0);
             this.tableLayoutPanelOpen.Controls.Add(label7, 0, 1);
             this.tableLayoutPanelOpen.Controls.Add(this.buttonExistingFileBrowse, 2, 0);
+            this.tableLayoutPanelOpen.Controls.Add(this.checkBoxSavePassOpen, 0, 2);
             this.tableLayoutPanelOpen.Controls.Add(this.textBoxOpenPassword, 1, 1);
             this.tableLayoutPanelOpen.Controls.Add(this.textBoxExistingFile, 1, 0);
-            this.tableLayoutPanelOpen.Location = new System.Drawing.Point(3, 158);
+            this.tableLayoutPanelOpen.Location = new System.Drawing.Point(3, 184);
             this.tableLayoutPanelOpen.Name = "tableLayoutPanelOpen";
-            this.tableLayoutPanelOpen.RowCount = 2;
+            this.tableLayoutPanelOpen.RowCount = 3;
             this.tableLayoutPanelOpen.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelOpen.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelOpen.Size = new System.Drawing.Size(344, 52);
+            this.tableLayoutPanelOpen.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelOpen.Size = new System.Drawing.Size(344, 78);
             this.tableLayoutPanelOpen.TabIndex = 8;
-            // 
-            // label6
-            // 
-            label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(3, 6);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(117, 13);
-            label6.TabIndex = 2;
-            label6.Text = "Encrypted Storage File:";
-            label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label7
-            // 
-            label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(3, 32);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(56, 13);
-            label7.TabIndex = 2;
-            label7.Text = "Password:";
-            label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // buttonExistingFileBrowse
             // 
@@ -277,8 +283,8 @@
             // textBoxExistingFile
             // 
             this.textBoxExistingFile.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.theErrorProvider.SetIconPadding(this.textBoxExistingFile, 34);
             this.theGoodProvider.SetIconPadding(this.textBoxExistingFile, 34);
+            this.theErrorProvider.SetIconPadding(this.textBoxExistingFile, 34);
             this.textBoxExistingFile.Location = new System.Drawing.Point(126, 3);
             this.textBoxExistingFile.Name = "textBoxExistingFile";
             this.textBoxExistingFile.Size = new System.Drawing.Size(169, 20);
@@ -297,8 +303,18 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(350, 269);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(350, 321);
             this.flowLayoutPanel1.TabIndex = 9;
+            // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelError.Location = new System.Drawing.Point(3, 273);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(53, 13);
+            this.labelError.TabIndex = 11;
+            this.labelError.Text = "Error Text";
             // 
             // flowLayoutPanel2
             // 
@@ -311,7 +327,7 @@
             this.flowLayoutPanel2.Controls.Add(this.buttonCreate);
             this.flowLayoutPanel2.Controls.Add(this.buttonOpen);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 237);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 289);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(344, 29);
             this.flowLayoutPanel2.TabIndex = 10;
@@ -371,26 +387,40 @@
             this.theErrorProvider.ContainerControl = this;
             this.theErrorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("theErrorProvider.Icon")));
             // 
-            // labelError
+            // checkBoxSavePassNew
             // 
-            this.labelError.AutoSize = true;
-            this.labelError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelError.Location = new System.Drawing.Point(3, 221);
-            this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(53, 13);
-            this.labelError.TabIndex = 11;
-            this.labelError.Text = "Error Text";
+            this.checkBoxSavePassNew.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBoxSavePassNew.AutoSize = true;
+            this.checkBoxSavePassNew.Location = new System.Drawing.Point(6, 84);
+            this.checkBoxSavePassNew.Margin = new System.Windows.Forms.Padding(6, 6, 3, 3);
+            this.checkBoxSavePassNew.Name = "checkBoxSavePassNew";
+            this.checkBoxSavePassNew.Size = new System.Drawing.Size(99, 17);
+            this.checkBoxSavePassNew.TabIndex = 4;
+            this.checkBoxSavePassNew.Text = "Save password";
+            this.checkBoxSavePassNew.UseVisualStyleBackColor = true;
             // 
             // theLineSeparator
             // 
             this.theLineSeparator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.theLineSeparator.Location = new System.Drawing.Point(3, 216);
+            this.theLineSeparator.Location = new System.Drawing.Point(3, 268);
             this.theLineSeparator.MaximumSize = new System.Drawing.Size(2000, 2);
             this.theLineSeparator.MinimumSize = new System.Drawing.Size(0, 2);
             this.theLineSeparator.Name = "theLineSeparator";
             this.theLineSeparator.Size = new System.Drawing.Size(344, 2);
             this.theLineSeparator.TabIndex = 10;
+            // 
+            // checkBoxSavePassOpen
+            // 
+            this.checkBoxSavePassOpen.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBoxSavePassOpen.AutoSize = true;
+            this.checkBoxSavePassOpen.Location = new System.Drawing.Point(6, 58);
+            this.checkBoxSavePassOpen.Margin = new System.Windows.Forms.Padding(6, 6, 3, 3);
+            this.checkBoxSavePassOpen.Name = "checkBoxSavePassOpen";
+            this.checkBoxSavePassOpen.Size = new System.Drawing.Size(99, 17);
+            this.checkBoxSavePassOpen.TabIndex = 4;
+            this.checkBoxSavePassOpen.Text = "Save password";
+            this.checkBoxSavePassOpen.UseVisualStyleBackColor = true;
             // 
             // StartUpDialog
             // 
@@ -449,5 +479,7 @@
         private System.Windows.Forms.ErrorProvider theGoodProvider;
         private System.Windows.Forms.ErrorProvider theErrorProvider;
         private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.CheckBox checkBoxSavePassNew;
+        private System.Windows.Forms.CheckBox checkBoxSavePassOpen;
     }
 }

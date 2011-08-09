@@ -242,6 +242,8 @@ namespace PuttyManager.Domain
             }
         }
 
+        private readonly StringBuilder _multilineError = new StringBuilder();
+
         private void errorDataHandler(object o, DataReceivedEventArgs args)
         {
             if (args.Data == null)
@@ -283,6 +285,12 @@ namespace PuttyManager.Domain
                     Logger.Log.WarnFormat("[{0}] [{1}] {2}", Host.Name, tunnel.SimpleString, errorString);
                 }
             }
+            // Unable to open connection:
+            if (args.Data.Contains("Unable to open connection:"))
+            {
+                _multilineError.Append("Unable to open connection: ");
+                return;
+            }
             // Access denied error
             if (args.Data.Contains("Access denied"))
             {
@@ -306,6 +314,14 @@ namespace PuttyManager.Domain
                 }
                 ConnectionState = forwardingFails ? EConnectionState.ActiveWithWarnings : EConnectionState.Active;
             }
+            // multiline error?
+            if (_multilineError.Length > 0)
+            {
+                _multilineError.Append(args.Data);
+                LastStartError = _multilineError.ToString();
+                _multilineError.Clear();
+                Stop();
+            }
             log4net.ThreadContext.Properties["Host"] = null;
         }
 
@@ -317,6 +333,7 @@ namespace PuttyManager.Domain
             try
             {
                 _process.Kill();
+                _multilineError.Clear();
                 Debug.WriteLine("Plink: Kill command!");
             }
             catch (Exception)
