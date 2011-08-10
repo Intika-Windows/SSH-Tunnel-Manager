@@ -43,8 +43,10 @@
             this.radioButtonCreateStorage = new System.Windows.Forms.RadioButton();
             this.radioButtonOpenStorage = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanelCreate = new System.Windows.Forms.TableLayoutPanel();
+            this.checkBoxSavePassNew = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelOpen = new System.Windows.Forms.TableLayoutPanel();
             this.buttonExistingFileBrowse = new System.Windows.Forms.Button();
+            this.checkBoxSavePassOpen = new System.Windows.Forms.CheckBox();
             this.textBoxOpenPassword = new System.Windows.Forms.TextBox();
             this.textBoxExistingFile = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -57,9 +59,7 @@
             this.theSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.theGoodProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.theErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.checkBoxSavePassNew = new System.Windows.Forms.CheckBox();
             this.theLineSeparator = new PuttyManagerGui.LineSeparator();
-            this.checkBoxSavePassOpen = new System.Windows.Forms.CheckBox();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
@@ -81,7 +81,7 @@
             label3.Location = new System.Drawing.Point(3, 6);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(117, 13);
-            label3.TabIndex = 2;
+            label3.TabIndex = 0;
             label3.Text = "Encrypted Storage File:";
             label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -92,7 +92,7 @@
             label4.Location = new System.Drawing.Point(3, 32);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(56, 13);
-            label4.TabIndex = 2;
+            label4.TabIndex = 3;
             label4.Text = "Password:";
             label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -103,7 +103,7 @@
             label5.Location = new System.Drawing.Point(3, 58);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(94, 13);
-            label5.TabIndex = 2;
+            label5.TabIndex = 5;
             label5.Text = "Confirm Password:";
             label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -114,7 +114,7 @@
             label6.Location = new System.Drawing.Point(3, 6);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(117, 13);
-            label6.TabIndex = 2;
+            label6.TabIndex = 0;
             label6.Text = "Encrypted Storage File:";
             label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -125,7 +125,7 @@
             label7.Location = new System.Drawing.Point(3, 32);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(56, 13);
-            label7.TabIndex = 2;
+            label7.TabIndex = 3;
             label7.Text = "Password:";
             label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -136,7 +136,7 @@
             this.buttonNewFileBrowse.Location = new System.Drawing.Point(301, 3);
             this.buttonNewFileBrowse.Name = "buttonNewFileBrowse";
             this.buttonNewFileBrowse.Size = new System.Drawing.Size(28, 20);
-            this.buttonNewFileBrowse.TabIndex = 4;
+            this.buttonNewFileBrowse.TabIndex = 2;
             this.buttonNewFileBrowse.Text = "...";
             this.buttonNewFileBrowse.UseVisualStyleBackColor = true;
             this.buttonNewFileBrowse.Click += new System.EventHandler(this.buttonNewFileBrowse_Click);
@@ -148,7 +148,7 @@
             this.textBoxNewPassword.Location = new System.Drawing.Point(126, 29);
             this.textBoxNewPassword.Name = "textBoxNewPassword";
             this.textBoxNewPassword.Size = new System.Drawing.Size(203, 20);
-            this.textBoxNewPassword.TabIndex = 3;
+            this.textBoxNewPassword.TabIndex = 4;
             this.textBoxNewPassword.UseSystemPasswordChar = true;
             // 
             // textBoxNewFile
@@ -159,7 +159,7 @@
             this.textBoxNewFile.Location = new System.Drawing.Point(126, 3);
             this.textBoxNewFile.Name = "textBoxNewFile";
             this.textBoxNewFile.Size = new System.Drawing.Size(169, 20);
-            this.textBoxNewFile.TabIndex = 3;
+            this.textBoxNewFile.TabIndex = 1;
             // 
             // textBoxNewPasswordConfirm
             // 
@@ -168,7 +168,7 @@
             this.textBoxNewPasswordConfirm.Location = new System.Drawing.Point(126, 55);
             this.textBoxNewPasswordConfirm.Name = "textBoxNewPasswordConfirm";
             this.textBoxNewPasswordConfirm.Size = new System.Drawing.Size(203, 20);
-            this.textBoxNewPasswordConfirm.TabIndex = 3;
+            this.textBoxNewPasswordConfirm.TabIndex = 6;
             this.textBoxNewPasswordConfirm.UseSystemPasswordChar = true;
             // 
             // groupBox3
@@ -180,7 +180,7 @@
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(344, 65);
-            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Source:";
             // 
@@ -203,7 +203,7 @@
             this.radioButtonOpenStorage.Location = new System.Drawing.Point(12, 38);
             this.radioButtonOpenStorage.Name = "radioButtonOpenStorage";
             this.radioButtonOpenStorage.Size = new System.Drawing.Size(142, 17);
-            this.radioButtonOpenStorage.TabIndex = 0;
+            this.radioButtonOpenStorage.TabIndex = 1;
             this.radioButtonOpenStorage.Text = "Open an existing storage";
             this.radioButtonOpenStorage.UseVisualStyleBackColor = true;
             // 
@@ -232,7 +232,19 @@
             this.tableLayoutPanelCreate.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelCreate.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelCreate.Size = new System.Drawing.Size(344, 104);
-            this.tableLayoutPanelCreate.TabIndex = 8;
+            this.tableLayoutPanelCreate.TabIndex = 1;
+            // 
+            // checkBoxSavePassNew
+            // 
+            this.checkBoxSavePassNew.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBoxSavePassNew.AutoSize = true;
+            this.checkBoxSavePassNew.Location = new System.Drawing.Point(6, 84);
+            this.checkBoxSavePassNew.Margin = new System.Windows.Forms.Padding(6, 6, 3, 3);
+            this.checkBoxSavePassNew.Name = "checkBoxSavePassNew";
+            this.checkBoxSavePassNew.Size = new System.Drawing.Size(99, 17);
+            this.checkBoxSavePassNew.TabIndex = 7;
+            this.checkBoxSavePassNew.Text = "Save password";
+            this.checkBoxSavePassNew.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelOpen
             // 
@@ -256,7 +268,7 @@
             this.tableLayoutPanelOpen.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelOpen.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelOpen.Size = new System.Drawing.Size(344, 78);
-            this.tableLayoutPanelOpen.TabIndex = 8;
+            this.tableLayoutPanelOpen.TabIndex = 2;
             // 
             // buttonExistingFileBrowse
             // 
@@ -265,10 +277,22 @@
             this.buttonExistingFileBrowse.Location = new System.Drawing.Point(301, 3);
             this.buttonExistingFileBrowse.Name = "buttonExistingFileBrowse";
             this.buttonExistingFileBrowse.Size = new System.Drawing.Size(28, 20);
-            this.buttonExistingFileBrowse.TabIndex = 4;
+            this.buttonExistingFileBrowse.TabIndex = 2;
             this.buttonExistingFileBrowse.Text = "...";
             this.buttonExistingFileBrowse.UseVisualStyleBackColor = true;
             this.buttonExistingFileBrowse.Click += new System.EventHandler(this.buttonExistingFileBrowse_Click);
+            // 
+            // checkBoxSavePassOpen
+            // 
+            this.checkBoxSavePassOpen.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBoxSavePassOpen.AutoSize = true;
+            this.checkBoxSavePassOpen.Location = new System.Drawing.Point(6, 58);
+            this.checkBoxSavePassOpen.Margin = new System.Windows.Forms.Padding(6, 6, 3, 3);
+            this.checkBoxSavePassOpen.Name = "checkBoxSavePassOpen";
+            this.checkBoxSavePassOpen.Size = new System.Drawing.Size(99, 17);
+            this.checkBoxSavePassOpen.TabIndex = 5;
+            this.checkBoxSavePassOpen.Text = "Save password";
+            this.checkBoxSavePassOpen.UseVisualStyleBackColor = true;
             // 
             // textBoxOpenPassword
             // 
@@ -277,7 +301,7 @@
             this.textBoxOpenPassword.Location = new System.Drawing.Point(126, 29);
             this.textBoxOpenPassword.Name = "textBoxOpenPassword";
             this.textBoxOpenPassword.Size = new System.Drawing.Size(203, 20);
-            this.textBoxOpenPassword.TabIndex = 3;
+            this.textBoxOpenPassword.TabIndex = 4;
             this.textBoxOpenPassword.UseSystemPasswordChar = true;
             // 
             // textBoxExistingFile
@@ -288,7 +312,7 @@
             this.textBoxExistingFile.Location = new System.Drawing.Point(126, 3);
             this.textBoxExistingFile.Name = "textBoxExistingFile";
             this.textBoxExistingFile.Size = new System.Drawing.Size(169, 20);
-            this.textBoxExistingFile.TabIndex = 3;
+            this.textBoxExistingFile.TabIndex = 1;
             // 
             // flowLayoutPanel1
             // 
@@ -330,7 +354,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 289);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(344, 29);
-            this.flowLayoutPanel2.TabIndex = 10;
+            this.flowLayoutPanel2.TabIndex = 4;
             // 
             // buttonExit
             // 
@@ -360,7 +384,7 @@
             this.buttonOpen.Location = new System.Drawing.Point(104, 3);
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(75, 23);
-            this.buttonOpen.TabIndex = 3;
+            this.buttonOpen.TabIndex = 0;
             this.buttonOpen.Text = "Open";
             this.buttonOpen.UseVisualStyleBackColor = true;
             this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
@@ -387,18 +411,6 @@
             this.theErrorProvider.ContainerControl = this;
             this.theErrorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("theErrorProvider.Icon")));
             // 
-            // checkBoxSavePassNew
-            // 
-            this.checkBoxSavePassNew.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBoxSavePassNew.AutoSize = true;
-            this.checkBoxSavePassNew.Location = new System.Drawing.Point(6, 84);
-            this.checkBoxSavePassNew.Margin = new System.Windows.Forms.Padding(6, 6, 3, 3);
-            this.checkBoxSavePassNew.Name = "checkBoxSavePassNew";
-            this.checkBoxSavePassNew.Size = new System.Drawing.Size(99, 17);
-            this.checkBoxSavePassNew.TabIndex = 4;
-            this.checkBoxSavePassNew.Text = "Save password";
-            this.checkBoxSavePassNew.UseVisualStyleBackColor = true;
-            // 
             // theLineSeparator
             // 
             this.theLineSeparator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -408,19 +420,7 @@
             this.theLineSeparator.MinimumSize = new System.Drawing.Size(0, 2);
             this.theLineSeparator.Name = "theLineSeparator";
             this.theLineSeparator.Size = new System.Drawing.Size(344, 2);
-            this.theLineSeparator.TabIndex = 10;
-            // 
-            // checkBoxSavePassOpen
-            // 
-            this.checkBoxSavePassOpen.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBoxSavePassOpen.AutoSize = true;
-            this.checkBoxSavePassOpen.Location = new System.Drawing.Point(6, 58);
-            this.checkBoxSavePassOpen.Margin = new System.Windows.Forms.Padding(6, 6, 3, 3);
-            this.checkBoxSavePassOpen.Name = "checkBoxSavePassOpen";
-            this.checkBoxSavePassOpen.Size = new System.Drawing.Size(99, 17);
-            this.checkBoxSavePassOpen.TabIndex = 4;
-            this.checkBoxSavePassOpen.Text = "Save password";
-            this.checkBoxSavePassOpen.UseVisualStyleBackColor = true;
+            this.theLineSeparator.TabIndex = 3;
             // 
             // StartUpDialog
             // 

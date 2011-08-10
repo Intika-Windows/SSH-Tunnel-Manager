@@ -137,6 +137,13 @@ namespace PuttyManagerGui.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap disk {
+            get {
+                object obj = ResourceManager.GetObject("disk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap exclamation_small {
             get {
                 object obj = ResourceManager.GetObject("exclamation_small", resourceCulture);

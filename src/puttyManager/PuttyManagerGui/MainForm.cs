@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -21,11 +22,16 @@ namespace PuttyManagerGui
         private readonly HostsManager<HostViewModel> _hostsManager;
         private readonly BindingSource _bindingSource;
         private static readonly Color _darkRedColor = Color.FromArgb(165, 0, 0);
+        private readonly string _titleFilename;
 
         public MainForm(HostsManager<HostViewModel> manager)
         {
             if (manager == null) throw new ArgumentNullException("manager");
             InitializeComponent();
+            centerMe();
+
+            _titleFilename = Path.GetFileName(manager.Filename);
+            Modified = false;
 
             _hostsManager = manager;
             foreach (var host in _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(o => o.Object))
@@ -54,6 +60,15 @@ namespace PuttyManagerGui
         }
 
         public bool ChangeSourceRequested { get; private set; }
+
+        private void centerMe()
+        {
+            int boundWidth = Screen.PrimaryScreen.Bounds.Width;
+            int boundHeight = Screen.PrimaryScreen.Bounds.Height;
+            int x = boundWidth - Width;
+            int y = boundHeight - Height;
+            Location = new Point(x / 2, y / 2);
+        }
 
         private void onLogAppended(object sender, LogAppendedEventArgs e)
         {
@@ -237,6 +252,34 @@ namespace PuttyManagerGui
             return ((ObjectView<HostViewModel>) _bindingSource.Current).Object;
         }
 
+        private void updateHost(HostViewModel host)
+        {
+            var index2 = _bindingSource.IndexOf(host);
+            _bindingSource.ResetItem(index2);
+        }
+
+        private bool askForSave()
+        {
+            if (!Modified)
+                return true;
+
+            DialogResult res = MessageBox.Show(this, @"Storage was modified, save before closing?",
+                                               Util.AssemblyTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            switch (res)
+            {
+            case DialogResult.Yes:
+                save();
+                break;
+            case DialogResult.No:
+                // exit without save
+                break;
+            case DialogResult.Cancel:
+                // cancel exit
+                return false;
+            }
+            return true;
+        }
+
         #region Commands
 
         private void addHost()
@@ -251,6 +294,10 @@ namespace PuttyManagerGui
                 var hvm = new HostViewModel(new Host(host));
                 _hostsManager.AddHost(hvm);
                 hvm.StatusChanged += onHostStatusChanged;
+            }
+            if (hd.CreatedHosts.Length > 0)
+            {
+                Modified = true;
             }
         }
 
@@ -271,12 +318,7 @@ namespace PuttyManagerGui
             }
 
             updateHost(host);
-        }
-
-        private void updateHost(HostViewModel host)
-        {
-            var index2 = _bindingSource.IndexOf(host);
-            _bindingSource.ResetItem(index2);
+            Modified = true;
         }
 
         private void removeHost()
@@ -326,6 +368,7 @@ namespace PuttyManagerGui
                 _bindingSource.Remove(host);
                 host.StatusChanged -= onHostStatusChanged;
             }
+            Modified = true;
         }
 
         private void startHost()
@@ -367,6 +410,9 @@ namespace PuttyManagerGui
 
         private void exit()
         {
+            if (!askForSave())
+                return;
+
             var activeHosts = _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Where(
                 o => o.Object.Model.Status != HostStatus.Stopped).Select(o => o.Object.Model).ToList();
             foreach (var host in activeHosts)
@@ -374,6 +420,28 @@ namespace PuttyManagerGui
                 host.Link.Stop();
             }
             ReallyClose();
+        }
+
+        private void exitKeepLinks()
+        {
+            if (!askForSave())
+                return;
+
+            ReallyClose();
+        }
+
+        private void save()
+        {
+            if (!Modified)
+                return;
+            _hostsManager.Save();
+            if (_savePasswordRequested)
+            {
+                Settings.Default.EncryptedStoragePassword = _saveNewPassword ? _hostsManager.Password : null;
+                Settings.Default.Save();
+                _savePasswordRequested = false;
+            }
+            Modified = false;
         }
 
         #endregion
@@ -443,6 +511,11 @@ namespace PuttyManagerGui
             stopHost();
         }
 
+        private void toolStripButtonSave_Click(object sender, EventArgs e)
+        {
+            save();
+        }
+
         #endregion
 
         #region Main Menu
@@ -479,7 +552,12 @@ namespace PuttyManagerGui
 
         private void keepConnectionsExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReallyClose();
+            exitKeepLinks();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            save();
         }
 
         #endregion
@@ -633,16 +711,37 @@ namespace PuttyManagerGui
             exit();
         }
 
+        private bool _savePasswordRequested = false;
+        private bool _saveNewPassword;
+
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var pwdDlg = new PasswordDialog();
-            pwdDlg.Setup(PasswordDialog.EMode.CreatePassword);
+            var savePass = !string.IsNullOrEmpty(Settings.Default.EncryptedStoragePassword);
+            var pwdDlg = new ChangePasswordDialog(savePass);
             var res = pwdDlg.ShowDialog(this);
             if (res == DialogResult.Cancel)
                 return;
-            var password = pwdDlg.Password;
-            var savePass = pwdDlg.SavePassword;
-            //_hostsManager.Password
+
+            _savePasswordRequested = true;
+            _hostsManager.Password = pwdDlg.Password;
+            savePass = pwdDlg.SavePassword;
+            _saveNewPassword = savePass;
+            Modified = true;
+        }
+
+        private bool _modified;
+        private bool Modified
+        {
+            get { return _modified; }
+            set
+            {
+                var star = value ? "*" : "";
+                Text = string.Concat(_titleFilename, star, @" - ", Util.AssemblyTitle);
+                toolStripButtonSave.Enabled = value;
+                saveToolStripMenuItem.Enabled = value;
+
+                _modified = value;
+            }
         }
     }
 }

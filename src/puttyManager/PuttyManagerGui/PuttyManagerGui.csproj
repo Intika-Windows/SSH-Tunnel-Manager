@@ -220,6 +220,7 @@
     <None Include="Resources\database.png" />
     <None Include="Resources\databases__arrow.png" />
     <None Include="Resources\key__arrow.png" />
+    <None Include="Resources\disk.png" />
     <Content Include="terminal.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

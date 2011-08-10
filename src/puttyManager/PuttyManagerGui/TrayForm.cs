@@ -160,7 +160,7 @@ namespace PuttyManagerGui
             ReallyClose();
         }
 
-        public void ReallyClose()
+        public virtual void ReallyClose()
         {
             // Указать что мы действительно хотим выйти из приложения.
             _timeToExit = true;

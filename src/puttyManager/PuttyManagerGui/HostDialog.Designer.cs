@@ -241,7 +241,7 @@
             this.tunnelsGridView.RowTemplate.Height = 18;
             this.tunnelsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tunnelsGridView.Size = new System.Drawing.Size(304, 69);
-            this.tunnelsGridView.TabIndex = 6;
+            this.tunnelsGridView.TabIndex = 1;
             this.tunnelsGridView.SelectionChanged += new System.EventHandler(this.tunnelsGridView_SelectionChanged);
             // 
             // tgvNameColumn
@@ -678,7 +678,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.buttonClose;
-            this.ClientSize = new System.Drawing.Size(458, 617);
+            this.ClientSize = new System.Drawing.Size(448, 552);
             this.Controls.Add(this.flowLayoutPanelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

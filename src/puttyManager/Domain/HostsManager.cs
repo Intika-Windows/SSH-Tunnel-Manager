@@ -13,8 +13,8 @@ namespace PuttyManager.Domain
 {
     public class HostsManager<THostViewModel> where THostViewModel : IViewModel<Host>, new()
     {
-        private readonly string _filename;
-        public string Password { get; private set; }
+        public string Filename { get; private set; }
+        public string Password { get; set; }
         public EncryptedStorage Storage { get; private set; }
 
         private THostViewModel _addingNewHost;
@@ -25,7 +25,7 @@ namespace PuttyManager.Domain
             if (filename == null) throw new ArgumentNullException("filename");
             if (password == null) throw new ArgumentNullException("password");
 
-            _filename = filename;
+            Filename = filename;
             Password = password;
 
             Storage = storage;
@@ -68,7 +68,7 @@ namespace PuttyManager.Domain
         public void Save()
         {
             Storage.Data.Hosts = Hosts.Cast<ObjectView<THostViewModel>>().Select(h => h.Object.Model.Info).ToList();
-            Storage.Save(_filename, Password);
+            Storage.Save(Filename, Password);
         }
 
         /*private void setViewModel(Type viewModelType)
