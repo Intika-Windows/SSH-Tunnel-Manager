@@ -116,7 +116,7 @@ namespace PuttyManagerGui
             if (!_timeToExit && e.CloseReason == CloseReason.UserClosing)
             {
                 // Просто спрятать
-                _theNotifyIcon.ShowBalloonTip(2000, Util.AssemblyTitle, Text + " has minimized here.", ToolTipIcon.Info);
+                _theNotifyIcon.ShowBalloonTip(2000, Util.AssemblyTitle, Util.AssemblyTitle + " has minimized here.", ToolTipIcon.Info);
 
                 hideToTray();
 
