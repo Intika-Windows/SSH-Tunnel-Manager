@@ -54,7 +54,7 @@ namespace PuttyManager
         /// <returns></returns>
         public static bool HasGoodPutty(HostInfo puttyInfo)
         {
-            var lookedText = String.Format("{0}@{1}:", puttyInfo.Username, puttyInfo.MachineName);
+            var lookedText = String.Format("{0}@{1}:", puttyInfo.Username, puttyInfo/*.MachineName*/);
             var anyGoodPutty = GetPuttyWindows().Any(pw => pw.Text.Contains(lookedText));
             return anyGoodPutty;
         }

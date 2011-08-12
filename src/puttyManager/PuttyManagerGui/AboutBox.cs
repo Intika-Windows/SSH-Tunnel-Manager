@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using PuttyManagerGui.Properties;
 
 namespace PuttyManagerGui
 {
@@ -13,12 +14,16 @@ namespace PuttyManagerGui
         public AboutBox()
         {
             InitializeComponent();
-            this.Text = String.Format("About {0}", AssemblyTitle);
-            this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
-            this.labelCopyright.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = AssemblyDescription;
+            Text = String.Format("About {0}", AssemblyTitle);
+            labelProductName.Text = AssemblyProduct;
+            labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
+            textBoxDescription.Text = AssemblyDescription;
+
+            linkLabelProjectPage.Links[0].LinkData = Resources.ProjectPage;
+            linkLabelGpl3.Links[0].LinkData = Resources.GNUGPLv3Page;
+            linkLabelMit.Links[0].LinkData = Resources.MITLicensePage;
+            linkLabelFugue.Links[0].LinkData = Resources.FuguePage;
+            linkLabelCCA3.Links[0].LinkData = Resources.CCA3LicensePage;
         }
 
         #region Assembly Attribute Accessors
@@ -100,5 +105,13 @@ namespace PuttyManagerGui
             }
         }
         #endregion
+
+        private void linkClickedHandler(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var target = e.Link.LinkData as string;
+            if (target == null)
+                return;
+            System.Diagnostics.Process.Start(target);
+        }
     }
 }

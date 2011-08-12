@@ -21,15 +21,15 @@ namespace PuttyManager.Business
         {
             get
             {
-                switch (Link.ConnectionState)
+                switch (Link.LinkStatus)
                 {
-                case EConnectionState.Inactive:
+                case ELinkStatus.Stopped:
                     return HostStatus.Stopped;
-                case EConnectionState.Intermediate:
+                case ELinkStatus.Starting:
                     return HostStatus.Unknown;
-                case EConnectionState.ActiveWithWarnings:
+                case ELinkStatus.StartedWithWarnings:
                     return HostStatus.StartedWithWarnings;
-                case EConnectionState.Active:
+                case ELinkStatus.Started:
                     return HostStatus.Started;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -58,20 +58,5 @@ namespace PuttyManager.Business
                 StatusChanged(this, EventArgs.Empty);
             }
         }
-
-        //public bool IsOpen { get { return (_sshLink != null); } }
-
-        /*public void Open()
-        {
-            _puttyLink = new PuttyLink(Info);
-            _puttyLink.AsyncStart();
-        }
-
-        public void Close()
-        {
-            if (_puttyLink.ConnectionState != EConnectionState.Inactive)
-                _puttyLink.Stop();
-            _puttyLink = null;
-        }*/
     }
 }

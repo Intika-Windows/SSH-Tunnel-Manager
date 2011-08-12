@@ -119,9 +119,9 @@ namespace PuttyManagerGui
             {
                 splitContainerV1.Panel2Collapsed = true;
                 toolStripButtonStart.Enabled = false;
-                startToolStripMenuItem.Enabled = false;
+                startToolStripMenuItem.Visible = false;
                 toolStripButtonStop.Enabled = false;
-                stopToolStripMenuItem.Enabled = false;
+                stopToolStripMenuItem.Visible = false;
                 toolStripMenuItemEditHost.Enabled = false;
                 toolStripButtonEditHost.Enabled = false;
                 editHostToolStripMenuItem.Enabled = false;
@@ -159,6 +159,8 @@ namespace PuttyManagerGui
             bool hostStopped = h.Model.Status == HostStatus.Stopped;
             toolStripButtonStart.Enabled = hostStopped;
             toolStripButtonStop.Enabled = !hostStopped;
+            startToolStripMenuItem.Visible = hostStopped;
+            stopToolStripMenuItem.Visible = !hostStopped;
             // edit buttons
             bool canEdit = hostStopped;
             toolStripMenuItemEditHost.Enabled = canEdit;
@@ -376,6 +378,9 @@ namespace PuttyManagerGui
             var viewmodel = ((ObjectView<HostViewModel>) _bindingSource.Current).Object;
             var host = viewmodel.Model.Info;
 
+            if (viewmodel.Model.Status != HostStatus.Stopped)
+                return;
+
             // building dependency list
             var depList = new List<Host>();
             for (var parent = host.DependsOn; parent != null; parent = parent.DependsOn)
@@ -566,7 +571,7 @@ namespace PuttyManagerGui
         {
             foreach (var h1 in depList)
             {
-                if (h1.Link.ConnectionState == EConnectionState.Intermediate)
+                if (h1.Link.LinkStatus == ELinkStatus.Starting)
                 {
                     h1.Link.Stop();
                     if (!h1.Link.WaitForStop())
@@ -580,7 +585,7 @@ namespace PuttyManagerGui
                         return;
                     }
                 }
-                if (h1.Link.ConnectionState == EConnectionState.Inactive)
+                if (h1.Link.LinkStatus == ELinkStatus.Stopped)
                 {
                     h1.Link.AsyncStart();
                     if (!h1.Link.WaitForStart())
@@ -742,6 +747,11 @@ namespace PuttyManagerGui
 
                 _modified = value;
             }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AboutBox().ShowDialog(this);
         }
     }
 }

@@ -95,6 +95,15 @@ namespace PuttyManagerGui.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to http://creativecommons.org/licenses/by/3.0/.
+        /// </summary>
+        internal static string CCA3LicensePage {
+            get {
+                return ResourceManager.GetString("CCA3LicensePage", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap control {
             get {
                 object obj = ResourceManager.GetObject("control", resourceCulture);
@@ -151,10 +160,53 @@ namespace PuttyManagerGui.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to http://p.yusukekamiyamane.com/.
+        /// </summary>
+        internal static string FuguePage {
+            get {
+                return ResourceManager.GetString("FuguePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://www.gnu.org/licenses/gpl.html.
+        /// </summary>
+        internal static string GNUGPLv3Page {
+            get {
+                return ResourceManager.GetString("GNUGPLv3Page", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap key__arrow {
             get {
                 object obj = ResourceManager.GetObject("key__arrow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://www.chiark.greenend.org.uk/~sgtatham/putty/licence.html.
+        /// </summary>
+        internal static string MITLicensePage {
+            get {
+                return ResourceManager.GetString("MITLicensePage", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap oie_1220044U5H48MJA__1_ {
+            get {
+                object obj = ResourceManager.GetObject("oie_1220044U5H48MJA (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://code.google.com/p/ssh-tunnel-manager/.
+        /// </summary>
+        internal static string ProjectPage {
+            get {
+                return ResourceManager.GetString("ProjectPage", resourceCulture);
             }
         }
         

@@ -38,15 +38,15 @@ namespace PuttyManagerGui
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label9;
             System.Windows.Forms.Label label5;
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Stopped", 1, 1);
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Unknown", 2, 2);
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Started", 3, 3);
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("All hosts", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Stopped", 1, 1);
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Unknown", 2, 2);
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Started", 3, 3);
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("All hosts", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6,
+            treeNode7});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.hostsGridView = new System.Windows.Forms.DataGridView();
             this.hgwStatusIconColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.hgwNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,13 +55,7 @@ namespace PuttyManagerGui
             this.hgwStatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hgwDependsOnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addHostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editHostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeHostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -70,6 +64,15 @@ namespace PuttyManagerGui
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.keepConnectionsExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addHostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editHostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeHostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.theToolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -260,22 +263,18 @@ namespace PuttyManagerGui
             // mainMenuStrip
             // 
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.actionsToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.hostToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Size = new System.Drawing.Size(770, 24);
             this.mainMenuStrip.TabIndex = 1;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
-            // actionsToolStripMenuItem
+            // fileToolStripMenuItem
             // 
-            this.actionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addHostToolStripMenuItem,
-            this.editHostToolStripMenuItem,
-            this.removeHostToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.startToolStripMenuItem,
-            this.stopToolStripMenuItem,
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator6,
             this.saveToolStripMenuItem,
             this.toolStripSeparator1,
@@ -284,55 +283,9 @@ namespace PuttyManagerGui
             this.toolStripSeparator4,
             this.keepConnectionsExitToolStripMenuItem,
             this.exitToolStripMenuItem});
-            this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
-            this.actionsToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.actionsToolStripMenuItem.Text = "Action";
-            // 
-            // addHostToolStripMenuItem
-            // 
-            this.addHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__plus;
-            this.addHostToolStripMenuItem.Name = "addHostToolStripMenuItem";
-            this.addHostToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.addHostToolStripMenuItem.Text = "&Add host...";
-            this.addHostToolStripMenuItem.Click += new System.EventHandler(this.addHostToolStripMenuItem_Click);
-            // 
-            // editHostToolStripMenuItem
-            // 
-            this.editHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__pencil;
-            this.editHostToolStripMenuItem.Name = "editHostToolStripMenuItem";
-            this.editHostToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.editHostToolStripMenuItem.Text = "&Edit host...";
-            this.editHostToolStripMenuItem.Click += new System.EventHandler(this.editHostToolStripMenuItem_Click);
-            // 
-            // removeHostToolStripMenuItem
-            // 
-            this.removeHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__minus;
-            this.removeHostToolStripMenuItem.Name = "removeHostToolStripMenuItem";
-            this.removeHostToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.removeHostToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.removeHostToolStripMenuItem.Text = "&Remove host";
-            this.removeHostToolStripMenuItem.Click += new System.EventHandler(this.removeHostToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(206, 6);
-            // 
-            // startToolStripMenuItem
-            // 
-            this.startToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.control;
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.startToolStripMenuItem.Text = "&Start";
-            this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
-            // 
-            // stopToolStripMenuItem
-            // 
-            this.stopToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.control_stop_square;
-            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.stopToolStripMenuItem.Text = "S&top";
-            this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
             // 
             // toolStripSeparator6
             // 
@@ -388,6 +341,80 @@ namespace PuttyManagerGui
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.exitToolStripMenuItem.Text = "Ex&it";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // hostToolStripMenuItem
+            // 
+            this.hostToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addHostToolStripMenuItem,
+            this.editHostToolStripMenuItem,
+            this.removeHostToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.startToolStripMenuItem,
+            this.stopToolStripMenuItem});
+            this.hostToolStripMenuItem.Name = "hostToolStripMenuItem";
+            this.hostToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.hostToolStripMenuItem.Text = "&Host";
+            // 
+            // addHostToolStripMenuItem
+            // 
+            this.addHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__plus;
+            this.addHostToolStripMenuItem.Name = "addHostToolStripMenuItem";
+            this.addHostToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.addHostToolStripMenuItem.Text = "&Add host...";
+            this.addHostToolStripMenuItem.Click += new System.EventHandler(this.addHostToolStripMenuItem_Click);
+            // 
+            // editHostToolStripMenuItem
+            // 
+            this.editHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__pencil;
+            this.editHostToolStripMenuItem.Name = "editHostToolStripMenuItem";
+            this.editHostToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.editHostToolStripMenuItem.Text = "&Edit host...";
+            this.editHostToolStripMenuItem.Click += new System.EventHandler(this.editHostToolStripMenuItem_Click);
+            // 
+            // removeHostToolStripMenuItem
+            // 
+            this.removeHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__minus;
+            this.removeHostToolStripMenuItem.Name = "removeHostToolStripMenuItem";
+            this.removeHostToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.removeHostToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.removeHostToolStripMenuItem.Text = "&Remove host";
+            this.removeHostToolStripMenuItem.Click += new System.EventHandler(this.removeHostToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(164, 6);
+            // 
+            // startToolStripMenuItem
+            // 
+            this.startToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.control;
+            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.startToolStripMenuItem.Text = "&Start";
+            this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
+            // 
+            // stopToolStripMenuItem
+            // 
+            this.stopToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.control_stop_square;
+            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.stopToolStripMenuItem.Text = "S&top";
+            this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "H&elp";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.aboutToolStripMenuItem.Text = "&About SSH Tunnel Manager";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // theToolStrip
             // 
@@ -508,26 +535,26 @@ namespace PuttyManagerGui
             this.treeViewFilter.ImageList = this.imageListStates;
             this.treeViewFilter.Location = new System.Drawing.Point(0, 0);
             this.treeViewFilter.Name = "treeViewFilter";
-            treeNode1.ImageIndex = 1;
-            treeNode1.Name = "filterStoppedHostsNode";
-            treeNode1.SelectedImageIndex = 1;
-            treeNode1.Tag = "1";
-            treeNode1.Text = "Stopped";
-            treeNode2.ImageIndex = 2;
-            treeNode2.Name = "filterUnknownHostsNode";
-            treeNode2.SelectedImageIndex = 2;
-            treeNode2.Tag = "2";
-            treeNode2.Text = "Unknown";
-            treeNode3.ImageIndex = 3;
-            treeNode3.Name = "filterStartedHostsNode";
-            treeNode3.SelectedImageIndex = 3;
-            treeNode3.Tag = "3";
-            treeNode3.Text = "Started";
-            treeNode4.Name = "filterAllHostsNode";
-            treeNode4.Tag = "-1";
-            treeNode4.Text = "All hosts";
+            treeNode5.ImageIndex = 1;
+            treeNode5.Name = "filterStoppedHostsNode";
+            treeNode5.SelectedImageIndex = 1;
+            treeNode5.Tag = "1";
+            treeNode5.Text = "Stopped";
+            treeNode6.ImageIndex = 2;
+            treeNode6.Name = "filterUnknownHostsNode";
+            treeNode6.SelectedImageIndex = 2;
+            treeNode6.Tag = "2";
+            treeNode6.Text = "Unknown";
+            treeNode7.ImageIndex = 3;
+            treeNode7.Name = "filterStartedHostsNode";
+            treeNode7.SelectedImageIndex = 3;
+            treeNode7.Tag = "3";
+            treeNode7.Text = "Started";
+            treeNode8.Name = "filterAllHostsNode";
+            treeNode8.Tag = "-1";
+            treeNode8.Text = "All hosts";
             this.treeViewFilter.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode8});
             this.treeViewFilter.SelectedImageIndex = 0;
             this.treeViewFilter.Size = new System.Drawing.Size(134, 398);
             this.treeViewFilter.TabIndex = 0;
@@ -672,14 +699,14 @@ namespace PuttyManagerGui
             this.tunnelsGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.tunnelsGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tunnelsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tunnelsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tunnelsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tunnelsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tunnelsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tgvNameColumn,
@@ -835,7 +862,7 @@ namespace PuttyManagerGui
 
         private System.Windows.Forms.DataGridView hostsGridView;
         private System.Windows.Forms.MenuStrip mainMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem actionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addHostToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
@@ -889,5 +916,8 @@ namespace PuttyManagerGui
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hostToolStripMenuItem;
     }
 }

@@ -23,19 +23,20 @@ namespace PuttyManager.Domain
         public string Message { get; private set; }
     }
 
-    public enum EConnectionState
+    public enum ELinkStatus
     {
-        Inactive,
-        Intermediate,
-        ActiveWithWarnings,
-        Active
+        Stopped,
+        Starting,
+        StartedWithWarnings,
+        Started,
+        Waiting
     }
 
     public interface IPuttyLink
     {
         HostInfo Host { get; }
         string LastStartError { get; }
-        EConnectionState ConnectionState { get; }
+        ELinkStatus LinkStatus { get; }
         Dictionary<TunnelInfo, ForwardingResult> ForwardingResults { get; }
 
         /// <summary>
@@ -58,7 +59,8 @@ namespace PuttyManager.Domain
 
         private volatile Process _process;
         private volatile string _lastStartError;
-        private volatile EConnectionState _connectionState = EConnectionState.Inactive;
+        private volatile ELinkStatus _linkStatus = ELinkStatus.Stopped;
+        private volatile bool _stopRequested;
 
         public PuttyLink(HostInfo host)
         {
@@ -86,37 +88,37 @@ namespace PuttyManager.Domain
         private readonly ManualResetEventSlim _eventStopped = new ManualResetEventSlim(true);
         private readonly ManualResetEventSlim _eventStarted = new ManualResetEventSlim(false);
 
-        public EConnectionState ConnectionState
+        public ELinkStatus LinkStatus
         {
-            get { return _connectionState; }
+            get { return _linkStatus; }
             private set
             {
-                if (_connectionState == value)
+                if (_linkStatus == value)
                     return;
 
-                if (_connectionState == EConnectionState.Inactive && value == EConnectionState.Intermediate)
+                if (_linkStatus == ELinkStatus.Stopped && value == ELinkStatus.Starting)
                     Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Starting...");
-                else if (value == EConnectionState.Active)
+                else if (value == ELinkStatus.Started)
                     Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Started");
-                else if (value == EConnectionState.ActiveWithWarnings)
+                else if (value == ELinkStatus.StartedWithWarnings)
                     Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Started with warnings");
-                else if (value == EConnectionState.Inactive)
+                else if (value == ELinkStatus.Stopped)
                 {
                     Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Stopped");
                 }
                 
-                _connectionState = value;
+                _linkStatus = value;
                 onConnectionStateChanged();
 
-                if (_connectionState == EConnectionState.Inactive)
+                if (_linkStatus == ELinkStatus.Stopped)
                 {
                     _eventStopped.Set();
                 } else
                 {
                     _eventStopped.Reset();
                 }
-                if (_connectionState == EConnectionState.Active || 
-                    _connectionState == EConnectionState.ActiveWithWarnings)
+                if (_linkStatus == ELinkStatus.Started || 
+                    _linkStatus == ELinkStatus.StartedWithWarnings)
                 {
                     _eventStarted.Set();
                 } else
@@ -153,7 +155,7 @@ namespace PuttyManager.Domain
 
         public void AsyncStart()
         {
-            if (ConnectionState != EConnectionState.Inactive)
+            if (LinkStatus != ELinkStatus.Stopped)
             {
                 throw new InvalidOperationException("Link already started.");
             }
@@ -163,71 +165,31 @@ namespace PuttyManager.Domain
 
         public void Start()
         {
-            if (ConnectionState != EConnectionState.Inactive)
+            if (LinkStatus != ELinkStatus.Stopped)
             {
                 throw new InvalidOperationException("Link already started.");
             }
             try
             {
                 log4net.ThreadContext.Properties["Host"] = Host;
-                ConnectionState = EConnectionState.Intermediate;
+                _stopRequested = false;
                 LastStartError = "";
 
-                // fill results dic
-                lock (_forwardingResultsLock)
+                bool atleastOneSuccess = false;
+                for (int i = 0; i < Host.MaxAttemptsCount; ++i)
                 {
-                    _forwardingResults = Host.Tunnels.ToDictionary(t => t, t => ForwardingResult.CreateSuccess());
-                }
-
-                // Процесс
-                _process = new Process
-                               {
-                                   StartInfo =
-                                       {
-                                           FileName = PlinkLocation,
-                                           CreateNoWindow = true,
-                                           UseShellExecute = false,
-                                           RedirectStandardError = true,
-                                           RedirectStandardOutput = true,
-                                           RedirectStandardInput = true,
-                                           Arguments = arguments()
-                                       }
-                               };
-
-                _process.ErrorDataReceived += errorDataHandler;
-                _process.Start();
-                _process.BeginErrorReadLine();
-                Debug.WriteLine("Plink: Started!");
-
-                //_process.StandardInput.AutoFlush = true;
-
-                var buffer = new StringBuilder();
-                bool passwordProvided = false;
-                while (!_process.HasExited)
-                {
-                    while (_process.StandardOutput.Peek() >= 0)
-                    {
-                        char c = (char)_process.StandardOutput.Read();
-                        buffer.Append(c);
-                    }
-
-                    _process.StandardOutput.DiscardBufferedData();
-                    string data = buffer.ToString().ToLower();
-                    buffer.Clear();
-
-                    if (data.Contains("login as:"))
-                    {
-                        // Неверный логин
-                        Stop();
-                        // _process.StandardInput.WriteLine(username);
-                        //throw new Exception("Invalid username.");
-                        LastStartError = "Invalid username";
-                    }
-                    else if (data.Contains("password:") && !passwordProvided)
-                    {
-                        _process.StandardInput.WriteLine(Host.Password);
-                        passwordProvided = true;
-                    }
+                    // At least one success for AutoRestart enabling.
+                    // Do not restart if process stopped by Stop() method.
+                    // Reset Attempts count if last attempt was successful.
+                    LinkStatus = ELinkStatus.Starting;
+                    var success = startOnce();
+                    atleastOneSuccess = atleastOneSuccess || success;
+                    if (_stopRequested || !atleastOneSuccess)
+                        break;
+                    if (success)
+                        i = 0;
+                    LinkStatus = ELinkStatus.Waiting;
+                    Thread.Sleep(Host.RestartDelay * 1000);
                 }
             }
             catch (Exception e)
@@ -238,8 +200,73 @@ namespace PuttyManager.Domain
             finally
             {
                 Debug.WriteLine("Plink: Stopped!");
-                ConnectionState = EConnectionState.Inactive;
+                LinkStatus = ELinkStatus.Stopped;
             }
+        }
+
+        /// <summary>
+        /// Start attemt to establish link once.
+        /// </summary>
+        /// <returns>Link was successfully started.</returns>
+        private bool startOnce()
+        {
+            // fill results dic
+            lock (_forwardingResultsLock)
+            {
+                _forwardingResults = Host.Tunnels.ToDictionary(t => t, t => ForwardingResult.CreateSuccess());
+            }
+
+            // Процесс
+            _process = new Process
+                           {
+                               StartInfo =
+                                   {
+                                       FileName = PlinkLocation,
+                                       CreateNoWindow = true,
+                                       UseShellExecute = false,
+                                       RedirectStandardError = true,
+                                       RedirectStandardOutput = true,
+                                       RedirectStandardInput = true,
+                                       Arguments = arguments()
+                                   }
+                           };
+
+            _process.ErrorDataReceived += errorDataHandler;
+            _process.Start();
+            _process.BeginErrorReadLine();
+            Debug.WriteLine("Plink: Started!");
+
+            //_process.StandardInput.AutoFlush = true;
+
+            var buffer = new StringBuilder();
+            bool passwordProvided = false;
+            while (!_process.HasExited)
+            {
+                while (_process.StandardOutput.Peek() >= 0)
+                {
+                    char c = (char) _process.StandardOutput.Read();
+                    buffer.Append(c);
+                }
+
+                _process.StandardOutput.DiscardBufferedData();
+                string data = buffer.ToString().ToLower();
+                buffer.Clear();
+
+                if (data.Contains("login as:"))
+                {
+                    // invalid username provided
+                    Stop();
+                    // _process.StandardInput.WriteLine(username);
+                    LastStartError = "Invalid username";
+                }
+                else if (data.Contains("password:") && !passwordProvided)
+                {
+                    _process.StandardInput.WriteLine(Host.Password);
+                    passwordProvided = true;
+                }
+            }
+            return LinkStatus == ELinkStatus.Started || 
+                   LinkStatus == ELinkStatus.StartedWithWarnings;
         }
 
         private readonly StringBuilder _multilineError = new StringBuilder();
@@ -312,7 +339,7 @@ namespace PuttyManager.Domain
                 {
                     forwardingFails = _forwardingResults.Any(p => !p.Value.Success);
                 }
-                ConnectionState = forwardingFails ? EConnectionState.ActiveWithWarnings : EConnectionState.Active;
+                LinkStatus = forwardingFails ? ELinkStatus.StartedWithWarnings : ELinkStatus.Started;
             }
             // multiline error?
             if (_multilineError.Length > 0)
@@ -327,11 +354,12 @@ namespace PuttyManager.Domain
 
         public void Stop()
         {
-            if (ConnectionState == EConnectionState.Inactive)
+            if (LinkStatus == ELinkStatus.Stopped)
                 return;
             Debug.WriteLine("Plink: Stopping!");
             try
             {
+                _stopRequested = true;
                 _process.Kill();
                 _multilineError.Clear();
                 Debug.WriteLine("Plink: Kill command!");

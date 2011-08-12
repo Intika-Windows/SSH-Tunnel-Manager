@@ -6,11 +6,15 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SSH Tunnel Manager")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("SSH Tunnel Manager based on PuTTY project and provides an easy way to manage you SSH connections. " +
+                               "This is an open source project hosted on Google Code. Any contributions are welcome.\r\n\r\n" +
+                               "This project is licensed under a GNU GPL v3 license.\r\n\r\n" +
+                               "The PuTTY project is licensed under the MIT license.\r\n\r\n" +
+                               "Some Icons are Copyright © Yusuke Kamiyamane. All rights reserved. Licensed under a Creative Commons Attribution 3.0 license.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("SSH Tunnel Manager")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
+[assembly: AssemblyCopyright("Copyright © x.Skara 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +36,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.9.0.0")]
+[assembly: AssemblyFileVersion("0.9.0.0")]
