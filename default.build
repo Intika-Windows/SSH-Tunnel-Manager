@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://nant.sourceforge.net/nightly/2011-05-08-0.91/nant.xsd"
+         name="ssh-tunnel-manager" default="build">
+
+  <!-- global framework settings -->
+  <property name="target.framework"
+            value="${framework::get-target-framework()}" />
+  <property name="framework.assembly.dir"
+            value="${framework::get-assembly-directory(target.framework)}" />
+  <property name="language.default" value="ru-RU" />
+
+  <!-- directories -->
+  <property name="dir.build" value="build" />
+  <!-- project settings -->
+  <property name="project.platform" value="Any CPU" overwrite="false" />
+  <property name="project.config" value="release" overwrite="false" /> <!-- debug|release -->
+  <property name="project.version.major" value="0" overwrite="false" />
+  <property name="project.version.minor" value="9" overwrite="false" />
+  <property name="project.version.build" value="0" overwrite="false" />
+  <property name="project.version.revision" value="0" overwrite="false" />
+  <property name="project.version.release_code" value="b" overwrite="false" />
+  <property name="project.version" value="0.0.0.0" overwrite="false" />
+
+  <!-- named configurations -->
+  <target name="init" description="Initializes building properties">
+    <call target="${project.config}" />
+  </target>
+
+  <target name="debug" description="Configures a debug build">
+    <call target="release" />
+  </target>
+
+  <target name="release" description="Configures a release build">
+    <property name="project.config" value="release" />
+    <property name="build.debug" value="false"/>
+  </target>
+
+  <target name="build" depends="init" description="Builds the binaries for the current configuration">
+    <echo message="Building version ${project.version}" />
+    <TODO xmlns:TODO="CONTINUE HERE" />
+    <!-- libs -->
+    <nant buildfile="lib/lib.build" target="${project.config} prepare build" />
+    <!-- project modules -->
+    <nant target="${project.config} build">
+      <buildfiles basedir=".">
+        <include name="src/*/*.build" />
+      </buildfiles>
+    </nant>
+  </target>
+
+  <target name="clean" depends="init" description="Deletes build directory and runs clean for all projects.">
+    <msbuild project="src/SSHTunnelManager.sln" target="Clean" verbosity="minimal">
+      <property name="Configuration" value="${project.config}" />
+      <property name="Platform" value="${project.platform}" />
+    </msbuild>
+    <delete failonerror="false" includeemptydirs="false">
+      <fileset basedir="${dir.build}">
+        <include name="**/*"/>
+      </fileset>
+    </delete>
+  </target>
+
+  <target name="rebuild">
+    <call target="clean" />
+    <call target="build" />
+  </target>
+
+  <target name="update-version" description="Set version property corresponding svn revision." >
+    <exec program="svn.exe"
+          commandline="log https://ssh-tunnel-manager.googlecode.com/svn --xml --limit 1 --trust-server-cert --non-interactive"
+          output="_revision.xml" />
+    <xmlpeek file="_revision.xml"
+             xpath="/log/logentry/@revision"
+             property="svn.revision" />
+    <delete file="_revision.xml" />
+    <echo message="Using Subversion revision number: ${svn.revision}" />
+    <exec program="svn.exe"
+          commandline="log --limit 25 --trust-server-cert --non-interactive"
+          output="history.txt" />
+    <property name="project.version.revision" value="${svn.revision}" />
+    <property name="project.version"
+              value="${project.version.major}.${project.version.minor}.${project.version.build}.${project.version.revision}${project.version.release_code}" />
+  </target>
+
+  <target name="update-svn" descriptor="Update svn.">
+    <exec program="svn.exe"
+          commandline="update --trust-server-cert --non-interactive" />
+    <!--<exec program="svn.exe"
+          commandline="update - -trust-server-cert - -non-interactive - -username ${svn.username} - -password ${svn.password}" />
+    <svn-update uri="svn://localhost:443/svn/" username="usr" password="pwd" verbose="true" />-->
+  </target>
+</project>

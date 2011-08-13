@@ -94,9 +94,9 @@ namespace PuttyManagerGui.Forms
             {
                 splitContainerV1.Panel2Collapsed = true;
                 toolStripButtonStart.Enabled = false;
-                startToolStripMenuItem.Visible = false;
+                startToolStripMenuItem.Enabled = false;
                 toolStripButtonStop.Enabled = false;
-                stopToolStripMenuItem.Visible = false;
+                stopToolStripMenuItem.Enabled = false;
                 toolStripMenuItemEditHost.Enabled = false;
                 toolStripButtonEditHost.Enabled = false;
                 editHostToolStripMenuItem.Enabled = false;
@@ -137,8 +137,8 @@ namespace PuttyManagerGui.Forms
             bool hostStopped = h.Model.Link.Status == ELinkStatus.Stopped;
             toolStripButtonStart.Enabled = hostStopped;
             toolStripButtonStop.Enabled = !hostStopped;
-            startToolStripMenuItem.Visible = hostStopped;
-            stopToolStripMenuItem.Visible = !hostStopped;
+            startToolStripMenuItem.Enabled = hostStopped;
+            stopToolStripMenuItem.Enabled = !hostStopped;
             // edit buttons
             bool canEdit = hostStopped;
             toolStripMenuItemEditHost.Enabled = canEdit;

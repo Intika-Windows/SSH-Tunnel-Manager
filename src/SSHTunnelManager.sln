@@ -5,34 +5,33 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSHTunnelManager", "SSHTunn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSHTunnelManagerGUI", "SSHTunnelManagerGUI\SSHTunnelManagerGUI.csproj", "{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{75B9749B-E4B4-4A1F-B717-D334215E40CD}"
+	ProjectSection(SolutionItems) = preProject
+		..\default.build = ..\default.build
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
-		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Debug|x86.ActiveCfg = Debug|x86
 		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Debug|x86.Build.0 = Debug|x86
-		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Release|Any CPU.ActiveCfg = Release|x86
-		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Release|Mixed Platforms.Build.0 = Release|x86
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Release|x86.ActiveCfg = Release|x86
 		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Release|x86.Build.0 = Release|x86
-		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Debug|x86.ActiveCfg = Debug|x86
 		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Debug|x86.Build.0 = Debug|x86
-		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Release|Any CPU.ActiveCfg = Release|x86
-		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Release|Mixed Platforms.Build.0 = Release|x86
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Release|x86.ActiveCfg = Release|x86
 		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
