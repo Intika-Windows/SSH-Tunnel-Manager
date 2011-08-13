@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using log4net;
 using log4net.Core;
+using log4net.Repository.Hierarchy;
 
 // log4net config.
 // Assembly attribute should be in assembly where log4net methods was called first time (LogManager.GetLogger in this case).
@@ -21,6 +22,21 @@ namespace PuttyManager.Util
         public static ILog Log
         {
             get { return _log; }
+        }
+
+        public static void SetThresholdForAppender(string appenderName, Level threshold)
+        {
+            Hierarchy hier = LogManager.GetRepository() as Hierarchy;
+            if (hier == null)
+                return;
+
+            var appender = (DelegateAppender) hier.GetAppenders().SingleOrDefault(a => a.Name == appenderName);
+            if (appender == null)
+                return;
+
+            appender.Threshold = threshold;
+            appender.ActivateOptions();
+            return;
         }
     }
 

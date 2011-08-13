@@ -8,6 +8,7 @@ using System.Text;
 using PuttyManager.Business;
 using PuttyManager.Ext;
 using PuttyManager.Ext.BLW;
+using PuttyManager.Properties;
 
 namespace PuttyManager.Domain
 {
@@ -19,8 +20,9 @@ namespace PuttyManager.Domain
 
         private THostViewModel _addingNewHost;
 
-        public HostsManager(EncryptedStorage storage, string filename, string password)
+        public HostsManager(Config config, EncryptedStorage storage, string filename, string password)
         {
+            if (config == null) throw new ArgumentNullException("config");
             if (storage == null) throw new ArgumentNullException("storage");
             if (filename == null) throw new ArgumentNullException("filename");
             if (password == null) throw new ArgumentNullException("password");
@@ -28,23 +30,28 @@ namespace PuttyManager.Domain
             Filename = filename;
             Password = password;
 
+            Config = config;
+
             Storage = storage;
             var hosts = storage.Data.Hosts.Select(delegate(HostInfo h)
                                                         {
                                                             var viewModel = new THostViewModel();
-                                                            viewModel.Model = new Host(h) { ViewModel = viewModel };
+                                                            viewModel.Model = new Host(h, Config) { ViewModel = viewModel };
                                                             return viewModel;
                                                         }).ToList();
             Hosts = new BindingListView<THostViewModel>(hosts);
             Hosts.AddingNew += (o, e) => { e.NewObject = _addingNewHost; };
         }
 
+        public Config Config { get; private set; }
         public BindingListView<THostViewModel> Hosts { get; private set; }
-        public void AddHost(THostViewModel host)
+        public THostViewModel AddHost(HostInfo host)
         {
-            _addingNewHost = host;
+            var hvm = new THostViewModel { Model = new Host(host, Config) };
+            _addingNewHost = hvm;
             Hosts.AddNew();
             Hosts.EndNew(Hosts.Count - 1);
+            return hvm;
         }
 
         public List<HostInfo> HostInfoList

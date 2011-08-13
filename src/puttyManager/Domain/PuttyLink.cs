@@ -36,14 +36,14 @@ namespace PuttyManager.Domain
     {
         HostInfo Host { get; }
         string LastStartError { get; }
-        ELinkStatus LinkStatus { get; }
+        ELinkStatus Status { get; }
         Dictionary<TunnelInfo, ForwardingResult> ForwardingResults { get; }
 
         /// <summary>
         /// В случае, если процесс запущен асинхронно (методом AsyncStart), события будут срабатывать из асинхронного потока.
         /// Поэтому нужно продумать Threadsafe, для изменения состояния формы лучше использовать Control.BeginInvoke()
         /// </summary>
-        event EventHandler ConnectionStateChanged;
+        event EventHandler LinkStatusChanged;
 
         void AsyncStart();
         void Start();
@@ -54,18 +54,21 @@ namespace PuttyManager.Domain
 
     public class PuttyLink : IPuttyLink
     {
+        private readonly Config _config;
         private const string PlinkLocation = "plink.exe";
         private const string ShellStartedMessage = "Started a shell/command";
 
         private volatile Process _process;
         private volatile string _lastStartError;
-        private volatile ELinkStatus _linkStatus = ELinkStatus.Stopped;
+        private volatile ELinkStatus _status = ELinkStatus.Stopped;
         private volatile bool _stopRequested;
 
-        public PuttyLink(HostInfo host)
+        public PuttyLink(HostInfo host, Config config)
         {
             if (host == null) throw new ArgumentNullException("host");
+            if (config == null) throw new ArgumentNullException("config");
             Host = host;
+            _config = config;
         }
 
         public HostInfo Host { get; private set; }
@@ -88,37 +91,48 @@ namespace PuttyManager.Domain
         private readonly ManualResetEventSlim _eventStopped = new ManualResetEventSlim(true);
         private readonly ManualResetEventSlim _eventStarted = new ManualResetEventSlim(false);
 
-        public ELinkStatus LinkStatus
+        public ELinkStatus Status
         {
-            get { return _linkStatus; }
+            get { return _status; }
             private set
             {
-                if (_linkStatus == value)
+                if (_status == value)
                     return;
 
-                if (_linkStatus == ELinkStatus.Stopped && value == ELinkStatus.Starting)
-                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Starting...");
-                else if (value == ELinkStatus.Started)
-                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Started");
-                else if (value == ELinkStatus.StartedWithWarnings)
-                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Started with warnings");
-                else if (value == ELinkStatus.Stopped)
+                switch (value)
                 {
+                case ELinkStatus.Starting:
+                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Starting...");
+                    break;
+                case ELinkStatus.Started:
+                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Started");
+                    break;
+                case ELinkStatus.StartedWithWarnings:
+                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Started with warnings");
+                    break;
+                case ELinkStatus.Stopped:
                     Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Stopped");
+                    break;
+                case ELinkStatus.Waiting:
+                    if (_config.RestartDelay > 0)
+                        Logger.Log.InfoFormat("[{0}] {1}", Host.Name, string.Format("Waiting {0} seconds before restart...", _config.RestartDelay));
+                    else
+                        Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Restarting after crash...");
+                    break;
                 }
                 
-                _linkStatus = value;
-                onConnectionStateChanged();
+                _status = value;
+                onLinkStatusChanged();
 
-                if (_linkStatus == ELinkStatus.Stopped)
+                if (_status == ELinkStatus.Stopped)
                 {
                     _eventStopped.Set();
                 } else
                 {
                     _eventStopped.Reset();
                 }
-                if (_linkStatus == ELinkStatus.Started || 
-                    _linkStatus == ELinkStatus.StartedWithWarnings)
+                if (_status == ELinkStatus.Started || 
+                    _status == ELinkStatus.StartedWithWarnings)
                 {
                     _eventStarted.Set();
                 } else
@@ -132,7 +146,7 @@ namespace PuttyManager.Domain
         /// В случае, если процесс запущен асинхронно (методом AsyncStart), события будут срабатывать из асинхронного потока.
         /// Поэтому нужно продумать Threadsafe, для изменения состояния формы лучше использовать Control.BeginInvoke()
         /// </summary>
-        public event EventHandler ConnectionStateChanged;
+        public event EventHandler LinkStatusChanged;
 
         private Dictionary<TunnelInfo, ForwardingResult> _forwardingResults;
         private readonly object _forwardingResultsLock = new object();
@@ -147,15 +161,15 @@ namespace PuttyManager.Domain
             }
         }
 
-        private void onConnectionStateChanged()
+        private void onLinkStatusChanged()
         {
-            if (ConnectionStateChanged != null)
-                ConnectionStateChanged(this, EventArgs.Empty);
+            if (LinkStatusChanged != null)
+                LinkStatusChanged(this, EventArgs.Empty);
         }
 
         public void AsyncStart()
         {
-            if (LinkStatus != ELinkStatus.Stopped)
+            if (Status != ELinkStatus.Stopped)
             {
                 throw new InvalidOperationException("Link already started.");
             }
@@ -165,7 +179,7 @@ namespace PuttyManager.Domain
 
         public void Start()
         {
-            if (LinkStatus != ELinkStatus.Stopped)
+            if (Status != ELinkStatus.Stopped)
             {
                 throw new InvalidOperationException("Link already started.");
             }
@@ -176,20 +190,20 @@ namespace PuttyManager.Domain
                 LastStartError = "";
 
                 bool atleastOneSuccess = false;
-                for (int i = 0; i < Host.MaxAttemptsCount; ++i)
+                for (int i = 0; i < _config.MaxAttemptsCount; ++i)
                 {
                     // At least one success for AutoRestart enabling.
                     // Do not restart if process stopped by Stop() method.
                     // Reset Attempts count if last attempt was successful.
-                    LinkStatus = ELinkStatus.Starting;
+                    Status = ELinkStatus.Starting;
                     var success = startOnce();
                     atleastOneSuccess = atleastOneSuccess || success;
-                    if (_stopRequested || !atleastOneSuccess)
+                    if (_stopRequested || !atleastOneSuccess || !_config.RestartEnabled)
                         break;
                     if (success)
                         i = 0;
-                    LinkStatus = ELinkStatus.Waiting;
-                    Thread.Sleep(Host.RestartDelay * 1000);
+                    Status = ELinkStatus.Waiting;
+                    Thread.Sleep(_config.RestartDelay * 1000);
                 }
             }
             catch (Exception e)
@@ -200,7 +214,7 @@ namespace PuttyManager.Domain
             finally
             {
                 Debug.WriteLine("Plink: Stopped!");
-                LinkStatus = ELinkStatus.Stopped;
+                Status = ELinkStatus.Stopped;
             }
         }
 
@@ -265,8 +279,8 @@ namespace PuttyManager.Domain
                     passwordProvided = true;
                 }
             }
-            return LinkStatus == ELinkStatus.Started || 
-                   LinkStatus == ELinkStatus.StartedWithWarnings;
+            return Status == ELinkStatus.Started || 
+                   Status == ELinkStatus.StartedWithWarnings;
         }
 
         private readonly StringBuilder _multilineError = new StringBuilder();
@@ -276,6 +290,7 @@ namespace PuttyManager.Domain
             if (args.Data == null)
                 return;
             log4net.ThreadContext.Properties["Host"] = Host; // Set up context for working thread
+            Logger.Log.Debug(args.Data);
             // LOCAL tunnels error
             var m = Regex.Match(args.Data, @"Local port (?<srcPort>\d+) forwarding to (?<dstHost>[^:]+):(?<dstPort>\d+) failed: (?<errorString>.*)", RegexOptions.IgnoreCase);
             if (m.Success)
@@ -339,7 +354,7 @@ namespace PuttyManager.Domain
                 {
                     forwardingFails = _forwardingResults.Any(p => !p.Value.Success);
                 }
-                LinkStatus = forwardingFails ? ELinkStatus.StartedWithWarnings : ELinkStatus.Started;
+                Status = forwardingFails ? ELinkStatus.StartedWithWarnings : ELinkStatus.Started;
             }
             // multiline error?
             if (_multilineError.Length > 0)
@@ -354,7 +369,7 @@ namespace PuttyManager.Domain
 
         public void Stop()
         {
-            if (LinkStatus == ELinkStatus.Stopped)
+            if (Status == ELinkStatus.Stopped)
                 return;
             Debug.WriteLine("Plink: Stopping!");
             try

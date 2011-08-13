@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using PuttyManager.Business;
+using PuttyManager.Domain;
 using PuttyManagerGui.Properties;
 
 namespace PuttyManagerGui
@@ -25,13 +26,13 @@ namespace PuttyManagerGui
                 if (value == null) throw new ArgumentNullException();
                 if (_model == value) return;
                 if(_model != null)
-                    _model.StatusChanged -= onStatusChanged;
+                    _model.Link.LinkStatusChanged -= onStatusChanged;
                 _model = value;
-                _model.StatusChanged += onStatusChanged;
+                _model.Link.LinkStatusChanged += onStatusChanged;
             }
         }
 
-        public Bitmap StatusIcon { get { return statusIcon(Model.Status); } }
+        public Bitmap StatusIcon { get { return statusIcon(Model.Link.Status); } }
         public string Name { get { return Model.Info.Name; } }
         public string Username { get { return Model.Info.Username; } }
         public string Hostname { get { return Model.Info.HostAndPort; } }
@@ -39,8 +40,8 @@ namespace PuttyManagerGui
         {
             get
             {
-                return Model.Status != HostStatus.StartedWithWarnings 
-                    ? Model.Status.ToString() 
+                return Model.Link.Status != ELinkStatus.StartedWithWarnings
+                    ? Model.Link.Status.ToString() 
                     : HostStatus.Started.ToString();
             }
         }
@@ -51,16 +52,18 @@ namespace PuttyManagerGui
         {
             get
             {
-                switch (Model.Status)
+                switch (Model.Link.Status)
                 {
-                case HostStatus.Stopped:
+                case ELinkStatus.Stopped:
                     return Color.FromArgb(165, 0, 0);
-                case HostStatus.Unknown:
+                case ELinkStatus.Starting:
                     return Color.FromArgb(181, 166, 16);
-                case HostStatus.StartedWithWarnings:
+                case ELinkStatus.StartedWithWarnings:
                     return Color.FromArgb(181, 166, 16);
-                case HostStatus.Started:
+                case ELinkStatus.Started:
                     return Color.FromArgb(10, 126, 24);
+                case ELinkStatus.Waiting:
+                    return Color.FromArgb(181, 166, 16);
                 default:
                     throw new ArgumentOutOfRangeException();
                 }
@@ -75,17 +78,19 @@ namespace PuttyManagerGui
             }
         }
 
-        private static Bitmap statusIcon(HostStatus status)
+        private static Bitmap statusIcon(ELinkStatus status)
         {
             switch (status)
             {
-                case HostStatus.Stopped:
+                case ELinkStatus.Stopped:
                     return Resources.control_stop_square_small;
-                case HostStatus.Unknown:
+                case ELinkStatus.Starting:
                     return Resources.brightness_small;
-                case HostStatus.StartedWithWarnings:
+                case ELinkStatus.StartedWithWarnings:
                     return Resources.brightness_small;
-                case HostStatus.Started:
+                case ELinkStatus.Waiting:
+                    return Resources.brightness_small;
+                case ELinkStatus.Started:
                     return Resources.tick_small_circle;
                 default:
                     throw new ArgumentOutOfRangeException("status");

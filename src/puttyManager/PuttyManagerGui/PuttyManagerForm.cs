@@ -163,7 +163,7 @@ namespace PuttyManagerGui
                 var host = node.Tag as HostInfo;
                 if (host == null)
                     continue;
-                /*switch (host.Link.LinkStatus)
+                /*switch (host.Link.Status)
                 {
                 case ELinkStatus.Stopped:
                     if (node.ImageIndex == 0) return;
@@ -363,7 +363,7 @@ namespace PuttyManagerGui
 
             if (host == null || node == null) return;
 
-            /*if (host.Link.LinkStatus == ELinkStatus.Stopped)
+            /*if (host.Link.Status == ELinkStatus.Stopped)
             {
                 host.Link.AsyncStart();
                 

@@ -12,13 +12,6 @@ namespace PuttyManager.Business
         private readonly List<TunnelInfo> _tunnels = new List<TunnelInfo>();
         private HostInfo _dependsOn;
 
-        public HostInfo() // NOTE: FOR DEBUG
-        {
-            AutoRestart = true;
-            RestartDelay = 2;
-            MaxAttemptsCount = 2;
-        }
-
         [XmlAttribute]
         public string Name { get; set; }
         public string Hostname { get; set; }
@@ -26,18 +19,6 @@ namespace PuttyManager.Business
         public string Port { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        /// <summary>
-        /// AutoRestart successfully started connections if they have ended unexpectedly.
-        /// </summary>
-        public bool AutoRestart { get; set; }
-        /// <summary>
-        /// Delay before autoRestart (in seconds).
-        /// </summary>
-        public int RestartDelay { get; set; }
-        /// <summary>
-        /// Maximum restart attempts after fail.
-        /// </summary>
-        public int MaxAttemptsCount { get; set; }
 
         public List<TunnelInfo> Tunnels
         {

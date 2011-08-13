@@ -72,6 +72,21 @@
     <Compile Include="ChangePasswordDialog.Designer.cs">
       <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ext\CheckGroupBox\CheckGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ext\CheckGroupBox\CheckGroupBox.designer.cs">
+      <DependentUpon>CheckGroupBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ext\RadioGroupBox\RadioButtonPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ext\RadioGroupBox\RadioGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ext\RadioGroupBox\RadioGroupBox.designer.cs">
+      <DependentUpon>RadioGroupBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="HostDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +105,12 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OptionsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionsDialog.Designer.cs">
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="PasswordDialog.cs">
       <SubType>Form</SubType>
@@ -128,11 +149,20 @@
     <EmbeddedResource Include="ChangePasswordDialog.resx">
       <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ext\CheckGroupBox\CheckGroupBox.resx">
+      <DependentUpon>CheckGroupBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ext\RadioGroupBox\RadioGroupBox.resx">
+      <DependentUpon>RadioGroupBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HostDialog.resx">
       <DependentUpon>HostDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsDialog.resx">
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PasswordDialog.resx">
       <DependentUpon>PasswordDialog.cs</DependentUpon>
@@ -233,6 +263,7 @@
     <None Include="Resources\oie_1220044U5H48MJA %281%29.gif" />
     <Content Include="terminal.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

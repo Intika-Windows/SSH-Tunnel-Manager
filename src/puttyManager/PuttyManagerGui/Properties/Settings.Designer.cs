@@ -55,5 +55,53 @@ namespace PuttyManagerGui.Properties {
                 this["EncryptedStoragePassword"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Config_RestartEnabled {
+            get {
+                return ((bool)(this["Config_RestartEnabled"]));
+            }
+            set {
+                this["Config_RestartEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int Config_MaxAttemptsCount {
+            get {
+                return ((int)(this["Config_MaxAttemptsCount"]));
+            }
+            set {
+                this["Config_MaxAttemptsCount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Config_RestartDelay {
+            get {
+                return ((int)(this["Config_RestartDelay"]));
+            }
+            set {
+                this["Config_RestartDelay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Config_TraceDebug {
+            get {
+                return ((bool)(this["Config_TraceDebug"]));
+            }
+            set {
+                this["Config_TraceDebug"] = value;
+            }
+        }
     }
 }

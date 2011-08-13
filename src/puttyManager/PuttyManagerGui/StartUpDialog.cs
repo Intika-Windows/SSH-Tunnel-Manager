@@ -208,6 +208,9 @@ namespace PuttyManagerGui
             try
             {
                 var storage = new EncryptedStorage();
+                /*storage.Data.Config.RestartEnabled = Settings.Default.Config_RestartEnabled;
+                storage.Data.Config.RestartDelay = Settings.Default.Config_RestartDelay;
+                storage.Data.Config.MaxAttemptsCount = Settings.Default.Config_MaxAttemptsCount;*/
                 storage.Save(filename, password);
                 Storage = storage;
                 Filename = filename;

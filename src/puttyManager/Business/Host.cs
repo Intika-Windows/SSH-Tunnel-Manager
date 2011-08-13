@@ -8,35 +8,17 @@ namespace PuttyManager.Business
 {
     public class Host
     {
-        public Host(HostInfo info)
+        private readonly Config _config;
+
+        public Host(HostInfo info, Config config)
         {
+            _config = config;
             Info = info;
-            _puttyLink = new PuttyLink(Info);
-            _puttyLink.ConnectionStateChanged += delegate { onStatusChanged(); };
+            _puttyLink = new PuttyLink(Info, _config);
         }
         
         public HostInfo Info { get; private set; }
         public IPuttyLink Link { get { return _puttyLink; } }
-        public HostStatus Status
-        {
-            get
-            {
-                switch (Link.LinkStatus)
-                {
-                case ELinkStatus.Stopped:
-                    return HostStatus.Stopped;
-                case ELinkStatus.Starting:
-                    return HostStatus.Unknown;
-                case ELinkStatus.StartedWithWarnings:
-                    return HostStatus.StartedWithWarnings;
-                case ELinkStatus.Started:
-                    return HostStatus.Started;
-                default:
-                    throw new ArgumentOutOfRangeException();
-                }
-            }
-        }
-        public event EventHandler StatusChanged;
 
         private IViewModel<Host> _viewModel;
         public IViewModel<Host> ViewModel
@@ -50,13 +32,5 @@ namespace PuttyManager.Business
         }
 
         private readonly PuttyLink _puttyLink;
-
-        private void onStatusChanged()
-        {
-            if (StatusChanged != null)
-            {
-                StatusChanged(this, EventArgs.Empty);
-            }
-        }
     }
 }

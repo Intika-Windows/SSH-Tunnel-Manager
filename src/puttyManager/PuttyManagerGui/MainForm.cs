@@ -14,6 +14,9 @@ using PuttyManager.Domain;
 using PuttyManager.Ext.BLW;
 using PuttyManager.Util;
 using PuttyManagerGui.Properties;
+using log4net.Core;
+using log4net.Repository.Hierarchy;
+using Logger = PuttyManager.Util.Logger;
 
 namespace PuttyManagerGui
 {
@@ -84,11 +87,11 @@ namespace PuttyManagerGui
                 ((ObjectView<HostViewModel>)_bindingSource.Current).Object.Model.Info == h)
             {
                 // this is current Host
-                if (listBoxLog.Items.Count >= HostInfo.EventLogMaxSize)
+                if (textBoxLog.TextLength > HostInfo.EventLogMaxSize * 500)
                 {
-                    listBoxLog.Items.RemoveAt(0);
+                    textBoxLog.Clear();
                 }
-                listBoxLog.Items.Add(e.AppendedData);
+                textBoxLog.AppendText(e.AppendedData);
             }
         }
 
@@ -104,7 +107,7 @@ namespace PuttyManagerGui
                     updateCurrentHostDetails();
                 }
                 updateFilter(treeViewFilter.SelectedNode);
-                if (hvm.Model.Status == HostStatus.Stopped && !string.IsNullOrEmpty(hvm.Model.Link.LastStartError))
+                if (hvm.Model.Link.Status == ELinkStatus.Stopped && !string.IsNullOrEmpty(hvm.Model.Link.LastStartError))
                 {
                     // host stopped with error
                     TrayIcon.ShowBalloonTip(2000, Util.AssemblyTitle, string.Format("[{0}] {1}", hvm.Name, hvm.Model.Link.LastStartError), ToolTipIcon.Error);
@@ -153,10 +156,10 @@ namespace PuttyManagerGui
                 tunnelsGridView.Rows.Add(row);
             }
             // log
-            listBoxLog.Items.Clear();
-            listBoxLog.Items.AddRange(h.Model.Info.EventLog.ToArray());
+            textBoxLog.Clear();
+            textBoxLog.AppendText(string.Join("", h.Model.Info.EventLog.ToArray()));
             // menus
-            bool hostStopped = h.Model.Status == HostStatus.Stopped;
+            bool hostStopped = h.Model.Link.Status == ELinkStatus.Stopped;
             toolStripButtonStart.Enabled = hostStopped;
             toolStripButtonStop.Enabled = !hostStopped;
             startToolStripMenuItem.Visible = hostStopped;
@@ -293,8 +296,7 @@ namespace PuttyManagerGui
             hd.ShowDialog(this);
             foreach (var host in hd.CreatedHosts)
             {
-                var hvm = new HostViewModel(new Host(host));
-                _hostsManager.AddHost(hvm);
+                var hvm = _hostsManager.AddHost(host);
                 hvm.StatusChanged += onHostStatusChanged;
             }
             if (hd.CreatedHosts.Length > 0)
@@ -305,7 +307,7 @@ namespace PuttyManagerGui
 
         private void editHost(HostViewModel host)
         {
-            if (host.Model.Status != HostStatus.Stopped)
+            if (host.Model.Link.Status != ELinkStatus.Stopped)
                 return;
 
             var hd = new HostDialog(HostDialog.EMode.EditHost, _hostsManager.HostInfoList) {Host = host.Model.Info};
@@ -378,7 +380,7 @@ namespace PuttyManagerGui
             var viewmodel = ((ObjectView<HostViewModel>) _bindingSource.Current).Object;
             var host = viewmodel.Model.Info;
 
-            if (viewmodel.Model.Status != HostStatus.Stopped)
+            if (viewmodel.Model.Link.Status != ELinkStatus.Stopped)
                 return;
 
             // building dependency list
@@ -391,7 +393,7 @@ namespace PuttyManagerGui
                 depList.Insert(0, h);
             }
 
-            if (depList.All(h => h.Status == HostStatus.Started || h.Status == HostStatus.StartedWithWarnings))
+            if (depList.All(h => h.Link.Status == ELinkStatus.Started || h.Link.Status == ELinkStatus.StartedWithWarnings))
             {
                 // All hosts is started or started with warnings
                 viewmodel.Model.Link.AsyncStart();
@@ -419,7 +421,7 @@ namespace PuttyManagerGui
                 return;
 
             var activeHosts = _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Where(
-                o => o.Object.Model.Status != HostStatus.Stopped).Select(o => o.Object.Model).ToList();
+                o => o.Object.Model.Link.Status != ELinkStatus.Stopped).Select(o => o.Object.Model).ToList();
             foreach (var host in activeHosts)
             {
                 host.Link.Stop();
@@ -440,6 +442,10 @@ namespace PuttyManagerGui
             if (!Modified)
                 return;
             _hostsManager.Save();
+            /*Settings.Default.Config_RestartEnabled = _hostsManager.Config.RestartEnabled;
+            Settings.Default.Config_RestartDelay = _hostsManager.Config.RestartDelay;
+            Settings.Default.Config_MaxAttemptsCount = _hostsManager.Config.MaxAttemptsCount;
+            Settings.Default.Save();*/
             if (_savePasswordRequested)
             {
                 Settings.Default.EncryptedStoragePassword = _saveNewPassword ? _hostsManager.Password : null;
@@ -464,13 +470,16 @@ namespace PuttyManagerGui
                 _hostsManager.Hosts.RemoveFilter();
                 break;
             case 1:
-                _hostsManager.Hosts.ApplyFilter(m => m.Model.Status == HostStatus.Stopped);
+                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Stopped);
                 break;
             case 2:
-                _hostsManager.Hosts.ApplyFilter(m => m.Model.Status == HostStatus.Unknown);
+                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Starting);
                 break;
             case 3:
-                _hostsManager.Hosts.ApplyFilter(m => m.Model.Status == HostStatus.Started || m.Model.Status == HostStatus.StartedWithWarnings);
+                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Waiting);
+                break;
+            case 4:
+                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Started || m.Model.Link.Status == ELinkStatus.StartedWithWarnings);
                 break;
             }
         }
@@ -571,7 +580,7 @@ namespace PuttyManagerGui
         {
             foreach (var h1 in depList)
             {
-                if (h1.Link.LinkStatus == ELinkStatus.Starting)
+                if (h1.Link.Status == ELinkStatus.Starting)
                 {
                     h1.Link.Stop();
                     if (!h1.Link.WaitForStop())
@@ -585,7 +594,7 @@ namespace PuttyManagerGui
                         return;
                     }
                 }
-                if (h1.Link.LinkStatus == ELinkStatus.Stopped)
+                if (h1.Link.Status == ELinkStatus.Stopped)
                 {
                     h1.Link.AsyncStart();
                     if (!h1.Link.WaitForStart())
@@ -637,7 +646,7 @@ namespace PuttyManagerGui
             var host = currentHostViewModel();
 
             var strip = new ContextMenuStrip();
-            if (host.Model.Status == HostStatus.Stopped)
+            if (host.Model.Link.Status == ELinkStatus.Stopped)
                 strip.Items.Add("Start", Resources.control, delegate { startHost(); });
             else
                 strip.Items.Add("Stop", Resources.control_stop_square, delegate { stopHost(); });
@@ -661,7 +670,7 @@ namespace PuttyManagerGui
                 return;
 
             var host = ((ObjectView<HostViewModel>) _bindingSource.Current).Object.Model;
-            if (host.Status != HostStatus.StartedWithWarnings)
+            if (host.Link.Status != ELinkStatus.StartedWithWarnings)
                 return;
             var tname = tunnelsGridView.Rows[e.RowIndex].Cells[tgvNameColumn.Name].Value.ToString();
             var result = host.Link.ForwardingResults.FirstOrDefault(p => p.Key.Name == tname);
@@ -752,6 +761,23 @@ namespace PuttyManagerGui
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new AboutBox().ShowDialog(this);
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new OptionsDialog().ShowDialog(this);
+            // update config
+            _hostsManager.Config.RestartEnabled = Settings.Default.Config_RestartEnabled;
+            _hostsManager.Config.RestartDelay = Settings.Default.Config_RestartDelay;
+            _hostsManager.Config.MaxAttemptsCount = Settings.Default.Config_MaxAttemptsCount;
+            Logger.SetThresholdForAppender("DelegateAppender", Settings.Default.Config_TraceDebug ? Level.Debug : Level.Info);
+        }
+
+        private void listBoxLog_SizeChanged(object sender, EventArgs e)
+        {
+            
+            //listBoxLog.SetSelected(listBoxLog.Items.Count - 1, true);
+            //listBoxLog.SetSelected(listBoxLog.Items.Count - 1, false);
         }
     }
 }

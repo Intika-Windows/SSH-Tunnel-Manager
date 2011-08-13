@@ -38,15 +38,17 @@ namespace PuttyManagerGui
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label9;
             System.Windows.Forms.Label label5;
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Stopped", 1, 1);
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Unknown", 2, 2);
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Started", 3, 3);
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("All hosts", new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
-            treeNode7});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Stopped", 1, 1);
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Starting", 2, 2);
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Waiting", 2, 2);
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Started", 3, 3);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("All hosts", 4, 4, new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.hostsGridView = new System.Windows.Forms.DataGridView();
             this.hgwStatusIconColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.hgwNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +73,8 @@ namespace PuttyManagerGui
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.theToolStrip = new System.Windows.Forms.ToolStrip();
@@ -102,7 +106,7 @@ namespace PuttyManagerGui
             this.tgvDstHostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgvDstPortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageLog = new System.Windows.Forms.TabPage();
-            this.listBoxLog = new System.Windows.Forms.ListBox();
+            this.textBoxLog = new System.Windows.Forms.TextBox();
             this.contextMenuStripHost = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemEditHost = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRemoveHost = new System.Windows.Forms.ToolStripMenuItem();
@@ -265,6 +269,7 @@ namespace PuttyManagerGui
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.hostToolStripMenuItem,
+            this.toolsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
@@ -401,6 +406,21 @@ namespace PuttyManagerGui
             this.stopToolStripMenuItem.Text = "S&top";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.optionsToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.optionsToolStripMenuItem.Text = "Options...";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -535,26 +555,33 @@ namespace PuttyManagerGui
             this.treeViewFilter.ImageList = this.imageListStates;
             this.treeViewFilter.Location = new System.Drawing.Point(0, 0);
             this.treeViewFilter.Name = "treeViewFilter";
-            treeNode5.ImageIndex = 1;
-            treeNode5.Name = "filterStoppedHostsNode";
-            treeNode5.SelectedImageIndex = 1;
-            treeNode5.Tag = "1";
-            treeNode5.Text = "Stopped";
-            treeNode6.ImageIndex = 2;
-            treeNode6.Name = "filterUnknownHostsNode";
-            treeNode6.SelectedImageIndex = 2;
-            treeNode6.Tag = "2";
-            treeNode6.Text = "Unknown";
-            treeNode7.ImageIndex = 3;
-            treeNode7.Name = "filterStartedHostsNode";
-            treeNode7.SelectedImageIndex = 3;
-            treeNode7.Tag = "3";
-            treeNode7.Text = "Started";
-            treeNode8.Name = "filterAllHostsNode";
-            treeNode8.Tag = "-1";
-            treeNode8.Text = "All hosts";
+            treeNode1.ImageIndex = 1;
+            treeNode1.Name = "filterStoppedHostsNode";
+            treeNode1.SelectedImageIndex = 1;
+            treeNode1.Tag = "1";
+            treeNode1.Text = "Stopped";
+            treeNode2.ImageIndex = 2;
+            treeNode2.Name = "filterUnknownHostsNode";
+            treeNode2.SelectedImageIndex = 2;
+            treeNode2.Tag = "2";
+            treeNode2.Text = "Starting";
+            treeNode3.ImageIndex = 2;
+            treeNode3.Name = "filterWaitingHostsNode";
+            treeNode3.SelectedImageIndex = 2;
+            treeNode3.Tag = "3";
+            treeNode3.Text = "Waiting";
+            treeNode4.ImageIndex = 3;
+            treeNode4.Name = "filterStartedHostsNode";
+            treeNode4.SelectedImageIndex = 3;
+            treeNode4.Tag = "4";
+            treeNode4.Text = "Started";
+            treeNode5.ImageIndex = 4;
+            treeNode5.Name = "filterAllHostsNode";
+            treeNode5.SelectedImageIndex = 4;
+            treeNode5.Tag = "-1";
+            treeNode5.Text = "All hosts";
             this.treeViewFilter.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode8});
+            treeNode5});
             this.treeViewFilter.SelectedImageIndex = 0;
             this.treeViewFilter.Size = new System.Drawing.Size(134, 398);
             this.treeViewFilter.TabIndex = 0;
@@ -568,6 +595,7 @@ namespace PuttyManagerGui
             this.imageListStates.Images.SetKeyName(1, "control_stop_square_small.png");
             this.imageListStates.Images.SetKeyName(2, "brightness_small.png");
             this.imageListStates.Images.SetKeyName(3, "tick_small_circle.png");
+            this.imageListStates.Images.SetKeyName(4, "servers.png");
             // 
             // splitContainerV1
             // 
@@ -699,14 +727,14 @@ namespace PuttyManagerGui
             this.tunnelsGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.tunnelsGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tunnelsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tunnelsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tunnelsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tunnelsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tunnelsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tgvNameColumn,
@@ -772,7 +800,7 @@ namespace PuttyManagerGui
             // 
             // tabPageLog
             // 
-            this.tabPageLog.Controls.Add(this.listBoxLog);
+            this.tabPageLog.Controls.Add(this.textBoxLog);
             this.tabPageLog.Location = new System.Drawing.Point(4, 22);
             this.tabPageLog.Name = "tabPageLog";
             this.tabPageLog.Size = new System.Drawing.Size(624, 155);
@@ -780,18 +808,17 @@ namespace PuttyManagerGui
             this.tabPageLog.Text = "Log";
             this.tabPageLog.UseVisualStyleBackColor = true;
             // 
-            // listBoxLog
+            // textBoxLog
             // 
-            this.listBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxLog.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listBoxLog.FormattingEnabled = true;
-            this.listBoxLog.IntegralHeight = false;
-            this.listBoxLog.Location = new System.Drawing.Point(0, 0);
-            this.listBoxLog.Margin = new System.Windows.Forms.Padding(0);
-            this.listBoxLog.Name = "listBoxLog";
-            this.listBoxLog.Size = new System.Drawing.Size(624, 155);
-            this.listBoxLog.TabIndex = 0;
-            this.listBoxLog.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxLog_DrawItem);
+            this.textBoxLog.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxLog.Location = new System.Drawing.Point(0, 0);
+            this.textBoxLog.Multiline = true;
+            this.textBoxLog.Name = "textBoxLog";
+            this.textBoxLog.ReadOnly = true;
+            this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxLog.Size = new System.Drawing.Size(624, 155);
+            this.textBoxLog.TabIndex = 1;
             // 
             // contextMenuStripHost
             // 
@@ -852,6 +879,7 @@ namespace PuttyManagerGui
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tunnelsGridView)).EndInit();
             this.tabPageLog.ResumeLayout(false);
+            this.tabPageLog.PerformLayout();
             this.contextMenuStripHost.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -903,7 +931,6 @@ namespace PuttyManagerGui
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvSrcPortColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstHostColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstPortColumn;
-        private System.Windows.Forms.ListBox listBoxLog;
         private System.Windows.Forms.ToolStripMenuItem editHostToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeHostToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -919,5 +946,8 @@ namespace PuttyManagerGui
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hostToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.TextBox textBoxLog;
     }
 }

@@ -6,10 +6,12 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using PuttyManager.Business;
 using PuttyManager.Domain;
 using PuttyManager.Util;
 using PuttyManager;
 using PuttyManagerGui.Properties;
+using log4net.Core;
 
 namespace PuttyManagerGui
 {
@@ -43,7 +45,16 @@ namespace PuttyManagerGui
                 if (startUpDlg.DialogRequired && startUpDlg.ShowDialog() == DialogResult.Cancel)
                     return;
 
-                var hm = new HostsManager<HostViewModel>(startUpDlg.Storage, startUpDlg.Filename, startUpDlg.Password);
+                // Apply config
+                var cfg = new Config
+                              {
+                                  RestartEnabled = Settings.Default.Config_RestartEnabled,
+                                  MaxAttemptsCount = Settings.Default.Config_MaxAttemptsCount,
+                                  RestartDelay = Settings.Default.Config_RestartDelay
+                              };
+                Logger.SetThresholdForAppender("DelegateAppender", Settings.Default.Config_TraceDebug ? Level.Debug : Level.Info);
+
+                var hm = new HostsManager<HostViewModel>(cfg, startUpDlg.Storage, startUpDlg.Filename, startUpDlg.Password);
 
                 // changeSource request handling
                 while (true)
@@ -56,7 +67,7 @@ namespace PuttyManagerGui
                         startUpDlg = new StartUpDialog();
                         if (startUpDlg.ShowDialog() == DialogResult.Cancel)
                             return;
-                        hm = new HostsManager<HostViewModel>(startUpDlg.Storage, startUpDlg.Filename, startUpDlg.Password);
+                        hm = new HostsManager<HostViewModel>(cfg, startUpDlg.Storage, startUpDlg.Filename, startUpDlg.Password);
                     } else
                     {
                         break;

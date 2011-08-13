@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -14,28 +12,6 @@ using PuttyManager.Util;
 
 namespace PuttyManager.Domain
 {
-    [Serializable]
-    [XmlRoot("Settings")]
-    public class EncryptedStorageContent
-    {
-        public EncryptedStorageContent()
-        {
-            Hosts = new List<HostInfo>();
-        }
-
-        // Topological sorted hosts information. Less index => less dependencies.
-        public List<HostInfo> Hosts { get; set; }
-    }
-
-    public class EncryptedStorageException : Exception
-    {
-        public EncryptedStorageException() { }
-        public EncryptedStorageException(string message) : base(message) { }
-        public EncryptedStorageException(string message, Exception innerException) : base(message, innerException) { }
-        protected EncryptedStorageException(SerializationInfo info, StreamingContext context)
-            : base(info, context) { }
-    }
-
     public class EncryptedStorage
     {
         private static readonly byte[] _passwordCheckString = Encoding.ASCII.GetBytes("MAGIC");
