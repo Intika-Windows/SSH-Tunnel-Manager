@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace PuttyManagerGui
+namespace PuttyManagerGui.Controls
 {
     public partial class LineSeparator : UserControl
     {

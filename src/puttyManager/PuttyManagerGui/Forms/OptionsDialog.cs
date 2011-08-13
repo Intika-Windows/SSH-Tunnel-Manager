@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using PuttyManagerGui.Properties;
 
-namespace PuttyManagerGui
+namespace PuttyManagerGui.Forms
 {
     public partial class OptionsDialog : Form
     {
@@ -24,14 +18,17 @@ namespace PuttyManagerGui
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private void OptionsDialog_FormClosing(object sender, FormClosingEventArgs e)
+        {
             Settings.Default.Config_RestartEnabled = checkGroupBoxAutoRestart.Checked;
             Settings.Default.Config_RestartDelay = (int)numericUpDownRestartDelay.Value;
             Settings.Default.Config_MaxAttemptsCount = (int)numericUpDownMaxAttemptsCount.Value;
             Settings.Default.Config_TraceDebug = checkBoxTraceDebug.Checked;
             Settings.Default.Save();
-
-            DialogResult = DialogResult.OK;
-            Close();
         }
     }
 }

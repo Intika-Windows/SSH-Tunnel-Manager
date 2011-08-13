@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PuttyManagerGui</RootNamespace>
     <AssemblyName>PuttyManagerGui</AssemblyName>
@@ -60,16 +60,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox.cs">
+    <Compile Include="Forms\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutBox.Designer.cs">
+    <Compile Include="Forms\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChangePasswordDialog.cs">
+    <Compile Include="Forms\ChangePasswordDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangePasswordDialog.Designer.cs">
+    <Compile Include="Forms\ChangePasswordDialog.Designer.cs">
       <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Ext\CheckGroupBox\CheckGroupBox.cs">
@@ -87,66 +87,56 @@
     <Compile Include="Ext\RadioGroupBox\RadioGroupBox.designer.cs">
       <DependentUpon>RadioGroupBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="HostDialog.cs">
+    <Compile Include="Forms\HostDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HostDialog.Designer.cs">
+    <Compile Include="Forms\HostDialog.Designer.cs">
       <DependentUpon>HostDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="HostViewModel.cs" />
-    <Compile Include="LineSeparator.cs">
+    <Compile Include="Validators\IValidatorFunctor.cs" />
+    <Compile Include="Controls\LineSeparator.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LineSeparator.Designer.cs">
+    <Compile Include="Controls\LineSeparator.Designer.cs">
       <DependentUpon>LineSeparator.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OptionsDialog.cs">
+    <Compile Include="Forms\OptionsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OptionsDialog.Designer.cs">
+    <Compile Include="Forms\OptionsDialog.Designer.cs">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="PasswordDialog.cs">
+    <Compile Include="Forms\ProgressDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PasswordDialog.Designer.cs">
-      <DependentUpon>PasswordDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgressDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProgressDialog.designer.cs">
+    <Compile Include="Forms\ProgressDialog.designer.cs">
       <DependentUpon>ProgressDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PuttyManagerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PuttyManagerForm.Designer.cs">
-      <DependentUpon>PuttyManagerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartUpDialog.cs">
+    <Compile Include="Forms\StartUpDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StartUpDialog.Designer.cs">
+    <Compile Include="Forms\StartUpDialog.Designer.cs">
       <DependentUpon>StartUpDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="TrayForm.cs">
+    <Compile Include="Forms\TrayForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Util.cs" />
-    <Compile Include="Validator.cs" />
-    <EmbeddedResource Include="AboutBox.resx">
+    <Compile Include="Validators\NewPasswordValidatorFunctor.cs" />
+    <Compile Include="Validators\Validator.cs" />
+    <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangePasswordDialog.resx">
+    <EmbeddedResource Include="Forms\ChangePasswordDialog.resx">
       <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ext\CheckGroupBox\CheckGroupBox.resx">
@@ -155,20 +145,17 @@
     <EmbeddedResource Include="Ext\RadioGroupBox\RadioGroupBox.resx">
       <DependentUpon>RadioGroupBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HostDialog.resx">
+    <EmbeddedResource Include="Forms\HostDialog.resx">
       <DependentUpon>HostDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OptionsDialog.resx">
+    <EmbeddedResource Include="Forms\OptionsDialog.resx">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PasswordDialog.resx">
-      <DependentUpon>PasswordDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PuttyManagerForm.resx">
-      <DependentUpon>PuttyManagerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ProgressDialog.resx">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -180,7 +167,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="StartUpDialog.resx">
+    <EmbeddedResource Include="Forms\StartUpDialog.resx">
       <DependentUpon>StartUpDialog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
@@ -261,6 +248,9 @@
     <None Include="Resources\key__arrow.png" />
     <None Include="Resources\disk.png" />
     <None Include="Resources\oie_1220044U5H48MJA %281%29.gif" />
+    <None Include="Resources\logo_putty.png" />
+    <None Include="Resources\icon_16x16_putty.png" />
+    <None Include="Resources\Remote_desktop_connection_icon16.png" />
     <Content Include="terminal.ico" />
   </ItemGroup>
   <ItemGroup />

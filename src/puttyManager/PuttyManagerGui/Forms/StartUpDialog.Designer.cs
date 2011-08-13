@@ -1,4 +1,6 @@
-﻿namespace PuttyManagerGui
+﻿using PuttyManagerGui.Controls;
+
+namespace PuttyManagerGui.Forms
 {
     partial class StartUpDialog
     {
@@ -59,7 +61,7 @@
             this.theSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.theGoodProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.theErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.theLineSeparator = new PuttyManagerGui.LineSeparator();
+            this.theLineSeparator = new LineSeparator();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();

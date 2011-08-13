@@ -1,4 +1,4 @@
-﻿namespace PuttyManagerGui
+﻿namespace PuttyManagerGui.Forms
 {
     partial class AboutBox
     {
@@ -75,7 +75,7 @@
             // logoPictureBox
             // 
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logoPictureBox.Image = global::PuttyManagerGui.Properties.Resources.oie_1220044U5H48MJA__1_;
+            this.logoPictureBox.Image = global::PuttyManagerGui.Properties.Resources.disco;
             this.logoPictureBox.InitialImage = null;
             this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
             this.logoPictureBox.Name = "logoPictureBox";

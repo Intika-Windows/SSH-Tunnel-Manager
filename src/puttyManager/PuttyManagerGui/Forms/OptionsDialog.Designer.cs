@@ -1,4 +1,6 @@
-﻿namespace PuttyManagerGui
+﻿using PuttyManagerGui.Controls;
+
+namespace PuttyManagerGui.Forms
 {
     partial class OptionsDialog
     {
@@ -35,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.lineSeparator1 = new PuttyManagerGui.LineSeparator();
+            this.lineSeparator1 = new LineSeparator();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.checkGroupBoxAutoRestart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxAttemptsCount)).BeginInit();
@@ -158,6 +160,7 @@
             this.Name = "OptionsDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Options";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OptionsDialog_FormClosing);
             this.checkGroupBoxAutoRestart.ResumeLayout(false);
             this.checkGroupBoxAutoRestart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxAttemptsCount)).EndInit();

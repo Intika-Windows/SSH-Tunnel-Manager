@@ -1,12 +1,13 @@
 ﻿using System.Windows.Forms;
 
-namespace PuttyManagerGui
+namespace PuttyManagerGui.Forms
 {
     public partial class ProgressDialog : Form
     {
         public ProgressDialog()
         {
             InitializeComponent();
+            Text = Util.AssemblyTitle;
         }
 
         public void Update(int progress, string text)

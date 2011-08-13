@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using PuttyManagerGui.Properties;
 
-namespace PuttyManagerGui
+namespace PuttyManagerGui.Forms
 {
     partial class AboutBox : Form
     {

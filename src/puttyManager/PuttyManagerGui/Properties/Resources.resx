@@ -205,7 +205,16 @@
   <data name="MITLicensePage" xml:space="preserve">
     <value>http://www.chiark.greenend.org.uk/~sgtatham/putty/licence.html</value>
   </data>
-  <data name="oie_1220044U5H48MJA (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="disco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\oie_1220044U5H48MJA (1).gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_16x16_putty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_16x16_putty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_putty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_putty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Remote_desktop_connection_icon16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Remote_desktop_connection_icon16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

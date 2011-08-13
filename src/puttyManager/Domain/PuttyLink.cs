@@ -241,7 +241,7 @@ namespace PuttyManager.Domain
                                        RedirectStandardError = true,
                                        RedirectStandardOutput = true,
                                        RedirectStandardInput = true,
-                                       Arguments = arguments()
+                                       Arguments = PuttyArguments(Host, false)
                                    }
                            };
 
@@ -394,14 +394,15 @@ namespace PuttyManager.Domain
             return _eventStarted.Wait(seconds * 1000);
         }
 
-        private string arguments()
+        public static string PuttyArguments(HostInfo host, bool withPassword)
         {
             // example: -ssh username@domainName -P 22 -pw password -D 5000 -L 44333:username.dyndns.org:44333
 
-            //var args = String.Format("-ssh {0}@{1} -P {2} -pw {3} -v", Host.Username, Host.Hostname, Host.Port, Host.Password);
-            var args = String.Format("-ssh {0}@{1} -P {2} -v", Host.Username, Host.Hostname, Host.Port);
+            var args = withPassword 
+                ? String.Format("-ssh {0}@{1} -P {2} -pw {3} -v", host.Username, host.Hostname, host.Port, host.Password) 
+                : String.Format("-ssh {0}@{1} -P {2} -v", host.Username, host.Hostname, host.Port);
             var sb = new StringBuilder(args);
-            foreach (var tunnelArg in Host.Tunnels.Select(tunnelArguments))
+            foreach (var tunnelArg in host.Tunnels.Select(tunnelArguments))
             {
                 sb.Append(tunnelArg);
             }

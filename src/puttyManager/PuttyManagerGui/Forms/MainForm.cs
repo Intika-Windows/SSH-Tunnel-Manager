@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using PuttyManager.Business;
@@ -15,10 +12,9 @@ using PuttyManager.Ext.BLW;
 using PuttyManager.Util;
 using PuttyManagerGui.Properties;
 using log4net.Core;
-using log4net.Repository.Hierarchy;
 using Logger = PuttyManager.Util.Logger;
 
-namespace PuttyManagerGui
+namespace PuttyManagerGui.Forms
 {
     public partial class MainForm : TrayForm
     {
@@ -26,6 +22,10 @@ namespace PuttyManagerGui
         private readonly BindingSource _bindingSource;
         private static readonly Color _darkRedColor = Color.FromArgb(165, 0, 0);
         private readonly string _titleFilename;
+        private bool _savePasswordRequested = false;
+        private bool _saveNewPassword;
+
+        private bool _modified;
 
         public MainForm(HostsManager<HostViewModel> manager)
         {
@@ -64,6 +64,20 @@ namespace PuttyManagerGui
 
         public bool ChangeSourceRequested { get; private set; }
 
+        private bool Modified
+        {
+            get { return _modified; }
+            set
+            {
+                var star = value ? "*" : "";
+                Text = string.Concat(_titleFilename, star, @" - ", Util.AssemblyTitle);
+                toolStripButtonSave.Enabled = value;
+                saveToolStripMenuItem.Enabled = value;
+
+                _modified = value;
+            }
+        }
+
         private void centerMe()
         {
             int boundWidth = Screen.PrimaryScreen.Bounds.Width;
@@ -71,48 +85,6 @@ namespace PuttyManagerGui
             int x = boundWidth - Width;
             int y = boundHeight - Height;
             Location = new Point(x / 2, y / 2);
-        }
-
-        private void onLogAppended(object sender, LogAppendedEventArgs e)
-        {
-            object o;
-            if (!e.Properties.TryGetValue("Host", out o))
-            {
-                return;
-            }
-
-            var h = (HostInfo) o;
-            h.AddEventToLog(e.AppendedData);
-            if (_bindingSource.Current != null && 
-                ((ObjectView<HostViewModel>)_bindingSource.Current).Object.Model.Info == h)
-            {
-                // this is current Host
-                if (textBoxLog.TextLength > HostInfo.EventLogMaxSize * 500)
-                {
-                    textBoxLog.Clear();
-                }
-                textBoxLog.AppendText(e.AppendedData);
-            }
-        }
-
-        private void onHostStatusChanged(object sender, EventArgs e)
-        {
-            // This handler executing not in UI thread.
-            Invoke((Action)delegate
-            {
-                var hvm = (HostViewModel)sender;
-                updateHost(hvm);
-                if (_bindingSource.Current == hvm)
-                {
-                    updateCurrentHostDetails();
-                }
-                updateFilter(treeViewFilter.SelectedNode);
-                if (hvm.Model.Link.Status == ELinkStatus.Stopped && !string.IsNullOrEmpty(hvm.Model.Link.LastStartError))
-                {
-                    // host stopped with error
-                    TrayIcon.ShowBalloonTip(2000, Util.AssemblyTitle, string.Format("[{0}] {1}", hvm.Name, hvm.Model.Link.LastStartError), ToolTipIcon.Error);
-                }
-            });
         }
 
         private void updateCurrentHostDetails()
@@ -156,8 +128,11 @@ namespace PuttyManagerGui
                 tunnelsGridView.Rows.Add(row);
             }
             // log
-            textBoxLog.Clear();
-            textBoxLog.AppendText(string.Join("", h.Model.Info.EventLog.ToArray()));
+            listViewLog.Items.Clear();
+            listViewLog.Items.AddRange(h.Model.Info.EventLog.Select(e => new ListViewItem(e)).ToArray());
+            listViewLog.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+            if (listViewLog.Items.Count > 0)
+                listViewLog.TopItem = listViewLog.Items[listViewLog.Items.Count - 1];
             // menus
             bool hostStopped = h.Model.Link.Status == ELinkStatus.Stopped;
             toolStripButtonStart.Enabled = hostStopped;
@@ -283,6 +258,64 @@ namespace PuttyManagerGui
                 return false;
             }
             return true;
+        }
+
+        private static void startHostAndParentHosts(HostViewModel viewmodel, List<Host> depList)
+        {
+            foreach (var h1 in depList)
+            {
+                if (h1.Link.Status == ELinkStatus.Starting)
+                {
+                    h1.Link.Stop();
+                    if (!h1.Link.WaitForStop())
+                    {
+                        MessageBox.Show(
+                            string.Format(
+                                "STOP action for host '{0}' timed out. Terminating actions chain.",
+                                h1.Info.Name),
+                            Util.AssemblyTitle, MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                if (h1.Link.Status == ELinkStatus.Stopped)
+                {
+                    h1.Link.AsyncStart();
+                    if (!h1.Link.WaitForStart())
+                    {
+                        MessageBox.Show(
+                            string.Format(
+                                "START action for host '{0}' timed out. Terminating actions chain.",
+                                h1.Info.Name),
+                            Util.AssemblyTitle, MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+            }
+            viewmodel.Model.Link.AsyncStart();
+        }
+
+        private void updateFilter(TreeNode node)
+        {
+            switch (int.Parse(node.Tag.ToString()))
+            {
+            case -1:
+                _hostsManager.Hosts.RemoveFilter();
+                break;
+            case 1:
+                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Stopped);
+                break;
+            case 2:
+                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Starting);
+                break;
+            case 3:
+                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Waiting);
+                break;
+            case 4:
+                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Started || m.Model.Link.Status == ELinkStatus.StartedWithWarnings);
+                break;
+            }
         }
 
         #region Commands
@@ -415,6 +448,14 @@ namespace PuttyManagerGui
             ((ObjectView<HostViewModel>) _bindingSource.Current).Object.Model.Link.Stop();
         }
 
+        private void startPutty()
+        {
+            var viewmodel = ((ObjectView<HostViewModel>)_bindingSource.Current).Object;
+            var host = viewmodel.Model.Info;
+
+            Process.Start(Path.Combine(Application.StartupPath, "putty.exe"), PuttyLink.PuttyArguments(host, true));
+        }
+
         private void exit()
         {
             if (!askForSave())
@@ -442,10 +483,6 @@ namespace PuttyManagerGui
             if (!Modified)
                 return;
             _hostsManager.Save();
-            /*Settings.Default.Config_RestartEnabled = _hostsManager.Config.RestartEnabled;
-            Settings.Default.Config_RestartDelay = _hostsManager.Config.RestartDelay;
-            Settings.Default.Config_MaxAttemptsCount = _hostsManager.Config.MaxAttemptsCount;
-            Settings.Default.Save();*/
             if (_savePasswordRequested)
             {
                 Settings.Default.EncryptedStoragePassword = _saveNewPassword ? _hostsManager.Password : null;
@@ -457,34 +494,55 @@ namespace PuttyManagerGui
 
         #endregion
 
-        private void treeViewFilter_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            updateFilter(e.Node);
-        }
+        #region My Events
 
-        private void updateFilter(TreeNode node)
+        private void onLogAppended(object sender, LogAppendedEventArgs e)
         {
-            switch (int.Parse(node.Tag.ToString()))
+            object o;
+            if (!e.Properties.TryGetValue("Host", out o))
             {
-            case -1:
-                _hostsManager.Hosts.RemoveFilter();
-                break;
-            case 1:
-                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Stopped);
-                break;
-            case 2:
-                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Starting);
-                break;
-            case 3:
-                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Waiting);
-                break;
-            case 4:
-                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Started || m.Model.Link.Status == ELinkStatus.StartedWithWarnings);
-                break;
+                return;
+            }
+
+            var h = (HostInfo) o;
+            h.AddEventToLog(e.AppendedData);
+            if (_bindingSource.Current != null && 
+                ((ObjectView<HostViewModel>)_bindingSource.Current).Object.Model.Info == h)
+            {
+                // this is current Host
+                if (listViewLog.Items.Count >= HostInfo.EventLogMaxSize)
+                {
+                    listViewLog.Items.RemoveAt(0);
+                }
+                listViewLog.Items.Add(e.AppendedData);
+                listViewLog.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+                listViewLog.TopItem = listViewLog.Items[listViewLog.Items.Count - 1];
             }
         }
 
-        #region Hosts Context Menu
+        private void onHostStatusChanged(object sender, EventArgs e)
+        {
+            // This handler executing not in UI thread.
+            Invoke((Action)delegate
+                               {
+                                   var hvm = (HostViewModel)sender;
+                                   updateHost(hvm);
+                                   if (_bindingSource.Current == hvm)
+                                   {
+                                       updateCurrentHostDetails();
+                                   }
+                                   updateFilter(treeViewFilter.SelectedNode);
+                                   if (hvm.Model.Link.Status == ELinkStatus.Stopped && !string.IsNullOrEmpty(hvm.Model.Link.LastStartError))
+                                   {
+                                       // host stopped with error
+                                       TrayIcon.ShowBalloonTip(2000, Util.AssemblyTitle, string.Format("[{0}] {1}", hvm.Name, hvm.Model.Link.LastStartError), ToolTipIcon.Error);
+                                   }
+                               });
+        }
+
+        #endregion
+
+        #region Hosts Context Menu Events
 
         private void toolStripMenuItemEditHost_Click(object sender, EventArgs e)
         {
@@ -498,7 +556,7 @@ namespace PuttyManagerGui
 
         #endregion
 
-        #region ToolBar
+        #region ToolBar Events
 
         private void toolStripButtonAddHost_Click(object sender, EventArgs e)
         {
@@ -532,7 +590,7 @@ namespace PuttyManagerGui
 
         #endregion
 
-        #region Main Menu
+        #region Main Menu Events
 
         private void addHostToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -574,42 +632,58 @@ namespace PuttyManagerGui
             save();
         }
 
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var savePass = !string.IsNullOrEmpty(Settings.Default.EncryptedStoragePassword);
+            var pwdDlg = new ChangePasswordDialog(savePass);
+            var res = pwdDlg.ShowDialog(this);
+            if (res == DialogResult.Cancel)
+                return;
+
+            _savePasswordRequested = true;
+            _hostsManager.Password = pwdDlg.Password;
+            savePass = pwdDlg.SavePassword;
+            _saveNewPassword = savePass;
+            Modified = true;
+        }
+
+        private void changeStorageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeSourceRequested = true;
+            exit();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AboutBox().ShowDialog(this);
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new OptionsDialog().ShowDialog(this);
+            // update config
+            _hostsManager.Config.RestartEnabled = Settings.Default.Config_RestartEnabled;
+            _hostsManager.Config.RestartDelay = Settings.Default.Config_RestartDelay;
+            _hostsManager.Config.MaxAttemptsCount = Settings.Default.Config_MaxAttemptsCount;
+            Logger.SetThresholdForAppender("DelegateAppender", Settings.Default.Config_TraceDebug ? Level.Debug : Level.Info);
+        }
+
         #endregion
 
-        private static void startHostAndParentHosts(HostViewModel viewmodel, List<Host> depList)
+        #region Events
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            foreach (var h1 in depList)
+            // two options: remove dangerous events what can be triggered after disposing or check 'IsDisposed' inside them. 
+            // First option selected, but careful with racing problem.
+            // In both events racing problem solving via handling pending events in DoEvents().
+            // It processing already running methods (which was started before this code) before start disposing.
+            DelegateAppender.OnAppend -= onLogAppended;
+            foreach (var host in _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(o => o.Object))
             {
-                if (h1.Link.Status == ELinkStatus.Starting)
-                {
-                    h1.Link.Stop();
-                    if (!h1.Link.WaitForStop())
-                    {
-                        MessageBox.Show(
-                            string.Format(
-                                "STOP action for host '{0}' timed out. Terminating actions chain.",
-                                h1.Info.Name),
-                            Util.AssemblyTitle, MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-                if (h1.Link.Status == ELinkStatus.Stopped)
-                {
-                    h1.Link.AsyncStart();
-                    if (!h1.Link.WaitForStart())
-                    {
-                        MessageBox.Show(
-                            string.Format(
-                                "START action for host '{0}' timed out. Terminating actions chain.",
-                                h1.Info.Name),
-                            Util.AssemblyTitle, MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                        return;
-                    }
-                }
+                host.StatusChanged -= onHostStatusChanged;
             }
-            viewmodel.Model.Link.AsyncStart();
+            Application.DoEvents();
         }
 
         private void hostsGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -651,6 +725,9 @@ namespace PuttyManagerGui
             else
                 strip.Items.Add("Stop", Resources.control_stop_square, delegate { stopHost(); });
             strip.Items.Add("-");
+            strip.Items.Add("Start PuTTY...", Resources.icon_16x16_putty, delegate { startPutty(); });
+            //strip.Items.Add("Start Windows RDP (mstsc)...", Resources.Remote_desktop_connection_icon16, delegate { startMstsc(); });
+            strip.Items.Add("-");
             strip.Items.Add("&Edit...", Resources.server__pencil, toolStripMenuItemEditHost_Click);
             strip.Items.Add("&Remove", Resources.server__minus, toolStripMenuItemRemoveHost_Click);
             e.ContextMenuStrip = strip;
@@ -682,102 +759,40 @@ namespace PuttyManagerGui
             }
         }
 
-        private void listBoxLog_DrawItem(object sender, DrawItemEventArgs e)
+        private void treeViewFilter_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (e.Index < 0)
-                return;
+            updateFilter(e.Node);
+        }
+
+        private void listViewLog_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        {
+            var item = e.Item.SubItems[e.ColumnIndex];
 
             e.DrawBackground();
-            Brush myBrush = Brushes.Black;
-            var text = ((ListBox) sender).Items[e.Index].ToString();
+            var text = item.Text;
 
+            Color forecolor;
             if (text.StartsWith("ERROR", StringComparison.CurrentCultureIgnoreCase) ||
                 text.StartsWith("FATAL", StringComparison.CurrentCultureIgnoreCase))
             {
-                myBrush = new SolidBrush(_darkRedColor);
+                forecolor = _darkRedColor;
             }
             else if (text.StartsWith("WARN", StringComparison.CurrentCultureIgnoreCase))
             {
-                myBrush = new SolidBrush(Color.FromArgb(181, 166, 16));
+                forecolor = Color.FromArgb(181, 166, 16);
             }
-
-            e.Graphics.DrawString(text, e.Font, myBrush, e.Bounds, StringFormat.GenericDefault);
-            e.DrawFocusRectangle();
-        }
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            // two options: remove dangerous events what can be triggered after disposing or check 'IsDisposed' inside them. 
-            // First option selected, but careful with racing problem.
-            // In both events racing problem solving via handling pending events in DoEvents().
-            // It processing already running methods (which was started before this code) before start disposing.
-            DelegateAppender.OnAppend -= onLogAppended;
-            foreach (var host in _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(o => o.Object))
+            else if (text.StartsWith("DEBUG"))
             {
-                host.StatusChanged -= onHostStatusChanged;
+                forecolor = Color.Black;
             }
-            Application.DoEvents();
-        }
-
-        private void changeStorageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangeSourceRequested = true;
-            exit();
-        }
-
-        private bool _savePasswordRequested = false;
-        private bool _saveNewPassword;
-
-        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var savePass = !string.IsNullOrEmpty(Settings.Default.EncryptedStoragePassword);
-            var pwdDlg = new ChangePasswordDialog(savePass);
-            var res = pwdDlg.ShowDialog(this);
-            if (res == DialogResult.Cancel)
-                return;
-
-            _savePasswordRequested = true;
-            _hostsManager.Password = pwdDlg.Password;
-            savePass = pwdDlg.SavePassword;
-            _saveNewPassword = savePass;
-            Modified = true;
-        }
-
-        private bool _modified;
-        private bool Modified
-        {
-            get { return _modified; }
-            set
+            else
             {
-                var star = value ? "*" : "";
-                Text = string.Concat(_titleFilename, star, @" - ", Util.AssemblyTitle);
-                toolStripButtonSave.Enabled = value;
-                saveToolStripMenuItem.Enabled = value;
-
-                _modified = value;
+                forecolor = Color.DarkBlue;
             }
+            TextRenderer.DrawText(e.Graphics, item.Text, listViewLog.Font, e.Bounds, forecolor, TextFormatFlags.Left);
+            e.DrawFocusRectangle(e.Bounds);
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new AboutBox().ShowDialog(this);
-        }
-
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new OptionsDialog().ShowDialog(this);
-            // update config
-            _hostsManager.Config.RestartEnabled = Settings.Default.Config_RestartEnabled;
-            _hostsManager.Config.RestartDelay = Settings.Default.Config_RestartDelay;
-            _hostsManager.Config.MaxAttemptsCount = Settings.Default.Config_MaxAttemptsCount;
-            Logger.SetThresholdForAppender("DelegateAppender", Settings.Default.Config_TraceDebug ? Level.Debug : Level.Info);
-        }
-
-        private void listBoxLog_SizeChanged(object sender, EventArgs e)
-        {
-            
-            //listBoxLog.SetSelected(listBoxLog.Items.Count - 1, true);
-            //listBoxLog.SetSelected(listBoxLog.Items.Count - 1, false);
-        }
+        #endregion
     }
 }

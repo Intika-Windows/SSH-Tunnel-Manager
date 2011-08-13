@@ -29,6 +29,7 @@ namespace PuttyManagerGui
                     _model.Link.LinkStatusChanged -= onStatusChanged;
                 _model = value;
                 _model.Link.LinkStatusChanged += onStatusChanged;
+                _model.ViewModel = this;
             }
         }
 
@@ -42,7 +43,7 @@ namespace PuttyManagerGui
             {
                 return Model.Link.Status != ELinkStatus.StartedWithWarnings
                     ? Model.Link.Status.ToString() 
-                    : HostStatus.Started.ToString();
+                    : ELinkStatus.Started.ToString();
             }
         }
         public event EventHandler StatusChanged;
@@ -65,7 +66,7 @@ namespace PuttyManagerGui
                 case ELinkStatus.Waiting:
                     return Color.FromArgb(181, 166, 16);
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new Exception(string.Format("Status {0} not supported.", Model.Link.Status));
                 }
             }
         }

@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace PuttyManagerGui
+namespace PuttyManagerGui.Forms
 {
     public class TrayForm : Form
     {

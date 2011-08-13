@@ -7,6 +7,12 @@ using System.Text;
 
 namespace PuttyManager.Util
 {
+    /// <summary>
+    /// Helper class for System.Security.Cryptography algorithms. 
+    /// Gives an easy way to encrypt and decrypt data (strings or streams) with password.
+    /// Using algorithm Rijndael with 256 bits key and 128 bits block size.
+    /// Key creating with password and salt, using Rfc 2898.
+    /// </summary>
     public class CryptoHelper
     {
         private static readonly byte[] _salt = Encoding.ASCII.GetBytes("o6816642kbM7c5");

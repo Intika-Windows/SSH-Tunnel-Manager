@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Linq;
 using PuttyManager.Business;
-using PuttyManager.Domain;
 using PuttyManager.Util;
 
-namespace PuttyManager
+namespace PuttyManager.Domain
 {
+    [Obsolete("This is a part of early implementation of tunnel manager based on putty.exe. " +
+              "Classes are very unstable because of a lot of modification without testing and deprecated to use.")]
     public class PuttyWindowsManager
     {
         private const string PuttyClassName = "PuTTY";
@@ -50,11 +48,11 @@ namespace PuttyManager
         /// <summary>
         /// Определение есть ли такой путти в состоянии Good (определяется по имени машины и логину)
         /// </summary>
-        /// <param name="puttyInfo"></param>
+        /// <param name="hostInfo"></param>
         /// <returns></returns>
-        public static bool HasGoodPutty(HostInfo puttyInfo)
+        /*public static bool HasGoodPutty(HostInfo hostInfo)
         {
-            var lookedText = String.Format("{0}@{1}:", puttyInfo.Username, puttyInfo/*.MachineName*/);
+            var lookedText = String.Format("{0}@{1}:", hostInfo.Username, hostInfo/ *.MachineName* /);
             var anyGoodPutty = GetPuttyWindows().Any(pw => pw.Text.Contains(lookedText));
             return anyGoodPutty;
         }
@@ -66,12 +64,9 @@ namespace PuttyManager
         /// <returns></returns>
         public static bool HasStrangePutty(HostInfo hostInfo)
         {
-            /*                                                    (string.Equals(pw.MachineName, HostInfo.MachineName, StringComparison.CurrentCultureIgnoreCase) ||
-                                                     string.Equals(pw.MachineName, Environment.MachineName, StringComparison.CurrentCultureIgnoreCase) ||
-                                                     string.Equals(pw.MachineName, "localhost", StringComparison.CurrentCultureIgnoreCase))*/
             var anyStrangePutty = GetPuttyWindows().Any(pw => pw.Strange && pw.InstanceInfo.Equals(hostInfo));
             return anyStrangePutty;
-        }
+        }*/
 
         public static void KillAllPutties()
         {
@@ -108,17 +103,6 @@ namespace PuttyManager
                                        return true;
                                    }, 0);
             return puttyWindows;
-        }
-
-        public static void AutoRecovery()
-        {
-            // Проходим по топологии, если можем - создаем инстанц. Все элементы иерархии должны иметь финальное состояние Good (не Strange).
-            /*foreach (var hostData in EncryptedSettings.Instance.Hosts.Where(
-                                        hostData => !HasGoodPutty(hostData) && !HasStrangePutty(hostData) &&
-                                            (hostData.DependsOn == null || HasGoodPutty(hostData.DependsOn))))
-            {
-                CreatePuttyInstance(hostData);
-            }*/
         }
 
         /// <summary>

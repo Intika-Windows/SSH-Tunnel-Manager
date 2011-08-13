@@ -1,4 +1,6 @@
-﻿namespace PuttyManagerGui
+﻿using PuttyManagerGui.Controls;
+
+namespace PuttyManagerGui.Forms
 {
     partial class ChangePasswordDialog
     {
@@ -36,7 +38,7 @@
             this.checkBoxSavePass = new System.Windows.Forms.CheckBox();
             this.textBoxNewPasswordConfirm = new System.Windows.Forms.TextBox();
             this.textBoxNewPassword = new System.Windows.Forms.TextBox();
-            this.theLineSeparator = new PuttyManagerGui.LineSeparator();
+            this.theLineSeparator = new LineSeparator();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();

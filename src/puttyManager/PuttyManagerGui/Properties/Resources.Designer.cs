@@ -146,6 +146,13 @@ namespace PuttyManagerGui.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap disco {
+            get {
+                object obj = ResourceManager.GetObject("disco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap disk {
             get {
                 object obj = ResourceManager.GetObject("disk", resourceCulture);
@@ -178,9 +185,23 @@ namespace PuttyManagerGui.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap icon_16x16_putty {
+            get {
+                object obj = ResourceManager.GetObject("icon_16x16_putty", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap key__arrow {
             get {
                 object obj = ResourceManager.GetObject("key__arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap logo_putty {
+            get {
+                object obj = ResourceManager.GetObject("logo_putty", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -194,19 +215,19 @@ namespace PuttyManagerGui.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap oie_1220044U5H48MJA__1_ {
-            get {
-                object obj = ResourceManager.GetObject("oie_1220044U5H48MJA (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         /// <summary>
         ///   Looks up a localized string similar to http://code.google.com/p/ssh-tunnel-manager/.
         /// </summary>
         internal static string ProjectPage {
             get {
                 return ResourceManager.GetString("ProjectPage", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Remote_desktop_connection_icon16 {
+            get {
+                object obj = ResourceManager.GetObject("Remote_desktop_connection_icon16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

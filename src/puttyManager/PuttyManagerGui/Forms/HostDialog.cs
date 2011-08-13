@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using PuttyManager.Business;
-using PuttyManager.Domain;
+using PuttyManagerGui.Validators;
 
-namespace PuttyManagerGui
+namespace PuttyManagerGui.Forms
 {
     public partial class HostDialog : Form
     {
@@ -168,6 +164,8 @@ namespace PuttyManagerGui
 
         #endregion
 
+        #region Properties
+
         public EMode Mode { get; private set; }
 
         public HostInfo StartupDependsOn
@@ -197,6 +195,8 @@ namespace PuttyManagerGui
             get { return _createdHosts.ToArray(); }
         }
 
+        #endregion
+
         private bool Modified
         {
             get { return _modified; }
@@ -213,59 +213,6 @@ namespace PuttyManagerGui
             _createdHosts.Clear();
             Modified = false;
         }
-
-        #region Add host
-
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
-        }
-
-        private void buttonAddHost_Click(object sender, EventArgs e)
-        {
-            if (!_hostValidator.ValidateControls()) return;
-
-            if (_tunnelValidator.ValidateControls(false))
-            {
-                switch (MessageBox.Show(this, @"You may forget to press 'Add' button, add new tunnel into list before continue?", 
-                                        @"SSH Tunnel Manager", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
-                {
-                case DialogResult.Yes:
-                    // Adding last tunnel
-                    buttonAddTunnel_Click(null, EventArgs.Empty);
-                    break;
-                case DialogResult.No:   
-                    resetAddTunnelGroup();
-                    break;
-                case DialogResult.Cancel:
-                    // Go back and change something
-                    return;
-                }
-            }
-
-            // Adding host
-            formToHost();
-
-            /*EncryptedSettings.Instance.Hosts.Add(_currentHost);
-            EncryptedSettings.Instance.Save();*/
-            _createdHosts.Add(_currentHost);
-
-            // Update gui and reset
-            if (_labelRecentlyAdded == null)
-            {
-                _labelRecentlyAdded = new Label {ForeColor = Color.FromArgb(20,146,20), Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom, Margin = new Padding(3,3,3,0)};
-                flowLayoutPanelMain.Controls.Add(_labelRecentlyAdded);
-            }
-            _labelRecentlyAdded.Text = @"Recently added: " + _currentHost; // string.Join(", ", _recentlyAddedHosts.Select(h => h.ToString()));
-            var rowCount = (int)Math.Ceiling((double)_labelRecentlyAdded.PreferredWidth / _labelRecentlyAdded.Size.Width);
-            _labelRecentlyAdded.Size = new Size(_labelRecentlyAdded.Size.Width, rowCount * _labelRecentlyAdded.PreferredHeight);
-
-            buttonClose.Text = @"Close";
-            reset();
-        }
-
-        #endregion
 
         private void reset()
         {
@@ -362,6 +309,59 @@ namespace PuttyManagerGui
             radioButtonLocal.Checked = true;
             _tunnelValidator.Reset();
         }
+
+        #region Add host
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        private void buttonAddHost_Click(object sender, EventArgs e)
+        {
+            if (!_hostValidator.ValidateControls()) return;
+
+            if (_tunnelValidator.ValidateControls(false))
+            {
+                switch (MessageBox.Show(this, @"You may forget to press 'Add' button, add new tunnel into list before continue?", 
+                                        @"SSH Tunnel Manager", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                {
+                case DialogResult.Yes:
+                    // Adding last tunnel
+                    buttonAddTunnel_Click(null, EventArgs.Empty);
+                    break;
+                case DialogResult.No:   
+                    resetAddTunnelGroup();
+                    break;
+                case DialogResult.Cancel:
+                    // Go back and change something
+                    return;
+                }
+            }
+
+            // Adding host
+            formToHost();
+
+            /*EncryptedSettings.Instance.Hosts.Add(_currentHost);
+            EncryptedSettings.Instance.Save();*/
+            _createdHosts.Add(_currentHost);
+
+            // Update gui and reset
+            if (_labelRecentlyAdded == null)
+            {
+                _labelRecentlyAdded = new Label {ForeColor = Color.FromArgb(20,146,20), Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom, Margin = new Padding(3,3,3,0)};
+                flowLayoutPanelMain.Controls.Add(_labelRecentlyAdded);
+            }
+            _labelRecentlyAdded.Text = @"Recently added: " + _currentHost; // string.Join(", ", _recentlyAddedHosts.Select(h => h.ToString()));
+            var rowCount = (int)Math.Ceiling((double)_labelRecentlyAdded.PreferredWidth / _labelRecentlyAdded.Size.Width);
+            _labelRecentlyAdded.Size = new Size(_labelRecentlyAdded.Size.Width, rowCount * _labelRecentlyAdded.PreferredHeight);
+
+            buttonClose.Text = @"Close";
+            reset();
+        }
+
+        #endregion
 
         #region Tunnels
 

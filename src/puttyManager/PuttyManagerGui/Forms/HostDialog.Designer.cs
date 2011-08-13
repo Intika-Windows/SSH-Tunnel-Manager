@@ -1,4 +1,4 @@
-﻿namespace PuttyManagerGui
+﻿namespace PuttyManagerGui.Forms
 {
     partial class HostDialog
     {

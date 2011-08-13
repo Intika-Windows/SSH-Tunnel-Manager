@@ -1,4 +1,4 @@
-﻿namespace PuttyManagerGui
+﻿namespace PuttyManagerGui.Controls
 {
     partial class LineSeparator
     {

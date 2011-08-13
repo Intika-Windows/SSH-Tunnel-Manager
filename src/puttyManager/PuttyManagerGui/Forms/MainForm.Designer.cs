@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using PuttyManager.Ext.BLW;
-using PuttyManager.Util;
-
-namespace PuttyManagerGui
+﻿namespace PuttyManagerGui.Forms
 {
     partial class MainForm
     {
@@ -106,7 +102,8 @@ namespace PuttyManagerGui
             this.tgvDstHostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgvDstPortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageLog = new System.Windows.Forms.TabPage();
-            this.textBoxLog = new System.Windows.Forms.TextBox();
+            this.listViewLog = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStripHost = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemEditHost = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRemoveHost = new System.Windows.Forms.ToolStripMenuItem();
@@ -800,7 +797,7 @@ namespace PuttyManagerGui
             // 
             // tabPageLog
             // 
-            this.tabPageLog.Controls.Add(this.textBoxLog);
+            this.tabPageLog.Controls.Add(this.listViewLog);
             this.tabPageLog.Location = new System.Drawing.Point(4, 22);
             this.tabPageLog.Name = "tabPageLog";
             this.tabPageLog.Size = new System.Drawing.Size(624, 155);
@@ -808,17 +805,27 @@ namespace PuttyManagerGui
             this.tabPageLog.Text = "Log";
             this.tabPageLog.UseVisualStyleBackColor = true;
             // 
-            // textBoxLog
+            // listViewLog
             // 
-            this.textBoxLog.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxLog.Location = new System.Drawing.Point(0, 0);
-            this.textBoxLog.Multiline = true;
-            this.textBoxLog.Name = "textBoxLog";
-            this.textBoxLog.ReadOnly = true;
-            this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLog.Size = new System.Drawing.Size(624, 155);
-            this.textBoxLog.TabIndex = 1;
+            this.listViewLog.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.listViewLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewLog.FullRowSelect = true;
+            this.listViewLog.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.listViewLog.Location = new System.Drawing.Point(0, 0);
+            this.listViewLog.MultiSelect = false;
+            this.listViewLog.Name = "listViewLog";
+            this.listViewLog.OwnerDraw = true;
+            this.listViewLog.ShowGroups = false;
+            this.listViewLog.Size = new System.Drawing.Size(624, 155);
+            this.listViewLog.TabIndex = 2;
+            this.listViewLog.UseCompatibleStateImageBehavior = false;
+            this.listViewLog.View = System.Windows.Forms.View.Details;
+            this.listViewLog.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listViewLog_DrawSubItem);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Message";
             // 
             // contextMenuStripHost
             // 
@@ -879,7 +886,6 @@ namespace PuttyManagerGui
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tunnelsGridView)).EndInit();
             this.tabPageLog.ResumeLayout(false);
-            this.tabPageLog.PerformLayout();
             this.contextMenuStripHost.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -948,6 +954,7 @@ namespace PuttyManagerGui
         private System.Windows.Forms.ToolStripMenuItem hostToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBoxLog;
+        private System.Windows.Forms.ListView listViewLog;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

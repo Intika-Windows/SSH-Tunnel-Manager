@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using PuttyManager.Business;
-using PuttyManager.Ext;
 using PuttyManager.Ext.BLW;
-using PuttyManager.Properties;
 
 namespace PuttyManager.Domain
 {
@@ -77,20 +72,5 @@ namespace PuttyManager.Domain
             Storage.Data.Hosts = Hosts.Cast<ObjectView<THostViewModel>>().Select(h => h.Object.Model.Info).ToList();
             Storage.Save(Filename, Password);
         }
-
-        /*private void setViewModel(Type viewModelType)
-        {
-            Type _viewModelType;
-            var iViewModelType = typeof(IViewModel<>).MakeGenericType(typeof(Host));
-            if (!iViewModelType.IsAssignableFrom(viewModelType))
-            {
-                throw new ArgumentException("Type does not implement IViewModel<Host>.");
-            }
-            if (viewModelType.GetConstructor(new Type[0]) == null)
-            {
-                throw new ArgumentException("Type does not have parameterless contructor.");
-            }
-            var viewModel = (IViewModel<Host>)Activator.CreateInstance(_viewModelType);
-        }*/
     }
 }

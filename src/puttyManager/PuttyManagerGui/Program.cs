@@ -10,6 +10,7 @@ using PuttyManager.Business;
 using PuttyManager.Domain;
 using PuttyManager.Util;
 using PuttyManager;
+using PuttyManagerGui.Forms;
 using PuttyManagerGui.Properties;
 using log4net.Core;
 

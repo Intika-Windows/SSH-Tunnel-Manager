@@ -5,12 +5,12 @@ using System.Management;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
-using PuttyManager.Business;
-using PuttyManager.Domain;
 using PuttyManager.Util;
 
-namespace PuttyManager
+namespace PuttyManager.Domain
 {
+    [Obsolete("This is a part of early implementation of tunnel manager based on putty.exe. " +
+              "Classes are very unstable because of a lot of modification without testing and deprecated to use.")]
     public class PuttyWindow
     {
         public const string ConfigurationWindowText = "PuTTY Configuration";
@@ -21,14 +21,14 @@ namespace PuttyManager
         private const string StatusActiveStrange = "Active, Strange";
         private const string StatusConfigurationWindow = "Configuration";
 
-        private HostInfo _instanceInfo;
+        //private HostInfo _instanceInfo;
 
         public PuttyWindow(IntPtr hwnd)
         {
             Hwnd = hwnd;
         }
 
-        public HostInfo InstanceInfo
+        /*public HostInfo InstanceInfo
         {
             get
             {
@@ -41,7 +41,7 @@ namespace PuttyManager
                 }
                 return _instanceInfo;
             }
-        }
+        }*/
 
         public IntPtr Hwnd { get; private set; }
         public string Text { get { return getWindowText(Hwnd); } }
@@ -186,12 +186,12 @@ namespace PuttyManager
             return sb.ToString();
         }
 
-        public override string ToString()
+        /*public override string ToString()
         {
             var pid = InstanceInfo;
             if (pid != null)
                 return string.Format("{0}@{1}:{2}", pid.Username, pid.Hostname, pid.Port);
             return string.Format("Hwnd = {0}", Hwnd);
-        }
+        }*/
     }
 }

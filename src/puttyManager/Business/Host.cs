@@ -26,6 +26,8 @@ namespace PuttyManager.Business
             get { return _viewModel; }
             set
             {
+                if (value == _viewModel)
+                    return;
                 _viewModel = value;
                 _viewModel.Model = this;
             }

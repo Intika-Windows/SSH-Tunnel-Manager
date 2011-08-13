@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using PuttyManagerGui.Properties;
+using PuttyManagerGui.Validators;
 
-namespace PuttyManagerGui
+namespace PuttyManagerGui.Forms
 {
     public partial class ChangePasswordDialog : Form
     {
