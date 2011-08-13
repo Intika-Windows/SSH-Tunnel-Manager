@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSHTunnelManager", "SSHTunnelManager\SSHTunnelManager.csproj", "{61383C43-B2A4-4523-8AB5-B97423183CE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSHTunnelManagerGUI", "SSHTunnelManagerGUI\SSHTunnelManagerGUI.csproj", "{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Debug|x86.ActiveCfg = Debug|x86
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Debug|x86.Build.0 = Debug|x86
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Release|Any CPU.ActiveCfg = Release|x86
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Release|Mixed Platforms.Build.0 = Release|x86
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Release|x86.ActiveCfg = Release|x86
+		{61383C43-B2A4-4523-8AB5-B97423183CE3}.Release|x86.Build.0 = Release|x86
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Debug|x86.ActiveCfg = Debug|x86
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Debug|x86.Build.0 = Debug|x86
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Release|Any CPU.ActiveCfg = Release|x86
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Release|Mixed Platforms.Build.0 = Release|x86
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Release|x86.ActiveCfg = Release|x86
+		{ECBAB375-F86D-45C3-9532-65D7EC4EDC25}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
