@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PuTTY Manager Logic")]
+[assembly: AssemblyTitle("SSH Tunnel Manager Logic")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PuTTY Tunnel Manager")]
-[assembly: AssemblyCopyright("Copyright © Martouf 2011")]
+[assembly: AssemblyProduct("SSH Tunnel Manager")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,6 +31,7 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+// [assembly: AssemblyVersion("0.9.0.25")]
+[assembly: AssemblyInformationalVersion("0.9.0.25")]
+[assembly: AssemblyVersion("0.9.0.25")]
+[assembly: AssemblyFileVersion("0.9.0.25")]

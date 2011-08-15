@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace PuttyManager.Ext.BLW
+namespace SSHTunnelManager.Ext.BLW
 {
     /// <summary>
     /// Extends <see cref="System.ComponentModel.IEditableObject"/> by providing events to raise during edit state changes.

@@ -1,4 +1,4 @@
-namespace UIToolbox
+namespace SSHTunnelManagerGUI.Ext.CheckGroupBox
 {
 	partial class CheckGroupBox
 	{

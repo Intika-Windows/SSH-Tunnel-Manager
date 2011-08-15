@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace PuttyManager.Ext.BLW
+namespace SSHTunnelManager.Ext.BLW
 {
     /// <summary>
     /// A searchable, sortable, filterable, data bindable view of a list of objects.

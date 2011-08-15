@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using PuttyManagerGui.Validators;
+using SSHTunnelManagerGUI.Validators;
 
-namespace PuttyManagerGui.Forms
+namespace SSHTunnelManagerGUI.Forms
 {
     public partial class ChangePasswordDialog : Form
     {

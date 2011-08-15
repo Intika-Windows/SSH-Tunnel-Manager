@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace PuttyManager.Ext.BLW
+namespace SSHTunnelManager.Ext.BLW
 {
     /// <summary>
     /// Serves a wrapper for items being viewed in a <see cref="BindingListView&lt;T&gt;"/>.

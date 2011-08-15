@@ -6,10 +6,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
-using PuttyManager.Business;
-using PuttyManager.Util;
+using SSHTunnelManager.Business;
+using SSHTunnelManager.Util;
 
-namespace PuttyManager.Domain
+namespace SSHTunnelManager.Domain
 {
     public class PuttyLinkResult
     {

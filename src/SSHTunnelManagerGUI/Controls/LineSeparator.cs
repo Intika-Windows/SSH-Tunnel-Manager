@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace PuttyManagerGui.Controls
+namespace SSHTunnelManagerGUI.Controls
 {
     public partial class LineSeparator : UserControl
     {

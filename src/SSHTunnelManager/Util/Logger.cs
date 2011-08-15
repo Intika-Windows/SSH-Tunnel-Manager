@@ -13,7 +13,7 @@ using log4net.Repository.Hierarchy;
 // App.config log4net section should be in exec file.
 [assembly: log4net.Config.XmlConfigurator]
 
-namespace PuttyManager.Util
+namespace SSHTunnelManager.Util
 {
     public class Logger
     {

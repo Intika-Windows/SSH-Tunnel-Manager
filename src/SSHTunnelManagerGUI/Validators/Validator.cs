@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace PuttyManagerGui.Validators
+namespace SSHTunnelManagerGUI.Validators
 {
     class Validator
     {

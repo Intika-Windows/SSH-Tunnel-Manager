@@ -1,6 +1,6 @@
 using System;
 
-namespace PuttyManager.Ext.BLW
+namespace SSHTunnelManager.Ext.BLW
 {
     [Serializable]
     public class InvalidSourceListException : Exception

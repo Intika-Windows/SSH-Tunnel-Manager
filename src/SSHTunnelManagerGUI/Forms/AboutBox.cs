@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Reflection;
 using System.Windows.Forms;
-using PuttyManagerGui.Properties;
+using SSHTunnelManagerGUI.Properties;
 
-namespace PuttyManagerGui.Forms
+namespace SSHTunnelManagerGUI.Forms
 {
     partial class AboutBox : Form
     {

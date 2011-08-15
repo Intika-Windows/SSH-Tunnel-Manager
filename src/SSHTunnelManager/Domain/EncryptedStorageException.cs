@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace PuttyManager.Domain
+namespace SSHTunnelManager.Domain
 {
     public class EncryptedStorageException : Exception
     {

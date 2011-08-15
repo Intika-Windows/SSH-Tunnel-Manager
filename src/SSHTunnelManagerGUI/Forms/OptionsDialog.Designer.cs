@@ -1,6 +1,7 @@
-﻿using PuttyManagerGui.Controls;
+﻿using SSHTunnelManagerGUI.Controls;
+using SSHTunnelManagerGUI.Ext.CheckGroupBox;
 
-namespace PuttyManagerGui.Forms
+namespace SSHTunnelManagerGUI.Forms
 {
     partial class OptionsDialog
     {
@@ -31,7 +32,7 @@ namespace PuttyManagerGui.Forms
         private void InitializeComponent()
         {
             this.checkBoxTraceDebug = new System.Windows.Forms.CheckBox();
-            this.checkGroupBoxAutoRestart = new UIToolbox.CheckGroupBox();
+            this.checkGroupBoxAutoRestart = new CheckGroupBox();
             this.numericUpDownMaxAttemptsCount = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownRestartDelay = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -179,7 +180,7 @@ namespace PuttyManagerGui.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBoxTraceDebug;
-        private UIToolbox.CheckGroupBox checkGroupBoxAutoRestart;
+        private CheckGroupBox checkGroupBoxAutoRestart;
         private System.Windows.Forms.Button buttonClose;
         private LineSeparator lineSeparator1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;

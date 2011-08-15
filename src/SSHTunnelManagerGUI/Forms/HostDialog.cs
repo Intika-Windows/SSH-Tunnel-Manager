@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using PuttyManager.Business;
-using PuttyManagerGui.Validators;
+using SSHTunnelManager.Business;
+using SSHTunnelManagerGUI.Validators;
 
-namespace PuttyManagerGui.Forms
+namespace SSHTunnelManagerGUI.Forms
 {
     public partial class HostDialog : Form
     {

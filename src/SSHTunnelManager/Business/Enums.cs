@@ -1,5 +1,5 @@
 ﻿
-namespace PuttyManager.Business
+namespace SSHTunnelManager.Business
 {
     public enum TunnelType
     {

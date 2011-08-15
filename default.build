@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://nant.sourceforge.net/nightly/2011-05-08-0.91/nant.xsd"
          name="ssh-tunnel-manager" default="build">
-
+  
   <!-- global framework settings -->
   <property name="target.framework"
             value="${framework::get-target-framework()}" />
@@ -12,14 +12,14 @@
   <!-- directories -->
   <property name="dir.build" value="build" />
   <!-- project settings -->
-  <property name="project.platform" value="Any CPU" overwrite="false" />
-  <property name="project.config" value="release" overwrite="false" /> <!-- debug|release -->
+  <property name="project.platform" value="Any CPU" overwrite="false" /> <!-- 'Any CPU' | 'x86' -->
+  <property name="project.config" value="release" overwrite="false" /> <!-- debug | release -->
   <property name="project.version.major" value="0" overwrite="false" />
   <property name="project.version.minor" value="9" overwrite="false" />
   <property name="project.version.build" value="0" overwrite="false" />
   <property name="project.version.revision" value="0" overwrite="false" />
   <property name="project.version.release_code" value="b" overwrite="false" />
-  <property name="project.version" value="0.0.0.0" overwrite="false" />
+  <property name="project.version" value="0.9.0.0b" overwrite="false" />
 
   <!-- named configurations -->
   <target name="init" description="Initializes building properties">
@@ -37,15 +37,43 @@
 
   <target name="build" depends="init" description="Builds the binaries for the current configuration">
     <echo message="Building version ${project.version}" />
-    <TODO xmlns:TODO="CONTINUE HERE" />
-    <!-- libs -->
-    <nant buildfile="lib/lib.build" target="${project.config} prepare build" />
-    <!-- project modules -->
-    <nant target="${project.config} build">
-      <buildfiles basedir=".">
-        <include name="src/*/*.build" />
-      </buildfiles>
-    </nant>
+    <echo message="Building platform ${project.platform}" />
+    <call target="set-version" />
+    <!-- build -->
+    <msbuild project="src/SSHTunnelManager.sln" target="Build" verbosity="minimal">
+      <property name="Configuration" value="${project.config}" />
+      <property name="Platform" value="${project.platform}" />
+    </msbuild>
+    <!-- detect build output dir -->
+    <property name="project.out" value="bin/${project.platform}/${project.config}" />
+    <if test="${project.platform == 'Any CPU'}">
+      <property name="project.out" value="bin/${project.config}" />
+    </if>
+    <!-- copy build output -->
+    <copy todir="${dir.build}" overwrite="true">
+      <fileset basedir="${path::combine('src/SSHTunnelManager', project.out)}" failonempty="true">
+        <include name="SSHTunnelManager.dll"/>
+        <include name="SSHTunnelManager.pdb"/>
+      </fileset>
+    </copy>
+    <copy todir="${dir.build}" overwrite="true">
+      <fileset basedir="${path::combine('src/SSHTunnelManagerGUI', project.out)}" failonempty="true">
+        <include name="SSHTunnelManagerGUI.exe"/>
+        <include name="SSHTunnelManagerGUI.exe.config"/>
+        <include name="SSHTunnelManagerGUI.pdb"/>
+      </fileset>
+    </copy>
+    <!-- copy libs, exts -->
+    <copy todir="${dir.build}" overwrite="true">
+      <fileset basedir="src/packages/log4net.1.2.10/lib/2.0" failonempty="true">
+        <include name="*"/>
+      </fileset>
+    </copy>
+    <copy todir="${dir.build}" overwrite="true">
+      <fileset basedir="putty" failonempty="true">
+        <include name="*"/>
+      </fileset>
+    </copy>
   </target>
 
   <target name="clean" depends="init" description="Deletes build directory and runs clean for all projects.">
@@ -63,6 +91,20 @@
   <target name="rebuild">
     <call target="clean" />
     <call target="build" />
+  </target>
+
+  <target name="set-version">
+    <update-assembly-info>
+      <fileset>
+        <include name="src/SSHTunnelManager/**/AssemblyInfo.*" />
+        <include name="src/SSHTunnelManagerGUI/**/AssemblyInfo.*" />
+      </fileset>
+      <attributes>
+        <attribute name="AssemblyVersion" value="${project.version}" />
+        <attribute name="AssemblyFileVersion" value="${project.version}" />
+        <attribute name="AssemblyInformationalVersion" value="${project.version}" />
+      </attributes>
+    </update-assembly-info> 
   </target>
 
   <target name="update-version" description="Set version property corresponding svn revision." >

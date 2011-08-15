@@ -1,10 +1,10 @@
 using System;
 using System.Drawing;
-using PuttyManager.Business;
-using PuttyManager.Domain;
-using PuttyManagerGui.Properties;
+using SSHTunnelManager.Business;
+using SSHTunnelManager.Domain;
+using SSHTunnelManagerGUI.Properties;
 
-namespace PuttyManagerGui
+namespace SSHTunnelManagerGUI
 {
     public class HostViewModel : IViewModel<Host>
     {

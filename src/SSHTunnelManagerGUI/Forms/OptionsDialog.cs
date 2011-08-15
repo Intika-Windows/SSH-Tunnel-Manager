@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using PuttyManagerGui.Properties;
+using SSHTunnelManagerGUI.Properties;
 
-namespace PuttyManagerGui.Forms
+namespace SSHTunnelManagerGUI.Forms
 {
     public partial class OptionsDialog : Form
     {

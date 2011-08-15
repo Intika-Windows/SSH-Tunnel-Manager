@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Xml.Serialization;
-using PuttyManager.Domain;
 
-namespace PuttyManager.Business
+namespace SSHTunnelManager.Business
 {
     [Serializable]
     public class HostInfo

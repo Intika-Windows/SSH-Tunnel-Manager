@@ -6,15 +6,14 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using PuttyManager.Business;
-using PuttyManager.Domain;
-using PuttyManager.Ext.BLW;
-using PuttyManager.Util;
-using PuttyManagerGui.Properties;
+using SSHTunnelManager.Business;
+using SSHTunnelManager.Domain;
+using SSHTunnelManager.Ext.BLW;
+using SSHTunnelManager.Util;
+using SSHTunnelManagerGUI.Properties;
 using log4net.Core;
-using Logger = PuttyManager.Util.Logger;
 
-namespace PuttyManagerGui.Forms
+namespace SSHTunnelManagerGUI.Forms
 {
     public partial class MainForm : TrayForm
     {

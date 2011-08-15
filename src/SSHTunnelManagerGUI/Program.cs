@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using PuttyManager.Business;
-using PuttyManager.Domain;
-using PuttyManager.Util;
-using PuttyManager;
-using PuttyManagerGui.Forms;
-using PuttyManagerGui.Properties;
+using SSHTunnelManager.Business;
+using SSHTunnelManager.Domain;
+using SSHTunnelManager.Util;
+using SSHTunnelManagerGUI.Forms;
+using SSHTunnelManagerGUI.Properties;
 using log4net.Core;
 
-namespace PuttyManagerGui
+namespace SSHTunnelManagerGUI
 {
     static class Program
     {

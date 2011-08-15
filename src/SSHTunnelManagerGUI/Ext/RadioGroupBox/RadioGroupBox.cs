@@ -27,8 +27,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-
-namespace UIToolbox
+namespace SSHTunnelManagerGUI.Ext.RadioGroupBox
 {
 	/// <summary>
 	/// RadioGroupBox is a GroupBox with an embeded RadioButton.

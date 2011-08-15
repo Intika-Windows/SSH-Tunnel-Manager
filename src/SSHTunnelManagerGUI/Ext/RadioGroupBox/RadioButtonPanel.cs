@@ -24,8 +24,7 @@
 using System;
 using System.Windows.Forms;
 
-
-namespace UIToolbox
+namespace SSHTunnelManagerGUI.Ext.RadioGroupBox
 {
 	/// <summary>
 	/// This class oversees the checkin/unchecking when mixing RadioButton objects with RadioGroupBox objects within the same container.

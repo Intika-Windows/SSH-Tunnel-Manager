@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace PuttyManager.Ext.BLW
+namespace SSHTunnelManager.Ext.BLW
 {
     public class CompositeItemFilter<T> : IItemFilter<T>
     {

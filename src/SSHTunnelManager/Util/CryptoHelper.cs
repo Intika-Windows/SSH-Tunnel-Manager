@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace PuttyManager.Util
+namespace SSHTunnelManager.Util
 {
     /// <summary>
     /// Helper class for System.Security.Cryptography algorithms. 

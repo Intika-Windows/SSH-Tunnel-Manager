@@ -5,9 +5,9 @@ using System.Management;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
-using PuttyManager.Util;
+using SSHTunnelManager.Util;
 
-namespace PuttyManager.Domain
+namespace SSHTunnelManager.Domain
 {
     [Obsolete("This is a part of early implementation of tunnel manager based on putty.exe. " +
               "Classes are very unstable because of a lot of modification without testing and deprecated to use.")]

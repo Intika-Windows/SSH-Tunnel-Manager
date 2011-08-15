@@ -1,6 +1,6 @@
 using System.Windows.Forms;
 
-namespace PuttyManagerGui.Validators
+namespace SSHTunnelManagerGUI.Validators
 {
     interface IValidatorFunctor
     {

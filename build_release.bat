@@ -1,0 +1,1 @@
+nant -D:"project.platform"="Any CPU" release update-version rebuild

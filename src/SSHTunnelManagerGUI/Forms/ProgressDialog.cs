@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace PuttyManagerGui.Forms
+namespace SSHTunnelManagerGUI.Forms
 {
     public partial class ProgressDialog : Form
     {

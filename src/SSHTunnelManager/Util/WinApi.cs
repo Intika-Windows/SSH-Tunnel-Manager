@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace PuttyManager.Util
+namespace SSHTunnelManager.Util
 {
     public class WinApi
     {

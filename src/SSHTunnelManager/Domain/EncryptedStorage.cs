@@ -7,10 +7,10 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using PuttyManager.Business;
-using PuttyManager.Util;
+using SSHTunnelManager.Business;
+using SSHTunnelManager.Util;
 
-namespace PuttyManager.Domain
+namespace SSHTunnelManager.Domain
 {
     public class EncryptedStorage
     {

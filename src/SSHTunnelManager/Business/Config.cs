@@ -1,6 +1,6 @@
 using System;
 
-namespace PuttyManager.Business
+namespace SSHTunnelManager.Business
 {
     [Serializable]
     public class Config

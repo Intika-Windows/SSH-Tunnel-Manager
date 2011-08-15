@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Diagnostics;
 
-namespace PuttyManager.Ext.BLW
+namespace SSHTunnelManager.Ext.BLW
 {
     public class AggregateBindingListView<T> : Component, IBindingListView, IList, IRaiseItemChangedEvents, ICancelAddNew, ITypedList
     {

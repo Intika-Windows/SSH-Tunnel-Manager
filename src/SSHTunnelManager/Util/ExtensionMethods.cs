@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace PuttyManager.Util
+namespace SSHTunnelManager.Util
 {
     public static class ExtensionMethods
     {

@@ -1,4 +1,4 @@
-﻿namespace PuttyManagerGui.Forms
+﻿namespace SSHTunnelManagerGUI.Forms
 {
     partial class MainForm
     {
@@ -296,7 +296,7 @@
             // 
             // saveToolStripMenuItem
             // 
-            this.saveToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.disk;
+            this.saveToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.disk;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
@@ -310,7 +310,7 @@
             // 
             // changeStorageToolStripMenuItem
             // 
-            this.changeStorageToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.databases__arrow;
+            this.changeStorageToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.databases__arrow;
             this.changeStorageToolStripMenuItem.Name = "changeStorageToolStripMenuItem";
             this.changeStorageToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.changeStorageToolStripMenuItem.Text = "&Change Storage...";
@@ -318,7 +318,7 @@
             // 
             // changePasswordToolStripMenuItem
             // 
-            this.changePasswordToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.key__arrow;
+            this.changePasswordToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.key__arrow;
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
             this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.changePasswordToolStripMenuItem.Text = "C&hange Password...";
@@ -359,7 +359,7 @@
             // 
             // addHostToolStripMenuItem
             // 
-            this.addHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__plus;
+            this.addHostToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__plus;
             this.addHostToolStripMenuItem.Name = "addHostToolStripMenuItem";
             this.addHostToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.addHostToolStripMenuItem.Text = "&Add host...";
@@ -367,7 +367,7 @@
             // 
             // editHostToolStripMenuItem
             // 
-            this.editHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__pencil;
+            this.editHostToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__pencil;
             this.editHostToolStripMenuItem.Name = "editHostToolStripMenuItem";
             this.editHostToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.editHostToolStripMenuItem.Text = "&Edit host...";
@@ -375,7 +375,7 @@
             // 
             // removeHostToolStripMenuItem
             // 
-            this.removeHostToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.server__minus;
+            this.removeHostToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__minus;
             this.removeHostToolStripMenuItem.Name = "removeHostToolStripMenuItem";
             this.removeHostToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.removeHostToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
@@ -389,7 +389,7 @@
             // 
             // startToolStripMenuItem
             // 
-            this.startToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.control;
+            this.startToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.control;
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
             this.startToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.startToolStripMenuItem.Text = "&Start";
@@ -397,7 +397,7 @@
             // 
             // stopToolStripMenuItem
             // 
-            this.stopToolStripMenuItem.Image = global::PuttyManagerGui.Properties.Resources.control_stop_square;
+            this.stopToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.control_stop_square;
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
             this.stopToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.stopToolStripMenuItem.Text = "S&top";
@@ -453,7 +453,7 @@
             // toolStripButtonSave
             // 
             this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSave.Image = global::PuttyManagerGui.Properties.Resources.disk;
+            this.toolStripButtonSave.Image = global::SSHTunnelManagerGUI.Properties.Resources.disk;
             this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSave.Name = "toolStripButtonSave";
             this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
@@ -468,7 +468,7 @@
             // toolStripButtonAddHost
             // 
             this.toolStripButtonAddHost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddHost.Image = global::PuttyManagerGui.Properties.Resources.server__plus;
+            this.toolStripButtonAddHost.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__plus;
             this.toolStripButtonAddHost.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAddHost.Name = "toolStripButtonAddHost";
             this.toolStripButtonAddHost.Size = new System.Drawing.Size(23, 22);
@@ -478,7 +478,7 @@
             // toolStripButtonRemoveHost
             // 
             this.toolStripButtonRemoveHost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonRemoveHost.Image = global::PuttyManagerGui.Properties.Resources.server__minus;
+            this.toolStripButtonRemoveHost.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__minus;
             this.toolStripButtonRemoveHost.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonRemoveHost.Name = "toolStripButtonRemoveHost";
             this.toolStripButtonRemoveHost.Size = new System.Drawing.Size(23, 22);
@@ -488,7 +488,7 @@
             // toolStripButtonEditHost
             // 
             this.toolStripButtonEditHost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonEditHost.Image = global::PuttyManagerGui.Properties.Resources.server__pencil;
+            this.toolStripButtonEditHost.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__pencil;
             this.toolStripButtonEditHost.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditHost.Name = "toolStripButtonEditHost";
             this.toolStripButtonEditHost.Size = new System.Drawing.Size(23, 22);
@@ -503,7 +503,7 @@
             // toolStripButtonStart
             // 
             this.toolStripButtonStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonStart.Image = global::PuttyManagerGui.Properties.Resources.control;
+            this.toolStripButtonStart.Image = global::SSHTunnelManagerGUI.Properties.Resources.control;
             this.toolStripButtonStart.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonStart.Name = "toolStripButtonStart";
             this.toolStripButtonStart.Size = new System.Drawing.Size(23, 22);
@@ -513,7 +513,7 @@
             // toolStripButtonStop
             // 
             this.toolStripButtonStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonStop.Image = global::PuttyManagerGui.Properties.Resources.control_stop_square;
+            this.toolStripButtonStop.Image = global::SSHTunnelManagerGUI.Properties.Resources.control_stop_square;
             this.toolStripButtonStop.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonStop.Name = "toolStripButtonStop";
             this.toolStripButtonStop.Size = new System.Drawing.Size(23, 22);
@@ -837,7 +837,7 @@
             // 
             // toolStripMenuItemEditHost
             // 
-            this.toolStripMenuItemEditHost.Image = global::PuttyManagerGui.Properties.Resources.server__pencil;
+            this.toolStripMenuItemEditHost.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__pencil;
             this.toolStripMenuItemEditHost.Name = "toolStripMenuItemEditHost";
             this.toolStripMenuItemEditHost.Size = new System.Drawing.Size(117, 22);
             this.toolStripMenuItemEditHost.Text = "&Edit...";
@@ -845,7 +845,7 @@
             // 
             // toolStripMenuItemRemoveHost
             // 
-            this.toolStripMenuItemRemoveHost.Image = global::PuttyManagerGui.Properties.Resources.server__minus;
+            this.toolStripMenuItemRemoveHost.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__minus;
             this.toolStripMenuItemRemoveHost.Name = "toolStripMenuItemRemoveHost";
             this.toolStripMenuItemRemoveHost.Size = new System.Drawing.Size(117, 22);
             this.toolStripMenuItemRemoveHost.Text = "&Remove";

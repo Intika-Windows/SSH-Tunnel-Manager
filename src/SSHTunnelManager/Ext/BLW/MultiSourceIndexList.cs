@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 
-namespace PuttyManager.Ext.BLW
+namespace SSHTunnelManager.Ext.BLW
 {
     internal class MultiSourceIndexList<T> : List<KeyValuePair<ListItemPair<T>, int>>
     {

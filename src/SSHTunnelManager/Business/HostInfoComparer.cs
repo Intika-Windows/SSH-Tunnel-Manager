@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PuttyManager.Business
+namespace SSHTunnelManager.Business
 {
     public class HostInfoComparer : IComparer<HostInfo>
     {

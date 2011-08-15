@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using PuttyManager.Domain;
-using PuttyManagerGui.Properties;
-using PuttyManagerGui.Validators;
+using SSHTunnelManager.Domain;
+using SSHTunnelManagerGUI.Properties;
+using SSHTunnelManagerGUI.Validators;
 
-namespace PuttyManagerGui.Forms
+namespace SSHTunnelManagerGUI.Forms
 {
     public partial class StartUpDialog : Form
     {

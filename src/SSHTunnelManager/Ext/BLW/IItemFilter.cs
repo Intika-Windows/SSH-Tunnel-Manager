@@ -1,6 +1,6 @@
 using System;
 
-namespace PuttyManager.Ext.BLW
+namespace SSHTunnelManager.Ext.BLW
 {
     /// <summary>
     /// Defines a general method to test it an item should be included in a <see cref="BindingListView{T}"/>.

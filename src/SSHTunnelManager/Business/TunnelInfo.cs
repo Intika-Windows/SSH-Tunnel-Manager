@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
-namespace PuttyManager.Business
+namespace SSHTunnelManager.Business
 {
     [Serializable]
     public class TunnelInfo

@@ -1,6 +1,6 @@
-﻿using PuttyManagerGui.Controls;
+﻿using SSHTunnelManagerGUI.Controls;
 
-namespace PuttyManagerGui.Forms
+namespace SSHTunnelManagerGUI.Forms
 {
     partial class ChangePasswordDialog
     {

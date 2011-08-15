@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PuttyManager.Business;
-using PuttyManager.Ext.BLW;
+using SSHTunnelManager.Business;
+using SSHTunnelManager.Ext.BLW;
 
-namespace PuttyManager.Domain
+namespace SSHTunnelManager.Domain
 {
     public class HostsManager<THostViewModel> where THostViewModel : IViewModel<Host>, new()
     {

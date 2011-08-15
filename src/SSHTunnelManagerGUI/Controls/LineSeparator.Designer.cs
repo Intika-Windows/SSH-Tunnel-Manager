@@ -1,4 +1,4 @@
-﻿namespace PuttyManagerGui.Controls
+﻿namespace SSHTunnelManagerGUI.Controls
 {
     partial class LineSeparator
     {

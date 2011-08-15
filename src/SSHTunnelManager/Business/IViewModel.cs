@@ -1,4 +1,4 @@
-﻿namespace PuttyManager.Business
+﻿namespace SSHTunnelManager.Business
 {
     public interface IViewModel<TModel> where TModel : class
     {

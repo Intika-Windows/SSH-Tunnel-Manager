@@ -1,4 +1,4 @@
-namespace UIToolbox
+namespace SSHTunnelManagerGUI.Ext.RadioGroupBox
 {
 	partial class RadioGroupBox
 	{

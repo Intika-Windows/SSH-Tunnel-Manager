@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PuttyManager.Domain;
+using SSHTunnelManager.Domain;
 
-namespace PuttyManager.Business
+namespace SSHTunnelManager.Business
 {
     public class Host
     {
