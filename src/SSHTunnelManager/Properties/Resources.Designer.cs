@@ -115,6 +115,32 @@ namespace SSHTunnelManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Windows Registry Editor Version 5.00
+        ///
+        ///[HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\_ptm_preset_]
+        ///&quot;Present&quot;=dword:00000001
+        ///&quot;HostName&quot;=&quot;&quot;
+        ///&quot;LogFileName&quot;=&quot;putty.log&quot;
+        ///&quot;LogType&quot;=dword:00000000
+        ///&quot;LogFileClash&quot;=dword:ffffffff
+        ///&quot;LogFlush&quot;=dword:00000001
+        ///&quot;SSHLogOmitPasswords&quot;=dword:00000001
+        ///&quot;SSHLogOmitData&quot;=dword:00000000
+        ///&quot;Protocol&quot;=&quot;ssh&quot;
+        ///&quot;PortNumber&quot;=dword:00000016
+        ///&quot;CloseOnExit&quot;=dword:00000001
+        ///&quot;WarnOnClose&quot;=dword:00000001
+        ///&quot;PingInterval&quot;=dword:00000000
+        ///&quot;PingIntervalSecs&quot;=dword:00000000
+        ///&quot;TCPNo [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string defaultPuttyProfile {
+            get {
+                return ResourceManager.GetString("defaultPuttyProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to includeDelegate cannot be null..
         /// </summary>
         internal static string IncludeDelegateCannotBeNull {

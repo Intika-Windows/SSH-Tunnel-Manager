@@ -97,6 +97,7 @@
     <Compile Include="Domain\EncryptedStorageException.cs" />
     <Compile Include="Domain\HostsManager.cs" />
     <Compile Include="Domain\PuttyLink.cs" />
+    <Compile Include="Domain\PuttyProfile.cs" />
     <Compile Include="Ext\BLW\AggregateBindingListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -141,6 +142,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\defaultPuttyProfile.reg" />
+    <None Include="Resources\install.reg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

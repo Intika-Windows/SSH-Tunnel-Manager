@@ -21,6 +21,7 @@ namespace SSHTunnelManagerGUI
         [STAThread]
         static void Main()
         {
+            PuttyProfile.ReadProfile("_stm_preset_");
             /*var enc = CryptoHelper.EncryptStringAes("Hello, World!...", "qwerty7");
             var ret = CryptoHelper.DecryptStringAes(enc, "qwerty7");*/
 
