@@ -4,14 +4,20 @@ using System.Linq;
 using System.Text;
 using SSHTunnelManager.Business;
 using SSHTunnelManager.Ext.BLW;
+using SSHTunnelManager.Util;
 
 namespace SSHTunnelManager.Domain
 {
     public class HostsManager<THostViewModel> where THostViewModel : IViewModel<Host>, new()
     {
+        public const string PuttyProfileName = "_stm_preset_";
+
         public string Filename { get; private set; }
         public string Password { get; set; }
         public EncryptedStorage Storage { get; private set; }
+        public Config Config { get; private set; }
+        public BindingListView<THostViewModel> Hosts { get; private set; }
+        public PuttyProfile PuttyProfile { get; private set; }
 
         private THostViewModel _addingNewHost;
 
@@ -24,25 +30,31 @@ namespace SSHTunnelManager.Domain
 
             Filename = filename;
             Password = password;
-
             Config = config;
-
             Storage = storage;
+
+            try
+            {
+                PuttyProfile = PuttyProfile.ReadOrCreate(PuttyProfileName);
+            }
+            catch (SSHTunnelManagerException e)
+            {
+                Logger.Log.Error(Helper.JoinExceptionMessages(e.Message, "Program will be started without PuTTY profile features."));
+            }
+
             var hosts = storage.Data.Hosts.Select(delegate(HostInfo h)
                                                         {
                                                             var viewModel = new THostViewModel();
-                                                            viewModel.Model = new Host(h, Config) { ViewModel = viewModel };
+                                                            viewModel.Model = new Host(h, Config, PuttyProfile) { ViewModel = viewModel };
                                                             return viewModel;
                                                         }).ToList();
             Hosts = new BindingListView<THostViewModel>(hosts);
             Hosts.AddingNew += (o, e) => { e.NewObject = _addingNewHost; };
         }
 
-        public Config Config { get; private set; }
-        public BindingListView<THostViewModel> Hosts { get; private set; }
         public THostViewModel AddHost(HostInfo host)
         {
-            var hvm = new THostViewModel { Model = new Host(host, Config) };
+            var hvm = new THostViewModel { Model = new Host(host, Config, PuttyProfile) };
             _addingNewHost = hvm;
             Hosts.AddNew();
             Hosts.EndNew(Hosts.Count - 1);

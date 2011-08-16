@@ -452,7 +452,7 @@ namespace SSHTunnelManagerGUI.Forms
             var viewmodel = ((ObjectView<HostViewModel>)_bindingSource.Current).Object;
             var host = viewmodel.Model.Info;
 
-            Process.Start(Path.Combine(Application.StartupPath, "putty.exe"), PuttyLink.PuttyArguments(host, true));
+            Process.Start(Path.Combine(Application.StartupPath, "putty.exe"), PuttyLink.PuttyArguments(host, _hostsManager.PuttyProfile, true));
         }
 
         private void exit()

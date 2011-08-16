@@ -11,50 +11,10 @@ using SSHTunnelManager.Util;
 
 namespace SSHTunnelManager.Domain
 {
-    public class PuttyLinkResult
-    {
-        public PuttyLinkResult(bool success, string message = null)
-        {
-            Success = success;
-            Message = message;
-        }
-
-        public bool Success { get; private set; }
-        public string Message { get; private set; }
-    }
-
-    public enum ELinkStatus
-    {
-        Stopped,
-        Starting,
-        StartedWithWarnings,
-        Started,
-        Waiting
-    }
-
-    public interface IPuttyLink
-    {
-        HostInfo Host { get; }
-        string LastStartError { get; }
-        ELinkStatus Status { get; }
-        Dictionary<TunnelInfo, ForwardingResult> ForwardingResults { get; }
-
-        /// <summary>
-        /// В случае, если процесс запущен асинхронно (методом AsyncStart), события будут срабатывать из асинхронного потока.
-        /// Поэтому нужно продумать Threadsafe, для изменения состояния формы лучше использовать Control.BeginInvoke()
-        /// </summary>
-        event EventHandler LinkStatusChanged;
-
-        void AsyncStart();
-        void Start();
-        void Stop();
-        bool WaitForStop(int seconds = 10);
-        bool WaitForStart(int seconds = 20);
-    }
-
     public class PuttyLink : IPuttyLink
     {
         private readonly Config _config;
+        private readonly PuttyProfile _profile;
         private const string PlinkLocation = "plink.exe";
         private const string ShellStartedMessage = "Started a shell/command";
 
@@ -63,12 +23,14 @@ namespace SSHTunnelManager.Domain
         private volatile ELinkStatus _status = ELinkStatus.Stopped;
         private volatile bool _stopRequested;
 
-        public PuttyLink(HostInfo host, Config config)
+        public PuttyLink(HostInfo host, Config config, PuttyProfile profile)
         {
             if (host == null) throw new ArgumentNullException("host");
             if (config == null) throw new ArgumentNullException("config");
+            if (profile == null) throw new ArgumentNullException("profile");
             Host = host;
             _config = config;
+            _profile = profile;
         }
 
         public HostInfo Host { get; private set; }
@@ -241,7 +203,7 @@ namespace SSHTunnelManager.Domain
                                        RedirectStandardError = true,
                                        RedirectStandardOutput = true,
                                        RedirectStandardInput = true,
-                                       Arguments = PuttyArguments(Host, false)
+                                       Arguments = PuttyArguments(Host, _profile, false)
                                    }
                            };
 
@@ -394,13 +356,19 @@ namespace SSHTunnelManager.Domain
             return _eventStarted.Wait(seconds * 1000);
         }
 
-        public static string PuttyArguments(HostInfo host, bool withPassword)
+        public static string PuttyArguments(HostInfo host, PuttyProfile profile, bool withPassword)
         {
-            // example: -ssh username@domainName -P 22 -pw password -D 5000 -L 44333:username.dyndns.org:44333
+            // example: -ssh -load _stm_preset_ username@domainName -P 22 -pw password -D 5000 -L 44333:username.dyndns.org:44333
 
-            var args = withPassword 
-                ? String.Format("-ssh {0}@{1} -P {2} -pw {3} -v", host.Username, host.Hostname, host.Port, host.Password) 
-                : String.Format("-ssh {0}@{1} -P {2} -v", host.Username, host.Hostname, host.Port);
+            string profileArg = "";
+            if (profile != null)
+            {
+                profileArg = " -load " + profile.Name;
+            }
+
+            var args = withPassword
+                ? String.Format("-ssh{0} {1}@{2} -P {3} -pw {4} -v", profileArg, host.Username, host.Hostname, host.Port, host.Password)
+                : String.Format("-ssh{0} {1}@{2} -P {3} -v", profileArg, host.Username, host.Hostname, host.Port);
             var sb = new StringBuilder(args);
             foreach (var tunnelArg in host.Tunnels.Select(tunnelArguments))
             {
@@ -425,26 +393,6 @@ namespace SSHTunnelManager.Domain
                 default:
                     throw new FormatException("Некорректный тип туннеля.");
             }
-        }
-    }
-
-    public class ForwardingResult
-    {
-        private ForwardingResult(bool success, string errorString = null)
-        {
-            Success = success;
-            ErrorString = errorString;
-        }
-
-        public static ForwardingResult CreateSuccess() { return new ForwardingResult(true); }
-        public static ForwardingResult CreateFailed(string errorString) { return new ForwardingResult(false, errorString); }
-
-        public bool Success { get; private set; }
-        public string ErrorString { get; private set; }
-
-        public override string ToString()
-        {
-            return Success ? "Succeed" : ErrorString;
         }
     }
 }

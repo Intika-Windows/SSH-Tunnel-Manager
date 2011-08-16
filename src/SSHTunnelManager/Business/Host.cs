@@ -9,12 +9,14 @@ namespace SSHTunnelManager.Business
     public class Host
     {
         private readonly Config _config;
+        private readonly PuttyProfile _profile;
 
-        public Host(HostInfo info, Config config)
+        public Host(HostInfo info, Config config, PuttyProfile profile)
         {
-            _config = config;
             Info = info;
-            _puttyLink = new PuttyLink(Info, _config);
+            _config = config;
+            _profile = profile;
+            _puttyLink = new PuttyLink(Info, config, profile);
         }
         
         public HostInfo Info { get; private set; }
@@ -26,7 +28,7 @@ namespace SSHTunnelManager.Business
             get { return _viewModel; }
             set
             {
-                if (value == _viewModel)
+                if (ReferenceEquals(value, _viewModel))
                     return;
                 _viewModel = value;
                 _viewModel.Model = this;

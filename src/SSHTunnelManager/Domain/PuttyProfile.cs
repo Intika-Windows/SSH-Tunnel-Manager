@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -13,40 +13,6 @@ using log4net.Util.TypeConverters;
 
 namespace SSHTunnelManager.Domain
 {
-    public enum PropertyType
-    {
-        String,
-        Int32
-    }
-
-    public class PuttyProfileProperty
-    {
-        public PuttyProfileProperty(string name)
-        {
-            if (name == null) throw new ArgumentNullException("name");
-            Name = name;
-        }
-
-        public string Name { get; private set; }
-        public object Value { get; set; }
-        public PropertyType Type { get; set; }
-
-        public override string ToString()
-        {
-            return string.Format("[{0}, {1}]", Name, Value);
-        }
-    }
-
-    [Serializable]
-    public class SSHTunnelManagerException : Exception
-    {
-        public SSHTunnelManagerException() { }
-        public SSHTunnelManagerException(string message) : base(message) { }
-        public SSHTunnelManagerException(string message, Exception innerException) : base(message, innerException) { }
-        protected SSHTunnelManagerException(SerializationInfo info, StreamingContext context)
-            : base(info, context) { }
-    }
-
     public class PuttyProfile
     {
         private static readonly Dictionary<string, PuttyProfileProperty> _defaultProfile;
@@ -98,39 +64,41 @@ namespace SSHTunnelManager.Domain
             if (profileName == null) throw new ArgumentNullException("profileName");
             try
             {
-                RegistryKey profileKey = Registry.CurrentUser.OpenSubKey(@"Software\SimonTatham\PuTTY\Sessions\" + profileName, false);
-                if (profileKey == null)
+                using (RegistryKey profileKey = Registry.CurrentUser.OpenSubKey(@"Software\SimonTatham\PuTTY\Sessions\" + profileName, false))
                 {
-                    Logger.Log.Info("Profile not found.");
-                    return null;
-                }
-
-                if (_defaultProfile.Select(v => v.Key).Except(profileKey.GetValueNames()).Count() > 0)
-                {
-                    Logger.Log.Info("Invalid profile: not all properties set.");
-                    return null;
-                }
-
-                var profile = new PuttyProfile();
-                foreach (var name in profileKey.GetValueNames())
-                {
-                    var value = profileKey.GetValue(name);
-                    var kind = profileKey.GetValueKind(name);
-                    PropertyType type;
-                    switch (kind)
+                    if (profileKey == null)
                     {
-                    case RegistryValueKind.String:
-                        type = PropertyType.String;
-                        break;
-                    case RegistryValueKind.DWord:
-                        type = PropertyType.Int32;
-                        break;
-                    default:
-                        throw new NotSupportedException("Registry value kind is not supported.");
+                        Logger.Log.Info("Profile not found.");
+                        return null;
                     }
-                    profile.Properties[name] = new PuttyProfileProperty(name) { Value = value, Type = type };
+
+                    if (_defaultProfile.Select(v => v.Key).Except(profileKey.GetValueNames()).Count() > 0)
+                    {
+                        Logger.Log.Info("Invalid profile: not all properties set.");
+                        return null;
+                    }
+
+                    var profile = new PuttyProfile {Name = profileName};
+                    foreach (var name in profileKey.GetValueNames())
+                    {
+                        var value = profileKey.GetValue(name);
+                        var kind = profileKey.GetValueKind(name);
+                        PropertyType type;
+                        switch (kind)
+                        {
+                            case RegistryValueKind.String:
+                                type = PropertyType.String;
+                                break;
+                            case RegistryValueKind.DWord:
+                                type = PropertyType.Int32;
+                                break;
+                            default:
+                                throw new NotSupportedException("Registry value kind is not supported.");
+                        }
+                        profile.Properties[name] = new PuttyProfileProperty(name) { Value = value, Type = type };
+                    }
+                    return profile;
                 }
-                return profile;
             }
             catch (SecurityException e)
             {
@@ -139,6 +107,62 @@ namespace SSHTunnelManager.Domain
             }
         }
 
+        public static PuttyProfile CreateProfile(string profileName)
+        {
+            if (profileName == null) throw new ArgumentNullException("profileName");
+            try
+            {
+                using (RegistryKey profileKey = Registry.CurrentUser.
+                       CreateSubKey(@"Software\SimonTatham\PuTTY\Sessions\" + profileName,
+                                    RegistryKeyPermissionCheck.ReadWriteSubTree))
+                {
+                    if (profileKey == null)
+                    {
+                        throw new SSHTunnelManagerException(string.Format("Error while creating TuTTY profile {0}: unknown error.", profileName));
+                    }
+
+                    foreach (var property in _defaultProfile.Values)
+                    {
+                        RegistryValueKind kind;
+                        switch (property.Type)
+                        {
+                        case PropertyType.String:
+                            kind = RegistryValueKind.String;
+                            break;
+                        case PropertyType.Int32:
+                            kind = RegistryValueKind.DWord;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                        }
+                        profileKey.SetValue(property.Name, property.Value, kind);
+                    }
+                }
+                return ReadProfile(profileName);
+            }
+            catch (SecurityException e)
+            {
+                throw new SSHTunnelManagerException(
+                    string.Format("Security error while creating PuTTY profile {0}: {1}", profileName, e.Message), e);
+            }
+            catch(UnauthorizedAccessException e)
+            {
+                throw new SSHTunnelManagerException(
+                    string.Format("UnauthorizedAccess error while creating PuTTY profile {0}: {1}", profileName, e.Message), e);
+            }
+            catch (IOException e)
+            {
+                throw new SSHTunnelManagerException(
+                    string.Format("IO error while creating PuTTY profile {0}: {1}", profileName, e.Message), e);
+            }
+        }
+
+        public static PuttyProfile ReadOrCreate(string profileName)
+        {
+            return ReadProfile(profileName) ?? CreateProfile(profileName);
+        }
+
+        public string Name { get; private set; }
         public Dictionary<string, PuttyProfileProperty> Properties { get; private set; }
     }
 }

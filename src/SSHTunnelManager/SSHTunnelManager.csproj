@@ -91,13 +91,19 @@
     <Compile Include="Business\Config.cs" />
     <Compile Include="Business\Host.cs" />
     <Compile Include="Business\IViewModel.cs" />
+    <Compile Include="Domain\ELinkStatus.cs" />
     <Compile Include="Domain\EncryptedStorage.cs" />
     <Compile Include="Business\Enums.cs" />
     <Compile Include="Domain\EncryptedStorageContent.cs" />
     <Compile Include="Domain\EncryptedStorageException.cs" />
+    <Compile Include="Domain\ForwardingResult.cs" />
     <Compile Include="Domain\HostsManager.cs" />
+    <Compile Include="Domain\IPuttyLink.cs" />
+    <Compile Include="Domain\PropertyType.cs" />
     <Compile Include="Domain\PuttyLink.cs" />
     <Compile Include="Domain\PuttyProfile.cs" />
+    <Compile Include="Domain\PuttyProfileProperty.cs" />
+    <Compile Include="Domain\SSHTunnelManagerException.cs" />
     <Compile Include="Ext\BLW\AggregateBindingListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -121,6 +127,7 @@
     <Compile Include="Util\CryptoHelper.cs" />
     <Compile Include="Util\ExtensionMethods.cs" />
     <Compile Include="Util\Logger.cs" />
+    <Compile Include="Util\Util.cs" />
     <Compile Include="Util\WinApi.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -143,7 +150,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\defaultPuttyProfile.reg" />
-    <None Include="Resources\install.reg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
