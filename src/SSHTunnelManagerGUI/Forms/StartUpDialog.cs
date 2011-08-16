@@ -16,6 +16,8 @@ namespace SSHTunnelManagerGUI.Forms
         {
             InitializeComponent();
 
+            applySource(StorageSource.NewStorage);
+
             _validatorCreate = new Validator(theErrorProvider, theGoodProvider);
             _validatorCreate.AddControl(textBoxNewFile, validateNewFile);
             _validatorCreate.AddControl(textBoxNewPassword, validateNewPassword);
