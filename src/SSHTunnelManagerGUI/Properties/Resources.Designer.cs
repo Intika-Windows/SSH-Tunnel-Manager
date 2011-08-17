@@ -224,6 +224,13 @@ namespace SSHTunnelManagerGUI.Properties {
             }
         }
         
+        internal static System.Drawing.Icon psftp {
+            get {
+                object obj = ResourceManager.GetObject("psftp", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Remote_desktop_connection_icon16 {
             get {
                 object obj = ResourceManager.GetObject("Remote_desktop_connection_icon16", resourceCulture);

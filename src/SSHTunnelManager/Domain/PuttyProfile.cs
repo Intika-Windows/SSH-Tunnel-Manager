@@ -15,11 +15,11 @@ namespace SSHTunnelManager.Domain
 {
     public class PuttyProfile
     {
-        private static readonly Dictionary<string, PuttyProfileProperty> _defaultProfile;
+        private static readonly Dictionary<string, PuttyProfileProperty> _defaultProfileProperties;
 
         static PuttyProfile()
         {
-            _defaultProfile = Resources.defaultPuttyProfile.Split(new[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries).Skip(3).
+            _defaultProfileProperties = Resources.defaultPuttyProfile.Split(new[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries).Skip(3).
                 Select(parseLine).Except(new PuttyProfileProperty[] { null }).ToDictionary(p => p.Name);
         }
 
@@ -59,6 +59,8 @@ namespace SSHTunnelManager.Domain
             Properties = new Dictionary<string, PuttyProfileProperty>();
         }
 
+        #region Constructors
+
         public static PuttyProfile ReadProfile(string profileName)
         {
             if (profileName == null) throw new ArgumentNullException("profileName");
@@ -72,7 +74,7 @@ namespace SSHTunnelManager.Domain
                         return null;
                     }
 
-                    if (_defaultProfile.Select(v => v.Key).Except(profileKey.GetValueNames()).Count() > 0)
+                    if (_defaultProfileProperties.Select(v => v.Key).Except(profileKey.GetValueNames()).Count() > 0)
                     {
                         Logger.Log.Info("Invalid profile: not all properties set.");
                         return null;
@@ -110,6 +112,12 @@ namespace SSHTunnelManager.Domain
         public static PuttyProfile CreateProfile(string profileName)
         {
             if (profileName == null) throw new ArgumentNullException("profileName");
+            saveProperties(profileName, _defaultProfileProperties);
+            return ReadProfile(profileName);
+        }
+
+        private static void saveProperties(string profileName, Dictionary<string, PuttyProfileProperty> profileProperties)
+        {
             try
             {
                 using (RegistryKey profileKey = Registry.CurrentUser.
@@ -118,10 +126,11 @@ namespace SSHTunnelManager.Domain
                 {
                     if (profileKey == null)
                     {
-                        throw new SSHTunnelManagerException(string.Format("Error while creating TuTTY profile {0}: unknown error.", profileName));
+                        throw new SSHTunnelManagerException(
+                            string.Format("Error while creating TuTTY profile {0}: unknown error.", profileName));
                     }
 
-                    foreach (var property in _defaultProfile.Values)
+                    foreach (var property in profileProperties.Values)
                     {
                         RegistryValueKind kind;
                         switch (property.Type)
@@ -138,22 +147,21 @@ namespace SSHTunnelManager.Domain
                         profileKey.SetValue(property.Name, property.Value, kind);
                     }
                 }
-                return ReadProfile(profileName);
             }
             catch (SecurityException e)
             {
                 throw new SSHTunnelManagerException(
-                    string.Format("Security error while creating PuTTY profile {0}: {1}", profileName, e.Message), e);
+                    string.Format("Security error while updating PuTTY profile {0}: {1}", profileName, e.Message), e);
             }
-            catch(UnauthorizedAccessException e)
+            catch (UnauthorizedAccessException e)
             {
                 throw new SSHTunnelManagerException(
-                    string.Format("UnauthorizedAccess error while creating PuTTY profile {0}: {1}", profileName, e.Message), e);
+                    string.Format("UnauthorizedAccess error while updating PuTTY profile {0}: {1}", profileName, e.Message), e);
             }
             catch (IOException e)
             {
                 throw new SSHTunnelManagerException(
-                    string.Format("IO error while creating PuTTY profile {0}: {1}", profileName, e.Message), e);
+                    string.Format("IO error while updating PuTTY profile {0}: {1}", profileName, e.Message), e);
             }
         }
 
@@ -162,7 +170,52 @@ namespace SSHTunnelManager.Domain
             return ReadProfile(profileName) ?? CreateProfile(profileName);
         }
 
+        #endregion
+
+        #region Properties
+
         public string Name { get; private set; }
         public Dictionary<string, PuttyProfileProperty> Properties { get; private set; }
+
+        public bool LocalPortAcceptAll
+        {
+            get { return (int) getOrCreate("LocalPortAcceptAll").Value != 0; }
+            set
+            {
+                if (value == LocalPortAcceptAll)
+                    return;
+
+                getOrCreate("LocalPortAcceptAll").Value = Convert.ToInt32(value);
+            }
+        }
+
+        public bool RemotePortAcceptAll
+        {
+            get { return (int)getOrCreate("RemotePortAcceptAll").Value != 0; }
+            set
+            {
+                if (value == RemotePortAcceptAll)
+                    return;
+
+                getOrCreate("RemotePortAcceptAll").Value = Convert.ToInt32(value);
+            }
+        }
+
+        #endregion
+
+        public void Save()
+        {
+            saveProperties(Name, Properties);
+        }
+
+        private PuttyProfileProperty getOrCreate(string name)
+        {
+            PuttyProfileProperty property;
+            if (!Properties.TryGetValue(name, out property))
+            {
+                return Properties["LocalPortAcceptAll"] = new PuttyProfileProperty(name);
+            }
+            return property;
+        }
     }
 }

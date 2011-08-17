@@ -70,7 +70,7 @@ namespace SSHTunnelManagerGUI
                     {
                         break;
                     }
-                };
+                }
             }
             else
             {

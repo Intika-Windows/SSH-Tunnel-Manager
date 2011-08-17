@@ -32,24 +32,28 @@ namespace SSHTunnelManagerGUI.Forms
         private void InitializeComponent()
         {
             this.checkBoxTraceDebug = new System.Windows.Forms.CheckBox();
-            this.checkGroupBoxAutoRestart = new CheckGroupBox();
+            this.checkGroupBoxAutoRestart = new SSHTunnelManagerGUI.Ext.CheckGroupBox.CheckGroupBox();
             this.numericUpDownMaxAttemptsCount = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownRestartDelay = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.lineSeparator1 = new LineSeparator();
+            this.lineSeparator1 = new SSHTunnelManagerGUI.Controls.LineSeparator();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBoxPF = new System.Windows.Forms.GroupBox();
+            this.checkBoxLocalPortAcceptAll = new System.Windows.Forms.CheckBox();
+            this.checkBoxRemotePortAcceptAll = new System.Windows.Forms.CheckBox();
             this.checkGroupBoxAutoRestart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxAttemptsCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRestartDelay)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            this.groupBoxPF.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkBoxTraceDebug
             // 
             this.checkBoxTraceDebug.AutoSize = true;
-            this.checkBoxTraceDebug.Location = new System.Drawing.Point(3, 88);
+            this.checkBoxTraceDebug.Location = new System.Drawing.Point(3, 163);
             this.checkBoxTraceDebug.Name = "checkBoxTraceDebug";
             this.checkBoxTraceDebug.Size = new System.Drawing.Size(193, 17);
             this.checkBoxTraceDebug.TabIndex = 0;
@@ -62,9 +66,9 @@ namespace SSHTunnelManagerGUI.Forms
             this.checkGroupBoxAutoRestart.Controls.Add(this.numericUpDownRestartDelay);
             this.checkGroupBoxAutoRestart.Controls.Add(this.label1);
             this.checkGroupBoxAutoRestart.Controls.Add(this.label2);
-            this.checkGroupBoxAutoRestart.Location = new System.Drawing.Point(3, 3);
+            this.checkGroupBoxAutoRestart.Location = new System.Drawing.Point(3, 78);
             this.checkGroupBoxAutoRestart.Name = "checkGroupBoxAutoRestart";
-            this.checkGroupBoxAutoRestart.Size = new System.Drawing.Size(226, 79);
+            this.checkGroupBoxAutoRestart.Size = new System.Drawing.Size(264, 79);
             this.checkGroupBoxAutoRestart.TabIndex = 1;
             this.checkGroupBoxAutoRestart.TabStop = false;
             this.checkGroupBoxAutoRestart.Text = "Restart link on fail";
@@ -114,7 +118,7 @@ namespace SSHTunnelManagerGUI.Forms
             // buttonClose
             // 
             this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClose.Location = new System.Drawing.Point(154, 119);
+            this.buttonClose.Location = new System.Drawing.Point(192, 194);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.TabIndex = 2;
@@ -125,17 +129,18 @@ namespace SSHTunnelManagerGUI.Forms
             // lineSeparator1
             // 
             this.lineSeparator1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lineSeparator1.Location = new System.Drawing.Point(3, 111);
+            this.lineSeparator1.Location = new System.Drawing.Point(3, 186);
             this.lineSeparator1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.lineSeparator1.MinimumSize = new System.Drawing.Size(0, 2);
             this.lineSeparator1.Name = "lineSeparator1";
-            this.lineSeparator1.Size = new System.Drawing.Size(226, 2);
+            this.lineSeparator1.Size = new System.Drawing.Size(264, 2);
             this.lineSeparator1.TabIndex = 3;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.Controls.Add(this.groupBoxPF);
             this.flowLayoutPanel1.Controls.Add(this.checkGroupBoxAutoRestart);
             this.flowLayoutPanel1.Controls.Add(this.checkBoxTraceDebug);
             this.flowLayoutPanel1.Controls.Add(this.lineSeparator1);
@@ -143,8 +148,41 @@ namespace SSHTunnelManagerGUI.Forms
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(232, 145);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(270, 220);
             this.flowLayoutPanel1.TabIndex = 4;
+            // 
+            // groupBoxPF
+            // 
+            this.groupBoxPF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxPF.Controls.Add(this.checkBoxRemotePortAcceptAll);
+            this.groupBoxPF.Controls.Add(this.checkBoxLocalPortAcceptAll);
+            this.groupBoxPF.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxPF.Name = "groupBoxPF";
+            this.groupBoxPF.Size = new System.Drawing.Size(264, 69);
+            this.groupBoxPF.TabIndex = 4;
+            this.groupBoxPF.TabStop = false;
+            this.groupBoxPF.Text = "Port forwarding";
+            // 
+            // checkBoxLocalPortAcceptAll
+            // 
+            this.checkBoxLocalPortAcceptAll.AutoSize = true;
+            this.checkBoxLocalPortAcceptAll.Location = new System.Drawing.Point(9, 20);
+            this.checkBoxLocalPortAcceptAll.Name = "checkBoxLocalPortAcceptAll";
+            this.checkBoxLocalPortAcceptAll.Size = new System.Drawing.Size(253, 17);
+            this.checkBoxLocalPortAcceptAll.TabIndex = 0;
+            this.checkBoxLocalPortAcceptAll.Text = "Local ports accept connections from other hosts";
+            this.checkBoxLocalPortAcceptAll.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxRemotePortAcceptAll
+            // 
+            this.checkBoxRemotePortAcceptAll.AutoSize = true;
+            this.checkBoxRemotePortAcceptAll.Location = new System.Drawing.Point(9, 43);
+            this.checkBoxRemotePortAcceptAll.Name = "checkBoxRemotePortAcceptAll";
+            this.checkBoxRemotePortAcceptAll.Size = new System.Drawing.Size(212, 17);
+            this.checkBoxRemotePortAcceptAll.TabIndex = 0;
+            this.checkBoxRemotePortAcceptAll.Text = "Remote ports do the same (SSH-2 only)";
+            this.checkBoxRemotePortAcceptAll.UseVisualStyleBackColor = true;
             // 
             // OptionsDialog
             // 
@@ -168,6 +206,8 @@ namespace SSHTunnelManagerGUI.Forms
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRestartDelay)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.groupBoxPF.ResumeLayout(false);
+            this.groupBoxPF.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,5 +224,8 @@ namespace SSHTunnelManagerGUI.Forms
         private System.Windows.Forms.Button buttonClose;
         private LineSeparator lineSeparator1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.GroupBox groupBoxPF;
+        private System.Windows.Forms.CheckBox checkBoxRemotePortAcceptAll;
+        private System.Windows.Forms.CheckBox checkBoxLocalPortAcceptAll;
     }
 }

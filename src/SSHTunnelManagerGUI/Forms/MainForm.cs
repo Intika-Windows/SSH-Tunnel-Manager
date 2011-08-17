@@ -452,7 +452,15 @@ namespace SSHTunnelManagerGUI.Forms
             var viewmodel = ((ObjectView<HostViewModel>)_bindingSource.Current).Object;
             var host = viewmodel.Model.Info;
 
-            Process.Start(Path.Combine(Application.StartupPath, "putty.exe"), PuttyLink.PuttyArguments(host, _hostsManager.PuttyProfile, true));
+            Process.Start(Path.Combine(Application.StartupPath, "putty.exe"), ConsoleTools.PuttyArguments(host, _hostsManager.PuttyProfile, true));
+        }
+
+        private void startPsftp()
+        {
+            var viewmodel = ((ObjectView<HostViewModel>)_bindingSource.Current).Object;
+            var host = viewmodel.Model.Info;
+
+            Process.Start(Path.Combine(Application.StartupPath, "psftp.exe"), ConsoleTools.PsftpArguments(host));
         }
 
         private void exit()
@@ -659,7 +667,7 @@ namespace SSHTunnelManagerGUI.Forms
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new OptionsDialog().ShowDialog(this);
+            new OptionsDialog(_hostsManager.PuttyProfile).ShowDialog(this);
             // update config
             _hostsManager.Config.RestartEnabled = Settings.Default.Config_RestartEnabled;
             _hostsManager.Config.RestartDelay = Settings.Default.Config_RestartDelay;
@@ -724,8 +732,8 @@ namespace SSHTunnelManagerGUI.Forms
             else
                 strip.Items.Add("Stop", Resources.control_stop_square, delegate { stopHost(); });
             strip.Items.Add("-");
-            strip.Items.Add("Start PuTTY...", Resources.icon_16x16_putty, delegate { startPutty(); });
-            //strip.Items.Add("Start Windows RDP (mstsc)...", Resources.Remote_desktop_connection_icon16, delegate { startMstsc(); });
+            strip.Items.Add("Start PuTTY", Resources.icon_16x16_putty, delegate { startPutty(); });
+            strip.Items.Add("Start psftp", new Icon(Resources.psftp, 16, 16).ToBitmap(), delegate { startPsftp(); });
             strip.Items.Add("-");
             strip.Items.Add("&Edit...", Resources.server__pencil, toolStripMenuItemEditHost_Click);
             strip.Items.Add("&Remove", Resources.server__minus, toolStripMenuItemRemoveHost_Click);

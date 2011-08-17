@@ -91,6 +91,7 @@
     <Compile Include="Business\Config.cs" />
     <Compile Include="Business\Host.cs" />
     <Compile Include="Business\IViewModel.cs" />
+    <Compile Include="Domain\ConsoleTools.cs" />
     <Compile Include="Domain\ELinkStatus.cs" />
     <Compile Include="Domain\EncryptedStorage.cs" />
     <Compile Include="Business\Enums.cs" />

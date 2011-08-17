@@ -15,7 +15,6 @@ namespace SSHTunnelManager.Domain
     {
         private readonly Config _config;
         private readonly PuttyProfile _profile;
-        private const string PlinkLocation = "plink.exe";
         private const string ShellStartedMessage = "Started a shell/command";
 
         private volatile Process _process;
@@ -197,13 +196,13 @@ namespace SSHTunnelManager.Domain
                            {
                                StartInfo =
                                    {
-                                       FileName = PlinkLocation,
+                                       FileName = ConsoleTools.PLinkLocation,
                                        CreateNoWindow = true,
                                        UseShellExecute = false,
                                        RedirectStandardError = true,
                                        RedirectStandardOutput = true,
                                        RedirectStandardInput = true,
-                                       Arguments = PuttyArguments(Host, _profile, false)
+                                       Arguments = ConsoleTools.PuttyArguments(Host, _profile, false)
                                    }
                            };
 
@@ -354,45 +353,6 @@ namespace SSHTunnelManager.Domain
         public bool WaitForStart(int seconds = 20)
         {
             return _eventStarted.Wait(seconds * 1000);
-        }
-
-        public static string PuttyArguments(HostInfo host, PuttyProfile profile, bool withPassword)
-        {
-            // example: -ssh -load _stm_preset_ username@domainName -P 22 -pw password -D 5000 -L 44333:username.dyndns.org:44333
-
-            string profileArg = "";
-            if (profile != null)
-            {
-                profileArg = " -load " + profile.Name;
-            }
-
-            var args = withPassword
-                ? String.Format("-ssh{0} {1}@{2} -P {3} -pw {4} -v", profileArg, host.Username, host.Hostname, host.Port, host.Password)
-                : String.Format("-ssh{0} {1}@{2} -P {3} -v", profileArg, host.Username, host.Hostname, host.Port);
-            var sb = new StringBuilder(args);
-            foreach (var tunnelArg in host.Tunnels.Select(tunnelArguments))
-            {
-                sb.Append(tunnelArg);
-            }
-
-            args = sb.ToString();
-            return args;
-        }
-
-        private static string tunnelArguments(TunnelInfo tunnel)
-        {
-            if (tunnel == null) throw new ArgumentNullException("tunnel");
-            switch (tunnel.Type)
-            {
-                case TunnelType.Local:
-                    return String.Format(@" -L {0}:{1}:{2}", tunnel.LocalPort, tunnel.RemoteHostname, tunnel.RemotePort);
-                case TunnelType.Remote:
-                    return String.Format(@" -R {0}:{1}:{2}", tunnel.LocalPort, tunnel.RemoteHostname, tunnel.RemotePort);
-                case TunnelType.Dynamic:
-                    return String.Format(@" -D {0}", tunnel.LocalPort);
-                default:
-                    throw new FormatException("Некорректный тип туннеля.");
-            }
         }
     }
 }
