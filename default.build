@@ -147,7 +147,7 @@
     <delete file="_revision.xml" />
     <echo message="Using Subversion revision number: ${svn.revision}" />
     <exec program="svn.exe"
-          commandline="log --limit 25 --trust-server-cert --non-interactive"
+          commandline="log https://ssh-tunnel-manager.googlecode.com/svn --limit 250 --trust-server-cert --non-interactive"
           output="history.txt" />
     <property name="project.version.revision" value="${svn.revision}" />
     <property name="project.version"

@@ -1,4 +1,128 @@
 ------------------------------------------------------------------------
+r32 | skara06@gmail.com | 2011-08-19 01:01:19 +0400 (╧Є, 19 рту 2011) | 1 line
+
+FileZilla support added, nant fixed, installing via zip package. FIRST ALPHA. TODO: add wix installer with ngen optimization, add better exception handling.
+------------------------------------------------------------------------
+r31 | skara06@gmail.com | 2011-08-18 00:45:01 +0400 (╫Є, 18 рту 2011) | 1 line
+
+profile support added, psftp support added. TODO: Add filezilla support, fix nant, create installers.
+------------------------------------------------------------------------
+r30 | skara06@gmail.com | 2011-08-18 00:44:42 +0400 (╫Є, 18 рту 2011) | 1 line
+
+
+------------------------------------------------------------------------
+r29 | skara06@gmail.com | 2011-08-17 01:40:24 +0400 (╤Ё, 17 рту 2011) | 1 line
+
+Nighty fix
+------------------------------------------------------------------------
+r28 | skara06@gmail.com | 2011-08-16 23:26:23 +0400 (┬Є, 16 рту 2011) | 1 line
+
+putty profile support added. Bug on file open dialog!!!
+------------------------------------------------------------------------
+r27 | skara06@gmail.com | 2011-08-16 01:45:49 +0400 (┬Є, 16 рту 2011) | 1 line
+
+some nighty work: added putty profile support (begining).
+------------------------------------------------------------------------
+r26 | skara06@gmail.com | 2011-08-15 23:40:31 +0400 (╧э, 15 рту 2011) | 1 line
+
+nant added. TODO: add psftp support, profiles, installed (wix + fix nant).
+------------------------------------------------------------------------
+r25 | skara06@gmail.com | 2011-08-14 00:00:13 +0400 (┬ё, 14 рту 2011) | 1 line
+
+some big changes in project structure made, nant added. TODO: add update asm-info and build tasks, add installer, add putty profiles, wix installer.
+------------------------------------------------------------------------
+r24 | skara06@gmail.com | 2011-08-13 19:59:16 +0400 (╤с, 13 рту 2011) | 1 line
+
+major structure changes
+------------------------------------------------------------------------
+r23 | skara06@gmail.com | 2011-08-13 19:55:31 +0400 (╤с, 13 рту 2011) | 1 line
+
+major structure changes
+------------------------------------------------------------------------
+r22 | skara06@gmail.com | 2011-08-13 19:16:57 +0400 (╤с, 13 рту 2011) | 1 line
+
+major structure changes
+------------------------------------------------------------------------
+r21 | skara06@gmail.com | 2011-08-13 18:48:13 +0400 (╤с, 13 рту 2011) | 1 line
+
+log fixed, putty support added, mstsc was rejected. TODO: fix project structure, add putty profiles support, add nant build, add wix installer.
+------------------------------------------------------------------------
+r20 | skara06@gmail.com | 2011-08-13 14:05:11 +0400 (╤с, 13 рту 2011) | 1 line
+
+options added, autorestart added. TODO: fix log, add putty support, mstsc support.
+------------------------------------------------------------------------
+r19 | skara06@gmail.com | 2011-08-12 23:53:23 +0400 (╧Є, 12 рту 2011) | 1 line
+
+Menu resorted, about dialog added. TODO: fix statuses, test autorestart, move restart config to 'manager' class.
+------------------------------------------------------------------------
+r18 | skara06@gmail.com | 2011-08-11 02:06:21 +0400 (╫Є, 11 рту 2011) | 1 line
+
+[nighty fix] saving, change pass added. TODO: about window, resort main menu, auto restart links.
+------------------------------------------------------------------------
+r17 | skara06@gmail.com | 2011-08-11 00:03:14 +0400 (╫Є, 11 рту 2011) | 1 line
+
+saving, change pass added. TODO: about window, resort main menu, auto restart links.
+------------------------------------------------------------------------
+r16 | skara06@gmail.com | 2011-08-10 00:23:20 +0400 (╤Ё, 10 рту 2011) | 1 line
+
+Source select and Change source added. TODO: Save changes (control modification?), Change password dialog.
+------------------------------------------------------------------------
+r15 | skara06@gmail.com | 2011-08-08 23:43:32 +0400 (╧э, 08 рту 2011) | 1 line
+
+Common logic & validation to source select dialog added. TODO: encrypted storage file creating (all after-click actions).
+------------------------------------------------------------------------
+r14 | skara06@gmail.com | 2011-08-08 01:01:04 +0400 (╧э, 08 рту 2011) | 1 line
+
+DONE: menu actions, encrypted source. TODO: complete select-storage dialog and fix hostManager for new storage-source.
+------------------------------------------------------------------------
+r13 | skara06@gmail.com | 2011-08-07 01:07:49 +0400 (┬ё, 07 рту 2011) | 1 line
+
+TODO: add context menu and other actions for existing functional, sequential start all parent hosts (with suggestion box).
+------------------------------------------------------------------------
+r12 | skara06@gmail.com | 2011-08-06 18:58:52 +0400 (╤с, 06 рту 2011) | 1 line
+
+log4net integration (begining)
+------------------------------------------------------------------------
+r11 | skara06@gmail.com | 2011-08-01 01:47:36 +0400 (╧э, 01 рту 2011) | 1 line
+
+
+------------------------------------------------------------------------
+r10 | skara06@gmail.com | 2011-07-31 19:24:33 +0400 (┬ё, 31 ш■ы 2011) | 1 line
+
+It works! But very buggy.
+------------------------------------------------------------------------
+r9 | skara06@gmail.com | 2011-07-31 01:07:10 +0400 (┬ё, 31 ш■ы 2011) | 1 line
+
+Hosts add/edit/remove. TODO: Add detailed hosts info.
+------------------------------------------------------------------------
+r8 | skara06@gmail.com | 2011-07-31 00:19:37 +0400 (┬ё, 31 ш■ы 2011) | 1 line
+
+
+------------------------------------------------------------------------
+r7 | skara06@gmail.com | 2011-07-29 23:58:45 +0400 (╧Є, 29 ш■ы 2011) | 1 line
+
+
+------------------------------------------------------------------------
+r6 | skara06@gmail.com | 2011-07-25 01:47:07 +0400 (╧э, 25 ш■ы 2011) | 1 line
+
+
+------------------------------------------------------------------------
+r5 | skara06@gmail.com | 2011-07-24 19:25:38 +0400 (┬ё, 24 ш■ы 2011) | 1 line
+
+
+------------------------------------------------------------------------
+r4 | skara06@gmail.com | 2011-07-24 12:42:56 +0400 (┬ё, 24 ш■ы 2011) | 1 line
+
+
+------------------------------------------------------------------------
+r3 | skara06@gmail.com | 2011-07-24 02:10:01 +0400 (┬ё, 24 ш■ы 2011) | 1 line
+
+
+------------------------------------------------------------------------
+r2 | skara06@gmail.com | 2011-07-24 02:09:49 +0400 (┬ё, 24 ш■ы 2011) | 1 line
+
+
+------------------------------------------------------------------------
 r1 | skara06@gmail.com | 2011-07-24 02:09:35 +0400 (┬ё, 24 ш■ы 2011) | 1 line
 
 
