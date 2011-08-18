@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using SSHTunnelManager.Domain;
 using log4net;
+using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
 
@@ -26,17 +28,24 @@ namespace SSHTunnelManager.Util
 
         public static void SetThresholdForAppender(string appenderName, Level threshold)
         {
-            Hierarchy hier = LogManager.GetRepository() as Hierarchy;
-            if (hier == null)
-                return;
-
-            var appender = (DelegateAppender) hier.GetAppenders().SingleOrDefault(a => a.Name == appenderName);
-            if (appender == null)
-                return;
+            var appender = (AppenderSkeleton) GetAppender(appenderName);
 
             appender.Threshold = threshold;
             appender.ActivateOptions();
             return;
+        }
+
+        public static IAppender GetAppender(string appenderName)
+        {
+            Hierarchy hier = LogManager.GetRepository() as Hierarchy;
+            if (hier == null)
+                throw new SSHTunnelManagerException(@"Error while retrieving log4net hierarchy.");
+
+            var appender = (DelegateAppender)hier.GetAppenders().SingleOrDefault(a => a.Name == appenderName);
+            if (appender == null)
+                throw new SSHTunnelManagerException(string.Format("Error while retrieving log4net appender {0}. Appender not found.", appenderName));
+
+            return appender;
         }
     }
 
@@ -54,26 +63,32 @@ namespace SSHTunnelManager.Util
         public Level Level { get; private set; }
     }
 
-    public class DelegateAppender : log4net.Appender.AppenderSkeleton
+    public class DelegateAppender : AppenderSkeleton
     {
-        public static event EventHandler<LogAppendedEventArgs> OnAppend;
-        public static ISynchronizeInvoke SyncObject { get; set; }
+        public event EventHandler<LogAppendedEventArgs> OnAppend;
+        public ISynchronizeInvoke SyncObject { get; set; }
 
         protected override void Append(LoggingEvent loggingEvent)
         {
-            var renderedMessage = RenderLoggingEvent(loggingEvent);
-            var properties = loggingEvent.GetProperties().Cast<DictionaryEntry>().ToDictionary(e => e.Key.ToString(), e => e.Value);
-            if (OnAppend != null)
+            try
             {
-                var ea = new LogAppendedEventArgs(renderedMessage, properties, loggingEvent.Level);
-                if (SyncObject == null || !SyncObject.InvokeRequired)
+                var renderedMessage = RenderLoggingEvent(loggingEvent);
+                var properties = loggingEvent.GetProperties().Cast<DictionaryEntry>().ToDictionary(e => e.Key.ToString(), e => e.Value);
+                if (OnAppend != null)
                 {
-                    OnAppend(this, ea);
+                    var ea = new LogAppendedEventArgs(renderedMessage, properties, loggingEvent.Level);
+                    if (SyncObject == null || !SyncObject.InvokeRequired)
+                    {
+                        OnAppend(this, ea);
+                    }
+                    else
+                    {
+                        SyncObject.Invoke(OnAppend, new object[] { this, ea });
+                    }
                 }
-                else
-                {
-                    SyncObject.Invoke(OnAppend, new object[] { this, ea });
-                }
+            }
+            catch (Exception)
+            {
             }
         }
     }

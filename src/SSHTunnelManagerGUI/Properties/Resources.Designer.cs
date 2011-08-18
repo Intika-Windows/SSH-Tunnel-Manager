@@ -167,6 +167,13 @@ namespace SSHTunnelManagerGUI.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap filezilla {
+            get {
+                object obj = ResourceManager.GetObject("filezilla", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to http://p.yusukekamiyamane.com/.
         /// </summary>

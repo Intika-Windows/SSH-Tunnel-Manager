@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using SSHTunnelManager.Business;
@@ -8,7 +10,31 @@ namespace SSHTunnelManager.Domain
 {
     public class ConsoleTools
     {
-        public const string PLinkLocation = "plink.exe";
+        public const string PLinkLocation = "Tools\\plink.exe";
+        public const string PuttyLocation = "Tools\\putty.exe";
+        public const string PsftpLocation = "Tools\\psftp.exe";
+        public const string FileZillaLocation = "Tools\\FileZilla\\filezilla.exe";
+
+        public static void StartPutty(HostInfo host, PuttyProfile profile)
+        {
+            var fileName = Path.Combine(Util.Helper.StartupPath, PuttyLocation);
+            var args = PuttyArguments(host, profile, true);
+            Process.Start(fileName, args);
+        }
+
+        public static void StartPsftp(HostInfo host)
+        {
+            var fileName = Path.Combine(Util.Helper.StartupPath, PsftpLocation);
+            var args = psftpArguments(host);
+            Process.Start(fileName, args);
+        }
+
+        public static void StartFileZilla(HostInfo host)
+        {
+            var fileName = Path.Combine(Util.Helper.StartupPath, FileZillaLocation);
+            var args = string.Format(@"sftp://{0}:{1}@{2}:{3}", host.Username, host.Password, host.Hostname, host.Port);
+            Process.Start(fileName, args);
+        }
 
         public static string PuttyArguments(HostInfo host, PuttyProfile profile, bool withPassword)
         {
@@ -26,14 +52,14 @@ namespace SSHTunnelManager.Domain
             var sb = new StringBuilder(args);
             foreach (var tunnelArg in host.Tunnels.Select(tunnelArguments))
             {
-                sb.Append((string) tunnelArg);
+                sb.Append(tunnelArg);
             }
 
             args = sb.ToString();
             return args;
         }
 
-        public static string PsftpArguments(HostInfo host)
+        private static string psftpArguments(HostInfo host)
         {
             var args = String.Format("{0}@{1} -P {2} -pw {3} -batch", host.Username, host.Hostname, host.Port, host.Password);
             return args;

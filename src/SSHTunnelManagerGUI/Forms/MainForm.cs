@@ -30,6 +30,7 @@ namespace SSHTunnelManagerGUI.Forms
         {
             if (manager == null) throw new ArgumentNullException("manager");
             InitializeComponent();
+            startPsftpToolStripMenuItem.Image = new Icon(Resources.psftp, 16, 16).ToBitmap();
             centerMe();
 
             _titleFilename = Path.GetFileName(manager.Filename);
@@ -57,8 +58,13 @@ namespace SSHTunnelManagerGUI.Forms
             treeViewFilter.SelectedNode = treeViewFilter.Nodes[0];
             ActiveControl = hostsGridView;
 
-            DelegateAppender.SyncObject = this;
-            DelegateAppender.OnAppend += onLogAppended;
+            var hostAppender = (DelegateAppender) Logger.GetAppender(Program.HostLogDelegateAppender);
+            hostAppender.SyncObject = this;
+            hostAppender.OnAppend += onHostLogAppended;
+
+            var commonAppender = (DelegateAppender)Logger.GetAppender(Program.CommonErrorsDelegateAppender);
+            commonAppender.SyncObject = this;
+            commonAppender.OnAppend += onCommonErrorAppended;
         }
 
         public bool ChangeSourceRequested { get; private set; }
@@ -101,6 +107,9 @@ namespace SSHTunnelManagerGUI.Forms
                 editHostToolStripMenuItem.Enabled = false;
                 toolStripButtonRemoveHost.Enabled = false;
                 removeHostToolStripMenuItem.Enabled = false;
+                startPuTTYToolStripMenuItem.Enabled = false;
+                startPsftpToolStripMenuItem.Enabled = false;
+                startFileZillaSFTPToolStripMenuItem.Enabled = false;
                 return;
             }
 
@@ -146,6 +155,10 @@ namespace SSHTunnelManagerGUI.Forms
             // remove buttons
             toolStripButtonRemoveHost.Enabled = true;
             removeHostToolStripMenuItem.Enabled = true;
+            // external tools
+            startPuTTYToolStripMenuItem.Enabled = true;
+            startPsftpToolStripMenuItem.Enabled = true;
+            startFileZillaSFTPToolStripMenuItem.Enabled = true;
         }
 
         /*private void fillHostsTable()
@@ -449,18 +462,47 @@ namespace SSHTunnelManagerGUI.Forms
 
         private void startPutty()
         {
-            var viewmodel = ((ObjectView<HostViewModel>)_bindingSource.Current).Object;
-            var host = viewmodel.Model.Info;
-
-            Process.Start(Path.Combine(Application.StartupPath, "putty.exe"), ConsoleTools.PuttyArguments(host, _hostsManager.PuttyProfile, true));
+            try
+            {
+                var viewmodel = ((ObjectView<HostViewModel>)_bindingSource.Current).Object;
+                var host = viewmodel.Model.Info;
+            
+                ConsoleTools.StartPutty(host, _hostsManager.PuttyProfile);
+            }
+            catch (Exception e)
+            {
+                Logger.Log.Error(e.Message, e);
+            }
         }
 
         private void startPsftp()
         {
-            var viewmodel = ((ObjectView<HostViewModel>)_bindingSource.Current).Object;
-            var host = viewmodel.Model.Info;
+            try
+            {
+                var viewmodel = ((ObjectView<HostViewModel>)_bindingSource.Current).Object;
+                var host = viewmodel.Model.Info;
 
-            Process.Start(Path.Combine(Application.StartupPath, "psftp.exe"), ConsoleTools.PsftpArguments(host));
+                ConsoleTools.StartPsftp(host);
+            }
+            catch (Exception e)
+            {
+                Logger.Log.Error(e.Message, e);
+            }
+        }
+
+        private void startFileZilla()
+        {
+            try
+            {
+                var viewmodel = ((ObjectView<HostViewModel>)_bindingSource.Current).Object;
+                var host = viewmodel.Model.Info;
+
+                ConsoleTools.StartFileZilla(host);
+            }
+            catch (Exception e)
+            {
+                Logger.Log.Error(e.Message, e);
+            }
         }
 
         private void exit()
@@ -503,7 +545,7 @@ namespace SSHTunnelManagerGUI.Forms
 
         #region My Events
 
-        private void onLogAppended(object sender, LogAppendedEventArgs e)
+        private void onHostLogAppended(object sender, LogAppendedEventArgs e)
         {
             object o;
             if (!e.Properties.TryGetValue("Host", out o))
@@ -511,6 +553,7 @@ namespace SSHTunnelManagerGUI.Forms
                 return;
             }
 
+            // This log message relates to Host
             var h = (HostInfo) o;
             h.AddEventToLog(e.AppendedData);
             if (_bindingSource.Current != null && 
@@ -525,6 +568,17 @@ namespace SSHTunnelManagerGUI.Forms
                 listViewLog.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
                 listViewLog.TopItem = listViewLog.Items[listViewLog.Items.Count - 1];
             }
+        }
+
+        private void onCommonErrorAppended(object sender, LogAppendedEventArgs e)
+        {
+            if (e.Properties.ContainsKey("Host"))
+            {
+                return;
+            }
+
+            // This is a common message
+            MessageBox.Show(this, e.AppendedData, Util.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void onHostStatusChanged(object sender, EventArgs e)
@@ -624,6 +678,21 @@ namespace SSHTunnelManagerGUI.Forms
             stopHost();
         }
 
+        private void startPuTTYToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            startPutty();
+        }
+
+        private void startPsftpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            startPsftp();
+        }
+
+        private void startFileZillaSFTPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            startFileZilla();
+        }
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             exit();
@@ -672,7 +741,7 @@ namespace SSHTunnelManagerGUI.Forms
             _hostsManager.Config.RestartEnabled = Settings.Default.Config_RestartEnabled;
             _hostsManager.Config.RestartDelay = Settings.Default.Config_RestartDelay;
             _hostsManager.Config.MaxAttemptsCount = Settings.Default.Config_MaxAttemptsCount;
-            Logger.SetThresholdForAppender("DelegateAppender", Settings.Default.Config_TraceDebug ? Level.Debug : Level.Info);
+            Logger.SetThresholdForAppender(Program.HostLogDelegateAppender, Settings.Default.Config_TraceDebug ? Level.Debug : Level.Info);
         }
 
         #endregion
@@ -685,7 +754,9 @@ namespace SSHTunnelManagerGUI.Forms
             // First option selected, but careful with racing problem.
             // In both events racing problem solving via handling pending events in DoEvents().
             // It processing already running methods (which was started before this code) before start disposing.
-            DelegateAppender.OnAppend -= onLogAppended;
+            
+            ((DelegateAppender)Logger.GetAppender(Program.HostLogDelegateAppender)).OnAppend -= onHostLogAppended;
+            ((DelegateAppender)Logger.GetAppender(Program.CommonErrorsDelegateAppender)).OnAppend -= onCommonErrorAppended;
             foreach (var host in _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(o => o.Object))
             {
                 host.StatusChanged -= onHostStatusChanged;
@@ -734,6 +805,7 @@ namespace SSHTunnelManagerGUI.Forms
             strip.Items.Add("-");
             strip.Items.Add("Start PuTTY", Resources.icon_16x16_putty, delegate { startPutty(); });
             strip.Items.Add("Start psftp", new Icon(Resources.psftp, 16, 16).ToBitmap(), delegate { startPsftp(); });
+            strip.Items.Add("Start FileZilla SFTP", Resources.filezilla, delegate { startFileZilla(); });
             strip.Items.Add("-");
             strip.Items.Add("&Edit...", Resources.server__pencil, toolStripMenuItemEditHost_Click);
             strip.Items.Add("&Remove", Resources.server__minus, toolStripMenuItemRemoveHost_Click);

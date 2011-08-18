@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
                                "This is an open source project hosted on Google Code. Any contributions are welcome.\r\n\r\n" +
                                "This project is licensed under a GNU GPL v3 license.\r\n\r\n" +
                                "The PuTTY project is licensed under the MIT license.\r\n\r\n" +
+                               "The FileZilla project is licensed under a GNU GPL license.\r\n\r\n" +
                                "Some Icons are Copyright © Yusuke Kamiyamane. All rights reserved. Licensed under a Creative Commons Attribution 3.0 license.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
@@ -35,6 +36,6 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("0.9.0.25")]
-[assembly: AssemblyVersion("0.9.0.25")]
-[assembly: AssemblyFileVersion("0.9.0.25")]
+// [assembly: AssemblyVersion("0.9.0.31")]
+[assembly: AssemblyVersion("0.9.0.31")]
+[assembly: AssemblyFileVersion("0.9.0.31")]

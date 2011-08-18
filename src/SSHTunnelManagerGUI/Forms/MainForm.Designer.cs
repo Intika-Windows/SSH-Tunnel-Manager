@@ -54,7 +54,6 @@
             this.hgwDependsOnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.changeStorageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,6 +68,10 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.startPuTTYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startPsftpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startFileZillaSFTPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -277,7 +280,6 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator6,
             this.saveToolStripMenuItem,
             this.toolStripSeparator1,
             this.changeStorageToolStripMenuItem,
@@ -288,11 +290,6 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(206, 6);
             // 
             // saveToolStripMenuItem
             // 
@@ -352,7 +349,11 @@
             this.removeHostToolStripMenuItem,
             this.toolStripSeparator2,
             this.startToolStripMenuItem,
-            this.stopToolStripMenuItem});
+            this.stopToolStripMenuItem,
+            this.toolStripSeparator7,
+            this.startPuTTYToolStripMenuItem,
+            this.startPsftpToolStripMenuItem,
+            this.startFileZillaSFTPToolStripMenuItem});
             this.hostToolStripMenuItem.Name = "hostToolStripMenuItem";
             this.hostToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.hostToolStripMenuItem.Text = "&Host";
@@ -361,7 +362,7 @@
             // 
             this.addHostToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__plus;
             this.addHostToolStripMenuItem.Name = "addHostToolStripMenuItem";
-            this.addHostToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.addHostToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.addHostToolStripMenuItem.Text = "&Add host...";
             this.addHostToolStripMenuItem.Click += new System.EventHandler(this.addHostToolStripMenuItem_Click);
             // 
@@ -369,7 +370,7 @@
             // 
             this.editHostToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__pencil;
             this.editHostToolStripMenuItem.Name = "editHostToolStripMenuItem";
-            this.editHostToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.editHostToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.editHostToolStripMenuItem.Text = "&Edit host...";
             this.editHostToolStripMenuItem.Click += new System.EventHandler(this.editHostToolStripMenuItem_Click);
             // 
@@ -378,20 +379,20 @@
             this.removeHostToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__minus;
             this.removeHostToolStripMenuItem.Name = "removeHostToolStripMenuItem";
             this.removeHostToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.removeHostToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.removeHostToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.removeHostToolStripMenuItem.Text = "&Remove host";
             this.removeHostToolStripMenuItem.Click += new System.EventHandler(this.removeHostToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(167, 6);
             // 
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.control;
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.startToolStripMenuItem.Text = "&Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
@@ -399,9 +400,37 @@
             // 
             this.stopToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.control_stop_square;
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.stopToolStripMenuItem.Text = "S&top";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(167, 6);
+            // 
+            // startPuTTYToolStripMenuItem
+            // 
+            this.startPuTTYToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.icon_16x16_putty;
+            this.startPuTTYToolStripMenuItem.Name = "startPuTTYToolStripMenuItem";
+            this.startPuTTYToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.startPuTTYToolStripMenuItem.Text = "Start &PuTTY";
+            this.startPuTTYToolStripMenuItem.Click += new System.EventHandler(this.startPuTTYToolStripMenuItem_Click);
+            // 
+            // startPsftpToolStripMenuItem
+            // 
+            this.startPsftpToolStripMenuItem.Name = "startPsftpToolStripMenuItem";
+            this.startPsftpToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.startPsftpToolStripMenuItem.Text = "Start ps&ftp";
+            this.startPsftpToolStripMenuItem.Click += new System.EventHandler(this.startPsftpToolStripMenuItem_Click);
+            // 
+            // startFileZillaSFTPToolStripMenuItem
+            // 
+            this.startFileZillaSFTPToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.filezilla;
+            this.startFileZillaSFTPToolStripMenuItem.Name = "startFileZillaSFTPToolStripMenuItem";
+            this.startFileZillaSFTPToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.startFileZillaSFTPToolStripMenuItem.Text = "Start F&ileZilla SFTP";
+            this.startFileZillaSFTPToolStripMenuItem.Click += new System.EventHandler(this.startFileZillaSFTPToolStripMenuItem_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -409,13 +438,13 @@
             this.optionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.toolsToolStripMenuItem.Text = "Tools";
+            this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.optionsToolStripMenuItem.Text = "Options...";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.optionsToolStripMenuItem.Text = "&Options...";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
@@ -947,7 +976,6 @@
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonSave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
@@ -956,5 +984,9 @@
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ListView listViewLog;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem startPuTTYToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startPsftpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startFileZillaSFTPToolStripMenuItem;
     }
 }

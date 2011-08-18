@@ -50,7 +50,7 @@ namespace SSHTunnelManagerGUI
                                   MaxAttemptsCount = Settings.Default.Config_MaxAttemptsCount,
                                   RestartDelay = Settings.Default.Config_RestartDelay
                               };
-                Logger.SetThresholdForAppender("DelegateAppender", Settings.Default.Config_TraceDebug ? Level.Debug : Level.Info);
+                Logger.SetThresholdForAppender(HostLogDelegateAppender, Settings.Default.Config_TraceDebug ? Level.Debug : Level.Info);
 
                 var hm = new HostsManager<HostViewModel>(cfg, startUpDlg.Storage, startUpDlg.Filename, startUpDlg.Password);
 
@@ -106,5 +106,7 @@ namespace SSHTunnelManagerGUI
         private static extern bool SetForegroundWindow(IntPtr hWnd);
 
         private const int WS_SHOWNORMAL = 1;
+        public const string HostLogDelegateAppender = "HostLogDelegateAppender";
+        public const string CommonErrorsDelegateAppender = "CommonErrorsDelegateAppender";
     }
 }

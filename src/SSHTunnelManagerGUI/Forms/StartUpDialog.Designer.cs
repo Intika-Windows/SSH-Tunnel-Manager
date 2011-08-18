@@ -52,6 +52,7 @@ namespace SSHTunnelManagerGUI.Forms
             this.textBoxOpenPassword = new System.Windows.Forms.TextBox();
             this.textBoxExistingFile = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.theLineSeparator = new SSHTunnelManagerGUI.Controls.LineSeparator();
             this.labelError = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonExit = new System.Windows.Forms.Button();
@@ -61,7 +62,6 @@ namespace SSHTunnelManagerGUI.Forms
             this.theSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.theGoodProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.theErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.theLineSeparator = new SSHTunnelManagerGUI.Controls.LineSeparator();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
@@ -156,8 +156,8 @@ namespace SSHTunnelManagerGUI.Forms
             // textBoxNewFile
             // 
             this.textBoxNewFile.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.theGoodProvider.SetIconPadding(this.textBoxNewFile, 34);
             this.theErrorProvider.SetIconPadding(this.textBoxNewFile, 34);
+            this.theGoodProvider.SetIconPadding(this.textBoxNewFile, 34);
             this.textBoxNewFile.Location = new System.Drawing.Point(126, 3);
             this.textBoxNewFile.Name = "textBoxNewFile";
             this.textBoxNewFile.Size = new System.Drawing.Size(169, 20);
@@ -309,8 +309,8 @@ namespace SSHTunnelManagerGUI.Forms
             // textBoxExistingFile
             // 
             this.textBoxExistingFile.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.theGoodProvider.SetIconPadding(this.textBoxExistingFile, 34);
             this.theErrorProvider.SetIconPadding(this.textBoxExistingFile, 34);
+            this.theGoodProvider.SetIconPadding(this.textBoxExistingFile, 34);
             this.textBoxExistingFile.Location = new System.Drawing.Point(126, 3);
             this.textBoxExistingFile.Name = "textBoxExistingFile";
             this.textBoxExistingFile.Size = new System.Drawing.Size(169, 20);
@@ -331,6 +331,17 @@ namespace SSHTunnelManagerGUI.Forms
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(350, 321);
             this.flowLayoutPanel1.TabIndex = 9;
+            // 
+            // theLineSeparator
+            // 
+            this.theLineSeparator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.theLineSeparator.Location = new System.Drawing.Point(3, 268);
+            this.theLineSeparator.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.theLineSeparator.MinimumSize = new System.Drawing.Size(0, 2);
+            this.theLineSeparator.Name = "theLineSeparator";
+            this.theLineSeparator.Size = new System.Drawing.Size(344, 2);
+            this.theLineSeparator.TabIndex = 3;
             // 
             // labelError
             // 
@@ -393,13 +404,13 @@ namespace SSHTunnelManagerGUI.Forms
             // 
             // theOpenFileDialog
             // 
-            this.theOpenFileDialog.DefaultExt = "*.est";
-            this.theOpenFileDialog.Filter = "Storage files|*.est|All files|*.*";
+            this.theOpenFileDialog.DefaultExt = "*.xstg";
+            this.theOpenFileDialog.Filter = "Storage files|*.xstg|All files|*.*";
             // 
             // theSaveFileDialog
             // 
-            this.theSaveFileDialog.DefaultExt = "*.est";
-            this.theSaveFileDialog.Filter = "Storage files|*.est|All files|*.*";
+            this.theSaveFileDialog.DefaultExt = "*.xstg";
+            this.theSaveFileDialog.Filter = "Storage files|*.xstg|All files|*.*";
             // 
             // theGoodProvider
             // 
@@ -412,17 +423,6 @@ namespace SSHTunnelManagerGUI.Forms
             this.theErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.theErrorProvider.ContainerControl = this;
             this.theErrorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("theErrorProvider.Icon")));
-            // 
-            // theLineSeparator
-            // 
-            this.theLineSeparator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.theLineSeparator.Location = new System.Drawing.Point(3, 268);
-            this.theLineSeparator.MaximumSize = new System.Drawing.Size(2000, 2);
-            this.theLineSeparator.MinimumSize = new System.Drawing.Size(0, 2);
-            this.theLineSeparator.Name = "theLineSeparator";
-            this.theLineSeparator.Size = new System.Drawing.Size(344, 2);
-            this.theLineSeparator.TabIndex = 3;
             // 
             // StartUpDialog
             // 

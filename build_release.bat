@@ -1,1 +1,2 @@
-nant -D:"project.platform"="Any CPU" release update-version rebuild
+"%~dp0nant\bin\NAnt.exe" -D:"project.platform"="Any CPU" release update-version rebuild zip-package
+pause

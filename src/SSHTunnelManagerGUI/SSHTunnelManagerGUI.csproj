@@ -301,6 +301,7 @@
     <None Include="Resources\Remote_desktop_connection_icon16.png" />
     <None Include="Resources\psftp.ico" />
     <None Include="Resources\psftp16.ico" />
+    <None Include="Resources\filezilla.png" />
     <Content Include="terminal.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -327,8 +328,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(SolutionDir)..\ext\putty\*" "$(TargetDir)Tools\PuTTY"
-copy /Y "$(SolutionDir)..\ext\FileZilla-3.5.0" "$(TargetDir)Tools\FileZilla"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(SolutionDir)..\ext\putty\*" "$(TargetDir)Tools"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
