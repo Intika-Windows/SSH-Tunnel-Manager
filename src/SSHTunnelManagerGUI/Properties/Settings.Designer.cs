@@ -82,7 +82,7 @@ namespace SSHTunnelManagerGUI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
         public int Config_RestartDelay {
             get {
                 return ((int)(this["Config_RestartDelay"]));
@@ -101,6 +101,18 @@ namespace SSHTunnelManagerGUI.Properties {
             }
             set {
                 this["Config_TraceDebug"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Config_AfterMaxAttemptsMakeDelay {
+            get {
+                return ((bool)(this["Config_AfterMaxAttemptsMakeDelay"]));
+            }
+            set {
+                this["Config_AfterMaxAttemptsMakeDelay"] = value;
             }
         }
     }

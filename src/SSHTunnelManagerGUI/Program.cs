@@ -48,7 +48,8 @@ namespace SSHTunnelManagerGUI
                               {
                                   RestartEnabled = Settings.Default.Config_RestartEnabled,
                                   MaxAttemptsCount = Settings.Default.Config_MaxAttemptsCount,
-                                  RestartDelay = Settings.Default.Config_RestartDelay
+                                  RestartDelay = Settings.Default.Config_RestartDelay,
+                                  DelayInsteadStop = Settings.Default.Config_AfterMaxAttemptsMakeDelay
                               };
                 Logger.SetThresholdForAppender(HostLogDelegateAppender, Settings.Default.Config_TraceDebug ? Level.Debug : Level.Info);
 

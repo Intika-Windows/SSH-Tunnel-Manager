@@ -95,6 +95,16 @@ namespace SSHTunnelManagerGUI.Validators
             return ValidateNotNullOrWhitespaces(control, text) && ValidateOnlyOneWord(control, text);
         }
 
+        public bool ValidatePassword(Control control, string text)
+        {
+            if (!ValidateNotNullOrWhitespaces(control, text))
+                return false;
+            if (!ValidateOnlyOneWord(control, text))
+                return false;
+            SetGood(control);
+            return true;
+        }
+
         public bool ValidateNotNullOrWhitespaces(Control control, string text)
         {
             if (control == null) throw new ArgumentNullException("control");

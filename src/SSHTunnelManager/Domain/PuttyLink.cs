@@ -63,22 +63,22 @@ namespace SSHTunnelManager.Domain
                 switch (value)
                 {
                 case ELinkStatus.Starting:
-                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Starting...");
+                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, @"Starting...");
                     break;
                 case ELinkStatus.Started:
-                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Started");
+                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, @"Started");
                     break;
                 case ELinkStatus.StartedWithWarnings:
-                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Started with warnings");
+                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, @"Started with warnings");
                     break;
                 case ELinkStatus.Stopped:
-                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Stopped");
+                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, @"Stopped");
                     break;
                 case ELinkStatus.Waiting:
                     if (_config.RestartDelay > 0)
-                        Logger.Log.InfoFormat("[{0}] {1}", Host.Name, string.Format("Waiting {0} seconds before restart...", _config.RestartDelay));
+                        Logger.Log.InfoFormat("[{0}] {1}", Host.Name, string.Format(@"Waiting {0} seconds before restart...", _config.RestartDelay));
                     else
-                        Logger.Log.InfoFormat("[{0}] {1}", Host.Name, "Restarting after crash...");
+                        Logger.Log.InfoFormat("[{0}] {1}", Host.Name, @"Restarting after connection loss...");
                     break;
                 }
                 
@@ -132,7 +132,7 @@ namespace SSHTunnelManager.Domain
         {
             if (Status != ELinkStatus.Stopped)
             {
-                throw new InvalidOperationException("Link already started.");
+                throw new InvalidOperationException(@"Link already started.");
             }
             Thread thread = new Thread(Start) {IsBackground = true};
             thread.Start();
@@ -142,7 +142,7 @@ namespace SSHTunnelManager.Domain
         {
             if (Status != ELinkStatus.Stopped)
             {
-                throw new InvalidOperationException("Link already started.");
+                throw new InvalidOperationException(@"Link already started.");
             }
             try
             {
@@ -151,7 +151,7 @@ namespace SSHTunnelManager.Domain
                 LastStartError = "";
 
                 bool atleastOneSuccess = false;
-                for (int i = 0; i < _config.MaxAttemptsCount; ++i)
+                for (int i = 0; i < _config.MaxAttemptsCount || _config.DelayInsteadStop; ++i)
                 {
                     // At least one success for AutoRestart enabling.
                     // Do not restart if process stopped by Stop() method.
@@ -163,8 +163,14 @@ namespace SSHTunnelManager.Domain
                         break;
                     if (success)
                         i = 0;
-                    Status = ELinkStatus.Waiting;
-                    Thread.Sleep(_config.RestartDelay * 1000);
+                    if (i >= _config.MaxAttemptsCount && _config.RestartDelay > 0)
+                    {
+                        Status = ELinkStatus.Waiting;
+                        Thread.Sleep(_config.RestartDelay * 1000);
+                    } else
+                    {
+                        Logger.Log.InfoFormat("[{0}] {1}", Host.Name, @"Restarting after connection loss...");
+                    }
                 }
             }
             catch (Exception e)

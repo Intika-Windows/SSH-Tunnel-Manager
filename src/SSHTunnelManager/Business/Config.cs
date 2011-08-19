@@ -8,13 +8,15 @@ namespace SSHTunnelManager.Business
         public Config()
         {
             RestartEnabled = true;
-            RestartDelay = 0;
+            RestartDelay = 30;
             MaxAttemptsCount = 3;
+            DelayInsteadStop = true;
         }
 
         private volatile bool _restartEnabled;
         private volatile int _restartDelay;
         private volatile int _maxAttemptsCount;
+        private volatile bool _delayInsteadStop;
 
         /// <summary>
         /// AutoRestart successfully started connections if they have ended unexpectedly.
@@ -26,7 +28,7 @@ namespace SSHTunnelManager.Business
         }
 
         /// <summary>
-        /// Delay before autoRestart (in seconds).
+        /// Delay before autoRestart (in seconds) after MaxAttemptsCount fails.
         /// </summary>
         public int RestartDelay
         {
@@ -41,6 +43,15 @@ namespace SSHTunnelManager.Business
         {
             get { return _maxAttemptsCount; }
             set { _maxAttemptsCount = value; }
+        }
+
+        /// <summary>
+        /// Do not stop after MaxAttemptsCount, just make delay.
+        /// </summary>
+        public bool DelayInsteadStop
+        {
+            get { return _delayInsteadStop; }
+            set { _delayInsteadStop = value; }
         }
     }
 }

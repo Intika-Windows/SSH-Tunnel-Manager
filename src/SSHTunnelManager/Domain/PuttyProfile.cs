@@ -59,6 +59,14 @@ namespace SSHTunnelManager.Domain
             Properties = new Dictionary<string, PuttyProfileProperty>();
         }
 
+        public enum ProxyType
+        {
+            None = 0,
+            Socks4 = 1,
+            Socks5 = 2,
+            Http = 3
+        }
+
         #region Constructors
 
         public static PuttyProfile ReadProfile(string profileName)
@@ -179,26 +187,65 @@ namespace SSHTunnelManager.Domain
 
         public bool LocalPortAcceptAll
         {
-            get { return (int) getOrCreate("LocalPortAcceptAll").Value != 0; }
-            set
-            {
-                if (value == LocalPortAcceptAll)
-                    return;
-
-                getOrCreate("LocalPortAcceptAll").Value = Convert.ToInt32(value);
-            }
+            get { return getBool("LocalPortAcceptAll"); }
+            set { setBool("LocalPortAcceptAll", value); }
         }
 
         public bool RemotePortAcceptAll
         {
-            get { return (int)getOrCreate("RemotePortAcceptAll").Value != 0; }
+            get { return getBool("RemotePortAcceptAll"); }
+            set { setBool("RemotePortAcceptAll", value); }
+        }
+
+        public ProxyType ProxyMethod
+        {
+            get { return (ProxyType)(int)getOrCreate("ProxyMethod").Value; }
             set
             {
-                if (value == RemotePortAcceptAll)
+                if (value == ProxyMethod)
                     return;
 
-                getOrCreate("RemotePortAcceptAll").Value = Convert.ToInt32(value);
+                getOrCreate("ProxyMethod").Value = (int)value;
             }
+        }
+
+        public string ProxyHost
+        {
+            get { return getString("ProxyHost"); }
+            set { setString("ProxyHost", value); }
+        }
+
+        public int ProxyPort
+        {
+            get { return getInt("ProxyPort"); }
+            set { setInt("ProxyPort", value); }
+        }
+
+        public string ProxyUsername
+        {
+            get { return getString("ProxyUsername"); }
+            set { setString("ProxyUsername", value); }
+        }
+
+        public string ProxyPassword
+        {
+            get { return getString("ProxyPassword"); }
+            set { setString("ProxyPassword", value); }
+        }
+
+        /// <summary>
+        /// Consider proxying local host connections
+        /// </summary>
+        public bool ProxyLocalhost
+        {
+            get { return getBool("ProxyLocalhost"); }
+            set { setBool("ProxyLocalhost", value); }
+        }
+
+        public string ProxyExcludeList
+        {
+            get { return getString("ProxyExcludeList"); }
+            set { setString("ProxyExcludeList", value); }
         }
 
         #endregion
@@ -216,6 +263,45 @@ namespace SSHTunnelManager.Domain
                 return Properties["LocalPortAcceptAll"] = new PuttyProfileProperty(name);
             }
             return property;
+        }
+
+        private void setString(string name, string value)
+        {
+            if (getString(name) == value)
+                return;
+
+            getOrCreate(name).Value = value;
+        }
+
+        private string getString(string name)
+        {
+            return (string) getOrCreate(name).Value;
+        }
+
+        private void setInt(string name, int value)
+        {
+            if (getInt(name) == value)
+                return;
+
+            getOrCreate(name).Value = value;
+        }
+
+        private int getInt(string name)
+        {
+            return (int) getOrCreate(name).Value;
+        }
+
+        private void setBool(string name, bool value)
+        {
+            if (getBool(name) == value)
+                return;
+
+            getOrCreate(name).Value = Convert.ToInt32(value);
+        }
+
+        private bool getBool(string name)
+        {
+            return ((int)getOrCreate(name).Value) != 0;
         }
     }
 }

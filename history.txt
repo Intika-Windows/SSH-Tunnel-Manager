@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r34 | skara06@gmail.com | 2011-08-19 01:27:28 +0400 (╧Є, 19 рту 2011) | 1 line
+
+tag creating
+------------------------------------------------------------------------
+r33 | skara06@gmail.com | 2011-08-19 01:26:38 +0400 (╧Є, 19 рту 2011) | 1 line
+
+build release
+------------------------------------------------------------------------
 r32 | skara06@gmail.com | 2011-08-19 01:01:19 +0400 (╧Є, 19 рту 2011) | 1 line
 
 FileZilla support added, nant fixed, installing via zip package. FIRST ALPHA. TODO: add wix installer with ngen optimization, add better exception handling.

@@ -741,6 +741,7 @@ namespace SSHTunnelManagerGUI.Forms
             _hostsManager.Config.RestartEnabled = Settings.Default.Config_RestartEnabled;
             _hostsManager.Config.RestartDelay = Settings.Default.Config_RestartDelay;
             _hostsManager.Config.MaxAttemptsCount = Settings.Default.Config_MaxAttemptsCount;
+            _hostsManager.Config.DelayInsteadStop = Settings.Default.Config_AfterMaxAttemptsMakeDelay;
             Logger.SetThresholdForAppender(Program.HostLogDelegateAppender, Settings.Default.Config_TraceDebug ? Level.Debug : Level.Info);
         }
 
