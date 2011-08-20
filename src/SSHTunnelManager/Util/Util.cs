@@ -16,23 +16,6 @@ namespace SSHTunnelManager.Util
             return ret;
         }
 
-        static public string AssemblyDirectory
-        {
-            get
-            {
-                string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-                /*new UriBuilder()
-                UriBuilder uri = new UriBuilder(codeBase);
-                string path = Uri.UnescapeDataString(Path.GetDirectoryName(codeBase));*/
-
-                var d = Path.GetDirectoryName(codeBase);
-                var u1 = new Uri(d);
-                var u = new UriBuilder(d);
-                var p = Uri.UnescapeDataString(u.Path);
-                return d;
-            }
-        }
-
         [System.Runtime.InteropServices.DllImport("kernel32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
         private static extern int GetModuleFileName(IntPtr hModule, StringBuilder buffer, int length);
 

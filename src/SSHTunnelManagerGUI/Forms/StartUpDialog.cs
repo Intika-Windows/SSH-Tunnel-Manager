@@ -68,7 +68,7 @@ namespace SSHTunnelManagerGUI.Forms
                 return false;
             if (!File.Exists(text))
             {
-                _validatorOpen.SetError(control, @"File does not exist.");
+                _validatorOpen.SetError(control, Resources.ValidatorError_FileDoesNotExist);
                 return false;
             }
             try
@@ -112,8 +112,8 @@ namespace SSHTunnelManagerGUI.Forms
                 return false;
             if (textBoxNewPassword.Text != textBoxNewPasswordConfirm.Text)
             {
-                _validatorCreate.SetError(textBoxNewPassword, @"Password and confirmation does not match.");
-                _validatorCreate.SetError(textBoxNewPasswordConfirm, @"Password and confirmation does not match.");
+                _validatorCreate.SetError(textBoxNewPassword, Resources.ValidatorError_NewPassword);
+                _validatorCreate.SetError(textBoxNewPasswordConfirm, Resources.ValidatorError_NewPassword);
                 return false;
             }
             _validatorCreate.SetGood(textBoxNewPassword);

@@ -49,7 +49,9 @@ namespace SSHTunnelManagerGUI
                                   RestartEnabled = Settings.Default.Config_RestartEnabled,
                                   MaxAttemptsCount = Settings.Default.Config_MaxAttemptsCount,
                                   RestartDelay = Settings.Default.Config_RestartDelay,
-                                  DelayInsteadStop = Settings.Default.Config_AfterMaxAttemptsMakeDelay
+                                  DelayInsteadStop = Settings.Default.Config_AfterMaxAttemptsMakeDelay,
+                                  RestartHostsWithWarnings = Settings.Default.Config_RestartHostsWithWarnings,
+                                  RestartHostsWithWarningsInterval = Settings.Default.Config_RestartHostsWithWarningsInterval
                               };
                 Logger.SetThresholdForAppender(HostLogDelegateAppender, Settings.Default.Config_TraceDebug ? Level.Debug : Level.Info);
 
@@ -89,7 +91,7 @@ namespace SSHTunnelManagerGUI
 
             // Вернуть процесс с таким же названием и исполняемым файлом ИЛИ null
             return processes.Where(process => process.Id != current.Id).FirstOrDefault(process =>
-                Assembly.GetExecutingAssembly().Location.Replace("/", "\\") == process.MainModule.FileName);
+                string.Equals(Helper.GetExecutablePath(), process.MainModule.FileName, StringComparison.CurrentCultureIgnoreCase));
         }
 
         // Bring to focus the current running process with our name
@@ -100,10 +102,10 @@ namespace SSHTunnelManagerGUI
             SetForegroundWindow(instance.MainWindowHandle);
         }
 
-        [DllImport("User32.dll")]
+        [DllImport(@"User32.dll")]
         private static extern bool ShowWindowAsync(IntPtr hWnd, int cmdShow);
 
-        [DllImport("User32.dll")]
+        [DllImport(@"User32.dll")]
         private static extern bool SetForegroundWindow(IntPtr hWnd);
 
         private const int WS_SHOWNORMAL = 1;

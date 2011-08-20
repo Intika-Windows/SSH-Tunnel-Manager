@@ -11,12 +11,16 @@ namespace SSHTunnelManager.Business
             RestartDelay = 30;
             MaxAttemptsCount = 3;
             DelayInsteadStop = true;
+            RestartHostsWithWarnings = false;
+            RestartHostsWithWarningsInterval = 300;
         }
 
         private volatile bool _restartEnabled;
         private volatile int _restartDelay;
         private volatile int _maxAttemptsCount;
         private volatile bool _delayInsteadStop;
+        private volatile bool _restartHostsWithWarnings;
+        private volatile int _restartHostsWithWarningsInterval;
 
         /// <summary>
         /// AutoRestart successfully started connections if they have ended unexpectedly.
@@ -52,6 +56,24 @@ namespace SSHTunnelManager.Business
         {
             get { return _delayInsteadStop; }
             set { _delayInsteadStop = value; }
+        }
+
+        /// <summary>
+        /// If host started with warnings, periodically try to reconnect.
+        /// </summary>
+        public bool RestartHostsWithWarnings
+        {
+            get { return _restartHostsWithWarnings; }
+            set { _restartHostsWithWarnings = value; }
+        }
+
+        /// <summary>
+        /// Interval between reconnects (in seconds)
+        /// </summary>
+        public int RestartHostsWithWarningsInterval
+        {
+            get { return _restartHostsWithWarningsInterval; }
+            set { _restartHostsWithWarningsInterval = value; }
         }
     }
 }

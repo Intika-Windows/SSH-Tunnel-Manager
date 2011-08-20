@@ -30,21 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label9;
             System.Windows.Forms.Label label5;
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Stopped", 1, 1);
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Starting", 2, 2);
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Waiting", 2, 2);
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Started", 3, 3);
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("All hosts", 4, 4, new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4});
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.hostsGridView = new System.Windows.Forms.DataGridView();
             this.hgwStatusIconColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.hgwNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,6 +101,7 @@
             this.contextMenuStripHost = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemEditHost = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRemoveHost = new System.Windows.Forms.ToolStripMenuItem();
+            this.theTimer = new System.Windows.Forms.Timer(this.components);
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
@@ -136,53 +128,28 @@
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(3, 3);
-            label1.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(75, 13);
-            label1.TabIndex = 0;
-            label1.Text = "Unique Name:";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(3, 22);
-            label2.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(label2, "label2");
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(58, 13);
-            label2.TabIndex = 1;
-            label2.Text = "Username:";
             // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(436, 3);
-            label7.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(label7, "label7");
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(40, 13);
-            label7.TabIndex = 3;
-            label7.Text = "Status:";
             // 
             // label9
             // 
-            label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(222, 3);
-            label9.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(label9, "label9");
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(70, 13);
-            label9.TabIndex = 3;
-            label9.Text = "Depends On:";
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(222, 22);
-            label5.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(label5, "label5");
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(32, 13);
-            label5.TabIndex = 3;
-            label5.Text = "Host:";
             // 
             // hostsGridView
             // 
@@ -200,14 +167,11 @@
             this.hgwHostnameColumn,
             this.hgwStatusColumn,
             this.hgwDependsOnColumn});
-            this.hostsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hostsGridView.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.hostsGridView, "hostsGridView");
             this.hostsGridView.MultiSelect = false;
             this.hostsGridView.Name = "hostsGridView";
             this.hostsGridView.RowHeadersVisible = false;
             this.hostsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.hostsGridView.Size = new System.Drawing.Size(632, 213);
-            this.hostsGridView.TabIndex = 0;
             this.hostsGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.hostsGridView_CellFormatting);
             this.hostsGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.hostsGridView_CellMouseDoubleClick);
             this.hostsGridView.RowContextMenuStripNeeded += new System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventHandler(this.hostsGridView_RowContextMenuStripNeeded);
@@ -216,36 +180,31 @@
             // 
             this.hgwStatusIconColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.hgwStatusIconColumn.FillWeight = 27.62246F;
-            this.hgwStatusIconColumn.HeaderText = "*";
-            this.hgwStatusIconColumn.MinimumWidth = 20;
+            resources.ApplyResources(this.hgwStatusIconColumn, "hgwStatusIconColumn");
             this.hgwStatusIconColumn.Name = "hgwStatusIconColumn";
             this.hgwStatusIconColumn.ReadOnly = true;
             this.hgwStatusIconColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.hgwStatusIconColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.hgwStatusIconColumn.Width = 25;
             // 
             // hgwNameColumn
             // 
             this.hgwNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.hgwNameColumn.FillWeight = 20F;
-            this.hgwNameColumn.HeaderText = "Unique Name";
-            this.hgwNameColumn.MinimumWidth = 20;
+            resources.ApplyResources(this.hgwNameColumn, "hgwNameColumn");
             this.hgwNameColumn.Name = "hgwNameColumn";
             this.hgwNameColumn.ReadOnly = true;
-            this.hgwNameColumn.Width = 97;
             // 
             // hgwUsernameColumn
             // 
             this.hgwUsernameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.hgwUsernameColumn.HeaderText = "Username";
+            resources.ApplyResources(this.hgwUsernameColumn, "hgwUsernameColumn");
             this.hgwUsernameColumn.Name = "hgwUsernameColumn";
             this.hgwUsernameColumn.ReadOnly = true;
-            this.hgwUsernameColumn.Width = 80;
             // 
             // hgwHostnameColumn
             // 
             this.hgwHostnameColumn.FillWeight = 95.02126F;
-            this.hgwHostnameColumn.HeaderText = "Host";
+            resources.ApplyResources(this.hgwHostnameColumn, "hgwHostnameColumn");
             this.hgwHostnameColumn.Name = "hgwHostnameColumn";
             this.hgwHostnameColumn.ReadOnly = true;
             // 
@@ -253,14 +212,13 @@
             // 
             this.hgwStatusColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.hgwStatusColumn.FillWeight = 95.02126F;
-            this.hgwStatusColumn.HeaderText = "Status";
+            resources.ApplyResources(this.hgwStatusColumn, "hgwStatusColumn");
             this.hgwStatusColumn.Name = "hgwStatusColumn";
             this.hgwStatusColumn.ReadOnly = true;
-            this.hgwStatusColumn.Width = 62;
             // 
             // hgwDependsOnColumn
             // 
-            this.hgwDependsOnColumn.HeaderText = "Depends On";
+            resources.ApplyResources(this.hgwDependsOnColumn, "hgwDependsOnColumn");
             this.hgwDependsOnColumn.Name = "hgwDependsOnColumn";
             this.hgwDependsOnColumn.ReadOnly = true;
             // 
@@ -271,11 +229,8 @@
             this.hostToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.mainMenuStrip, "mainMenuStrip");
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(770, 24);
-            this.mainMenuStrip.TabIndex = 1;
-            this.mainMenuStrip.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -288,57 +243,49 @@
             this.keepConnectionsExitToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "&File";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.disk;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.saveToolStripMenuItem.Text = "Sa&ve";
+            resources.ApplyResources(this.saveToolStripMenuItem, "saveToolStripMenuItem");
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(206, 6);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // changeStorageToolStripMenuItem
             // 
             this.changeStorageToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.databases__arrow;
             this.changeStorageToolStripMenuItem.Name = "changeStorageToolStripMenuItem";
-            this.changeStorageToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.changeStorageToolStripMenuItem.Text = "&Change Storage...";
+            resources.ApplyResources(this.changeStorageToolStripMenuItem, "changeStorageToolStripMenuItem");
             this.changeStorageToolStripMenuItem.Click += new System.EventHandler(this.changeStorageToolStripMenuItem_Click);
             // 
             // changePasswordToolStripMenuItem
             // 
             this.changePasswordToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.key__arrow;
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.changePasswordToolStripMenuItem.Text = "C&hange Password...";
+            resources.ApplyResources(this.changePasswordToolStripMenuItem, "changePasswordToolStripMenuItem");
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(206, 6);
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
             // 
             // keepConnectionsExitToolStripMenuItem
             // 
             this.keepConnectionsExitToolStripMenuItem.Name = "keepConnectionsExitToolStripMenuItem";
-            this.keepConnectionsExitToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.keepConnectionsExitToolStripMenuItem.Text = "E&xit but keep connections";
+            resources.ApplyResources(this.keepConnectionsExitToolStripMenuItem, "keepConnectionsExitToolStripMenuItem");
             this.keepConnectionsExitToolStripMenuItem.Click += new System.EventHandler(this.keepConnectionsExitToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.exitToolStripMenuItem.Text = "Ex&it";
+            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // hostToolStripMenuItem
@@ -355,81 +302,71 @@
             this.startPsftpToolStripMenuItem,
             this.startFileZillaSFTPToolStripMenuItem});
             this.hostToolStripMenuItem.Name = "hostToolStripMenuItem";
-            this.hostToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.hostToolStripMenuItem.Text = "&Host";
+            resources.ApplyResources(this.hostToolStripMenuItem, "hostToolStripMenuItem");
             // 
             // addHostToolStripMenuItem
             // 
             this.addHostToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__plus;
             this.addHostToolStripMenuItem.Name = "addHostToolStripMenuItem";
-            this.addHostToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.addHostToolStripMenuItem.Text = "&Add host...";
+            resources.ApplyResources(this.addHostToolStripMenuItem, "addHostToolStripMenuItem");
             this.addHostToolStripMenuItem.Click += new System.EventHandler(this.addHostToolStripMenuItem_Click);
             // 
             // editHostToolStripMenuItem
             // 
             this.editHostToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__pencil;
             this.editHostToolStripMenuItem.Name = "editHostToolStripMenuItem";
-            this.editHostToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.editHostToolStripMenuItem.Text = "&Edit host...";
+            resources.ApplyResources(this.editHostToolStripMenuItem, "editHostToolStripMenuItem");
             this.editHostToolStripMenuItem.Click += new System.EventHandler(this.editHostToolStripMenuItem_Click);
             // 
             // removeHostToolStripMenuItem
             // 
             this.removeHostToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__minus;
             this.removeHostToolStripMenuItem.Name = "removeHostToolStripMenuItem";
-            this.removeHostToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.removeHostToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.removeHostToolStripMenuItem.Text = "&Remove host";
+            resources.ApplyResources(this.removeHostToolStripMenuItem, "removeHostToolStripMenuItem");
             this.removeHostToolStripMenuItem.Click += new System.EventHandler(this.removeHostToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(167, 6);
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.control;
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.startToolStripMenuItem.Text = "&Start";
+            resources.ApplyResources(this.startToolStripMenuItem, "startToolStripMenuItem");
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
             // stopToolStripMenuItem
             // 
             this.stopToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.control_stop_square;
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.stopToolStripMenuItem.Text = "S&top";
+            resources.ApplyResources(this.stopToolStripMenuItem, "stopToolStripMenuItem");
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(167, 6);
+            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
             // 
             // startPuTTYToolStripMenuItem
             // 
             this.startPuTTYToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.icon_16x16_putty;
             this.startPuTTYToolStripMenuItem.Name = "startPuTTYToolStripMenuItem";
-            this.startPuTTYToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.startPuTTYToolStripMenuItem.Text = "Start &PuTTY";
+            resources.ApplyResources(this.startPuTTYToolStripMenuItem, "startPuTTYToolStripMenuItem");
             this.startPuTTYToolStripMenuItem.Click += new System.EventHandler(this.startPuTTYToolStripMenuItem_Click);
             // 
             // startPsftpToolStripMenuItem
             // 
             this.startPsftpToolStripMenuItem.Name = "startPsftpToolStripMenuItem";
-            this.startPsftpToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.startPsftpToolStripMenuItem.Text = "Start ps&ftp";
+            resources.ApplyResources(this.startPsftpToolStripMenuItem, "startPsftpToolStripMenuItem");
             this.startPsftpToolStripMenuItem.Click += new System.EventHandler(this.startPsftpToolStripMenuItem_Click);
             // 
             // startFileZillaSFTPToolStripMenuItem
             // 
             this.startFileZillaSFTPToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.filezilla;
             this.startFileZillaSFTPToolStripMenuItem.Name = "startFileZillaSFTPToolStripMenuItem";
-            this.startFileZillaSFTPToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.startFileZillaSFTPToolStripMenuItem.Text = "Start F&ileZilla SFTP";
+            resources.ApplyResources(this.startFileZillaSFTPToolStripMenuItem, "startFileZillaSFTPToolStripMenuItem");
             this.startFileZillaSFTPToolStripMenuItem.Click += new System.EventHandler(this.startFileZillaSFTPToolStripMenuItem_Click);
             // 
             // toolsToolStripMenuItem
@@ -437,14 +374,13 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.toolsToolStripMenuItem.Text = "&Tools";
+            resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
             // 
             // optionsToolStripMenuItem
             // 
+            this.optionsToolStripMenuItem.Image = global::SSHTunnelManagerGUI.Properties.Resources.Gear;
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.optionsToolStripMenuItem.Text = "&Options...";
+            resources.ApplyResources(this.optionsToolStripMenuItem, "optionsToolStripMenuItem");
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
@@ -452,14 +388,12 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "H&elp";
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-            this.aboutToolStripMenuItem.Text = "&About SSH Tunnel Manager";
+            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // theToolStrip
@@ -473,94 +407,75 @@
             this.toolStripSeparator3,
             this.toolStripButtonStart,
             this.toolStripButtonStop});
-            this.theToolStrip.Location = new System.Drawing.Point(0, 24);
+            resources.ApplyResources(this.theToolStrip, "theToolStrip");
             this.theToolStrip.Name = "theToolStrip";
-            this.theToolStrip.Size = new System.Drawing.Size(770, 25);
-            this.theToolStrip.TabIndex = 2;
-            this.theToolStrip.Text = "toolStrip1";
             // 
             // toolStripButtonSave
             // 
             this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonSave.Image = global::SSHTunnelManagerGUI.Properties.Resources.disk;
-            this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.toolStripButtonSave, "toolStripButtonSave");
             this.toolStripButtonSave.Name = "toolStripButtonSave";
-            this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonSave.Text = "Save";
             this.toolStripButtonSave.Click += new System.EventHandler(this.toolStripButtonSave_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
             // 
             // toolStripButtonAddHost
             // 
             this.toolStripButtonAddHost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonAddHost.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__plus;
-            this.toolStripButtonAddHost.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.toolStripButtonAddHost, "toolStripButtonAddHost");
             this.toolStripButtonAddHost.Name = "toolStripButtonAddHost";
-            this.toolStripButtonAddHost.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonAddHost.Text = "New host...";
             this.toolStripButtonAddHost.Click += new System.EventHandler(this.toolStripButtonAddHost_Click);
             // 
             // toolStripButtonRemoveHost
             // 
             this.toolStripButtonRemoveHost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonRemoveHost.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__minus;
-            this.toolStripButtonRemoveHost.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.toolStripButtonRemoveHost, "toolStripButtonRemoveHost");
             this.toolStripButtonRemoveHost.Name = "toolStripButtonRemoveHost";
-            this.toolStripButtonRemoveHost.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonRemoveHost.Text = "Remove Host";
             this.toolStripButtonRemoveHost.Click += new System.EventHandler(this.toolStripButtonRemoveHost_Click);
             // 
             // toolStripButtonEditHost
             // 
             this.toolStripButtonEditHost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonEditHost.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__pencil;
-            this.toolStripButtonEditHost.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.toolStripButtonEditHost, "toolStripButtonEditHost");
             this.toolStripButtonEditHost.Name = "toolStripButtonEditHost";
-            this.toolStripButtonEditHost.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonEditHost.Text = "Edit Host...";
             this.toolStripButtonEditHost.Click += new System.EventHandler(this.toolStripButtonEditHost_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
             // toolStripButtonStart
             // 
             this.toolStripButtonStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonStart.Image = global::SSHTunnelManagerGUI.Properties.Resources.control;
-            this.toolStripButtonStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.toolStripButtonStart, "toolStripButtonStart");
             this.toolStripButtonStart.Name = "toolStripButtonStart";
-            this.toolStripButtonStart.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonStart.Text = "Start";
             this.toolStripButtonStart.Click += new System.EventHandler(this.toolStripButtonStart_Click);
             // 
             // toolStripButtonStop
             // 
             this.toolStripButtonStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonStop.Image = global::SSHTunnelManagerGUI.Properties.Resources.control_stop_square;
-            this.toolStripButtonStop.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.toolStripButtonStop, "toolStripButtonStop");
             this.toolStripButtonStop.Name = "toolStripButtonStop";
-            this.toolStripButtonStop.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonStop.Text = "Stop";
             this.toolStripButtonStop.Click += new System.EventHandler(this.toolStripButtonStop_Click);
             // 
             // theStatusStrip
             // 
-            this.theStatusStrip.Location = new System.Drawing.Point(0, 447);
+            resources.ApplyResources(this.theStatusStrip, "theStatusStrip");
             this.theStatusStrip.Name = "theStatusStrip";
-            this.theStatusStrip.Size = new System.Drawing.Size(770, 22);
-            this.theStatusStrip.TabIndex = 3;
-            this.theStatusStrip.Text = "statusStrip1";
             // 
             // splitContainerH1
             // 
-            this.splitContainerH1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerH1.Location = new System.Drawing.Point(0, 49);
+            resources.ApplyResources(this.splitContainerH1, "splitContainerH1");
             this.splitContainerH1.Name = "splitContainerH1";
             // 
             // splitContainerH1.Panel1
@@ -570,47 +485,14 @@
             // splitContainerH1.Panel2
             // 
             this.splitContainerH1.Panel2.Controls.Add(this.splitContainerV1);
-            this.splitContainerH1.Size = new System.Drawing.Size(770, 398);
-            this.splitContainerH1.SplitterDistance = 134;
-            this.splitContainerH1.TabIndex = 4;
             // 
             // treeViewFilter
             // 
-            this.treeViewFilter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewFilter.ImageIndex = 0;
+            resources.ApplyResources(this.treeViewFilter, "treeViewFilter");
             this.treeViewFilter.ImageList = this.imageListStates;
-            this.treeViewFilter.Location = new System.Drawing.Point(0, 0);
             this.treeViewFilter.Name = "treeViewFilter";
-            treeNode1.ImageIndex = 1;
-            treeNode1.Name = "filterStoppedHostsNode";
-            treeNode1.SelectedImageIndex = 1;
-            treeNode1.Tag = "1";
-            treeNode1.Text = "Stopped";
-            treeNode2.ImageIndex = 2;
-            treeNode2.Name = "filterUnknownHostsNode";
-            treeNode2.SelectedImageIndex = 2;
-            treeNode2.Tag = "2";
-            treeNode2.Text = "Starting";
-            treeNode3.ImageIndex = 2;
-            treeNode3.Name = "filterWaitingHostsNode";
-            treeNode3.SelectedImageIndex = 2;
-            treeNode3.Tag = "3";
-            treeNode3.Text = "Waiting";
-            treeNode4.ImageIndex = 3;
-            treeNode4.Name = "filterStartedHostsNode";
-            treeNode4.SelectedImageIndex = 3;
-            treeNode4.Tag = "4";
-            treeNode4.Text = "Started";
-            treeNode5.ImageIndex = 4;
-            treeNode5.Name = "filterAllHostsNode";
-            treeNode5.SelectedImageIndex = 4;
-            treeNode5.Tag = "-1";
-            treeNode5.Text = "All hosts";
             this.treeViewFilter.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5});
-            this.treeViewFilter.SelectedImageIndex = 0;
-            this.treeViewFilter.Size = new System.Drawing.Size(134, 398);
-            this.treeViewFilter.TabIndex = 0;
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeViewFilter.Nodes")))});
             this.treeViewFilter.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewFilter_AfterSelect);
             // 
             // imageListStates
@@ -625,10 +507,8 @@
             // 
             // splitContainerV1
             // 
-            this.splitContainerV1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerV1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.splitContainerV1, "splitContainerV1");
             this.splitContainerV1.Name = "splitContainerV1";
-            this.splitContainerV1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainerV1.Panel1
             // 
@@ -637,41 +517,25 @@
             // splitContainerV1.Panel2
             // 
             this.splitContainerV1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainerV1.Size = new System.Drawing.Size(632, 398);
-            this.splitContainerV1.SplitterDistance = 213;
-            this.splitContainerV1.TabIndex = 1;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPageGeneral);
             this.tabControl1.Controls.Add(this.tabPageLog);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(632, 181);
-            this.tabControl1.TabIndex = 1;
             // 
             // tabPageGeneral
             // 
             this.tabPageGeneral.Controls.Add(this.tableLayoutPanel1);
-            this.tabPageGeneral.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.tabPageGeneral, "tabPageGeneral");
             this.tabPageGeneral.Name = "tabPageGeneral";
-            this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.tabPageGeneral.Size = new System.Drawing.Size(624, 155);
-            this.tabPageGeneral.TabIndex = 0;
-            this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelUniqName, 1, 0);
@@ -683,65 +547,32 @@
             this.tableLayoutPanel1.Controls.Add(this.labelStatus, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.tunnelsGridView, 0, 2);
             this.tableLayoutPanel1.Controls.Add(label5, 2, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(618, 152);
-            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // labelUniqName
             // 
-            this.labelUniqName.AutoSize = true;
-            this.labelUniqName.Location = new System.Drawing.Point(84, 3);
-            this.labelUniqName.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.labelUniqName, "labelUniqName");
             this.labelUniqName.Name = "labelUniqName";
-            this.labelUniqName.Size = new System.Drawing.Size(33, 13);
-            this.labelUniqName.TabIndex = 0;
-            this.labelUniqName.Text = "value";
             // 
             // labelUsername
             // 
-            this.labelUsername.AutoSize = true;
-            this.labelUsername.Location = new System.Drawing.Point(84, 22);
-            this.labelUsername.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.labelUsername, "labelUsername");
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(33, 13);
-            this.labelUsername.TabIndex = 0;
-            this.labelUsername.Text = "value";
             // 
             // labelDependsOn
             // 
-            this.labelDependsOn.AutoSize = true;
-            this.labelDependsOn.Location = new System.Drawing.Point(298, 3);
-            this.labelDependsOn.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.labelDependsOn, "labelDependsOn");
             this.labelDependsOn.Name = "labelDependsOn";
-            this.labelDependsOn.Size = new System.Drawing.Size(33, 13);
-            this.labelDependsOn.TabIndex = 2;
-            this.labelDependsOn.Text = "value";
             // 
             // labelHost
             // 
-            this.labelHost.AutoSize = true;
-            this.labelHost.Location = new System.Drawing.Point(298, 22);
-            this.labelHost.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.labelHost, "labelHost");
             this.labelHost.Name = "labelHost";
-            this.labelHost.Size = new System.Drawing.Size(33, 13);
-            this.labelHost.TabIndex = 2;
-            this.labelHost.Text = "value";
             // 
             // labelStatus
             // 
-            this.labelStatus.AutoSize = true;
-            this.labelStatus.Location = new System.Drawing.Point(482, 3);
-            this.labelStatus.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.labelStatus, "labelStatus");
             this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(33, 13);
-            this.labelStatus.TabIndex = 2;
-            this.labelStatus.Text = "value";
             // 
             // tunnelsGridView
             // 
@@ -753,14 +584,14 @@
             this.tunnelsGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.tunnelsGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tunnelsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tunnelsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tunnelsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tunnelsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tunnelsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tgvNameColumn,
@@ -769,25 +600,21 @@
             this.tgvDstHostColumn,
             this.tgvDstPortColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.tunnelsGridView, 6);
-            this.tunnelsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.tunnelsGridView, "tunnelsGridView");
             this.tunnelsGridView.EnableHeadersVisualStyles = false;
-            this.tunnelsGridView.Location = new System.Drawing.Point(3, 41);
-            this.tunnelsGridView.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
             this.tunnelsGridView.MultiSelect = false;
             this.tunnelsGridView.Name = "tunnelsGridView";
             this.tunnelsGridView.ReadOnly = true;
             this.tunnelsGridView.RowHeadersVisible = false;
             this.tunnelsGridView.RowTemplate.Height = 18;
             this.tunnelsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tunnelsGridView.Size = new System.Drawing.Size(615, 111);
-            this.tunnelsGridView.TabIndex = 7;
             this.tunnelsGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tunnelsGridView_CellFormatting);
             this.tunnelsGridView.SelectionChanged += new System.EventHandler(this.tunnelsGridView_SelectionChanged);
             // 
             // tgvNameColumn
             // 
             this.tgvNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tgvNameColumn.HeaderText = "Tunnel";
+            resources.ApplyResources(this.tgvNameColumn, "tgvNameColumn");
             this.tgvNameColumn.Name = "tgvNameColumn";
             this.tgvNameColumn.ReadOnly = true;
             this.tgvNameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -795,66 +622,56 @@
             // tgvTypeColumn
             // 
             this.tgvTypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.tgvTypeColumn.HeaderText = "Type";
+            resources.ApplyResources(this.tgvTypeColumn, "tgvTypeColumn");
             this.tgvTypeColumn.Name = "tgvTypeColumn";
             this.tgvTypeColumn.ReadOnly = true;
-            this.tgvTypeColumn.Width = 56;
             // 
             // tgvSrcPortColumn
             // 
             this.tgvSrcPortColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.tgvSrcPortColumn.HeaderText = "Src Port";
+            resources.ApplyResources(this.tgvSrcPortColumn, "tgvSrcPortColumn");
             this.tgvSrcPortColumn.Name = "tgvSrcPortColumn";
             this.tgvSrcPortColumn.ReadOnly = true;
-            this.tgvSrcPortColumn.Width = 70;
             // 
             // tgvDstHostColumn
             // 
             this.tgvDstHostColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.tgvDstHostColumn.HeaderText = "Dest Host";
+            resources.ApplyResources(this.tgvDstHostColumn, "tgvDstHostColumn");
             this.tgvDstHostColumn.Name = "tgvDstHostColumn";
             this.tgvDstHostColumn.ReadOnly = true;
-            this.tgvDstHostColumn.Width = 79;
             // 
             // tgvDstPortColumn
             // 
             this.tgvDstPortColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.tgvDstPortColumn.HeaderText = "Dest Port";
+            resources.ApplyResources(this.tgvDstPortColumn, "tgvDstPortColumn");
             this.tgvDstPortColumn.Name = "tgvDstPortColumn";
             this.tgvDstPortColumn.ReadOnly = true;
-            this.tgvDstPortColumn.Width = 76;
             // 
             // tabPageLog
             // 
             this.tabPageLog.Controls.Add(this.listViewLog);
-            this.tabPageLog.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.tabPageLog, "tabPageLog");
             this.tabPageLog.Name = "tabPageLog";
-            this.tabPageLog.Size = new System.Drawing.Size(624, 155);
-            this.tabPageLog.TabIndex = 1;
-            this.tabPageLog.Text = "Log";
             this.tabPageLog.UseVisualStyleBackColor = true;
             // 
             // listViewLog
             // 
             this.listViewLog.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
-            this.listViewLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.listViewLog, "listViewLog");
             this.listViewLog.FullRowSelect = true;
             this.listViewLog.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.listViewLog.Location = new System.Drawing.Point(0, 0);
             this.listViewLog.MultiSelect = false;
             this.listViewLog.Name = "listViewLog";
             this.listViewLog.OwnerDraw = true;
             this.listViewLog.ShowGroups = false;
-            this.listViewLog.Size = new System.Drawing.Size(624, 155);
-            this.listViewLog.TabIndex = 2;
             this.listViewLog.UseCompatibleStateImageBehavior = false;
             this.listViewLog.View = System.Windows.Forms.View.Details;
             this.listViewLog.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listViewLog_DrawSubItem);
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Message";
+            resources.ApplyResources(this.columnHeader1, "columnHeader1");
             // 
             // contextMenuStripHost
             // 
@@ -862,39 +679,36 @@
             this.toolStripMenuItemEditHost,
             this.toolStripMenuItemRemoveHost});
             this.contextMenuStripHost.Name = "contextMenuStripHost";
-            this.contextMenuStripHost.Size = new System.Drawing.Size(118, 48);
+            resources.ApplyResources(this.contextMenuStripHost, "contextMenuStripHost");
             // 
             // toolStripMenuItemEditHost
             // 
             this.toolStripMenuItemEditHost.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__pencil;
             this.toolStripMenuItemEditHost.Name = "toolStripMenuItemEditHost";
-            this.toolStripMenuItemEditHost.Size = new System.Drawing.Size(117, 22);
-            this.toolStripMenuItemEditHost.Text = "&Edit...";
+            resources.ApplyResources(this.toolStripMenuItemEditHost, "toolStripMenuItemEditHost");
             this.toolStripMenuItemEditHost.Click += new System.EventHandler(this.toolStripMenuItemEditHost_Click);
             // 
             // toolStripMenuItemRemoveHost
             // 
             this.toolStripMenuItemRemoveHost.Image = global::SSHTunnelManagerGUI.Properties.Resources.server__minus;
             this.toolStripMenuItemRemoveHost.Name = "toolStripMenuItemRemoveHost";
-            this.toolStripMenuItemRemoveHost.Size = new System.Drawing.Size(117, 22);
-            this.toolStripMenuItemRemoveHost.Text = "&Remove";
+            resources.ApplyResources(this.toolStripMenuItemRemoveHost, "toolStripMenuItemRemoveHost");
             this.toolStripMenuItemRemoveHost.Click += new System.EventHandler(this.toolStripMenuItemRemoveHost_Click);
+            // 
+            // theTimer
+            // 
+            this.theTimer.Interval = 10000;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(770, 469);
             this.Controls.Add(this.splitContainerH1);
             this.Controls.Add(this.theStatusStrip);
             this.Controls.Add(this.theToolStrip);
             this.Controls.Add(this.mainMenuStrip);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenuStrip;
-            this.MinimumSize = new System.Drawing.Size(620, 440);
             this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SSH Tunnel Manager";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.hostsGridView)).EndInit();
             this.mainMenuStrip.ResumeLayout(false);
@@ -988,5 +802,6 @@
         private System.Windows.Forms.ToolStripMenuItem startPuTTYToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startPsftpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startFileZillaSFTPToolStripMenuItem;
+        private System.Windows.Forms.Timer theTimer;
     }
 }

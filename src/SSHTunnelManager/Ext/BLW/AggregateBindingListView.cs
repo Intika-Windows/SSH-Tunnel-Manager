@@ -816,7 +816,7 @@ namespace SSHTunnelManager.Ext.BLW
             }
             set
             {
-                throw new NotSupportedException("Cannot set filter from string expression.");
+                throw new NotSupportedException(@"Cannot set filter from string expression.");
                 //TODO: Re-instate this line once we have an expression filter
                 //Filter = new ExpressionItemFilter<T>(value);
             }
@@ -906,7 +906,7 @@ namespace SSHTunnelManager.Ext.BLW
         /// <summary>
         /// Used to signal that a sort on a property is to be descending, not ascending.
         /// </summary>
-        public readonly string SortDescendingModifier = "DESC";
+        public readonly string SortDescendingModifier = @"DESC";
         /// <summary>
         /// The character used to seperate sorts by multiple properties.
         /// </summary>
@@ -1314,7 +1314,7 @@ namespace SSHTunnelManager.Ext.BLW
             private static Comparison<T> BuildComparison(string propertyName, ListSortDirection direction)
             {
                 PropertyInfo pi = typeof(T).GetProperty(propertyName);
-                Debug.Assert(pi != null, string.Format("Property '{0}' is not a member of type '{1}'", propertyName, typeof(T).FullName));
+                Debug.Assert(pi != null, string.Format(@"Property '{0}' is not a member of type '{1}'", propertyName, typeof(T).FullName));
 
                 if (typeof(IComparable).IsAssignableFrom(pi.PropertyType))
                 {
@@ -1998,7 +1998,7 @@ namespace SSHTunnelManager.Ext.BLW
 
         protected internal string GetProvidedViewName(PropertyDescriptor sourceListProperty)
         {
-            return sourceListProperty.Name + "View";
+            return sourceListProperty.Name + @"View";
         }
 
         protected internal object CreateProvidedView(ObjectView<T> @object, PropertyDescriptor sourceListProperty)

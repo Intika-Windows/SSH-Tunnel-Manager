@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using SSHTunnelManager.Business;
+using SSHTunnelManager.Properties;
 using SSHTunnelManager.Util;
 
 namespace SSHTunnelManager.Domain
@@ -49,6 +50,8 @@ namespace SSHTunnelManager.Domain
             }
         }
 
+        public DateTime LastStartTime { get; private set; }
+
         private readonly ManualResetEventSlim _eventStopped = new ManualResetEventSlim(true);
         private readonly ManualResetEventSlim _eventStarted = new ManualResetEventSlim(false);
 
@@ -63,22 +66,22 @@ namespace SSHTunnelManager.Domain
                 switch (value)
                 {
                 case ELinkStatus.Starting:
-                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, @"Starting...");
+                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, Resources.PuttyLink_Status_Starting);
                     break;
                 case ELinkStatus.Started:
-                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, @"Started");
+                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, Resources.PuttyLink_Status_Started);
                     break;
                 case ELinkStatus.StartedWithWarnings:
-                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, @"Started with warnings");
+                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, Resources.PuttyLink_Status_StartedWithWarnings);
                     break;
                 case ELinkStatus.Stopped:
-                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, @"Stopped");
+                    Logger.Log.InfoFormat("[{0}] {1}", Host.Name, Resources.PuttyLink_Status_Stopped);
                     break;
                 case ELinkStatus.Waiting:
                     if (_config.RestartDelay > 0)
-                        Logger.Log.InfoFormat("[{0}] {1}", Host.Name, string.Format(@"Waiting {0} seconds before restart...", _config.RestartDelay));
+                        Logger.Log.InfoFormat("[{0}] {1}", Host.Name, string.Format(Resources.PuttyLink_Status_Waiting, _config.RestartDelay));
                     else
-                        Logger.Log.InfoFormat("[{0}] {1}", Host.Name, @"Restarting after connection loss...");
+                        Logger.Log.InfoFormat("[{0}] {1}", Host.Name, Resources.PuttyLink_Status_Restarting);
                     break;
                 }
                 
@@ -132,7 +135,7 @@ namespace SSHTunnelManager.Domain
         {
             if (Status != ELinkStatus.Stopped)
             {
-                throw new InvalidOperationException(@"Link already started.");
+                throw new InvalidOperationException(Resources.PuttyLink_Error_LinkAlreadyStarted);
             }
             Thread thread = new Thread(Start) {IsBackground = true};
             thread.Start();
@@ -142,11 +145,11 @@ namespace SSHTunnelManager.Domain
         {
             if (Status != ELinkStatus.Stopped)
             {
-                throw new InvalidOperationException(@"Link already started.");
+                throw new InvalidOperationException(Resources.PuttyLink_Error_LinkAlreadyStarted);
             }
             try
             {
-                log4net.ThreadContext.Properties["Host"] = Host;
+                log4net.ThreadContext.Properties[@"Host"] = Host;
                 _stopRequested = false;
                 LastStartError = "";
 
@@ -169,7 +172,7 @@ namespace SSHTunnelManager.Domain
                         Thread.Sleep(_config.RestartDelay * 1000);
                     } else
                     {
-                        Logger.Log.InfoFormat("[{0}] {1}", Host.Name, @"Restarting after connection loss...");
+                        Logger.Log.InfoFormat("[{0}] {1}", Host.Name, Resources.PuttyLink_Status_Restarting);
                     }
                 }
             }
@@ -180,7 +183,6 @@ namespace SSHTunnelManager.Domain
             }
             finally
             {
-                Debug.WriteLine("Plink: Stopped!");
                 Status = ELinkStatus.Stopped;
             }
         }
@@ -215,9 +217,8 @@ namespace SSHTunnelManager.Domain
             _process.ErrorDataReceived += errorDataHandler;
             _process.Start();
             _process.BeginErrorReadLine();
-            Debug.WriteLine("Plink: Started!");
 
-            //_process.StandardInput.AutoFlush = true;
+            _process.StandardInput.AutoFlush = true;
 
             var buffer = new StringBuilder();
             bool passwordProvided = false;
@@ -233,16 +234,16 @@ namespace SSHTunnelManager.Domain
                 string data = buffer.ToString().ToLower();
                 buffer.Clear();
 
-                if (data.Contains("login as:"))
+                if (data.Contains(@"login as:"))
                 {
                     // invalid username provided
                     Stop();
                     // _process.StandardInput.WriteLine(username);
-                    LastStartError = "Invalid username";
+                    LastStartError = Resources.PuttyLink_Error_InvalidUsername;
                 }
-                else if (data.Contains("password:") && !passwordProvided)
+                else if (data.Contains(@"password:") && !passwordProvided)
                 {
-                    _process.StandardInput.WriteLine(Host.Password);
+                    writeLineStdIn(Host.Password);
                     passwordProvided = true;
                 }
             }
@@ -252,11 +253,27 @@ namespace SSHTunnelManager.Domain
 
         private readonly StringBuilder _multilineError = new StringBuilder();
 
+        private void writeLineStdIn(string text)
+        {
+            lock (_process.StandardInput)
+            {
+                _process.StandardInput.WriteLine(text);
+            }
+        }
+
+        private void writeStdIn(string text)
+        {
+            lock (_process.StandardInput)
+            {
+                _process.StandardInput.Write(text);
+            }
+        }
+
         private void errorDataHandler(object o, DataReceivedEventArgs args)
         {
             if (args.Data == null)
                 return;
-            log4net.ThreadContext.Properties["Host"] = Host; // Set up context for working thread
+            log4net.ThreadContext.Properties[@"Host"] = Host; // Set up context for working thread
             Logger.Log.Debug(args.Data);
             // LOCAL tunnels error
             var m = Regex.Match(args.Data, @"Local port (?<srcPort>\d+) forwarding to (?<dstHost>[^:]+):(?<dstPort>\d+) failed: (?<errorString>.*)", RegexOptions.IgnoreCase);
@@ -294,17 +311,22 @@ namespace SSHTunnelManager.Domain
                     Logger.Log.WarnFormat("[{0}] [{1}] {2}", Host.Name, tunnel.SimpleString, errorString);
                 }
             }
-            // Unable to open connection:
-            if (args.Data.Contains("Unable to open connection:"))
+            // Accept certificate
+            if (args.Data.Contains(@"The server's host key is not cached in the registry."))
             {
-                _multilineError.Append("Unable to open connection: ");
+                writeStdIn(@"y");
+            }
+            // Unable to open connection:
+            if (args.Data.Contains(@"Unable to open connection:"))
+            {
+                _multilineError.Append(@"Unable to open connection: ");
                 return;
             }
             // Access denied error
-            if (args.Data.Contains("Access denied"))
+            if (args.Data.Contains(@"Access denied"))
             {
                 // Неверный пароль (Доступ запрещен)
-                LastStartError = "Access Denied";
+                LastStartError = @"Access Denied";
                 Stop();
             }
             // Fatal errors
@@ -331,20 +353,18 @@ namespace SSHTunnelManager.Domain
                 _multilineError.Clear();
                 Stop();
             }
-            log4net.ThreadContext.Properties["Host"] = null;
+            log4net.ThreadContext.Properties[@"Host"] = null;
         }
 
         public void Stop()
         {
             if (Status == ELinkStatus.Stopped)
                 return;
-            Debug.WriteLine("Plink: Stopping!");
             try
             {
                 _stopRequested = true;
                 _process.Kill();
                 _multilineError.Clear();
-                Debug.WriteLine("Plink: Kill command!");
             }
             catch (Exception)
             {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using SSHTunnelManagerGUI.Properties;
 
 namespace SSHTunnelManagerGUI.Forms
 {
@@ -26,21 +27,21 @@ namespace SSHTunnelManagerGUI.Forms
             // 
             // hideShowToolStripMenuItem
             // 
-            _hideShowToolStripMenuItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            _hideShowToolStripMenuItem.Font = new Font(@"Segoe UI", 9F, FontStyle.Bold);
             _hideShowToolStripMenuItem.Name = "_hideShowToolStripMenuItem";
             _hideShowToolStripMenuItem.Size = new Size(173, 22);
-            _hideShowToolStripMenuItem.Text = @"Hide/show";
+            _hideShowToolStripMenuItem.Text = Resources.TrayForm_ContextMenu_HideShow;
             _hideShowToolStripMenuItem.Click += hideShowClick;
             // 
             // exitToolStripMenuItem
             // 
             _exitToolStripMenuItem.Name = "_exitToolStripMenuItem";
             _exitToolStripMenuItem.Size = new Size(173, 22);
-            _exitToolStripMenuItem.Text = @"&Exit";
+            _exitToolStripMenuItem.Text = Resources.TrayForm_ContextMenu_Exit;
             _exitToolStripMenuItem.Click += exitClick;
 
             TrayContextMenuStrip.Items.Add(_hideShowToolStripMenuItem);
-            TrayContextMenuStrip.Items.Add("-");
+            TrayContextMenuStrip.Items.Add(@"-");
             TrayContextMenuStrip.Items.Add(_exitToolStripMenuItem);
         }
 
@@ -116,7 +117,7 @@ namespace SSHTunnelManagerGUI.Forms
             if (!_timeToExit && e.CloseReason == CloseReason.UserClosing)
             {
                 // Просто спрятать
-                _theNotifyIcon.ShowBalloonTip(2000, Util.AssemblyTitle, Util.AssemblyTitle + " has minimized here.", ToolTipIcon.Info);
+                _theNotifyIcon.ShowBalloonTip(2000, Util.AssemblyTitle, string.Format(Resources.TrayForm_OnMinimizedText, Util.AssemblyTitle), ToolTipIcon.Info);
 
                 hideToTray();
 
@@ -168,5 +169,18 @@ namespace SSHTunnelManagerGUI.Forms
         }
 
         #endregion
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrayForm));
+            this.SuspendLayout();
+            // 
+            // TrayForm
+            // 
+            resources.ApplyResources(this, "$this");
+            this.Name = "TrayForm";
+            this.ResumeLayout(false);
+
+        }
     }
 }

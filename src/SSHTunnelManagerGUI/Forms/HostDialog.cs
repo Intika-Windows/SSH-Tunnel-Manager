@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using SSHTunnelManager.Business;
+using SSHTunnelManagerGUI.Properties;
 using SSHTunnelManagerGUI.Validators;
 
 namespace SSHTunnelManagerGUI.Forms
@@ -83,7 +84,7 @@ namespace SSHTunnelManagerGUI.Forms
 
                 if (aliases.Contains(alias))
                 {
-                    _tunnelValidator.SetError(control, @"Alias is busy by another host.");
+                    _tunnelValidator.SetError(control, Resources.ValidatorError_HostAliasBusy);
                     return false;
                 }
                 return true;
@@ -97,12 +98,14 @@ namespace SSHTunnelManagerGUI.Forms
             {
                 var alias = text;
 
-                var aliases = _committedHosts.Where(h => h != _currentHost).SelectMany(h => h.Tunnels).Select(t => t.Name).Concat(
-                    tunnels().Select(t => t.Name)).ToList();
+                //var aliases = _committedHosts.Where(h => h != _currentHost).SelectMany(h => h.Tunnels).Select(t => t.Name).Concat(
+                //    tunnels().Select(t => t.Name)).ToList();
+
+                var aliases = tunnels().Select(t => t.Name).ToList();
 
                 if (aliases.Contains(alias))
                 {
-                    _tunnelValidator.SetError(control, @"Alias is busy by another tunnel.");
+                    _tunnelValidator.SetError(control, Resources.ValidatorError_TunnelAliasBusy);
                     return false;
                 }
                 return true;
@@ -120,7 +123,7 @@ namespace SSHTunnelManagerGUI.Forms
             // dynamic
             if (!string.IsNullOrWhiteSpace(text))
             {
-                theErrorProvider.SetError(control, @"Destination hostname should be empty for dynamic tunnels.");
+                theErrorProvider.SetError(control, Resources.ValidatorError_TunnelDstHostnameNotEmpty);
                 theGoodProvider.SetError(control, "");
                 return false;
             }
@@ -137,7 +140,7 @@ namespace SSHTunnelManagerGUI.Forms
             // dynamic
             if (!string.IsNullOrWhiteSpace(text))
             {
-                _tunnelValidator.SetError(control, @"Hostname should be empty for dynamic tunnels.");
+                _tunnelValidator.SetError(control, Resources.ValidatorError_TunnelHostnameNotEmpty);
                 return false;
             }
             return true;
@@ -149,12 +152,15 @@ namespace SSHTunnelManagerGUI.Forms
             {
                 var port = text;
 
-                var ports = _committedHosts.Where(h => h != _currentHost).SelectMany(h => h.Tunnels).Select(t => t.LocalPort).Concat(
-                            tunnels().Select(t => t.LocalPort)).ToList();
-
-                if (ports.Contains(port))
+                var otherHost = _committedHosts.Where(h => h != _currentHost).FirstOrDefault(h => h.Tunnels.Exists(t => t.LocalPort == port));
+                if (otherHost != null)
                 {
-                    _tunnelValidator.SetError(control, @"Local port is busy by another tunnel.");
+                    _tunnelValidator.SetError(control, string.Format(Resources.ValidatorError_LocalPortBusyAnotherHost, otherHost.Name));
+                    return false;
+                }
+                if (tunnels().Exists(t => t.LocalPort == port))
+                {
+                    _tunnelValidator.SetError(control, Resources.ValidatorError_LocalPortBusyThisHost);
                     return false;
                 }
                 return true;
@@ -174,7 +180,7 @@ namespace SSHTunnelManagerGUI.Forms
             set
             {
                 if (Mode != EMode.AddHost)
-                    throw new InvalidOperationException("Only allowed in AddHost mode.");
+                    throw new InvalidOperationException();
                 _startupDependsOn = value;
             }
         }
@@ -185,7 +191,7 @@ namespace SSHTunnelManagerGUI.Forms
             set
             {
                 if (Mode != EMode.EditHost)
-                    throw new InvalidOperationException("Only allowed in EditHost mode.");
+                    throw new InvalidOperationException();
                 _currentHost = value;
             }
         }
@@ -228,7 +234,7 @@ namespace SSHTunnelManagerGUI.Forms
 
                 comboBoxDependsOn.Items.Clear();
                 var hosts = _committedHosts.Where(h => h != _currentHost && !h.DeepDependsOn(_currentHost)).OrderBy(h => h.Name);
-                comboBoxDependsOn.Items.AddRange(new[] { "None" }.Concat<object>(hosts).ToArray());
+                comboBoxDependsOn.Items.AddRange(new[] { Resources.HostDialog_DependsOnNone }.Concat<object>(hosts).ToArray());
                 if (StartupDependsOn != null)
                     comboBoxDependsOn.SelectedItem = StartupDependsOn;
                 else
@@ -239,19 +245,19 @@ namespace SSHTunnelManagerGUI.Forms
 
                 _hostValidator.Reset();
                 resetAddTunnelGroup();
-                Text = @"Add New Host - SSH Tunnel Manager";
+                Text = Resources.HostDialog_AddNewHostTitle;
             }
             else // Edit mode
             {
                 hostToForm();
-                Text = @"Edit Host - SSH Tunnel Manager";
+                Text = Resources.HostDialog_EditHostTitle;
             }
         }
 
         private void hostToForm()
         {
             if (_currentHost == null)
-                throw new FormatException(@"Host has not been set correctly.");
+                throw new FormatException(Resources.HostDialog_HostPropertyIsNull);
 
             textBoxName.Text = _currentHost.Name;
             textBoxHostname.Text = _currentHost.Hostname;
@@ -261,7 +267,7 @@ namespace SSHTunnelManagerGUI.Forms
 
             comboBoxDependsOn.Items.Clear();
             var hosts = _committedHosts.Where(h => h != _currentHost && !h.DeepDependsOn(_currentHost)).OrderBy(h => h.Name);
-            comboBoxDependsOn.Items.AddRange(new[] { "None" }.Concat<object>(hosts).ToArray());
+            comboBoxDependsOn.Items.AddRange(new[] { Resources.HostDialog_DependsOnNone }.Concat<object>(hosts).ToArray());
             if (_currentHost.DependsOn == null)
             {
                 comboBoxDependsOn.SelectedIndex = 0;
@@ -300,6 +306,28 @@ namespace SSHTunnelManagerGUI.Forms
             _currentHost.Tunnels.AddRange(tunnels());
         }
 
+        private bool buttonAddTunnelReminder()
+        {
+            if (_tunnelValidator.ValidateControls(false))
+            {
+                switch (MessageBox.Show(this, Resources.HostDialog_AddTunnelButtonReminder,
+                                        Util.AssemblyTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                {
+                case DialogResult.Yes:
+                    // Adding last tunnel
+                    buttonAddTunnel_Click(null, EventArgs.Empty);
+                    return true;
+                case DialogResult.No:
+                    resetAddTunnelGroup();
+                    return true;
+                case DialogResult.Cancel:
+                    // Go back and change something
+                    return false;
+                }
+            }
+            return true;
+        }
+
         private void resetAddTunnelGroup()
         {
             textBoxTunnelName.Text = "";
@@ -322,23 +350,8 @@ namespace SSHTunnelManagerGUI.Forms
         {
             if (!_hostValidator.ValidateControls()) return;
 
-            if (_tunnelValidator.ValidateControls(false))
-            {
-                switch (MessageBox.Show(this, @"You may forget to press 'Add' button, add new tunnel into list before continue?", 
-                                        @"SSH Tunnel Manager", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
-                {
-                case DialogResult.Yes:
-                    // Adding last tunnel
-                    buttonAddTunnel_Click(null, EventArgs.Empty);
-                    break;
-                case DialogResult.No:   
-                    resetAddTunnelGroup();
-                    break;
-                case DialogResult.Cancel:
-                    // Go back and change something
-                    return;
-                }
-            }
+            if (!buttonAddTunnelReminder())
+                return;
 
             // Adding host
             formToHost();
@@ -353,11 +366,11 @@ namespace SSHTunnelManagerGUI.Forms
                 _labelRecentlyAdded = new Label {ForeColor = Color.FromArgb(20,146,20), Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom, Margin = new Padding(3,3,3,0)};
                 flowLayoutPanelMain.Controls.Add(_labelRecentlyAdded);
             }
-            _labelRecentlyAdded.Text = @"Recently added: " + _currentHost; // string.Join(", ", _recentlyAddedHosts.Select(h => h.ToString()));
+            _labelRecentlyAdded.Text = string.Format(Resources.HostDialog_RecentlyAdded, _currentHost); // string.Join(", ", _recentlyAddedHosts.Select(h => h.ToString()));
             var rowCount = (int)Math.Ceiling((double)_labelRecentlyAdded.PreferredWidth / _labelRecentlyAdded.Size.Width);
             _labelRecentlyAdded.Size = new Size(_labelRecentlyAdded.Size.Width, rowCount * _labelRecentlyAdded.PreferredHeight);
 
-            buttonClose.Text = @"Close";
+            buttonClose.Text = Resources.ButtonText_Close;
             reset();
         }
 
@@ -473,6 +486,8 @@ namespace SSHTunnelManagerGUI.Forms
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            if (!buttonAddTunnelReminder())
+                return;
             formToHost();
             DialogResult = DialogResult.OK;
             Close();

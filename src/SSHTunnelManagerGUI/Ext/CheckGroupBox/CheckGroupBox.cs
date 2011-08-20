@@ -40,7 +40,7 @@ namespace SSHTunnelManagerGUI.Ext.CheckGroupBox
     /// <summary>
     /// CheckGroupBox is a GroupBox with an embeded CheckBox.
     /// </summary>
-    [ToolboxBitmap(typeof(CheckGroupBox), "CheckGroupBox.bmp")]
+    [ToolboxBitmap(typeof(CheckGroupBox), @"CheckGroupBox.bmp")]
     public partial class CheckGroupBox : GroupBox
     {
         // Constants
@@ -81,11 +81,11 @@ namespace SSHTunnelManagerGUI.Ext.CheckGroupBox
                     return m_checkBox.Text;
                 }
                 // Run-time
-                return " "; // Set the text of the GroupBox to a space, so the gap appears before the CheckBox.
+                return @" "; // Set the text of the GroupBox to a space, so the gap appears before the CheckBox.
             }
             set
             {
-                base.Text = " "; // Set the text of the GroupBox to a space, so the gap appears before the CheckBox.
+                base.Text = @" "; // Set the text of the GroupBox to a space, so the gap appears before the CheckBox.
                 m_checkBox.Text = value;
             }
         }

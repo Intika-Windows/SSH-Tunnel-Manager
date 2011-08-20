@@ -44,18 +44,18 @@ namespace SSHTunnelManagerGUI.Forms
             _bindingSource = new BindingSource(_hostsManager, "Hosts");
             
             hostsGridView.AutoGenerateColumns = false;
-            hgwStatusIconColumn.DataPropertyName = "StatusIcon";
-            hgwNameColumn.DataPropertyName = "Name";
-            hgwUsernameColumn.DataPropertyName = "Username";
-            hgwHostnameColumn.DataPropertyName = "Hostname";
-            hgwStatusColumn.DataPropertyName = "Status";
-            hgwDependsOnColumn.DataPropertyName = "DependsOn";
+            hgwStatusIconColumn.DataPropertyName = @"StatusIcon";
+            hgwNameColumn.DataPropertyName = @"Name";
+            hgwUsernameColumn.DataPropertyName = @"Username";
+            hgwHostnameColumn.DataPropertyName = @"Hostname";
+            hgwStatusColumn.DataPropertyName = @"Status";
+            hgwDependsOnColumn.DataPropertyName = @"DependsOn";
             hostsGridView.DataSource = _bindingSource;
             _bindingSource.CurrentItemChanged += delegate { updateCurrentHostDetails(); };
             updateCurrentHostDetails();
-            
-            treeViewFilter.ExpandAll();
-            treeViewFilter.SelectedNode = treeViewFilter.Nodes[0];
+
+            fillFiltersTree();
+
             ActiveControl = hostsGridView;
 
             var hostAppender = (DelegateAppender) Logger.GetAppender(Program.HostLogDelegateAppender);
@@ -65,6 +65,83 @@ namespace SSHTunnelManagerGUI.Forms
             var commonAppender = (DelegateAppender)Logger.GetAppender(Program.CommonErrorsDelegateAppender);
             commonAppender.SyncObject = this;
             commonAppender.OnAppend += onCommonErrorAppended;
+
+            theTimer.Tick += onRestartHostsWithWarningsTick;
+            if (_hostsManager.Config.RestartHostsWithWarnings)
+            {
+                theTimer.Interval = _hostsManager.Config.RestartHostsWithWarningsInterval * 1000;
+                theTimer.Start();
+            }
+        }
+
+        private void onRestartHostsWithWarningsTick(object sender, EventArgs e)
+        {
+            try
+            {
+                theTimer.Stop();
+                Thread t = new Thread(restartHostsWithWarnings);
+                t.Start();
+            }
+            catch (ThreadStateException ex)
+            {
+                Logger.Log.ErrorFormat("Failed to start Restart-Hosts-With-Warnings thread: {0}", ex.Message);
+            }
+        }
+
+        private void restartHostsWithWarnings()
+        {
+            try
+            {
+                var hosts = _hostsManager.HostsList.Where(h => h.Link.Status == ELinkStatus.StartedWithWarnings);
+                foreach (var host in hosts)
+                {
+                    if (host.Link.Status != ELinkStatus.Stopped)
+                    {
+                        // Status could be changed from list creating
+                        host.Link.Stop();
+                        if (!host.Link.WaitForStop())
+                        {
+                            Logger.Log.WarnFormat(
+                                "STOP action for host '{0}' timed out. Skipping host in this Restart-Hosts-With-Warnings tick.",
+                                host.Info.Name);
+                            continue;
+                        }
+                    }
+                    host.Link.AsyncStart();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.ErrorFormat("Error while Restart-Hosts-With-Warnings tick: {0}", ex.Message);
+            }
+            finally
+            {
+                Invoke((Action) (() => { theTimer.Enabled = true; }));
+            }
+        }
+
+        private void fillFiltersTree()
+        {
+            foreach (var node in treeViewFilter.Nodes[0].Nodes.Cast<TreeNode>().ToArray())
+            {
+                node.Remove();
+            }
+            imageListStates.Images.Clear();
+            imageListStates.Images.Add(@"Root", Resources.Servers);
+            treeViewFilter.Nodes[0].ImageKey = @"Root";
+            treeViewFilter.Nodes[0].SelectedImageKey = @"Root";
+            var statuses = Enum.GetValues(typeof (ELinkStatus)).Cast<ELinkStatus>().
+                GroupBy(HostViewModel.GetStatusText).ToArray();
+            foreach (var status in statuses)
+            {
+                imageListStates.Images.Add(status.Key, HostViewModel.GetStatusIcon(status.First()));
+            }
+            var nodes = statuses.Select(g => new TreeNode(g.Key, imageListStates.Images.IndexOfKey(g.Key),
+                                                          imageListStates.Images.IndexOfKey(g.Key)) 
+                                                 { Tag = g.ToArray() }).ToArray();
+            treeViewFilter.Nodes[0].Nodes.AddRange(nodes);
+            treeViewFilter.ExpandAll();
+            treeViewFilter.SelectedNode = treeViewFilter.Nodes[0];
         }
 
         public bool ChangeSourceRequested { get; private set; }
@@ -74,7 +151,7 @@ namespace SSHTunnelManagerGUI.Forms
             get { return _modified; }
             set
             {
-                var star = value ? "*" : "";
+                var star = value ? @"*" : "";
                 Text = string.Concat(_titleFilename, star, @" - ", Util.AssemblyTitle);
                 toolStripButtonSave.Enabled = value;
                 saveToolStripMenuItem.Enabled = value;
@@ -122,7 +199,7 @@ namespace SSHTunnelManagerGUI.Forms
             labelHost.Text = h.Hostname;
             labelStatus.Text = h.Status;
             labelStatus.ForeColor = h.StatusColor;
-            labelDependsOn.Text = string.IsNullOrWhiteSpace(h.DependsOn) ? "-" : h.DependsOn;
+            labelDependsOn.Text = string.IsNullOrWhiteSpace(h.DependsOn) ? @"-" : h.DependsOn;
             tunnelsGridView.Rows.Clear();
             foreach (var tunnel in h.Model.Info.Tunnels)
             {
@@ -161,64 +238,6 @@ namespace SSHTunnelManagerGUI.Forms
             startFileZillaSFTPToolStripMenuItem.Enabled = true;
         }
 
-        /*private void fillHostsTable()
-        {
-            _dataTableHosts = new DataTable();
-            _dataTableHosts.Columns.Add(HgwStatusIconColumnName, typeof(Image));
-            _dataTableHosts.Columns.Add(HgwNameColumnName);
-            _dataTableHosts.Columns.Add(HgwUsernameColumnName);
-            _dataTableHosts.Columns.Add(HgwHostnameColumnName);
-            _dataTableHosts.Columns.Add(HgwStatusColumnName);
-            _dataTableHosts.Columns.Add(HgwDependsOnColumnName);
-            hostsGridView.DataSource = _dataTableHosts;
-
-            foreach (var host in _hostsManager.Hosts)
-            {
-                var row = _dataTableHosts.NewRow();
-                row[HgwStatusIconColumnName] = statusIcon(host.Status);
-                row[HgwNameColumnName] = host.Info.Name;
-                row[HgwUsernameColumnName] = host.Info.Username;
-                row[HgwHostnameColumnName] = host.Info.HostAndPort;
-                row[HgwStatusColumnName] = host.Status;
-                row[HgwDependsOnColumnName] = host.Info.DependsOnStr;
-                _dataTableHosts.Rows.Add(row);
-            }
-        }
-
-        private void hostsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (_dataTableHosts == null)
-                return;
-
-            switch (e.Action)
-            {
-            case NotifyCollectionChangedAction.Add:
-                var newHosts = e.NewItems.Cast<Host>();
-                foreach (var host in newHosts)
-                {
-                    var row = _dataTableHosts.NewRow();
-                    row[HgwStatusIconColumnName] = statusIcon(host.Status);
-                    row[HgwNameColumnName] = host.Info.Name;
-                    row[HgwUsernameColumnName] = host.Info.Username;
-                    row[HgwHostnameColumnName] = host.Info.HostAndPort;
-                    row[HgwStatusColumnName] = host.Status;
-                    row[HgwDependsOnColumnName] = host.Info.DependsOnStr;
-                    _dataTableHosts.Rows.Add(row);
-                }
-                break;
-            case NotifyCollectionChangedAction.Remove:
-                break;
-            case NotifyCollectionChangedAction.Replace:
-                break;
-            case NotifyCollectionChangedAction.Move:
-                break;
-            case NotifyCollectionChangedAction.Reset:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-            }
-        }*/
-
         private HostInfo selectedHostInfo()
         {
             var hostvm = selectedHostViewModel();
@@ -255,7 +274,7 @@ namespace SSHTunnelManagerGUI.Forms
             if (!Modified)
                 return true;
 
-            DialogResult res = MessageBox.Show(this, @"Storage was modified, save before closing?",
+            DialogResult res = MessageBox.Show(this, Resources.MessageBoxText_AskForSaveStorage,
                                                Util.AssemblyTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             switch (res)
             {
@@ -283,7 +302,7 @@ namespace SSHTunnelManagerGUI.Forms
                     {
                         MessageBox.Show(
                             string.Format(
-                                "STOP action for host '{0}' timed out. Terminating actions chain.",
+                                Resources.PuttyLink_WaitForStopTimedOut,
                                 h1.Info.Name),
                             Util.AssemblyTitle, MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
@@ -297,7 +316,7 @@ namespace SSHTunnelManagerGUI.Forms
                     {
                         MessageBox.Show(
                             string.Format(
-                                "START action for host '{0}' timed out. Terminating actions chain.",
+                                Resources.PuttyLink_WaitForStartTimedOut,
                                 h1.Info.Name),
                             Util.AssemblyTitle, MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
@@ -310,24 +329,14 @@ namespace SSHTunnelManagerGUI.Forms
 
         private void updateFilter(TreeNode node)
         {
-            switch (int.Parse(node.Tag.ToString()))
+            var statuses = node.Tag as ELinkStatus[];
+            if (statuses == null)
             {
-            case -1:
                 _hostsManager.Hosts.RemoveFilter();
-                break;
-            case 1:
-                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Stopped);
-                break;
-            case 2:
-                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Starting);
-                break;
-            case 3:
-                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Waiting);
-                break;
-            case 4:
-                _hostsManager.Hosts.ApplyFilter(m => m.Model.Link.Status == ELinkStatus.Started || m.Model.Link.Status == ELinkStatus.StartedWithWarnings);
-                break;
+                return;
             }
+
+            _hostsManager.Hosts.ApplyFilter(m => statuses.Contains(m.Model.Link.Status));
         }
 
         #region Commands
@@ -380,7 +389,7 @@ namespace SSHTunnelManagerGUI.Forms
 
             if (depHosts.Count > 0)
             {
-                var res1 = MessageBox.Show(this, string.Format(@"Following hosts depends on host '{0}':{1}{1}{2}{1}{1}Are you sure you want to remove the selected host?", 
+                var res1 = MessageBox.Show(this, string.Format(Resources.MessageBoxText_RemoveHostAsk2, 
                     host.Name, Environment.NewLine, string.Join(Environment.NewLine, depHostsDeep.Select(h => h.Name))), 
                     Util.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res1 == DialogResult.No)
@@ -403,7 +412,7 @@ namespace SSHTunnelManagerGUI.Forms
                 }
             } else
             {
-                var res2 = MessageBox.Show(this, string.Format(@"Are you sure you want to remove host '{0}'?", host.Name),
+                var res2 = MessageBox.Show(this, string.Format(Resources.MessageBoxText_RemoveHostAsk, host.Name),
                     Util.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res2 == DialogResult.No)
                     return;
@@ -440,16 +449,19 @@ namespace SSHTunnelManagerGUI.Forms
 
             if (depList.All(h => h.Link.Status == ELinkStatus.Started || h.Link.Status == ELinkStatus.StartedWithWarnings))
             {
-                // All hosts is started or started with warnings
+                // All hosts are started or started with warnings
                 viewmodel.Model.Link.AsyncStart();
             }
             else
             {
                 var result = MessageBox.Show(this, string.Format(
-                    "Some hosts what host '{0}' depends on are down. Start recursively?",
+                    Resources.MessageBoxText_StartHostRecursively,
                     host.Name), Util.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.No)
+                {
+                    viewmodel.Model.Link.AsyncStart();
                     return;
+                }
                 Thread t = new Thread(() => startHostAndParentHosts(viewmodel, depList));
                 t.Start();
             }
@@ -457,7 +469,21 @@ namespace SSHTunnelManagerGUI.Forms
 
         private void stopHost()
         {
-            ((ObjectView<HostViewModel>) _bindingSource.Current).Object.Model.Link.Stop();
+            if (_bindingSource.Current == null)
+                return;
+
+            // simple one
+            //((ObjectView<HostViewModel>) _bindingSource.Current).Object.Model.Link.Stop();
+
+            // stop all childrens
+            var hvm = ((ObjectView<HostViewModel>) _bindingSource.Current).Object;
+            var hosts = _hostsManager.DependentHosts(hvm, true).Select(vm => vm.Model);
+            foreach (var host in hosts.Reverse().Where(h => h.Link.Status != ELinkStatus.Stopped))
+            {
+                host.Link.Stop();
+            }
+            if (hvm.Model.Link.Status != ELinkStatus.Stopped)
+                hvm.Model.Link.Stop();
         }
 
         private void startPutty()
@@ -510,6 +536,7 @@ namespace SSHTunnelManagerGUI.Forms
             if (!askForSave())
                 return;
 
+            theTimer.Enabled = false;
             var activeHosts = _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Where(
                 o => o.Object.Model.Link.Status != ELinkStatus.Stopped).Select(o => o.Object.Model).ToList();
             foreach (var host in activeHosts)
@@ -548,7 +575,7 @@ namespace SSHTunnelManagerGUI.Forms
         private void onHostLogAppended(object sender, LogAppendedEventArgs e)
         {
             object o;
-            if (!e.Properties.TryGetValue("Host", out o))
+            if (!e.Properties.TryGetValue(@"Host", out o))
             {
                 return;
             }
@@ -572,7 +599,7 @@ namespace SSHTunnelManagerGUI.Forms
 
         private void onCommonErrorAppended(object sender, LogAppendedEventArgs e)
         {
-            if (e.Properties.ContainsKey("Host"))
+            if (e.Properties.ContainsKey(@"Host"))
             {
                 return;
             }
@@ -596,7 +623,7 @@ namespace SSHTunnelManagerGUI.Forms
                                    if (hvm.Model.Link.Status == ELinkStatus.Stopped && !string.IsNullOrEmpty(hvm.Model.Link.LastStartError))
                                    {
                                        // host stopped with error
-                                       TrayIcon.ShowBalloonTip(2000, Util.AssemblyTitle, string.Format("[{0}] {1}", hvm.Name, hvm.Model.Link.LastStartError), ToolTipIcon.Error);
+                                       TrayIcon.ShowBalloonTip(2000, Util.AssemblyTitle, string.Format(@"[{0}] {1}", hvm.Name, hvm.Model.Link.LastStartError), ToolTipIcon.Error);
                                    }
                                });
         }
@@ -742,6 +769,10 @@ namespace SSHTunnelManagerGUI.Forms
             _hostsManager.Config.RestartDelay = Settings.Default.Config_RestartDelay;
             _hostsManager.Config.MaxAttemptsCount = Settings.Default.Config_MaxAttemptsCount;
             _hostsManager.Config.DelayInsteadStop = Settings.Default.Config_AfterMaxAttemptsMakeDelay;
+            _hostsManager.Config.RestartHostsWithWarnings = Settings.Default.Config_RestartHostsWithWarnings;
+            _hostsManager.Config.RestartHostsWithWarningsInterval = Settings.Default.Config_RestartHostsWithWarningsInterval;
+            theTimer.Interval = _hostsManager.Config.RestartHostsWithWarningsInterval * 1000;
+            theTimer.Enabled = _hostsManager.Config.RestartHostsWithWarnings;
             Logger.SetThresholdForAppender(Program.HostLogDelegateAppender, Settings.Default.Config_TraceDebug ? Level.Debug : Level.Info);
         }
 
@@ -755,7 +786,8 @@ namespace SSHTunnelManagerGUI.Forms
             // First option selected, but careful with racing problem.
             // In both events racing problem solving via handling pending events in DoEvents().
             // It processing already running methods (which was started before this code) before start disposing.
-            
+
+            theTimer.Enabled = false;
             ((DelegateAppender)Logger.GetAppender(Program.HostLogDelegateAppender)).OnAppend -= onHostLogAppended;
             ((DelegateAppender)Logger.GetAppender(Program.CommonErrorsDelegateAppender)).OnAppend -= onCommonErrorAppended;
             foreach (var host in _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(o => o.Object))
@@ -800,16 +832,16 @@ namespace SSHTunnelManagerGUI.Forms
 
             var strip = new ContextMenuStrip();
             if (host.Model.Link.Status == ELinkStatus.Stopped)
-                strip.Items.Add("Start", Resources.control, delegate { startHost(); });
+                strip.Items.Add(Resources.ContextMenuText_Start, Resources.control, delegate { startHost(); });
             else
-                strip.Items.Add("Stop", Resources.control_stop_square, delegate { stopHost(); });
-            strip.Items.Add("-");
-            strip.Items.Add("Start PuTTY", Resources.icon_16x16_putty, delegate { startPutty(); });
-            strip.Items.Add("Start psftp", new Icon(Resources.psftp, 16, 16).ToBitmap(), delegate { startPsftp(); });
-            strip.Items.Add("Start FileZilla SFTP", Resources.filezilla, delegate { startFileZilla(); });
-            strip.Items.Add("-");
-            strip.Items.Add("&Edit...", Resources.server__pencil, toolStripMenuItemEditHost_Click);
-            strip.Items.Add("&Remove", Resources.server__minus, toolStripMenuItemRemoveHost_Click);
+                strip.Items.Add(Resources.ContextMenuText_Stop, Resources.control_stop_square, delegate { stopHost(); });
+            strip.Items.Add(@"-");
+            strip.Items.Add(Resources.ContextMenuText_StartPuTTY, Resources.icon_16x16_putty, delegate { startPutty(); });
+            strip.Items.Add(Resources.ContextMenuText_StartPsftp, new Icon(Resources.psftp, 16, 16).ToBitmap(), delegate { startPsftp(); });
+            strip.Items.Add(Resources.ContextMenuText_StartFileZilla, Resources.filezilla, delegate { startFileZilla(); });
+            strip.Items.Add(@"-");
+            strip.Items.Add(Resources.ContextMenuText_Edit, Resources.server__pencil, toolStripMenuItemEditHost_Click);
+            strip.Items.Add(Resources.ContextMenuText_Remove, Resources.server__minus, toolStripMenuItemRemoveHost_Click);
             e.ContextMenuStrip = strip;
         }
 
@@ -852,16 +884,16 @@ namespace SSHTunnelManagerGUI.Forms
             var text = item.Text;
 
             Color forecolor;
-            if (text.StartsWith("ERROR", StringComparison.CurrentCultureIgnoreCase) ||
-                text.StartsWith("FATAL", StringComparison.CurrentCultureIgnoreCase))
+            if (text.StartsWith(@"ERROR", StringComparison.CurrentCultureIgnoreCase) ||
+                text.StartsWith(@"FATAL", StringComparison.CurrentCultureIgnoreCase))
             {
                 forecolor = _darkRedColor;
             }
-            else if (text.StartsWith("WARN", StringComparison.CurrentCultureIgnoreCase))
+            else if (text.StartsWith(@"WARN", StringComparison.CurrentCultureIgnoreCase))
             {
                 forecolor = Color.FromArgb(181, 166, 16);
             }
-            else if (text.StartsWith("DEBUG"))
+            else if (text.StartsWith(@"DEBUG"))
             {
                 forecolor = Color.Black;
             }

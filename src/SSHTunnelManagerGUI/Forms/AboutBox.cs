@@ -10,9 +10,9 @@ namespace SSHTunnelManagerGUI.Forms
         public AboutBox()
         {
             InitializeComponent();
-            Text = String.Format("About {0}", AssemblyTitle);
+            Text = String.Format(Resources.AboutBox_AboutText, AssemblyTitle);
             labelProductName.Text = AssemblyProduct;
-            labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
+            labelVersion.Text = String.Format(Resources.AboutBox_VersionText, AssemblyVersion);
             textBoxDescription.Text = AssemblyDescription;
 
             linkLabelProjectPage.Links[0].LinkData = Resources.ProjectPage;

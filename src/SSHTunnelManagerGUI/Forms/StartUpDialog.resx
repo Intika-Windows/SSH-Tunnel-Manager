@@ -120,48 +120,755 @@
   <metadata name="label3.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 13</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Encrypted Storage File:</value>
+  </data>
+  <data name="label3.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>tableLayoutPanelCreate</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="label4.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="label4.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tableLayoutPanelCreate</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="label5.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 58</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 13</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Confirm Password:</value>
+  </data>
+  <data name="label5.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tableLayoutPanelCreate</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <metadata name="label6.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="label6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 13</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Encrypted Storage File:</value>
+  </data>
+  <data name="label6.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>tableLayoutPanelOpen</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="label7.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="theErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>448, 17</value>
-  </metadata>
+  <data name="label7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="label7.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>tableLayoutPanelOpen</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonNewFileBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
+  </data>
+  <data name="buttonNewFileBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>301, 3</value>
+  </data>
+  <data name="buttonNewFileBrowse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 20</value>
+  </data>
+  <data name="buttonNewFileBrowse.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonNewFileBrowse.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;buttonNewFileBrowse.Name" xml:space="preserve">
+    <value>buttonNewFileBrowse</value>
+  </data>
+  <data name="&gt;&gt;buttonNewFileBrowse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonNewFileBrowse.Parent" xml:space="preserve">
+    <value>tableLayoutPanelCreate</value>
+  </data>
+  <data name="&gt;&gt;buttonNewFileBrowse.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBoxNewPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="tableLayoutPanelCreate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelCreate.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tableLayoutPanelCreate.ColumnCount" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkBoxSavePassNew.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkBoxSavePassNew.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxSavePassNew.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 84</value>
+  </data>
+  <data name="checkBoxSavePassNew.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 3, 3</value>
+  </data>
+  <data name="checkBoxSavePassNew.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 17</value>
+  </data>
+  <data name="checkBoxSavePassNew.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="checkBoxSavePassNew.Text" xml:space="preserve">
+    <value>Save password</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSavePassNew.Name" xml:space="preserve">
+    <value>checkBoxSavePassNew</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSavePassNew.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSavePassNew.Parent" xml:space="preserve">
+    <value>tableLayoutPanelCreate</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSavePassNew.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="textBoxNewPasswordConfirm.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="textBoxNewPasswordConfirm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 55</value>
+  </data>
+  <data name="textBoxNewPasswordConfirm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 20</value>
+  </data>
+  <data name="textBoxNewPasswordConfirm.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewPasswordConfirm.Name" xml:space="preserve">
+    <value>textBoxNewPasswordConfirm</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewPasswordConfirm.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewPasswordConfirm.Parent" xml:space="preserve">
+    <value>tableLayoutPanelCreate</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewPasswordConfirm.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="textBoxNewFile.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
   <metadata name="theGoodProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>303, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="theGoodProvider.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonExit.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonExit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>266, 3</value>
+  </data>
+  <data name="buttonExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonExit.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonExit.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="&gt;&gt;buttonExit.Name" xml:space="preserve">
+    <value>buttonExit</value>
+  </data>
+  <data name="&gt;&gt;buttonExit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonExit.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;buttonExit.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>452, 411</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="groupBox3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="radioButtonCreateStorage.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonCreateStorage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 15</value>
+  </data>
+  <data name="radioButtonCreateStorage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 17</value>
+  </data>
+  <data name="radioButtonCreateStorage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonCreateStorage.Text" xml:space="preserve">
+    <value>Create new storage</value>
+  </data>
+  <data name="&gt;&gt;radioButtonCreateStorage.Name" xml:space="preserve">
+    <value>radioButtonCreateStorage</value>
+  </data>
+  <data name="&gt;&gt;radioButtonCreateStorage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonCreateStorage.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;radioButtonCreateStorage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioButtonOpenStorage.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonOpenStorage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 38</value>
+  </data>
+  <data name="radioButtonOpenStorage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 17</value>
+  </data>
+  <data name="radioButtonOpenStorage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonOpenStorage.Text" xml:space="preserve">
+    <value>Open an existing storage</value>
+  </data>
+  <data name="&gt;&gt;radioButtonOpenStorage.Name" xml:space="preserve">
+    <value>radioButtonOpenStorage</value>
+  </data>
+  <data name="&gt;&gt;radioButtonOpenStorage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonOpenStorage.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;radioButtonOpenStorage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 65</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Source:</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanelOpen.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanelOpen.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tableLayoutPanelOpen.ColumnCount" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="buttonExistingFileBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
+  </data>
+  <data name="buttonExistingFileBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>301, 3</value>
+  </data>
+  <data name="buttonExistingFileBrowse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 20</value>
+  </data>
+  <data name="buttonExistingFileBrowse.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonExistingFileBrowse.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;buttonExistingFileBrowse.Name" xml:space="preserve">
+    <value>buttonExistingFileBrowse</value>
+  </data>
+  <data name="&gt;&gt;buttonExistingFileBrowse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonExistingFileBrowse.Parent" xml:space="preserve">
+    <value>tableLayoutPanelOpen</value>
+  </data>
+  <data name="&gt;&gt;buttonExistingFileBrowse.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxSavePassOpen.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkBoxSavePassOpen.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxSavePassOpen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 58</value>
+  </data>
+  <data name="checkBoxSavePassOpen.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 3, 3</value>
+  </data>
+  <data name="checkBoxSavePassOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 17</value>
+  </data>
+  <data name="checkBoxSavePassOpen.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="checkBoxSavePassOpen.Text" xml:space="preserve">
+    <value>Save password</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSavePassOpen.Name" xml:space="preserve">
+    <value>checkBoxSavePassOpen</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSavePassOpen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSavePassOpen.Parent" xml:space="preserve">
+    <value>tableLayoutPanelOpen</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSavePassOpen.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="textBoxOpenPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="textBoxOpenPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 29</value>
+  </data>
+  <data name="textBoxOpenPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 20</value>
+  </data>
+  <data name="textBoxOpenPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;textBoxOpenPassword.Name" xml:space="preserve">
+    <value>textBoxOpenPassword</value>
+  </data>
+  <data name="&gt;&gt;textBoxOpenPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxOpenPassword.Parent" xml:space="preserve">
+    <value>tableLayoutPanelOpen</value>
+  </data>
+  <data name="&gt;&gt;textBoxOpenPassword.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="textBoxExistingFile.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="textBoxExistingFile.IconPadding" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <metadata name="theErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>448, 17</value>
+  </metadata>
+  <data name="theErrorProvider.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAgAAAAwAAAAWAAAAGgAAABoAAAAaAAAAGgAAABoAAAAaAAAAGgAAABoAAAAXAAAADAAA
-        AAIAAAAAAAAAAAAAAAQAAAAXAAAAKwAHAEMBIgCAATwAqwJHAMQCRwDEATwAqwEiAIAABwBDAAAALQAA
-        ABgAAAAEAAAAAAAAAAAAAAAAAAAAAAIZAE0GVwG/EYwG4xy7DPUh0RH9IdER/Ry7DPURjAbjBlcBvwIZ
-        AE0AAAAAAAAAAAAAAAAAAAAAAAAAAAMmAE0KbQLNILwP9iPREv8ithH/ItER/yLREf8i0RH/ItER/x26
-        DvYKbQLNAyYATQAAAAAAAAAAAAAAAAEOABoKZwG/JrgV9iPIEv8ishH/5ubm/yKyEf8iyBH/IsgR/yLI
-        Ef8iyBH/HrQO9gpnAb8BDgAaAAAAAAAAAAAGOgBsHZYR4ybAFf8irRH/3t7e/+Li4v/m5ub/IrMR/yK+
-        Ef8ivhH/Ir4R/yK+Ef8UjgfjBjoAbAAAAAAAAAAACVwApzm2KPUjrhL/1dXV/9ra2v/e3t7/4uLi/8DY
-        vf8irhH/IrQR/yK0Ef8itBH/IKcP9QlcAKcAAAAAAAAAAAxvAMROxT/9n9yW/9LS0v/V1dX/UbZE/93e
-        3f/i4uL/ps6h/ySoE/8iqhH/IqoR/yitF/0MbwDEAAAAAAAAAAAMcwDEUchA/US7M///////Lqsd/yOi
-        Ev9RsET/3t7e/+Li4v+Hwn7/IqER/yKhEf8sqRv9DHMAxAAAAAAAAAAACmUAp07CPfVHvjb/R742/0e+
-        Nv9BuTD/N68m/6rNpf/e3t7/4uLi/2i2Xf8nnxb/Mqgi9QplAKcAAAAAAAAAAAhDAGw1qSbjVMtD/07F
-        Pf9OxT3/TsU9/07FPf9OxT3/0/HO////////////UslB/y+lIeMIQwBsAAAAAAAAAAACEAAaE3wEv1nO
-        R/ZYz0f/V85G/1fORv9Xzkb/V85G/1fORv//////WM9H/1TLQ/YTfAS/AhAAGgAAAAAAAAAAAAAAAAYy
-        AE0bjQrNXNFK9mPaUv9f1k7/X9ZO/1/WTv9f1k7/YtlR/1rQR/YajArNBjIATQAAAAAAAAAAAAAAAAAA
-        AAAAAAAABjMATROCBr87sSrjWtJL9WngWP1p4Ff9WtFL9TqwKeMTggS/BjMATQAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAACEQAaCUgAbA5vAKYPgwDED4MAxA5vAKYJSABsAhEAGgAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAgAEAAIABAADgBwAAwAMAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAwAMAAOAH
-        AADwDwAA//8AAA==
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABf/wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHL/ERHY/wAAcv8AAAAAAAAAAAAAAAAAAAAAAABy/xER
+        2P8AAHL/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIL/ERHQ/xER0P8REdD/AACC/wAAAAAAAAAAAACC/xER
+        0P8REdD/ERHQ/wAAgv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAh/8REcT/ERHE/xERxP8AAIf/AACH/xER
+        xP8REcT/ERHE/wAAh/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACN/xERuP8REbj/ERG4/xER
+        uP8REbj/ERG4/wAAjf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJL/FRWv/xER
+        rP8REaz/ERGs/wAAkv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACX/yUl
+        tP8REaL/ERGi/xQUpf8AAJf/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACb/1NT
+        2/8uLrf/PT3G/zExuv8VFZ//Hh6o/wAAm/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACg/2dn
+        7/82Nr7/Xl7m/wAAoP8AAKD/T0/X/zY2vv9FRc3/AACg/wAAAAAAAAAAAAAAAAAAAAAAAAAAAACj/3Z2
+        /v9MTNT/cnL6/wAAo/8AAAAAAAAAAAAAo/9iYur/TEzU/1xc5P8AAKP/AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAKf/d3f//wAAp/8AAAAAAAAAAAAAAAAAAAAAAACn/3Bw+P8AAKf/AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAqv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKr/AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA//8AAP//AAD37wAA48cAAMGDAADgBwAA8A8AAPgfAAD4HwAA8A8AAOAHAADBgwAA48cAAPfv
+        AAD//wAA//8AAA==
 </value>
+  </data>
+  <data name="textBoxExistingFile.IconPadding1" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="textBoxExistingFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 3</value>
+  </data>
+  <data name="textBoxExistingFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 20</value>
+  </data>
+  <data name="textBoxExistingFile.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBoxExistingFile.Name" xml:space="preserve">
+    <value>textBoxExistingFile</value>
+  </data>
+  <data name="&gt;&gt;textBoxExistingFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxExistingFile.Parent" xml:space="preserve">
+    <value>tableLayoutPanelOpen</value>
+  </data>
+  <data name="&gt;&gt;textBoxExistingFile.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tableLayoutPanelOpen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 184</value>
+  </data>
+  <data name="tableLayoutPanelOpen.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanelOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 78</value>
+  </data>
+  <data name="tableLayoutPanelOpen.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelOpen.Name" xml:space="preserve">
+    <value>tableLayoutPanelOpen</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelOpen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelOpen.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelOpen.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanelOpen.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label6" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label7" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonExistingFileBrowse" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="checkBoxSavePassOpen" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="textBoxOpenPassword" Row="1" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="textBoxExistingFile" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0,Absolute,12" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="theLineSeparator.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="theLineSeparator.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 268</value>
+  </data>
+  <data name="theLineSeparator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 2</value>
+  </data>
+  <data name="theLineSeparator.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;theLineSeparator.Name" xml:space="preserve">
+    <value>theLineSeparator</value>
+  </data>
+  <data name="&gt;&gt;theLineSeparator.Type" xml:space="preserve">
+    <value>SSHTunnelManagerGUI.Controls.LineSeparator, SSHTunnelManagerGUI, Version=0.9.0.34, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;theLineSeparator.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;theLineSeparator.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelError.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelError.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 273</value>
+  </data>
+  <data name="labelError.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 13</value>
+  </data>
+  <data name="labelError.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="labelError.Text" xml:space="preserve">
+    <value>Error Text</value>
+  </data>
+  <data name="&gt;&gt;labelError.Name" xml:space="preserve">
+    <value>labelError</value>
+  </data>
+  <data name="&gt;&gt;labelError.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelError.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;labelError.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="flowLayoutPanel2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonCreate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonCreate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 3</value>
+  </data>
+  <data name="buttonCreate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonCreate.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonCreate.Text" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="&gt;&gt;buttonCreate.Name" xml:space="preserve">
+    <value>buttonCreate</value>
+  </data>
+  <data name="&gt;&gt;buttonCreate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCreate.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;buttonCreate.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonOpen.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonOpen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 3</value>
+  </data>
+  <data name="buttonOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonOpen.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonOpen.Text" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="&gt;&gt;buttonOpen.Name" xml:space="preserve">
+    <value>buttonOpen</value>
+  </data>
+  <data name="&gt;&gt;buttonOpen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOpen.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;buttonOpen.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel2.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>RightToLeft</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 289</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 29</value>
+  </data>
+  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="flowLayoutPanel1.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>350, 321</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -187,34 +894,151 @@
         AADAAwAAwAMAAA==
 </value>
   </data>
-  <data name="theErrorProvider.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Storage Selection - SSH Tunnel Manager</value>
+  </data>
+  <data name="&gt;&gt;theOpenFileDialog.Name" xml:space="preserve">
+    <value>theOpenFileDialog</value>
+  </data>
+  <data name="&gt;&gt;theOpenFileDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;theSaveFileDialog.Name" xml:space="preserve">
+    <value>theSaveFileDialog</value>
+  </data>
+  <data name="&gt;&gt;theSaveFileDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;theGoodProvider.Name" xml:space="preserve">
+    <value>theGoodProvider</value>
+  </data>
+  <data name="&gt;&gt;theGoodProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;theErrorProvider.Name" xml:space="preserve">
+    <value>theErrorProvider</value>
+  </data>
+  <data name="&gt;&gt;theErrorProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>StartUpDialog</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="theGoodProvider.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
+        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
-        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
-        AAD//wAA//8AAA==
+        AAAAAAAAgAEAAIABAADgBwAAwAMAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAwAMAAOAH
+        AADwDwAA//8AAA==
 </value>
+  </data>
+  <data name="textBoxNewFile.IconPadding" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="textBoxNewFile.IconPadding1" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="textBoxNewFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 3</value>
+  </data>
+  <data name="textBoxNewFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 20</value>
+  </data>
+  <data name="textBoxNewFile.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewFile.Name" xml:space="preserve">
+    <value>textBoxNewFile</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewFile.Parent" xml:space="preserve">
+    <value>tableLayoutPanelCreate</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewFile.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tableLayoutPanelCreate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 74</value>
+  </data>
+  <data name="tableLayoutPanelCreate.RowCount" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tableLayoutPanelCreate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 104</value>
+  </data>
+  <data name="tableLayoutPanelCreate.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelCreate.Name" xml:space="preserve">
+    <value>tableLayoutPanelCreate</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelCreate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelCreate.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelCreate.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanelCreate.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label3" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonNewFileBrowse" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="checkBoxSavePassNew" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label5" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="textBoxNewPasswordConfirm" Row="2" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="textBoxNewPassword" Row="1" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="textBoxNewFile" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0,Absolute,12" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="textBoxNewPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 29</value>
+  </data>
+  <data name="textBoxNewPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 20</value>
+  </data>
+  <data name="textBoxNewPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewPassword.Name" xml:space="preserve">
+    <value>textBoxNewPassword</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewPassword.Parent" xml:space="preserve">
+    <value>tableLayoutPanelCreate</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewPassword.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <metadata name="theOpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="theOpenFileDialog.Filter" xml:space="preserve">
+    <value>Storage files|*.xstg|All files|*.*</value>
+  </data>
   <metadata name="theSaveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>157, 17</value>
   </metadata>
+  <data name="theSaveFileDialog.Filter" xml:space="preserve">
+    <value>Storage files|*.xstg|All files|*.*</value>
+  </data>
 </root>

@@ -27,6 +27,8 @@ namespace SSHTunnelManagerGUI.Forms
             numericUpDownMaxAttemptsCount.Value = Settings.Default.Config_MaxAttemptsCount;
             radioButtonMakeDelay.Checked = Settings.Default.Config_AfterMaxAttemptsMakeDelay;
             checkBoxTraceDebug.Checked = Settings.Default.Config_TraceDebug;
+            checkGroupBoxRestartHostsWithWarns.Checked = Settings.Default.Config_RestartHostsWithWarnings;
+            numericUpDownRestartHWWInterval.Value = Settings.Default.Config_RestartHostsWithWarningsInterval;
             if (PuttyProfile != null)
             {
                 checkBoxLocalPortAcceptAll.Checked = PuttyProfile.LocalPortAcceptAll;
@@ -154,6 +156,8 @@ namespace SSHTunnelManagerGUI.Forms
             Settings.Default.Config_MaxAttemptsCount = (int) numericUpDownMaxAttemptsCount.Value;
             Settings.Default.Config_AfterMaxAttemptsMakeDelay = radioButtonMakeDelay.Checked;
             Settings.Default.Config_TraceDebug = checkBoxTraceDebug.Checked;
+            Settings.Default.Config_RestartHostsWithWarnings = checkGroupBoxRestartHostsWithWarns.Checked;
+            Settings.Default.Config_RestartHostsWithWarningsInterval = (int) numericUpDownRestartHWWInterval.Value;
             Settings.Default.Save();
             if (PuttyProfile != null)
             {

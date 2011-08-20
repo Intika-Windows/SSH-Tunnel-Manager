@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using SSHTunnelManagerGUI.Properties;
 
 namespace SSHTunnelManagerGUI.Validators
 {
@@ -11,7 +12,7 @@ namespace SSHTunnelManagerGUI.Validators
         private const string ValidIpAddressRegex = @"(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])";
         private const string ValidHostnameRegex = @"(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])";
         private const string ValidPortRegex = @"0*(6553[0-6]|655[0-2][0-9]|65[0-4][0-9][0-9]|6[0-4][0-9][0-9][0-9]|[1-5][0-9]{4}|[1-9][0-9]{0,3})"; // нули и 1-65536
-        public const string GoodValidationText = "ok!";
+        private const string GoodValidationText = "";
 
         private static readonly string _validHostnameOnly = string.Format(@"^(?:{0}|{1})$", ValidHostnameRegex, ValidIpAddressRegex);
         private static readonly string _validPort = string.Format(@"^{0}$", ValidPortRegex);
@@ -51,7 +52,7 @@ namespace SSHTunnelManagerGUI.Validators
         public bool ValidateControl(Control control)
         {
             if (control == null) throw new ArgumentNullException("control");
-            if (!_controls.ContainsKey(control)) throw new FormatException("Control has not been set.");
+            if (!_controls.ContainsKey(control)) throw new FormatException(Resources.Validator_ValidateControl_ControlHasNotBeenSet);
             var tuple = _controls[control];
             var textSelector = tuple.Item1;
             var validate = tuple.Item2;
@@ -110,7 +111,7 @@ namespace SSHTunnelManagerGUI.Validators
             if (control == null) throw new ArgumentNullException("control");
             if (string.IsNullOrWhiteSpace(text))
             {
-                SetError(control, @"You need to specify this value.");
+                SetError(control, Resources.ValidatorError_NotNullOrWhitespaces);
                 return false;
             }
             SetGood(control);
@@ -123,7 +124,7 @@ namespace SSHTunnelManagerGUI.Validators
             if (text == null) throw new ArgumentNullException("text");
             if (Regex.IsMatch(text.Trim(), @"\s"))
             {
-                SetError(control, @"The value should be a word without spaces.");
+                SetError(control, Resources.ValidatorError_OnlyOneWord);
                 return false;
             }
             SetGood(control);
@@ -132,19 +133,19 @@ namespace SSHTunnelManagerGUI.Validators
 
         public bool ValidateHostname(Control control, string hostname)
         {
-            return validateWithRegex(control, hostname, _regexHostnameOnly, @"Invalid hostname");
+            return validateWithRegex(control, hostname, _regexHostnameOnly, Resources.ValidatorError_Hostname);
         }
 
         public bool ValidatePort(Control control, string port)
         {
             return validateWithRegex(control, port, _regexPort,
-                @"You need to specify port number as number in range 1-65536");
+                Resources.ValidatorError_PortNumber);
         }
 
         public bool ValidateHostnameAndPort(Control control, string hostname)
         {
             return validateWithRegex(control, hostname, _regexHostnameAndPort, 
-                @"You need to specify hostname in the form 'hostname:port'");
+                Resources.ValidatorError_HostnameAndPort);
         }
 
         private bool validateWithRegex(Control control, string text, Regex regex, string errorMsg)

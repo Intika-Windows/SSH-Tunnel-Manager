@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using SSHTunnelManager.Domain;
+using SSHTunnelManager.Properties;
 using log4net;
 using log4net.Appender;
 using log4net.Core;
@@ -39,11 +40,11 @@ namespace SSHTunnelManager.Util
         {
             Hierarchy hier = LogManager.GetRepository() as Hierarchy;
             if (hier == null)
-                throw new SSHTunnelManagerException(@"Error while retrieving log4net hierarchy.");
+                throw new SSHTunnelManagerException(Resources.Logger_Error_GetRepository);
 
             var appender = (DelegateAppender)hier.GetAppenders().SingleOrDefault(a => a.Name == appenderName);
             if (appender == null)
-                throw new SSHTunnelManagerException(string.Format("Error while retrieving log4net appender {0}. Appender not found.", appenderName));
+                throw new SSHTunnelManagerException(string.Format(Resources.Logger_Error_GetAppender, appenderName));
 
             return appender;
         }

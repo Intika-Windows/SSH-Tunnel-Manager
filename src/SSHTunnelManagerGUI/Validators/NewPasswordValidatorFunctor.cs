@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using SSHTunnelManagerGUI.Properties;
 
 namespace SSHTunnelManagerGUI.Validators
 {
@@ -32,15 +33,15 @@ namespace SSHTunnelManagerGUI.Validators
         public bool Validate(Control control, string text)
         {
             if (_control1 != control && _control2 != control)
-                throw new FormatException("This control is not registered new-password/confirmation control.");
+                throw new FormatException(Resources.NewPasswordValidatorFunctor_Validate_InvalidControl);
             if (!Validator.ValidateNotNullOrWhitespaces(control, text))
                 return false;
             if (!Validator.ValidateOnlyOneWord(control, text))
                 return false;
             if (_control1.Text != _control2.Text)
             {
-                Validator.SetError(_control1, @"Password and confirmation does not match.");
-                Validator.SetError(_control2, @"Password and confirmation does not match.");
+                Validator.SetError(_control1, Resources.ValidatorError_NewPassword);
+                Validator.SetError(_control2, Resources.ValidatorError_NewPassword);
                 return false;
             }
             Validator.SetGood(_control1);

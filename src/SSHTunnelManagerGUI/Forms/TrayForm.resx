@@ -117,98 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CannotAddItem" xml:space="preserve">
-    <value>Cannot add an external item to the view. Use AddNew() or add to source list instead.</value>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>284, 262</value>
   </data>
-  <data name="CannotAddNewItem" xml:space="preserve">
-    <value>Cannot add a new item due to no object being provided in the AddingNew event and a lack of default public constructor.</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>TrayForm</value>
   </data>
-  <data name="CannotAddWhenNewItemsListNull" xml:space="preserve">
-    <value>Cannot add a new item when NewItemsList is null.</value>
-  </data>
-  <data name="CannotClearView" xml:space="preserve">
-    <value>Cannot clear this view.</value>
-  </data>
-  <data name="CannotInsertItem" xml:space="preserve">
-    <value>Cannot insert an external item into this collection.</value>
-  </data>
-  <data name="CannotSetItem" xml:space="preserve">
-    <value>Cannot set an item in the view.</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="defaultPuttyProfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\defaultPuttyProfile.reg;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
-  </data>
-  <data name="IncludeDelegateCannotBeNull" xml:space="preserve">
-    <value>includeDelegate cannot be null.</value>
-  </data>
-  <data name="InvalidListItemType" xml:space="preserve">
-    <value>Item in list is not of type {0}.</value>
-  </data>
-  <data name="InvalidSourceList" xml:space="preserve">
-    <value>Source list does not implement IList.</value>
-  </data>
-  <data name="ItemTypeIncorrect" xml:space="preserve">
-    <value>Item was not of type {0}.</value>
-  </data>
-  <data name="NoFilter" xml:space="preserve">
-    <value>(no filter)</value>
-  </data>
-  <data name="ObjectCannotBeNull" xml:space="preserve">
-    <value>Object cannot be null.</value>
-  </data>
-  <data name="PredicateFilter" xml:space="preserve">
-    <value>(predicate filter)</value>
-  </data>
-  <data name="PropertyNotFound" xml:space="preserve">
-    <value>Property {0} does not exist in type {1}.</value>
-  </data>
-  <data name="SourceListAlreadyAdded" xml:space="preserve">
-    <value>Source list already added to the view.</value>
-  </data>
-  <data name="SourceListNotFound" xml:space="preserve">
-    <value>Source list is not in the view.</value>
-  </data>
-  <data name="SourceListsNull" xml:space="preserve">
-    <value>SourceLists cannot be null.</value>
-  </data>
-  <data name="SyncAccessNotSupported" xml:space="preserve">
-    <value>Synchronized access to the view is not supported.</value>
-  </data>
-  <data name="PuttyLink_Error_InvalidUsername">
-    <value xml:space="preserve">Invalid username</value>
-  </data>
-  <data name="PuttyLink_Status_Starting">
-    <value xml:space="preserve">Starting...</value>
-  </data>
-  <data name="PuttyLink_Status_Started">
-    <value xml:space="preserve">Started</value>
-  </data>
-  <data name="PuttyLink_Status_StartedWithWarnings">
-    <value xml:space="preserve">Started with warnings</value>
-  </data>
-  <data name="PuttyLink_Status_Stopped">
-    <value xml:space="preserve">Stopped</value>
-  </data>
-  <data name="PuttyLink_Status_Restarting">
-    <value xml:space="preserve">Restarting after connection loss...</value>
-  </data>
-  <data name="PuttyLink_Status_Waiting">
-    <value xml:space="preserve">Waiting {0} seconds before restart...</value>
-  </data>
-  <data name="PuttyLink_Error_LinkAlreadyStarted">
-    <value xml:space="preserve">Link already started.</value>
-  </data>
-  <data name="ConsoleTools_Error_InvalidTunnelType">
-    <value xml:space="preserve">Invalid tunnel type.</value>
-  </data>
-  <data name="HostsManager_Error_LoadPuttyProfileError">
-    <value xml:space="preserve">Program will be started without PuTTY profile features.</value>
-  </data>
-  <data name="Logger_Error_GetRepository">
-    <value xml:space="preserve">Error while retrieving log4net hierarchy.</value>
-  </data>
-  <data name="Logger_Error_GetAppender">
-    <value xml:space="preserve">Error while retrieving log4net appender {0}. Appender not found.</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

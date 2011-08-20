@@ -1,11 +1,13 @@
+using System;
+
 namespace SSHTunnelManager.Domain
 {
     public enum ELinkStatus
     {
         Stopped,
         Starting,
-        StartedWithWarnings,
+        Waiting,
         Started,
-        Waiting
+        StartedWithWarnings
     }
 }

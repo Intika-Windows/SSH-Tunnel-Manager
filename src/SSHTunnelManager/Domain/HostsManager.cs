@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using SSHTunnelManager.Business;
 using SSHTunnelManager.Ext.BLW;
+using SSHTunnelManager.Properties;
 using SSHTunnelManager.Util;
 
 namespace SSHTunnelManager.Domain
 {
     public class HostsManager<THostViewModel> where THostViewModel : IViewModel<Host>, new()
     {
-        public const string PuttyProfileName = "_stm_preset_";
+        private const string PuttyProfileName = "_stm_preset_";
 
         public string Filename { get; private set; }
         public string Password { get; set; }
@@ -39,7 +40,7 @@ namespace SSHTunnelManager.Domain
             }
             catch (SSHTunnelManagerException e)
             {
-                Logger.Log.Error(Helper.JoinExceptionMessages(e.Message, "Program will be started without PuTTY profile features."));
+                Logger.Log.Error(Helper.JoinExceptionMessages(e.Message, Resources.HostsManager_Error_LoadPuttyProfileError));
             }
 
             var hosts = storage.Data.Hosts.Select(delegate(HostInfo h)
@@ -66,6 +67,12 @@ namespace SSHTunnelManager.Domain
             get { return Hosts.Cast<ObjectView<THostViewModel>>().Select(m => m.Object.Model.Info).ToList(); }
         }
 
+        public List<Host> HostsList
+        {
+            get { return Hosts.Cast<ObjectView<THostViewModel>>().Select(m => m.Object.Model).ToList(); }
+        }
+
+        // Children of host in parameter. Ordered from parent to child (A <= B <= C, - C depends on B etc).
         public List<THostViewModel> DependentHosts(THostViewModel host, bool deep)
         {
             var result = new List<THostViewModel>();

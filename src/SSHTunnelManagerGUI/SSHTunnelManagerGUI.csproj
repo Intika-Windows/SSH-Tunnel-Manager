@@ -206,6 +206,9 @@
     <EmbeddedResource Include="Forms\ProgressDialog.resx">
       <DependentUpon>ProgressDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TrayForm.resx">
+      <DependentUpon>TrayForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -302,6 +305,12 @@
     <None Include="Resources\psftp.ico" />
     <None Include="Resources\psftp16.ico" />
     <None Include="Resources\filezilla.png" />
+    <None Include="Resources\156.png" />
+    <None Include="Resources\151.png" />
+    <None Include="Resources\152.png" />
+    <None Include="Resources\154.png" />
+    <None Include="Resources\servers.png" />
+    <None Include="Resources\gear.png" />
     <Content Include="terminal.ico" />
   </ItemGroup>
   <ItemGroup>

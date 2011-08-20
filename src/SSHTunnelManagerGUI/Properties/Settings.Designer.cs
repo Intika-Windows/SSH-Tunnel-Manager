@@ -115,5 +115,29 @@ namespace SSHTunnelManagerGUI.Properties {
                 this["Config_AfterMaxAttemptsMakeDelay"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Config_RestartHostsWithWarnings {
+            get {
+                return ((bool)(this["Config_RestartHostsWithWarnings"]));
+            }
+            set {
+                this["Config_RestartHostsWithWarnings"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("300")]
+        public int Config_RestartHostsWithWarningsInterval {
+            get {
+                return ((int)(this["Config_RestartHostsWithWarningsInterval"]));
+            }
+            set {
+                this["Config_RestartHostsWithWarningsInterval"] = value;
+            }
+        }
     }
 }

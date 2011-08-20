@@ -223,4 +223,145 @@
   <data name="filezilla" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\filezilla.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Gear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="greenCircle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\152.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="orangeCircle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\156.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="redCircle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\151.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Servers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\servers.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yellowCircle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\154.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Validator_ValidateControl_ControlHasNotBeenSet" xml:space="preserve">
+    <value>Control has not been set.</value>
+  </data>
+  <data name="AboutBox_AboutText" xml:space="preserve">
+    <value>About {0}</value>
+  </data>
+  <data name="AboutBox_VersionText" xml:space="preserve">
+    <value>Version {0}</value>
+  </data>
+  <data name="ValidatorError_NotNullOrWhitespaces" xml:space="preserve">
+    <value>You need to specify this value.</value>
+  </data>
+  <data name="ValidatorError_OnlyOneWord" xml:space="preserve">
+    <value>The value should be a word without spaces.</value>
+  </data>
+  <data name="ValidatorError_PortNumber" xml:space="preserve">
+    <value>You need to specify port number as number in range 1-65536</value>
+  </data>
+  <data name="ValidatorError_HostnameAndPort" xml:space="preserve">
+    <value>You need to specify hostname in the form 'hostname:port'</value>
+  </data>
+  <data name="NewPasswordValidatorFunctor_Validate_InvalidControl" xml:space="preserve">
+    <value>This control is not registered new-password/confirmation control.</value>
+  </data>
+  <data name="ValidatorError_Hostname" xml:space="preserve">
+    <value>Invalid hostname</value>
+  </data>
+  <data name="HostViewModel_StatusNotSupported" xml:space="preserve">
+    <value>Status {0} not supported.</value>
+  </data>
+  <data name="TrayForm_ContextMenu_HideShow" xml:space="preserve">
+    <value>Hide/show</value>
+  </data>
+  <data name="TrayForm_ContextMenu_Exit" xml:space="preserve">
+    <value>&amp;Exit</value>
+  </data>
+  <data name="TrayForm_OnMinimizedText" xml:space="preserve">
+    <value>{0} has minimized here.</value>
+  </data>
+  <data name="ValidatorError_NewPassword" xml:space="preserve">
+    <value>Password and confirmation does not match.</value>
+  </data>
+  <data name="ValidatorError_FileDoesNotExist" xml:space="preserve">
+    <value>File does not exist.</value>
+  </data>
+  <data name="PuttyLink_WaitForStopTimedOut" xml:space="preserve">
+    <value>STOP action for host '{0}' timed out. Terminating actions chain.</value>
+  </data>
+  <data name="PuttyLink_WaitForStartTimedOut" xml:space="preserve">
+    <value>START action for host '{0}' timed out. Terminating actions chain.</value>
+  </data>
+  <data name="MessageBoxText_AskForSaveStorage" xml:space="preserve">
+    <value>Storage was modified, save before closing?</value>
+  </data>
+  <data name="ContextMenuText_StartPuTTY" xml:space="preserve">
+    <value>Start PuTTY</value>
+  </data>
+  <data name="ContextMenuText_StartFileZilla" xml:space="preserve">
+    <value>Start FileZilla SFTP</value>
+  </data>
+  <data name="ContextMenuText_StartPsftp" xml:space="preserve">
+    <value>Start psftp</value>
+  </data>
+  <data name="ValidatorError_HostAliasBusy" xml:space="preserve">
+    <value>Alias is busy by another host.</value>
+  </data>
+  <data name="ValidatorError_TunnelAliasBusy" xml:space="preserve">
+    <value>Alias is busy by another tunnel.</value>
+  </data>
+  <data name="ValidatorError_TunnelHostnameNotEmpty" xml:space="preserve">
+    <value>Hostname should be empty for dynamic tunnels.</value>
+  </data>
+  <data name="ValidatorError_LocalPortBusyThisHost" xml:space="preserve">
+    <value>Local port is busy by another tunnel of this host.</value>
+  </data>
+  <data name="ValidatorError_TunnelDstHostnameNotEmpty" xml:space="preserve">
+    <value>Destination hostname should be empty for dynamic tunnels.</value>
+  </data>
+  <data name="HostDialog_AddNewHostTitle" xml:space="preserve">
+    <value>Add New Host - SSH Tunnel Manager</value>
+  </data>
+  <data name="HostDialog_EditHostTitle" xml:space="preserve">
+    <value>Edit Host - SSH Tunnel Manager</value>
+  </data>
+  <data name="HostDialog_HostPropertyIsNull" xml:space="preserve">
+    <value>Host property is null.</value>
+  </data>
+  <data name="HostDialog_AddTunnelButtonReminder" xml:space="preserve">
+    <value>You may forget to press 'Add' button, add new tunnel into list before continue?</value>
+  </data>
+  <data name="HostDialog_DependsOnNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="HostDialog_RecentlyAdded" xml:space="preserve">
+    <value>Recently added: {0}</value>
+  </data>
+  <data name="ButtonText_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="MessageBoxText_RemoveHostAsk2" xml:space="preserve">
+    <value>Following hosts depends on host '{0}':{1}{1}{2}{1}{1}Are you sure you want to remove the selected host?</value>
+  </data>
+  <data name="ContextMenuText_Edit" xml:space="preserve">
+    <value>&amp;Edit...</value>
+  </data>
+  <data name="ContextMenuText_Remove" xml:space="preserve">
+    <value>&amp;Remove</value>
+  </data>
+  <data name="ContextMenuText_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ContextMenuText_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="MessageBoxText_RemoveHostAsk" xml:space="preserve">
+    <value>Are you sure you want to remove host '{0}'?</value>
+  </data>
+  <data name="MessageBoxText_StartHostRecursively" xml:space="preserve">
+    <value>Some hosts what host '{0}' depends on are down. Start recursively?</value>
+  </data>
+  <data name="ValidatorError_LocalPortBusyAnotherHost" xml:space="preserve">
+    <value>Local port is busy by another tunnel in host '{0}'.</value>
+  </data>
 </root>

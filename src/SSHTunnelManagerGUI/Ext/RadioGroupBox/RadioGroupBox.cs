@@ -32,7 +32,7 @@ namespace SSHTunnelManagerGUI.Ext.RadioGroupBox
 	/// <summary>
 	/// RadioGroupBox is a GroupBox with an embeded RadioButton.
 	/// </summary>
-	[ToolboxBitmap(typeof(RadioGroupBox), "RadioGroupBox.bmp")]
+	[ToolboxBitmap(typeof(RadioGroupBox), @"RadioGroupBox.bmp")]
 	public partial class RadioGroupBox : GroupBox
 	{
 		// Constants
@@ -75,12 +75,12 @@ namespace SSHTunnelManagerGUI.Ext.RadioGroupBox
 				else
 				{
 					// Run-time
-					return " "; // Set the text of the GroupBox to a space, so the gap appears before the RadioButton.
+					return @" "; // Set the text of the GroupBox to a space, so the gap appears before the RadioButton.
 				}
 			}
 			set
 			{
-				base.Text = " "; // Set the text of the GroupBox to a space, so the gap appears before the RadioButton.
+				base.Text = @" "; // Set the text of the GroupBox to a space, so the gap appears before the RadioButton.
 				this.m_radioButton.Text = value;
 			}
 		}

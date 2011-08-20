@@ -63,7 +63,7 @@ namespace SSHTunnelManager.Business
             return false;
         }
 
-        public string HostAndPort { get { return string.Format("{0}:{1}", Hostname, Port); } }
+        public string HostAndPort { get { return string.Format(@"{0}:{1}", Hostname, Port); } }
 
         #region Event Log
 
@@ -104,12 +104,12 @@ namespace SSHTunnelManager.Business
 
         public override string ToString()
         {
-            return string.Format("{0} ({1}:{2})", Name, Hostname, Port);
+            return string.Format(@"{0} ({1}:{2})", Name, Hostname, Port);
         }
 
         private string uniqString()
         {
-            return string.Format("{0}@{1}:{2}", Username, Hostname, Port);
+            return string.Format(@"{0}@{1}:{2}", Username, Hostname, Port);
         }
     }
 }

@@ -115,6 +115,15 @@ namespace SSHTunnelManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid tunnel type..
+        /// </summary>
+        internal static string ConsoleTools_Error_InvalidTunnelType {
+            get {
+                return ResourceManager.GetString("ConsoleTools_Error_InvalidTunnelType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Windows Registry Editor Version 5.00
         ///
         ///[HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\_ptm_preset_]
@@ -137,6 +146,15 @@ namespace SSHTunnelManager.Properties {
         internal static string defaultPuttyProfile {
             get {
                 return ResourceManager.GetString("defaultPuttyProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Program will be started without PuTTY profile features..
+        /// </summary>
+        internal static string HostsManager_Error_LoadPuttyProfileError {
+            get {
+                return ResourceManager.GetString("HostsManager_Error_LoadPuttyProfileError", resourceCulture);
             }
         }
         
@@ -177,6 +195,24 @@ namespace SSHTunnelManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error while retrieving log4net appender {0}. Appender not found..
+        /// </summary>
+        internal static string Logger_Error_GetAppender {
+            get {
+                return ResourceManager.GetString("Logger_Error_GetAppender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error while retrieving log4net hierarchy..
+        /// </summary>
+        internal static string Logger_Error_GetRepository {
+            get {
+                return ResourceManager.GetString("Logger_Error_GetRepository", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (no filter).
         /// </summary>
         internal static string NoFilter {
@@ -209,6 +245,78 @@ namespace SSHTunnelManager.Properties {
         internal static string PropertyNotFound {
             get {
                 return ResourceManager.GetString("PropertyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid username.
+        /// </summary>
+        internal static string PuttyLink_Error_InvalidUsername {
+            get {
+                return ResourceManager.GetString("PuttyLink_Error_InvalidUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Link already started..
+        /// </summary>
+        internal static string PuttyLink_Error_LinkAlreadyStarted {
+            get {
+                return ResourceManager.GetString("PuttyLink_Error_LinkAlreadyStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restarting after connection loss....
+        /// </summary>
+        internal static string PuttyLink_Status_Restarting {
+            get {
+                return ResourceManager.GetString("PuttyLink_Status_Restarting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Started.
+        /// </summary>
+        internal static string PuttyLink_Status_Started {
+            get {
+                return ResourceManager.GetString("PuttyLink_Status_Started", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Started with warnings.
+        /// </summary>
+        internal static string PuttyLink_Status_StartedWithWarnings {
+            get {
+                return ResourceManager.GetString("PuttyLink_Status_StartedWithWarnings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Starting....
+        /// </summary>
+        internal static string PuttyLink_Status_Starting {
+            get {
+                return ResourceManager.GetString("PuttyLink_Status_Starting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopped.
+        /// </summary>
+        internal static string PuttyLink_Status_Stopped {
+            get {
+                return ResourceManager.GetString("PuttyLink_Status_Stopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waiting {0} seconds before restart....
+        /// </summary>
+        internal static string PuttyLink_Status_Waiting {
+            get {
+                return ResourceManager.GetString("PuttyLink_Status_Waiting", resourceCulture);
             }
         }
         

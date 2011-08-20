@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using SSHTunnelManager.Business;
+using SSHTunnelManager.Properties;
 
 namespace SSHTunnelManager.Domain
 {
@@ -43,12 +44,12 @@ namespace SSHTunnelManager.Domain
             string profileArg = "";
             if (profile != null)
             {
-                profileArg = " -load " + profile.Name;
+                profileArg = @" -load " + profile.Name;
             }
 
             var args = withPassword
-                           ? String.Format("-ssh{0} {1}@{2} -P {3} -pw {4} -v", profileArg, host.Username, host.Hostname, host.Port, host.Password)
-                           : String.Format("-ssh{0} {1}@{2} -P {3} -v", profileArg, host.Username, host.Hostname, host.Port);
+                           ? String.Format(@"-ssh{0} {1}@{2} -P {3} -pw {4} -v", profileArg, host.Username, host.Hostname, host.Port, host.Password)
+                           : String.Format(@"-ssh{0} {1}@{2} -P {3} -v", profileArg, host.Username, host.Hostname, host.Port);
             var sb = new StringBuilder(args);
             foreach (var tunnelArg in host.Tunnels.Select(tunnelArguments))
             {
@@ -61,7 +62,7 @@ namespace SSHTunnelManager.Domain
 
         private static string psftpArguments(HostInfo host)
         {
-            var args = String.Format("{0}@{1} -P {2} -pw {3} -batch", host.Username, host.Hostname, host.Port, host.Password);
+            var args = String.Format(@"{0}@{1} -P {2} -pw {3} -batch", host.Username, host.Hostname, host.Port, host.Password);
             return args;
         }
 
@@ -77,7 +78,7 @@ namespace SSHTunnelManager.Domain
             case TunnelType.Dynamic:
                 return String.Format(@" -D {0}", tunnel.LocalPort);
             default:
-                throw new FormatException("Invalid tunnel type.");
+                throw new FormatException(Resources.ConsoleTools_Error_InvalidTunnelType);
             }
         }
     }
