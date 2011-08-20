@@ -175,40 +175,73 @@
   <data name="SyncAccessNotSupported" xml:space="preserve">
     <value>Synchronized access to the view is not supported.</value>
   </data>
-  <data name="PuttyLink_Error_InvalidUsername">
-    <value xml:space="preserve">Invalid username</value>
+  <data name="PuttyLink_Error_InvalidUsername" xml:space="preserve">
+    <value>Invalid username</value>
   </data>
-  <data name="PuttyLink_Status_Starting">
-    <value xml:space="preserve">Starting...</value>
+  <data name="PuttyLink_Status_Starting" xml:space="preserve">
+    <value>Starting...</value>
   </data>
-  <data name="PuttyLink_Status_Started">
-    <value xml:space="preserve">Started</value>
+  <data name="PuttyLink_Status_Started" xml:space="preserve">
+    <value>Started</value>
   </data>
-  <data name="PuttyLink_Status_StartedWithWarnings">
-    <value xml:space="preserve">Started with warnings</value>
+  <data name="PuttyLink_Status_StartedWithWarnings" xml:space="preserve">
+    <value>Started with warnings</value>
   </data>
-  <data name="PuttyLink_Status_Stopped">
-    <value xml:space="preserve">Stopped</value>
+  <data name="PuttyLink_Status_Stopped" xml:space="preserve">
+    <value>Stopped</value>
   </data>
-  <data name="PuttyLink_Status_Restarting">
-    <value xml:space="preserve">Restarting after connection loss...</value>
+  <data name="PuttyLink_Status_Restarting" xml:space="preserve">
+    <value>Restarting after connection loss...</value>
   </data>
-  <data name="PuttyLink_Status_Waiting">
-    <value xml:space="preserve">Waiting {0} seconds before restart...</value>
+  <data name="PuttyLink_Status_Waiting" xml:space="preserve">
+    <value>Waiting {0} seconds before restart...</value>
   </data>
-  <data name="PuttyLink_Error_LinkAlreadyStarted">
-    <value xml:space="preserve">Link already started.</value>
+  <data name="PuttyLink_Error_LinkAlreadyStarted" xml:space="preserve">
+    <value>Link already started.</value>
   </data>
-  <data name="ConsoleTools_Error_InvalidTunnelType">
-    <value xml:space="preserve">Invalid tunnel type.</value>
+  <data name="ConsoleTools_Error_InvalidTunnelType" xml:space="preserve">
+    <value>Invalid tunnel type.</value>
   </data>
-  <data name="HostsManager_Error_LoadPuttyProfileError">
-    <value xml:space="preserve">Program will be started without PuTTY profile features.</value>
+  <data name="HostsManager_Error_LoadPuttyProfileError" xml:space="preserve">
+    <value>Program will be started without PuTTY profile features.</value>
   </data>
-  <data name="Logger_Error_GetRepository">
-    <value xml:space="preserve">Error while retrieving log4net hierarchy.</value>
+  <data name="Logger_Error_GetRepository" xml:space="preserve">
+    <value>Error while retrieving log4net hierarchy.</value>
   </data>
-  <data name="Logger_Error_GetAppender">
-    <value xml:space="preserve">Error while retrieving log4net appender {0}. Appender not found.</value>
+  <data name="Logger_Error_GetAppender" xml:space="preserve">
+    <value>Error while retrieving log4net appender {0}. Appender not found.</value>
+  </data>
+  <data name="EncryptedStorage_InvalidPassword" xml:space="preserve">
+    <value>Invalid password.</value>
+  </data>
+  <data name="EncryptedStorage_EmptyPasswordProvided" xml:space="preserve">
+    <value>Empty password provided.</value>
+  </data>
+  <data name="EncryptedStorage_RequiredHostNotFound" xml:space="preserve">
+    <value>Требуемый для работы хоста '{0}' хост '{1}' не найден.</value>
+  </data>
+  <data name="PuttyProfile_ProfileNotFound" xml:space="preserve">
+    <value>Profile not found.</value>
+  </data>
+  <data name="PuttyProfile_NotAllPropertiesSet" xml:space="preserve">
+    <value>Invalid profile: not all properties set.</value>
+  </data>
+  <data name="PuttyProfile_Error_IOException" xml:space="preserve">
+    <value>IO error while updating PuTTY profile {0}: {1}</value>
+  </data>
+  <data name="PuttyProfile_Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>UnauthorizedAccess error while updating PuTTY profile {0}: {1}</value>
+  </data>
+  <data name="PuttyProfile_Error_SecurityException" xml:space="preserve">
+    <value>Security error while updating PuTTY profile {0}: {1}</value>
+  </data>
+  <data name="PuttyProfile_Error_CreateSubKeyReturnedNull" xml:space="preserve">
+    <value>Error while creating PuTTY profile {0}: unknown error.</value>
+  </data>
+  <data name="PuttyProfile_Error_RegistryValueKindNotSupported">
+    <value xml:space="preserve">Registry value kind is not supported.</value>
+  </data>
+  <data name="PuttyProfile_Error_SecurityException2">
+    <value xml:space="preserve">Security error while reading PuTTY profile {0}: {1}</value>
   </data>
 </root>

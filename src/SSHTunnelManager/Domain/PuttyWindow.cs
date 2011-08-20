@@ -9,8 +9,8 @@ using SSHTunnelManager.Util;
 
 namespace SSHTunnelManager.Domain
 {
-    [Obsolete("This is a part of early implementation of tunnel manager based on putty.exe. " +
-              "Classes are very unstable because of a lot of modification without testing and deprecated to use.")]
+    [Obsolete(@"This is a part of early implementation of tunnel manager based on putty.exe. " +
+              @"Classes are very unstable because of a lot of modification without testing and deprecated to use.")]
     public class PuttyWindow
     {
         public const string ConfigurationWindowText = "PuTTY Configuration";
@@ -102,13 +102,13 @@ namespace SSHTunnelManager.Domain
             get
             {
                 var results = new List<string>();
-                var wmiQuery = string.Format("select CommandLine from Win32_Process where ProcessId='{0}'", Process.Id);
+                var wmiQuery = string.Format(@"select CommandLine from Win32_Process where ProcessId='{0}'", Process.Id);
 
                 using (var searcher = new ManagementObjectSearcher(wmiQuery))
                 using (ManagementObjectCollection retObjectCollection = searcher.Get())
                 {
                     results.AddRange(retObjectCollection.Cast<ManagementObject>().
-                                         Select(retObject => (string) retObject["CommandLine"]));
+                                         Select(retObject => (string) retObject[@"CommandLine"]));
                 }
 
                 var cmdArgs = results.FirstOrDefault();
@@ -124,7 +124,7 @@ namespace SSHTunnelManager.Domain
                 WinApi.EnumWindows(delegate(IntPtr childHwnd, int lparam)
                                        {
                                            var text = new PuttyWindow(childHwnd).Text;
-                                           if (text == "PuTTY Fatal Error" && WinApi.GetParent(childHwnd) == Hwnd)
+                                           if (text == @"PuTTY Fatal Error" && WinApi.GetParent(childHwnd) == Hwnd)
                                            {
                                                iAmBad = true;
                                            }

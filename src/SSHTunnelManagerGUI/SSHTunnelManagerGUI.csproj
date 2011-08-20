@@ -98,7 +98,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.ServiceProcess" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -236,12 +235,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SSHTunnelManager\SSHTunnelManager.csproj">
-      <Project>{61383C43-B2A4-4523-8AB5-B97423183CE3}</Project>
-      <Name>PuttyManager</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\terminal.png" />
   </ItemGroup>
   <ItemGroup>
@@ -334,6 +327,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SSHTunnelManager\SSHTunnelManager.csproj">
+      <Project>{61383C43-B2A4-4523-8AB5-B97423183CE3}</Project>
+      <Name>SSHTunnelManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

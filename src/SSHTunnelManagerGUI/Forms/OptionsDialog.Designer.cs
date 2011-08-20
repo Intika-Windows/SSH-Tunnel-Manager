@@ -32,29 +32,23 @@ namespace SSHTunnelManagerGUI.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptionsDialog));
             System.Windows.Forms.Label label8;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptionsDialog));
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Panel panel1;
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label1;
+            this.textBoxHostname = new System.Windows.Forms.TextBox();
+            this.textBoxPort = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.checkBoxTraceDebug = new System.Windows.Forms.CheckBox();
             this.buttonApply = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBoxPF = new System.Windows.Forms.GroupBox();
             this.checkBoxRemotePortAcceptAll = new System.Windows.Forms.CheckBox();
             this.checkBoxLocalPortAcceptAll = new System.Windows.Forms.CheckBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonOK = new System.Windows.Forms.Button();
-            this.theGoodProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.theErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.theTabControl = new System.Windows.Forms.TabControl();
-            this.tabPageGeneral = new System.Windows.Forms.TabPage();
-            this.tabPageProxy = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.checkGroupBoxAutoRestart = new SSHTunnelManagerGUI.Ext.CheckGroupBox.CheckGroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBoxAfterThat = new System.Windows.Forms.GroupBox();
@@ -64,18 +58,24 @@ namespace SSHTunnelManagerGUI.Forms
             this.numericUpDownMaxAttemptsCount = new System.Windows.Forms.NumericUpDown();
             this.checkGroupBoxRestartHostsWithWarns = new SSHTunnelManagerGUI.Ext.CheckGroupBox.CheckGroupBox();
             this.numericUpDownRestartHWWInterval = new System.Windows.Forms.NumericUpDown();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonOK = new System.Windows.Forms.Button();
+            this.theGoodProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.textBoxProxyExcludes = new System.Windows.Forms.TextBox();
+            this.theErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.theTabControl = new System.Windows.Forms.TabControl();
+            this.tabPageGeneral = new System.Windows.Forms.TabPage();
+            this.tabPageProxy = new System.Windows.Forms.TabPage();
             this.checkGroupBoxProxy = new SSHTunnelManagerGUI.Ext.CheckGroupBox.CheckGroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBoxProxyType = new System.Windows.Forms.ComboBox();
-            this.textBoxHostname = new System.Windows.Forms.TextBox();
-            this.textBoxPort = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lineSeparator1 = new SSHTunnelManagerGUI.Controls.LineSeparator();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.checkBoxAuthReq = new System.Windows.Forms.CheckBox();
-            this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.checkBoxProxyLocalhost = new System.Windows.Forms.CheckBox();
-            this.textBoxProxyExcludes = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lineSeparator1 = new SSHTunnelManagerGUI.Controls.LineSeparator();
             label8 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
@@ -83,25 +83,82 @@ namespace SSHTunnelManagerGUI.Forms
             panel1 = new System.Windows.Forms.Panel();
             label7 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
+            panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBoxPF.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.theGoodProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.theErrorProvider)).BeginInit();
-            this.theTabControl.SuspendLayout();
-            this.tabPageGeneral.SuspendLayout();
-            this.tabPageProxy.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
             this.checkGroupBoxAutoRestart.SuspendLayout();
             this.groupBoxAfterThat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRestartDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxAttemptsCount)).BeginInit();
             this.checkGroupBoxRestartHostsWithWarns.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRestartHWWInterval)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.theGoodProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.theErrorProvider)).BeginInit();
+            this.theTabControl.SuspendLayout();
+            this.tabPageGeneral.SuspendLayout();
+            this.tabPageProxy.SuspendLayout();
             this.checkGroupBoxProxy.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            panel1.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label8
+            // 
+            resources.ApplyResources(label8, "label8");
+            label8.Name = "label8";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(label5, "label5");
+            label5.Name = "label5";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(label6, "label6");
+            label6.Name = "label6";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Controls.Add(this.textBoxHostname);
+            panel1.Controls.Add(this.textBoxPort);
+            panel1.Controls.Add(this.label4);
+            panel1.Name = "panel1";
+            // 
+            // textBoxHostname
+            // 
+            resources.ApplyResources(this.textBoxHostname, "textBoxHostname");
+            this.theErrorProvider.SetIconPadding(this.textBoxHostname, ((int)(resources.GetObject("textBoxHostname.IconPadding"))));
+            this.theGoodProvider.SetIconPadding(this.textBoxHostname, ((int)(resources.GetObject("textBoxHostname.IconPadding1"))));
+            this.textBoxHostname.Name = "textBoxHostname";
+            // 
+            // textBoxPort
+            // 
+            resources.ApplyResources(this.textBoxPort, "textBoxPort");
+            this.theErrorProvider.SetIconPadding(this.textBoxPort, ((int)(resources.GetObject("textBoxPort.IconPadding"))));
+            this.theGoodProvider.SetIconPadding(this.textBoxPort, ((int)(resources.GetObject("textBoxPort.IconPadding1"))));
+            this.textBoxPort.Name = "textBoxPort";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(label7, "label7");
+            label7.Name = "label7";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
             // 
             // checkBoxTraceDebug
             // 
@@ -144,71 +201,6 @@ namespace SSHTunnelManagerGUI.Forms
             resources.ApplyResources(this.checkBoxLocalPortAcceptAll, "checkBoxLocalPortAcceptAll");
             this.checkBoxLocalPortAcceptAll.Name = "checkBoxLocalPortAcceptAll";
             this.checkBoxLocalPortAcceptAll.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel2
-            // 
-            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
-            this.flowLayoutPanel2.Controls.Add(this.buttonApply);
-            this.flowLayoutPanel2.Controls.Add(this.buttonCancel);
-            this.flowLayoutPanel2.Controls.Add(this.buttonOK);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            // 
-            // buttonCancel
-            // 
-            resources.ApplyResources(this.buttonCancel, "buttonCancel");
-            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
-            // buttonOK
-            // 
-            resources.ApplyResources(this.buttonOK, "buttonOK");
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-            // 
-            // theGoodProvider
-            // 
-            this.theGoodProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.theGoodProvider.ContainerControl = this;
-            resources.ApplyResources(this.theGoodProvider, "theGoodProvider");
-            // 
-            // theErrorProvider
-            // 
-            this.theErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.theErrorProvider.ContainerControl = this;
-            resources.ApplyResources(this.theErrorProvider, "theErrorProvider");
-            // 
-            // theTabControl
-            // 
-            this.theTabControl.Controls.Add(this.tabPageGeneral);
-            this.theTabControl.Controls.Add(this.tabPageProxy);
-            resources.ApplyResources(this.theTabControl, "theTabControl");
-            this.theTabControl.Name = "theTabControl";
-            this.theTabControl.SelectedIndex = 0;
-            // 
-            // tabPageGeneral
-            // 
-            this.tabPageGeneral.BackColor = System.Drawing.Color.White;
-            this.tabPageGeneral.Controls.Add(this.flowLayoutPanel1);
-            resources.ApplyResources(this.tabPageGeneral, "tabPageGeneral");
-            this.tabPageGeneral.Name = "tabPageGeneral";
-            // 
-            // tabPageProxy
-            // 
-            this.tabPageProxy.BackColor = System.Drawing.Color.White;
-            this.tabPageProxy.Controls.Add(this.checkGroupBoxProxy);
-            resources.ApplyResources(this.tabPageProxy, "tabPageProxy");
-            this.tabPageProxy.Name = "tabPageProxy";
-            // 
-            // flowLayoutPanel3
-            // 
-            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
-            this.flowLayoutPanel3.Controls.Add(this.theTabControl);
-            this.flowLayoutPanel3.Controls.Add(this.lineSeparator1);
-            this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel2);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             // 
             // checkGroupBoxAutoRestart
             // 
@@ -281,11 +273,6 @@ namespace SSHTunnelManagerGUI.Forms
             this.checkGroupBoxRestartHostsWithWarns.Name = "checkGroupBoxRestartHostsWithWarns";
             this.checkGroupBoxRestartHostsWithWarns.TabStop = false;
             // 
-            // label8
-            // 
-            resources.ApplyResources(label8, "label8");
-            label8.Name = "label8";
-            // 
             // numericUpDownRestartHWWInterval
             // 
             resources.ApplyResources(this.numericUpDownRestartHWWInterval, "numericUpDownRestartHWWInterval");
@@ -305,6 +292,85 @@ namespace SSHTunnelManagerGUI.Forms
             0,
             0,
             0});
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
+            this.flowLayoutPanel2.Controls.Add(this.buttonApply);
+            this.flowLayoutPanel2.Controls.Add(this.buttonCancel);
+            this.flowLayoutPanel2.Controls.Add(this.buttonOK);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            // 
+            // buttonCancel
+            // 
+            resources.ApplyResources(this.buttonCancel, "buttonCancel");
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // buttonOK
+            // 
+            resources.ApplyResources(this.buttonOK, "buttonOK");
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            // 
+            // theGoodProvider
+            // 
+            this.theGoodProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.theGoodProvider.ContainerControl = this;
+            resources.ApplyResources(this.theGoodProvider, "theGoodProvider");
+            // 
+            // textBoxPassword
+            // 
+            resources.ApplyResources(this.textBoxPassword, "textBoxPassword");
+            this.theGoodProvider.SetIconPadding(this.textBoxPassword, ((int)(resources.GetObject("textBoxPassword.IconPadding"))));
+            this.theErrorProvider.SetIconPadding(this.textBoxPassword, ((int)(resources.GetObject("textBoxPassword.IconPadding1"))));
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.UseSystemPasswordChar = true;
+            // 
+            // textBoxUsername
+            // 
+            resources.ApplyResources(this.textBoxUsername, "textBoxUsername");
+            this.theGoodProvider.SetIconPadding(this.textBoxUsername, ((int)(resources.GetObject("textBoxUsername.IconPadding"))));
+            this.theErrorProvider.SetIconPadding(this.textBoxUsername, ((int)(resources.GetObject("textBoxUsername.IconPadding1"))));
+            this.textBoxUsername.Name = "textBoxUsername";
+            // 
+            // textBoxProxyExcludes
+            // 
+            resources.ApplyResources(this.textBoxProxyExcludes, "textBoxProxyExcludes");
+            this.theGoodProvider.SetIconPadding(this.textBoxProxyExcludes, ((int)(resources.GetObject("textBoxProxyExcludes.IconPadding"))));
+            this.theErrorProvider.SetIconPadding(this.textBoxProxyExcludes, ((int)(resources.GetObject("textBoxProxyExcludes.IconPadding1"))));
+            this.textBoxProxyExcludes.Name = "textBoxProxyExcludes";
+            // 
+            // theErrorProvider
+            // 
+            this.theErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.theErrorProvider.ContainerControl = this;
+            resources.ApplyResources(this.theErrorProvider, "theErrorProvider");
+            // 
+            // theTabControl
+            // 
+            this.theTabControl.Controls.Add(this.tabPageGeneral);
+            this.theTabControl.Controls.Add(this.tabPageProxy);
+            resources.ApplyResources(this.theTabControl, "theTabControl");
+            this.theTabControl.Name = "theTabControl";
+            this.theTabControl.SelectedIndex = 0;
+            // 
+            // tabPageGeneral
+            // 
+            this.tabPageGeneral.BackColor = System.Drawing.Color.White;
+            this.tabPageGeneral.Controls.Add(this.flowLayoutPanel1);
+            resources.ApplyResources(this.tabPageGeneral, "tabPageGeneral");
+            this.tabPageGeneral.Name = "tabPageGeneral";
+            // 
+            // tabPageProxy
+            // 
+            this.tabPageProxy.BackColor = System.Drawing.Color.White;
+            this.tabPageProxy.Controls.Add(this.checkGroupBoxProxy);
+            resources.ApplyResources(this.tabPageProxy, "tabPageProxy");
+            this.tabPageProxy.Name = "tabPageProxy";
             // 
             // checkGroupBoxProxy
             // 
@@ -341,73 +407,6 @@ namespace SSHTunnelManagerGUI.Forms
             resources.GetString("comboBoxProxyType.Items2")});
             this.comboBoxProxyType.Name = "comboBoxProxyType";
             // 
-            // label5
-            // 
-            resources.ApplyResources(label5, "label5");
-            label5.Name = "label5";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(label6, "label6");
-            label6.Name = "label6";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(label3, "label3");
-            label3.Name = "label3";
-            // 
-            // panel1
-            // 
-            resources.ApplyResources(panel1, "panel1");
-            panel1.Controls.Add(this.textBoxHostname);
-            panel1.Controls.Add(this.textBoxPort);
-            panel1.Controls.Add(this.label4);
-            panel1.Name = "panel1";
-            // 
-            // textBoxHostname
-            // 
-            resources.ApplyResources(this.textBoxHostname, "textBoxHostname");
-            this.theErrorProvider.SetIconPadding(this.textBoxHostname, ((int)(resources.GetObject("textBoxHostname.IconPadding"))));
-            this.theGoodProvider.SetIconPadding(this.textBoxHostname, ((int)(resources.GetObject("textBoxHostname.IconPadding1"))));
-            this.textBoxHostname.Name = "textBoxHostname";
-            // 
-            // textBoxPort
-            // 
-            resources.ApplyResources(this.textBoxPort, "textBoxPort");
-            this.theErrorProvider.SetIconPadding(this.textBoxPort, ((int)(resources.GetObject("textBoxPort.IconPadding"))));
-            this.theGoodProvider.SetIconPadding(this.textBoxPort, ((int)(resources.GetObject("textBoxPort.IconPadding1"))));
-            this.textBoxPort.Name = "textBoxPort";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(label7, "label7");
-            label7.Name = "label7";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(label1, "label1");
-            label1.Name = "label1";
-            // 
-            // lineSeparator1
-            // 
-            resources.ApplyResources(this.lineSeparator1, "lineSeparator1");
-            this.lineSeparator1.MaximumSize = new System.Drawing.Size(2000, 2);
-            this.lineSeparator1.MinimumSize = new System.Drawing.Size(0, 2);
-            this.lineSeparator1.Name = "lineSeparator1";
-            // 
-            // textBoxPassword
-            // 
-            resources.ApplyResources(this.textBoxPassword, "textBoxPassword");
-            this.theGoodProvider.SetIconPadding(this.textBoxPassword, ((int)(resources.GetObject("textBoxPassword.IconPadding"))));
-            this.theErrorProvider.SetIconPadding(this.textBoxPassword, ((int)(resources.GetObject("textBoxPassword.IconPadding1"))));
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.UseSystemPasswordChar = true;
-            // 
             // checkBoxAuthReq
             // 
             resources.ApplyResources(this.checkBoxAuthReq, "checkBoxAuthReq");
@@ -418,13 +417,6 @@ namespace SSHTunnelManagerGUI.Forms
             this.checkBoxAuthReq.UseVisualStyleBackColor = true;
             this.checkBoxAuthReq.CheckedChanged += new System.EventHandler(this.checkBoxAuthReq_CheckedChanged);
             // 
-            // textBoxUsername
-            // 
-            resources.ApplyResources(this.textBoxUsername, "textBoxUsername");
-            this.theGoodProvider.SetIconPadding(this.textBoxUsername, ((int)(resources.GetObject("textBoxUsername.IconPadding"))));
-            this.theErrorProvider.SetIconPadding(this.textBoxUsername, ((int)(resources.GetObject("textBoxUsername.IconPadding1"))));
-            this.textBoxUsername.Name = "textBoxUsername";
-            // 
             // checkBoxProxyLocalhost
             // 
             resources.ApplyResources(this.checkBoxProxyLocalhost, "checkBoxProxyLocalhost");
@@ -432,12 +424,20 @@ namespace SSHTunnelManagerGUI.Forms
             this.checkBoxProxyLocalhost.Name = "checkBoxProxyLocalhost";
             this.checkBoxProxyLocalhost.UseVisualStyleBackColor = true;
             // 
-            // textBoxProxyExcludes
+            // flowLayoutPanel3
             // 
-            resources.ApplyResources(this.textBoxProxyExcludes, "textBoxProxyExcludes");
-            this.theGoodProvider.SetIconPadding(this.textBoxProxyExcludes, ((int)(resources.GetObject("textBoxProxyExcludes.IconPadding"))));
-            this.theErrorProvider.SetIconPadding(this.textBoxProxyExcludes, ((int)(resources.GetObject("textBoxProxyExcludes.IconPadding1"))));
-            this.textBoxProxyExcludes.Name = "textBoxProxyExcludes";
+            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
+            this.flowLayoutPanel3.Controls.Add(this.theTabControl);
+            this.flowLayoutPanel3.Controls.Add(this.lineSeparator1);
+            this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel2);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            // 
+            // lineSeparator1
+            // 
+            resources.ApplyResources(this.lineSeparator1, "lineSeparator1");
+            this.lineSeparator1.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.lineSeparator1.MinimumSize = new System.Drawing.Size(0, 2);
+            this.lineSeparator1.Name = "lineSeparator1";
             // 
             // OptionsDialog
             // 
@@ -450,18 +450,12 @@ namespace SSHTunnelManagerGUI.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OptionsDialog";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.groupBoxPF.ResumeLayout(false);
             this.groupBoxPF.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.theGoodProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.theErrorProvider)).EndInit();
-            this.theTabControl.ResumeLayout(false);
-            this.tabPageGeneral.ResumeLayout(false);
-            this.tabPageGeneral.PerformLayout();
-            this.tabPageProxy.ResumeLayout(false);
-            this.flowLayoutPanel3.ResumeLayout(false);
             this.checkGroupBoxAutoRestart.ResumeLayout(false);
             this.checkGroupBoxAutoRestart.PerformLayout();
             this.groupBoxAfterThat.ResumeLayout(false);
@@ -471,12 +465,18 @@ namespace SSHTunnelManagerGUI.Forms
             this.checkGroupBoxRestartHostsWithWarns.ResumeLayout(false);
             this.checkGroupBoxRestartHostsWithWarns.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRestartHWWInterval)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.theGoodProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.theErrorProvider)).EndInit();
+            this.theTabControl.ResumeLayout(false);
+            this.tabPageGeneral.ResumeLayout(false);
+            this.tabPageGeneral.PerformLayout();
+            this.tabPageProxy.ResumeLayout(false);
             this.checkGroupBoxProxy.ResumeLayout(false);
             this.checkGroupBoxProxy.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -6,12 +6,13 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using SSHTunnelManager.Business;
+using SSHTunnelManager.Properties;
 using SSHTunnelManager.Util;
 
 namespace SSHTunnelManager.Domain
 {
-    [Obsolete("This is a part of early implementation of tunnel manager based on putty.exe. " +
-              "Classes are very unstable because of a lot of modification without testing and deprecated to use.")]
+    [Obsolete(@"This is a part of early implementation of tunnel manager based on putty.exe. " +
+              @"Classes are very unstable because of a lot of modification without testing and deprecated to use.")]
     public class PuttyWindowsManager
     {
         private const string PuttyClassName = "PuTTY";
@@ -36,7 +37,7 @@ namespace SSHTunnelManager.Domain
             WinApi.EnumWindows(delegate(IntPtr childHwnd, int lparam)
                                    {
                                        var text = new PuttyWindow(childHwnd).Text;
-                                       if (text == "PuTTY Fatal Error")
+                                       if (text == @"PuTTY Fatal Error")
                                        {
                                            puttyBadWindows.Add(WinApi.GetParent(childHwnd));
                                        }
@@ -131,11 +132,11 @@ namespace SSHTunnelManager.Domain
         {
             // example: -ssh username@domainName -P 22 -pw password -D 5000 -L 44333:username.dyndns.org:44333
 
-            var args = String.Format("-ssh {0}@{1} -P {2} -pw {3}", host.Username, host.Hostname, host.Port, host.Password);
+            var args = String.Format(@"-ssh {0}@{1} -P {2} -pw {3}", host.Username, host.Hostname, host.Port, host.Password);
             var sb = new StringBuilder(args);
             foreach (var arg in host.Tunnels.Select(PuttyTunnelArguments))
             {
-                sb.AppendFormat(" {0}", (object) arg);
+                sb.AppendFormat(@" {0}", (object) arg);
             }
             args = sb.ToString();
             return args;
@@ -153,7 +154,7 @@ namespace SSHTunnelManager.Domain
             case TunnelType.Dynamic:
                 return String.Format(@"-D {0}", tunnel.LocalPort);
             default:
-                throw new FormatException("Некорректный тип туннеля.");
+                throw new FormatException(Resources.ConsoleTools_Error_InvalidTunnelType);
             }
         }
     }

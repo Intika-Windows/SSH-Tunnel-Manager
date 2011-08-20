@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r36 | skara06@gmail.com | 2011-08-20 22:59:35 +0400 (╤с, 20 рту 2011) | 1 line
+
+many bugs fixed, restart hosts with warnings added. TODO: add wix installer with ngen optimization, add better exception handling, check .net 4 installed on start.
+------------------------------------------------------------------------
+r35 | skara06@gmail.com | 2011-08-20 01:17:26 +0400 (╤с, 20 рту 2011) | 1 line
+
+proxy support added, restart-after-fail behavior changed, bug in checkGroupBox detected and fixed. TODO: add wix installer with ngen optimization, add better exception handling.
+------------------------------------------------------------------------
 r34 | skara06@gmail.com | 2011-08-19 01:27:28 +0400 (╧Є, 19 рту 2011) | 1 line
 
 tag creating

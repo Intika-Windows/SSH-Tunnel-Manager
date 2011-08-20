@@ -996,6 +996,9 @@
   <data name="textBoxPort.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="textBoxPort.Text" xml:space="preserve">
+    <value>22</value>
+  </data>
   <data name="&gt;&gt;textBoxPort.Name" xml:space="preserve">
     <value>textBoxPort</value>
   </data>

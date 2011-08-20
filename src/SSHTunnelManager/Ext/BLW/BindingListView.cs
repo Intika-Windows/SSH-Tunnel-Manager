@@ -77,7 +77,7 @@ namespace SSHTunnelManager.Ext.BLW
         {
             if ((SourceLists.Count > 1 && e.ListChangedType == ListChangedType.ItemAdded) || e.ListChangedType == ListChangedType.ItemDeleted)
             {
-                throw new Exception("BindingListView allows strictly one source list.");
+                throw new Exception(@"BindingListView allows strictly one source list.");
             }
             else
             {

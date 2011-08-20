@@ -12,11 +12,11 @@ namespace SSHTunnelManager.Util
     {
         public static string JoinExceptionMessages(string sentence1, string sentence2)
         {
-            var ret = String.Concat(Regex.Replace(sentence1, @"\.\s*$", ""), ". ", sentence2);
+            var ret = String.Concat(Regex.Replace(sentence1, @"\.\s*$", ""), @". ", sentence2);
             return ret;
         }
 
-        [System.Runtime.InteropServices.DllImport("kernel32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
+        [System.Runtime.InteropServices.DllImport(@"kernel32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
         private static extern int GetModuleFileName(IntPtr hModule, StringBuilder buffer, int length);
 
         private static string getLocalPath(string fileName)

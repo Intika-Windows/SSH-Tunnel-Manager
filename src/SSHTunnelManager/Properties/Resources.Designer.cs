@@ -150,6 +150,33 @@ namespace SSHTunnelManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Empty password provided..
+        /// </summary>
+        internal static string EncryptedStorage_EmptyPasswordProvided {
+            get {
+                return ResourceManager.GetString("EncryptedStorage_EmptyPasswordProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid password..
+        /// </summary>
+        internal static string EncryptedStorage_InvalidPassword {
+            get {
+                return ResourceManager.GetString("EncryptedStorage_InvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Требуемый для работы хоста &apos;{0}&apos; хост &apos;{1}&apos; не найден..
+        /// </summary>
+        internal static string EncryptedStorage_RequiredHostNotFound {
+            get {
+                return ResourceManager.GetString("EncryptedStorage_RequiredHostNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Program will be started without PuTTY profile features..
         /// </summary>
         internal static string HostsManager_Error_LoadPuttyProfileError {
@@ -317,6 +344,78 @@ namespace SSHTunnelManager.Properties {
         internal static string PuttyLink_Status_Waiting {
             get {
                 return ResourceManager.GetString("PuttyLink_Status_Waiting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error while creating PuTTY profile {0}: unknown error..
+        /// </summary>
+        internal static string PuttyProfile_Error_CreateSubKeyReturnedNull {
+            get {
+                return ResourceManager.GetString("PuttyProfile_Error_CreateSubKeyReturnedNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IO error while updating PuTTY profile {0}: {1}.
+        /// </summary>
+        internal static string PuttyProfile_Error_IOException {
+            get {
+                return ResourceManager.GetString("PuttyProfile_Error_IOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registry value kind is not supported..
+        /// </summary>
+        internal static string PuttyProfile_Error_RegistryValueKindNotSupported {
+            get {
+                return ResourceManager.GetString("PuttyProfile_Error_RegistryValueKindNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security error while updating PuTTY profile {0}: {1}.
+        /// </summary>
+        internal static string PuttyProfile_Error_SecurityException {
+            get {
+                return ResourceManager.GetString("PuttyProfile_Error_SecurityException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security error while reading PuTTY profile {0}: {1}.
+        /// </summary>
+        internal static string PuttyProfile_Error_SecurityException2 {
+            get {
+                return ResourceManager.GetString("PuttyProfile_Error_SecurityException2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UnauthorizedAccess error while updating PuTTY profile {0}: {1}.
+        /// </summary>
+        internal static string PuttyProfile_Error_UnauthorizedAccessException {
+            get {
+                return ResourceManager.GetString("PuttyProfile_Error_UnauthorizedAccessException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid profile: not all properties set..
+        /// </summary>
+        internal static string PuttyProfile_NotAllPropertiesSet {
+            get {
+                return ResourceManager.GetString("PuttyProfile_NotAllPropertiesSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile not found..
+        /// </summary>
+        internal static string PuttyProfile_ProfileNotFound {
+            get {
+                return ResourceManager.GetString("PuttyProfile_ProfileNotFound", resourceCulture);
             }
         }
         

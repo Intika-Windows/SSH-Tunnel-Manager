@@ -8,13 +8,14 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using SSHTunnelManager.Business;
+using SSHTunnelManager.Properties;
 using SSHTunnelManager.Util;
 
 namespace SSHTunnelManager.Domain
 {
     public class EncryptedStorage
     {
-        private static readonly byte[] _passwordCheckString = Encoding.ASCII.GetBytes("MAGIC");
+        private static readonly byte[] _passwordCheckString = Encoding.ASCII.GetBytes(@"MAGIC");
         private static readonly XmlSerializer _serializer = new XmlSerializer(typeof(EncryptedStorageContent));
 
         /// <summary>
@@ -27,7 +28,7 @@ namespace SSHTunnelManager.Domain
             if (filename == null) throw new ArgumentNullException("filename");
             if (password == null) throw new ArgumentNullException("password");
             if (string.IsNullOrWhiteSpace(password))
-                throw new EncryptedStorageException("Empty password provided.");
+                throw new EncryptedStorageException(Resources.EncryptedStorage_EmptyPasswordProvided);
 
             using (var inputXml = new MemoryStream())
             {
@@ -39,9 +40,9 @@ namespace SSHTunnelManager.Domain
                 }
                 catch (CryptographicException e)
                 {
-                    if (e.Message == "Padding is invalid and cannot be removed.") 
+                    if (e.Message == @"Padding is invalid and cannot be removed.") 
                         // In most cases this means what password is invalid, but also can mean what storage is broken.
-                        throw new EncryptedStorageException("Invalid password.");
+                        throw new EncryptedStorageException(Resources.EncryptedStorage_InvalidPassword);
                     throw;
                 }
                 inputXml.Seek(0, SeekOrigin.Begin);
@@ -49,7 +50,7 @@ namespace SSHTunnelManager.Domain
                 var readed = inputXml.Read(buffer, 0, buffer.Length);
                 if (readed != buffer.Length || !_passwordCheckString.SequenceEqual(buffer))
                 {
-                    throw new EncryptedStorageException("Invalid password.");
+                    throw new EncryptedStorageException(Resources.EncryptedStorage_InvalidPassword);
                 }
                 // read content
                 Data = readData(inputXml);
@@ -98,7 +99,7 @@ namespace SSHTunnelManager.Domain
                 var depStr = host.DependsOnStr;
                 if (!hostsByName.ContainsKey(depStr))
                 {
-                    throw new Exception(string.Format("Требуемый для работы хоста '{0}' хост '{1}' не найден.", host.Name, depStr));
+                    throw new Exception(string.Format(Resources.EncryptedStorage_RequiredHostNotFound, host.Name, depStr));
                 }
                 host.DependsOn = hostsByName[depStr];
             }

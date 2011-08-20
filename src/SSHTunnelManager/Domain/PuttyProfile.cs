@@ -41,7 +41,7 @@ namespace SSHTunnelManager.Domain
             {
                 resValue = value;
                 resType = PropertyType.String;
-            } else if (type == "dword")
+            } else if (type == @"dword")
             {
                 resValue = int.Parse(value, NumberStyles.AllowHexSpecifier);
                 resType = PropertyType.Int32;
@@ -78,13 +78,13 @@ namespace SSHTunnelManager.Domain
                 {
                     if (profileKey == null)
                     {
-                        Logger.Log.Info("Profile not found.");
+                        Logger.Log.Info(Resources.PuttyProfile_ProfileNotFound);
                         return null;
                     }
 
                     if (_defaultProfileProperties.Select(v => v.Key).Except(profileKey.GetValueNames()).Count() > 0)
                     {
-                        Logger.Log.Info("Invalid profile: not all properties set.");
+                        Logger.Log.Info(Resources.PuttyProfile_NotAllPropertiesSet);
                         return null;
                     }
 
@@ -103,7 +103,7 @@ namespace SSHTunnelManager.Domain
                                 type = PropertyType.Int32;
                                 break;
                             default:
-                                throw new NotSupportedException("Registry value kind is not supported.");
+                                throw new NotSupportedException(Resources.PuttyProfile_Error_RegistryValueKindNotSupported);
                         }
                         profile.Properties[name] = new PuttyProfileProperty(name) { Value = value, Type = type };
                     }
@@ -113,7 +113,7 @@ namespace SSHTunnelManager.Domain
             catch (SecurityException e)
             {
                 throw new SSHTunnelManagerException(
-                    string.Format("Security error while reading PuTTY profile {0}: {1}", profileName, e.Message), e);
+                    string.Format(Resources.PuttyProfile_Error_SecurityException2, profileName, e.Message), e);
             }
         }
 
@@ -135,7 +135,7 @@ namespace SSHTunnelManager.Domain
                     if (profileKey == null)
                     {
                         throw new SSHTunnelManagerException(
-                            string.Format("Error while creating TuTTY profile {0}: unknown error.", profileName));
+                            string.Format(Resources.PuttyProfile_Error_CreateSubKeyReturnedNull, profileName));
                     }
 
                     foreach (var property in profileProperties.Values)
@@ -159,17 +159,17 @@ namespace SSHTunnelManager.Domain
             catch (SecurityException e)
             {
                 throw new SSHTunnelManagerException(
-                    string.Format("Security error while updating PuTTY profile {0}: {1}", profileName, e.Message), e);
+                    string.Format(Resources.PuttyProfile_Error_SecurityException, profileName, e.Message), e);
             }
             catch (UnauthorizedAccessException e)
             {
                 throw new SSHTunnelManagerException(
-                    string.Format("UnauthorizedAccess error while updating PuTTY profile {0}: {1}", profileName, e.Message), e);
+                    string.Format(Resources.PuttyProfile_Error_UnauthorizedAccessException, profileName, e.Message), e);
             }
             catch (IOException e)
             {
                 throw new SSHTunnelManagerException(
-                    string.Format("IO error while updating PuTTY profile {0}: {1}", profileName, e.Message), e);
+                    string.Format(Resources.PuttyProfile_Error_IOException, profileName, e.Message), e);
             }
         }
 
@@ -187,50 +187,50 @@ namespace SSHTunnelManager.Domain
 
         public bool LocalPortAcceptAll
         {
-            get { return getBool("LocalPortAcceptAll"); }
-            set { setBool("LocalPortAcceptAll", value); }
+            get { return getBool(@"LocalPortAcceptAll"); }
+            set { setBool(@"LocalPortAcceptAll", value); }
         }
 
         public bool RemotePortAcceptAll
         {
-            get { return getBool("RemotePortAcceptAll"); }
-            set { setBool("RemotePortAcceptAll", value); }
+            get { return getBool(@"RemotePortAcceptAll"); }
+            set { setBool(@"RemotePortAcceptAll", value); }
         }
 
         public ProxyType ProxyMethod
         {
-            get { return (ProxyType)(int)getOrCreate("ProxyMethod").Value; }
+            get { return (ProxyType)(int)getOrCreate(@"ProxyMethod").Value; }
             set
             {
                 if (value == ProxyMethod)
                     return;
 
-                getOrCreate("ProxyMethod").Value = (int)value;
+                getOrCreate(@"ProxyMethod").Value = (int)value;
             }
         }
 
         public string ProxyHost
         {
-            get { return getString("ProxyHost"); }
-            set { setString("ProxyHost", value); }
+            get { return getString(@"ProxyHost"); }
+            set { setString(@"ProxyHost", value); }
         }
 
         public int ProxyPort
         {
-            get { return getInt("ProxyPort"); }
-            set { setInt("ProxyPort", value); }
+            get { return getInt(@"ProxyPort"); }
+            set { setInt(@"ProxyPort", value); }
         }
 
         public string ProxyUsername
         {
-            get { return getString("ProxyUsername"); }
-            set { setString("ProxyUsername", value); }
+            get { return getString(@"ProxyUsername"); }
+            set { setString(@"ProxyUsername", value); }
         }
 
         public string ProxyPassword
         {
-            get { return getString("ProxyPassword"); }
-            set { setString("ProxyPassword", value); }
+            get { return getString(@"ProxyPassword"); }
+            set { setString(@"ProxyPassword", value); }
         }
 
         /// <summary>
@@ -238,14 +238,14 @@ namespace SSHTunnelManager.Domain
         /// </summary>
         public bool ProxyLocalhost
         {
-            get { return getBool("ProxyLocalhost"); }
-            set { setBool("ProxyLocalhost", value); }
+            get { return getBool(@"ProxyLocalhost"); }
+            set { setBool(@"ProxyLocalhost", value); }
         }
 
         public string ProxyExcludeList
         {
-            get { return getString("ProxyExcludeList"); }
-            set { setString("ProxyExcludeList", value); }
+            get { return getString(@"ProxyExcludeList"); }
+            set { setString(@"ProxyExcludeList", value); }
         }
 
         #endregion
@@ -260,7 +260,7 @@ namespace SSHTunnelManager.Domain
             PuttyProfileProperty property;
             if (!Properties.TryGetValue(name, out property))
             {
-                return Properties["LocalPortAcceptAll"] = new PuttyProfileProperty(name);
+                return Properties[@"LocalPortAcceptAll"] = new PuttyProfileProperty(name);
             }
             return property;
         }
