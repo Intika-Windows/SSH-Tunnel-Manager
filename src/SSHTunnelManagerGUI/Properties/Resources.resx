@@ -305,16 +305,16 @@
     <value>Start psftp</value>
   </data>
   <data name="ValidatorError_HostAliasBusy" xml:space="preserve">
-    <value>Alias is busy by another host.</value>
+    <value>Alias is used by other host.</value>
   </data>
   <data name="ValidatorError_TunnelAliasBusy" xml:space="preserve">
-    <value>Alias is busy by another tunnel.</value>
+    <value>Alias is used by other tunnel.</value>
   </data>
   <data name="ValidatorError_TunnelHostnameNotEmpty" xml:space="preserve">
     <value>Hostname should be empty for dynamic tunnels.</value>
   </data>
   <data name="ValidatorError_LocalPortBusyThisHost" xml:space="preserve">
-    <value>Local port is busy by another tunnel of this host.</value>
+    <value>Local port is used by other tunnel of this host.</value>
   </data>
   <data name="ValidatorError_TunnelDstHostnameNotEmpty" xml:space="preserve">
     <value>Destination hostname should be empty for dynamic tunnels.</value>
@@ -329,7 +329,7 @@
     <value>Host property is null.</value>
   </data>
   <data name="HostDialog_AddTunnelButtonReminder" xml:space="preserve">
-    <value>You may forget to press 'Add' button, add new tunnel into list before continue?</value>
+    <value>You might have forgotten to press the 'Add' button, add new tunnel into list?</value>
   </data>
   <data name="HostDialog_DependsOnNone" xml:space="preserve">
     <value>None</value>
@@ -359,9 +359,9 @@
     <value>Are you sure you want to remove host '{0}'?</value>
   </data>
   <data name="MessageBoxText_StartHostRecursively" xml:space="preserve">
-    <value>Some hosts what host '{0}' depends on are down. Start recursively?</value>
+    <value>Some hosts that host '{0}' depends on are down. Start over recursively?</value>
   </data>
   <data name="ValidatorError_LocalPortBusyAnotherHost" xml:space="preserve">
-    <value>Local port is busy by another tunnel in host '{0}'.</value>
+    <value>Local port is used by other tunnel with host '{0}'.</value>
   </data>
 </root>
