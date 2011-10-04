@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r38 | keir@netvisor.ru | 2011-08-21 01:47:23 +0400 (┬ё, 21 рту 2011) | 1 line
+
+╧юфяЁртшы эхьэюую
+------------------------------------------------------------------------
+r37 | skara06@gmail.com | 2011-08-21 01:38:37 +0400 (┬ё, 21 рту 2011) | 1 line
+
+Some resources modification
+------------------------------------------------------------------------
 r36 | skara06@gmail.com | 2011-08-20 22:59:35 +0400 (╤с, 20 рту 2011) | 1 line
 
 many bugs fixed, restart hosts with warnings added. TODO: add wix installer with ngen optimization, add better exception handling, check .net 4 installed on start.

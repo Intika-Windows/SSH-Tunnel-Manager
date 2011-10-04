@@ -14,46 +14,23 @@ namespace SSHTunnelManager.Domain
 {
     public class PuttyLink : IPuttyLink
     {
-        private readonly Config _config;
-        private readonly PuttyProfile _profile;
         private const string ShellStartedMessage = "Started a shell/command";
+        private readonly PuttyProfile _profile;
+        private readonly Config _config;
 
         private volatile Process _process;
         private volatile string _lastStartError;
         private volatile ELinkStatus _status = ELinkStatus.Stopped;
         private volatile bool _stopRequested;
-
-        public PuttyLink(HostInfo host, Config config, PuttyProfile profile)
-        {
-            if (host == null) throw new ArgumentNullException("host");
-            if (config == null) throw new ArgumentNullException("config");
-            if (profile == null) throw new ArgumentNullException("profile");
-            Host = host;
-            _config = config;
-            _profile = profile;
-        }
-
-        public HostInfo Host { get; private set; }
-
-        public string LastStartError
-        {
-            get { return _lastStartError; }
-            private set
-            {
-                if (value == _lastStartError)
-                    return;
-                _lastStartError = value; // "Reads and writes of the following data types are atomic: bool, char, byte, sbyte, short, ushort, uint, int, float, and reference types."
-                if (!string.IsNullOrEmpty(value))
-                {
-                    Logger.Log.ErrorFormat("[{0}] {1}", Host.Name, value);
-                }
-            }
-        }
-
-        public DateTime LastStartTime { get; private set; }
-
         private readonly ManualResetEventSlim _eventStopped = new ManualResetEventSlim(true);
         private readonly ManualResetEventSlim _eventStarted = new ManualResetEventSlim(false);
+        private Dictionary<TunnelInfo, ForwardingResult> _forwardingResults;
+        private readonly object _forwardingResultsLock = new object();
+
+        private readonly StringBuilder _multilineError = new StringBuilder();
+
+        public DateTime LastStartTime { get; private set; }
+        public HostInfo Host { get; private set; }
 
         public ELinkStatus Status
         {
@@ -106,14 +83,21 @@ namespace SSHTunnelManager.Domain
             }
         }
 
-        /// <summary>
-        /// В случае, если процесс запущен асинхронно (методом AsyncStart), события будут срабатывать из асинхронного потока.
-        /// Поэтому нужно продумать Threadsafe, для изменения состояния формы лучше использовать Control.BeginInvoke()
-        /// </summary>
-        public event EventHandler LinkStatusChanged;
+        public string LastStartError
+        {
+            get { return _lastStartError; }
+            private set
+            {
+                if (value == _lastStartError)
+                    return;
+                _lastStartError = value; // "Reads and writes of the following data types are atomic: bool, char, byte, sbyte, short, ushort, uint, int, float, and reference types."
+                if (!string.IsNullOrEmpty(value))
+                {
+                    Logger.Log.ErrorFormat("[{0}] {1}", Host.Name, value);
+                }
+            }
+        }
 
-        private Dictionary<TunnelInfo, ForwardingResult> _forwardingResults;
-        private readonly object _forwardingResultsLock = new object();
         public Dictionary<TunnelInfo, ForwardingResult> ForwardingResults
         {
             get
@@ -125,10 +109,20 @@ namespace SSHTunnelManager.Domain
             }
         }
 
-        private void onLinkStatusChanged()
+        /// <summary>
+        /// В случае, если процесс запущен асинхронно (методом AsyncStart), события будут срабатывать из асинхронного потока.
+        /// Поэтому нужно продумать Threadsafe, для изменения состояния формы лучше использовать Control.BeginInvoke()
+        /// </summary>
+        public event EventHandler LinkStatusChanged;
+
+        public PuttyLink(HostInfo host, Config config, PuttyProfile profile)
         {
-            if (LinkStatusChanged != null)
-                LinkStatusChanged(this, EventArgs.Empty);
+            if (host == null) throw new ArgumentNullException("host");
+            if (config == null) throw new ArgumentNullException("config");
+            if (profile == null) throw new ArgumentNullException("profile");
+            Host = host;
+            _config = config;
+            _profile = profile;
         }
 
         public void AsyncStart()
@@ -184,6 +178,45 @@ namespace SSHTunnelManager.Domain
             finally
             {
                 Status = ELinkStatus.Stopped;
+            }
+        }
+
+        public void Stop()
+        {
+            if (Status == ELinkStatus.Stopped)
+                return;
+            try
+            {
+                _stopRequested = true;
+                _process.Kill();
+                _multilineError.Clear();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public bool WaitForStop(int seconds = 10)
+        {
+            return _eventStopped.Wait(seconds * 1000);
+        }
+
+        public bool WaitForStart(int seconds = 20)
+        {
+            return _eventStarted.Wait(seconds * 1000);
+        }
+
+        private void onLinkStatusChanged()
+        {
+            if (LinkStatusChanged != null)
+                LinkStatusChanged(this, EventArgs.Empty);
+        }
+
+        private void writeLineStdIn(string text)
+        {
+            lock (_process.StandardInput)
+            {
+                _process.StandardInput.WriteLine(text);
             }
         }
 
@@ -249,16 +282,6 @@ namespace SSHTunnelManager.Domain
             }
             return Status == ELinkStatus.Started || 
                    Status == ELinkStatus.StartedWithWarnings;
-        }
-
-        private readonly StringBuilder _multilineError = new StringBuilder();
-
-        private void writeLineStdIn(string text)
-        {
-            lock (_process.StandardInput)
-            {
-                _process.StandardInput.WriteLine(text);
-            }
         }
 
         private void writeStdIn(string text)
@@ -354,31 +377,6 @@ namespace SSHTunnelManager.Domain
                 Stop();
             }
             log4net.ThreadContext.Properties[@"Host"] = null;
-        }
-
-        public void Stop()
-        {
-            if (Status == ELinkStatus.Stopped)
-                return;
-            try
-            {
-                _stopRequested = true;
-                _process.Kill();
-                _multilineError.Clear();
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        public bool WaitForStop(int seconds = 10)
-        {
-            return _eventStopped.Wait(seconds * 1000);
-        }
-
-        public bool WaitForStart(int seconds = 20)
-        {
-            return _eventStarted.Wait(seconds * 1000);
         }
     }
 }

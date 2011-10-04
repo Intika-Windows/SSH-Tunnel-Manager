@@ -35,7 +35,10 @@
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label9;
             System.Windows.Forms.Label label5;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.hostsGridView = new System.Windows.Forms.DataGridView();
             this.hgwStatusIconColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.hgwNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,7 +84,7 @@
             this.treeViewFilter = new System.Windows.Forms.TreeView();
             this.imageListStates = new System.Windows.Forms.ImageList(this.components);
             this.splitContainerV1 = new System.Windows.Forms.SplitContainer();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlHost = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelUniqName = new System.Windows.Forms.Label();
@@ -118,7 +121,7 @@
             this.splitContainerV1.Panel1.SuspendLayout();
             this.splitContainerV1.Panel2.SuspendLayout();
             this.splitContainerV1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControlHost.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tunnelsGridView)).BeginInit();
@@ -516,15 +519,15 @@
             // 
             // splitContainerV1.Panel2
             // 
-            this.splitContainerV1.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainerV1.Panel2.Controls.Add(this.tabControlHost);
             // 
-            // tabControl1
+            // tabControlHost
             // 
-            this.tabControl1.Controls.Add(this.tabPageGeneral);
-            this.tabControl1.Controls.Add(this.tabPageLog);
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
+            this.tabControlHost.Controls.Add(this.tabPageGeneral);
+            this.tabControlHost.Controls.Add(this.tabPageLog);
+            resources.ApplyResources(this.tabControlHost, "tabControlHost");
+            this.tabControlHost.Name = "tabControlHost";
+            this.tabControlHost.SelectedIndex = 0;
             // 
             // tabPageGeneral
             // 
@@ -579,6 +582,9 @@
             this.tunnelsGridView.AllowUserToAddRows = false;
             this.tunnelsGridView.AllowUserToDeleteRows = false;
             this.tunnelsGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.tunnelsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tunnelsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tunnelsGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tunnelsGridView.BackgroundColor = System.Drawing.SystemColors.Window;
@@ -606,6 +612,11 @@
             this.tunnelsGridView.Name = "tunnelsGridView";
             this.tunnelsGridView.ReadOnly = true;
             this.tunnelsGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            this.tunnelsGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.tunnelsGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Transparent;
+            this.tunnelsGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
             this.tunnelsGridView.RowTemplate.Height = 18;
             this.tunnelsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tunnelsGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tunnelsGridView_CellFormatting);
@@ -614,6 +625,9 @@
             // tgvNameColumn
             // 
             this.tgvNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.tgvNameColumn.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.tgvNameColumn, "tgvNameColumn");
             this.tgvNameColumn.Name = "tgvNameColumn";
             this.tgvNameColumn.ReadOnly = true;
@@ -723,7 +737,7 @@
             this.splitContainerV1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerV1)).EndInit();
             this.splitContainerV1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlHost.ResumeLayout(false);
             this.tabPageGeneral.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -772,14 +786,9 @@
         private System.Windows.Forms.DataGridView tunnelsGridView;
         private System.Windows.Forms.ToolStripButton toolStripButtonStart;
         private System.Windows.Forms.ToolStripButton toolStripButtonStop;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlHost;
         private System.Windows.Forms.TabPage tabPageGeneral;
         private System.Windows.Forms.TabPage tabPageLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tgvNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tgvTypeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tgvSrcPortColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstHostColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstPortColumn;
         private System.Windows.Forms.ToolStripMenuItem editHostToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeHostToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -803,5 +812,10 @@
         private System.Windows.Forms.ToolStripMenuItem startPsftpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startFileZillaSFTPToolStripMenuItem;
         private System.Windows.Forms.Timer theTimer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tgvNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tgvTypeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tgvSrcPortColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstHostColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstPortColumn;
     }
 }

@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using SSHTunnelManager.Business;
 using SSHTunnelManager.Domain;
 using SSHTunnelManager.Ext.BLW;
@@ -72,6 +73,23 @@ namespace SSHTunnelManagerGUI.Forms
                 theTimer.Interval = _hostsManager.Config.RestartHostsWithWarningsInterval * 1000;
                 theTimer.Start();
             }
+
+            /*var backColor = DefaultBackColor;
+            if (VisualStyleInformation.IsSupportedByOS && VisualStyleInformation.IsEnabledByUser)
+            {
+                VisualStyleRenderer vsr2 = new VisualStyleRenderer(VisualStyleElement.Tab.Body.Normal);
+                VisualStyleRenderer vsr = new VisualStyleRenderer(VisualStyleElement.Tab.TopTabItem.Normal);
+                backColor = vsr.GetColor(ColorProperty.FillColor);
+                var arr =
+                    (from int val in Enum.GetValues(typeof (ColorProperty)) select vsr.GetColor((ColorProperty) val)).
+                        ToList();
+                var names = Enum.GetNames(typeof (ColorProperty));
+                var c1 = vsr.GetColor(ColorProperty.TransparentColor);
+                backColor = c1;
+            }
+            tabControlHost.TabPages[0].BackColor = backColor;
+            tunnelsGridView.BackgroundColor = backColor;
+            tunnelsGridView.RowsDefaultCellStyle.BackColor = backColor;*/
         }
 
         private void onRestartHostsWithWarningsTick(object sender, EventArgs e)

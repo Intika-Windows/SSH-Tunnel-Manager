@@ -62,9 +62,12 @@ namespace SSHTunnelManagerGUI.Ext.CheckGroupBox
             Checked = true;
 
             // Set the color of the CheckBox's text to the color of the label in a standard groupbox control.
-            VisualStyleRenderer vsr = new VisualStyleRenderer(VisualStyleElement.Button.GroupBox.Normal);
-            Color groupBoxTextColor = vsr.GetColor(ColorProperty.TextColor);
-            m_checkBox.ForeColor = groupBoxTextColor;
+            if (VisualStyleInformation.IsSupportedByOS && VisualStyleInformation.IsEnabledByUser)
+            {
+                VisualStyleRenderer vsr = new VisualStyleRenderer(VisualStyleElement.Button.GroupBox.Normal);
+                Color groupBoxTextColor = vsr.GetColor(ColorProperty.TextColor);
+                m_checkBox.ForeColor = groupBoxTextColor;
+            }
         }
 
         #region Properties
