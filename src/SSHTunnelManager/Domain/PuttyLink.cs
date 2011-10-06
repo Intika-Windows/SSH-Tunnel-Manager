@@ -183,11 +183,16 @@ namespace SSHTunnelManager.Domain
 
         public void Stop()
         {
+            _stopRequested = true;
+            stop();
+        }
+
+        private void stop()
+        {
             if (Status == ELinkStatus.Stopped)
                 return;
             try
             {
-                _stopRequested = true;
                 _process.Kill();
                 _multilineError.Clear();
             }
@@ -270,7 +275,7 @@ namespace SSHTunnelManager.Domain
                 if (data.Contains(@"login as:"))
                 {
                     // invalid username provided
-                    Stop();
+                    stop();
                     // _process.StandardInput.WriteLine(username);
                     LastStartError = Resources.PuttyLink_Error_InvalidUsername;
                 }
@@ -350,7 +355,7 @@ namespace SSHTunnelManager.Domain
             {
                 // Неверный пароль (Доступ запрещен)
                 LastStartError = @"Access Denied";
-                Stop();
+                stop();
             }
             // Fatal errors
             m = Regex.Match(args.Data, @"^FATAL ERROR:\s*(?<msg>.*)$");
@@ -374,7 +379,7 @@ namespace SSHTunnelManager.Domain
                 _multilineError.Append(args.Data);
                 LastStartError = _multilineError.ToString();
                 _multilineError.Clear();
-                Stop();
+                stop();
             }
             log4net.ThreadContext.Properties[@"Host"] = null;
         }
