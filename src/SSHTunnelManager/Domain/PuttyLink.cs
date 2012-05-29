@@ -248,7 +248,7 @@ namespace SSHTunnelManager.Domain
                                        RedirectStandardError = true,
                                        RedirectStandardOutput = true,
                                        RedirectStandardInput = true,
-                                       Arguments = ConsoleTools.PuttyArguments(Host, _profile, false)
+                                       Arguments = ConsoleTools.PuttyArguments(Host, _profile, Host.AuthType)
                                    }
                            };
 
@@ -260,6 +260,7 @@ namespace SSHTunnelManager.Domain
 
             var buffer = new StringBuilder();
             bool passwordProvided = false;
+            bool passphraseForKeyProvided = false;
             while (!_process.HasExited)
             {
                 while (_process.StandardOutput.Peek() >= 0)
@@ -283,6 +284,11 @@ namespace SSHTunnelManager.Domain
                 {
                     writeLineStdIn(Host.Password);
                     passwordProvided = true;
+                }
+                else if (data.Contains(@"passphrase for key") && !passphraseForKeyProvided)
+                {
+                    writeLineStdIn(Host.Password);
+                    passphraseForKeyProvided = true;
                 }
             }
             return Status == ELinkStatus.Started || 
@@ -356,6 +362,12 @@ namespace SSHTunnelManager.Domain
                 // Неверный пароль (Доступ запрещен)
                 LastStartError = @"Access Denied";
                 stop();
+            }
+            // Access granted
+            if (args.Data.Contains(@"Access granted"))
+            {
+                // Доступ открыт, можно удалить ключ
+                PrivateKeysStorage.RemovePrivateKey(Host);
             }
             // Fatal errors
             m = Regex.Match(args.Data, @"^FATAL ERROR:\s*(?<msg>.*)$");

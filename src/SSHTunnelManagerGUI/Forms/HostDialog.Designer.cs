@@ -33,7 +33,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HostDialog));
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label3;
-            System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label8;
             System.Windows.Forms.Label label9;
@@ -62,7 +61,6 @@
             this.textBoxHostname = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBoxDependsOn = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -77,10 +75,18 @@
             this.buttonOk = new System.Windows.Forms.Button();
             this.theErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.theGoodProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.gbxAuth = new System.Windows.Forms.GroupBox();
+            this.lblPrivateKeyFilename = new System.Windows.Forms.Label();
+            this.lblPassphrase = new System.Windows.Forms.Label();
+            this.btnLoadPrivateKey = new System.Windows.Forms.Button();
+            this.tbxPassphrase = new System.Windows.Forms.TextBox();
+            this.rbxPrivateKey = new System.Windows.Forms.RadioButton();
+            this.rbxPassword = new System.Windows.Forms.RadioButton();
+            this.tbxPassword = new System.Windows.Forms.TextBox();
+            this.openPrivateKeyFileDialog = new System.Windows.Forms.OpenFileDialog();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
-            label5 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
@@ -97,6 +103,7 @@
             this.flowLayoutPanelEditHost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.theGoodProvider)).BeginInit();
+            this.gbxAuth.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -113,11 +120,6 @@
             // 
             resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(label5, "label5");
-            label5.Name = "label5";
             // 
             // label7
             // 
@@ -229,8 +231,8 @@
             resources.ApplyResources(this.textBoxDestHost, "textBoxDestHost");
             this.theGoodProvider.SetIconAlignment(this.textBoxDestHost, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("textBoxDestHost.IconAlignment"))));
             this.theErrorProvider.SetIconAlignment(this.textBoxDestHost, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("textBoxDestHost.IconAlignment1"))));
-            this.theGoodProvider.SetIconPadding(this.textBoxDestHost, ((int)(resources.GetObject("textBoxDestHost.IconPadding"))));
-            this.theErrorProvider.SetIconPadding(this.textBoxDestHost, ((int)(resources.GetObject("textBoxDestHost.IconPadding1"))));
+            this.theErrorProvider.SetIconPadding(this.textBoxDestHost, ((int)(resources.GetObject("textBoxDestHost.IconPadding"))));
+            this.theGoodProvider.SetIconPadding(this.textBoxDestHost, ((int)(resources.GetObject("textBoxDestHost.IconPadding1"))));
             this.textBoxDestHost.Name = "textBoxDestHost";
             // 
             // label13
@@ -281,8 +283,8 @@
             // textBoxTunnelName
             // 
             resources.ApplyResources(this.textBoxTunnelName, "textBoxTunnelName");
-            this.theGoodProvider.SetIconPadding(this.textBoxTunnelName, ((int)(resources.GetObject("textBoxTunnelName.IconPadding"))));
-            this.theErrorProvider.SetIconPadding(this.textBoxTunnelName, ((int)(resources.GetObject("textBoxTunnelName.IconPadding1"))));
+            this.theErrorProvider.SetIconPadding(this.textBoxTunnelName, ((int)(resources.GetObject("textBoxTunnelName.IconPadding"))));
+            this.theGoodProvider.SetIconPadding(this.textBoxTunnelName, ((int)(resources.GetObject("textBoxTunnelName.IconPadding1"))));
             this.textBoxTunnelName.Name = "textBoxTunnelName";
             // 
             // label6
@@ -293,15 +295,15 @@
             // textBoxDestPort
             // 
             resources.ApplyResources(this.textBoxDestPort, "textBoxDestPort");
-            this.theGoodProvider.SetIconPadding(this.textBoxDestPort, ((int)(resources.GetObject("textBoxDestPort.IconPadding"))));
-            this.theErrorProvider.SetIconPadding(this.textBoxDestPort, ((int)(resources.GetObject("textBoxDestPort.IconPadding1"))));
+            this.theErrorProvider.SetIconPadding(this.textBoxDestPort, ((int)(resources.GetObject("textBoxDestPort.IconPadding"))));
+            this.theGoodProvider.SetIconPadding(this.textBoxDestPort, ((int)(resources.GetObject("textBoxDestPort.IconPadding1"))));
             this.textBoxDestPort.Name = "textBoxDestPort";
             // 
             // textBoxSourcePort
             // 
             resources.ApplyResources(this.textBoxSourcePort, "textBoxSourcePort");
-            this.theGoodProvider.SetIconPadding(this.textBoxSourcePort, ((int)(resources.GetObject("textBoxSourcePort.IconPadding"))));
-            this.theErrorProvider.SetIconPadding(this.textBoxSourcePort, ((int)(resources.GetObject("textBoxSourcePort.IconPadding1"))));
+            this.theErrorProvider.SetIconPadding(this.textBoxSourcePort, ((int)(resources.GetObject("textBoxSourcePort.IconPadding"))));
+            this.theGoodProvider.SetIconPadding(this.textBoxSourcePort, ((int)(resources.GetObject("textBoxSourcePort.IconPadding1"))));
             this.textBoxSourcePort.Name = "textBoxSourcePort";
             // 
             // label11
@@ -312,15 +314,15 @@
             // textBoxName
             // 
             resources.ApplyResources(this.textBoxName, "textBoxName");
-            this.theErrorProvider.SetIconPadding(this.textBoxName, ((int)(resources.GetObject("textBoxName.IconPadding"))));
-            this.theGoodProvider.SetIconPadding(this.textBoxName, ((int)(resources.GetObject("textBoxName.IconPadding1"))));
+            this.theGoodProvider.SetIconPadding(this.textBoxName, ((int)(resources.GetObject("textBoxName.IconPadding"))));
+            this.theErrorProvider.SetIconPadding(this.textBoxName, ((int)(resources.GetObject("textBoxName.IconPadding1"))));
             this.textBoxName.Name = "textBoxName";
             // 
             // textBoxHostname
             // 
             resources.ApplyResources(this.textBoxHostname, "textBoxHostname");
-            this.theGoodProvider.SetIconPadding(this.textBoxHostname, ((int)(resources.GetObject("textBoxHostname.IconPadding"))));
-            this.theErrorProvider.SetIconPadding(this.textBoxHostname, ((int)(resources.GetObject("textBoxHostname.IconPadding1"))));
+            this.theErrorProvider.SetIconPadding(this.textBoxHostname, ((int)(resources.GetObject("textBoxHostname.IconPadding"))));
+            this.theGoodProvider.SetIconPadding(this.textBoxHostname, ((int)(resources.GetObject("textBoxHostname.IconPadding1"))));
             this.textBoxHostname.Name = "textBoxHostname";
             // 
             // label4
@@ -331,29 +333,20 @@
             // textBoxLogin
             // 
             resources.ApplyResources(this.textBoxLogin, "textBoxLogin");
-            this.theErrorProvider.SetIconPadding(this.textBoxLogin, ((int)(resources.GetObject("textBoxLogin.IconPadding"))));
-            this.theGoodProvider.SetIconPadding(this.textBoxLogin, ((int)(resources.GetObject("textBoxLogin.IconPadding1"))));
+            this.theGoodProvider.SetIconPadding(this.textBoxLogin, ((int)(resources.GetObject("textBoxLogin.IconPadding"))));
+            this.theErrorProvider.SetIconPadding(this.textBoxLogin, ((int)(resources.GetObject("textBoxLogin.IconPadding1"))));
             this.textBoxLogin.Name = "textBoxLogin";
-            // 
-            // textBoxPassword
-            // 
-            resources.ApplyResources(this.textBoxPassword, "textBoxPassword");
-            this.theErrorProvider.SetIconPadding(this.textBoxPassword, ((int)(resources.GetObject("textBoxPassword.IconPadding"))));
-            this.theGoodProvider.SetIconPadding(this.textBoxPassword, ((int)(resources.GetObject("textBoxPassword.IconPadding1"))));
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.textBoxPassword, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.gbxAuth, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.textBoxLogin, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBoxName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.comboBoxDependsOn, 1, 4);
             this.tableLayoutPanel1.Controls.Add(groupBox1, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(label5, 0, 3);
             this.tableLayoutPanel1.Controls.Add(label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(label7, 0, 4);
@@ -378,8 +371,8 @@
             // textBoxPort
             // 
             resources.ApplyResources(this.textBoxPort, "textBoxPort");
-            this.theGoodProvider.SetIconPadding(this.textBoxPort, ((int)(resources.GetObject("textBoxPort.IconPadding"))));
-            this.theErrorProvider.SetIconPadding(this.textBoxPort, ((int)(resources.GetObject("textBoxPort.IconPadding1"))));
+            this.theErrorProvider.SetIconPadding(this.textBoxPort, ((int)(resources.GetObject("textBoxPort.IconPadding"))));
+            this.theGoodProvider.SetIconPadding(this.textBoxPort, ((int)(resources.GetObject("textBoxPort.IconPadding1"))));
             this.textBoxPort.Name = "textBoxPort";
             // 
             // flowLayoutPanelMain
@@ -454,6 +447,72 @@
             this.theGoodProvider.ContainerControl = this;
             resources.ApplyResources(this.theGoodProvider, "theGoodProvider");
             // 
+            // gbxAuth
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.gbxAuth, 2);
+            this.gbxAuth.Controls.Add(this.lblPrivateKeyFilename);
+            this.gbxAuth.Controls.Add(this.lblPassphrase);
+            this.gbxAuth.Controls.Add(this.btnLoadPrivateKey);
+            this.gbxAuth.Controls.Add(this.tbxPassphrase);
+            this.gbxAuth.Controls.Add(this.rbxPrivateKey);
+            this.gbxAuth.Controls.Add(this.rbxPassword);
+            this.gbxAuth.Controls.Add(this.tbxPassword);
+            resources.ApplyResources(this.gbxAuth, "gbxAuth");
+            this.gbxAuth.Name = "gbxAuth";
+            this.gbxAuth.TabStop = false;
+            // 
+            // lblPrivateKeyFilename
+            // 
+            resources.ApplyResources(this.lblPrivateKeyFilename, "lblPrivateKeyFilename");
+            this.theErrorProvider.SetIconPadding(this.lblPrivateKeyFilename, ((int)(resources.GetObject("lblPrivateKeyFilename.IconPadding"))));
+            this.theGoodProvider.SetIconPadding(this.lblPrivateKeyFilename, ((int)(resources.GetObject("lblPrivateKeyFilename.IconPadding1"))));
+            this.lblPrivateKeyFilename.Name = "lblPrivateKeyFilename";
+            // 
+            // lblPassphrase
+            // 
+            resources.ApplyResources(this.lblPassphrase, "lblPassphrase");
+            this.lblPassphrase.Name = "lblPassphrase";
+            // 
+            // btnLoadPrivateKey
+            // 
+            resources.ApplyResources(this.btnLoadPrivateKey, "btnLoadPrivateKey");
+            this.btnLoadPrivateKey.Name = "btnLoadPrivateKey";
+            this.btnLoadPrivateKey.UseVisualStyleBackColor = true;
+            this.btnLoadPrivateKey.Click += new System.EventHandler(this.btnLoadPrivateKey_Click);
+            // 
+            // tbxPassphrase
+            // 
+            resources.ApplyResources(this.tbxPassphrase, "tbxPassphrase");
+            this.tbxPassphrase.Name = "tbxPassphrase";
+            this.tbxPassphrase.UseSystemPasswordChar = true;
+            // 
+            // rbxPrivateKey
+            // 
+            resources.ApplyResources(this.rbxPrivateKey, "rbxPrivateKey");
+            this.rbxPrivateKey.Name = "rbxPrivateKey";
+            this.rbxPrivateKey.UseVisualStyleBackColor = true;
+            this.rbxPrivateKey.CheckedChanged += new System.EventHandler(this.rbxPrivateKey_CheckedChanged);
+            // 
+            // rbxPassword
+            // 
+            resources.ApplyResources(this.rbxPassword, "rbxPassword");
+            this.rbxPassword.Checked = true;
+            this.rbxPassword.Name = "rbxPassword";
+            this.rbxPassword.TabStop = true;
+            this.rbxPassword.UseVisualStyleBackColor = true;
+            // 
+            // tbxPassword
+            // 
+            resources.ApplyResources(this.tbxPassword, "tbxPassword");
+            this.theErrorProvider.SetIconPadding(this.tbxPassword, ((int)(resources.GetObject("tbxPassword.IconPadding"))));
+            this.theGoodProvider.SetIconPadding(this.tbxPassword, ((int)(resources.GetObject("tbxPassword.IconPadding1"))));
+            this.tbxPassword.Name = "tbxPassword";
+            this.tbxPassword.UseSystemPasswordChar = true;
+            // 
+            // openPrivateKeyFileDialog
+            // 
+            resources.ApplyResources(this.openPrivateKeyFileDialog, "openPrivateKeyFileDialog");
+            // 
             // HostDialog
             // 
             this.AcceptButton = this.buttonAddHost;
@@ -479,6 +538,8 @@
             this.flowLayoutPanelEditHost.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.theErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.theGoodProvider)).EndInit();
+            this.gbxAuth.ResumeLayout(false);
+            this.gbxAuth.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -490,7 +551,6 @@
         private System.Windows.Forms.TextBox textBoxHostname;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxLogin;
-        private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox comboBoxDependsOn;
@@ -522,5 +582,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvSrcPortColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstHostColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstPortColumn;
+        private System.Windows.Forms.GroupBox gbxAuth;
+        private System.Windows.Forms.Label lblPrivateKeyFilename;
+        private System.Windows.Forms.Label lblPassphrase;
+        private System.Windows.Forms.Button btnLoadPrivateKey;
+        private System.Windows.Forms.TextBox tbxPassphrase;
+        private System.Windows.Forms.RadioButton rbxPrivateKey;
+        private System.Windows.Forms.RadioButton rbxPassword;
+        private System.Windows.Forms.TextBox tbxPassword;
+        private System.Windows.Forms.OpenFileDialog openPrivateKeyFileDialog;
     }
 }

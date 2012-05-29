@@ -17,6 +17,8 @@ namespace SSHTunnelManager.Business
         //public string MachineName { get; set; }
         public string Port { get; set; }
         public string Username { get; set; }
+        public AuthenticationType AuthType { get; set; }
+        public string PrivateKeyData { get; set; }
         public string Password { get; set; }
 
         public List<TunnelInfo> Tunnels
@@ -64,6 +66,11 @@ namespace SSHTunnelManager.Business
         }
 
         public string HostAndPort { get { return string.Format(@"{0}:{1}", Hostname, Port); } }
+
+        public HostInfo()
+        {
+            AuthType = AuthenticationType.Password;
+        }
 
         #region Event Log
 

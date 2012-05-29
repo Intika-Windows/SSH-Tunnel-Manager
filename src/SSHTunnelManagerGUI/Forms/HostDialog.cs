@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using SSHTunnelManager.Business;
 using SSHTunnelManagerGUI.Properties;
@@ -20,6 +22,7 @@ namespace SSHTunnelManagerGUI.Forms
         private Label _labelRecentlyAdded;
         private bool _modified;
         private readonly List<HostInfo> _committedHosts;
+        private string _loadedPrivateKey;
 
         public enum EMode
         {
@@ -41,7 +44,8 @@ namespace SSHTunnelManagerGUI.Forms
             _hostValidator.AddControl(textBoxHostname, _hostValidator.ValidateHostname);
             _hostValidator.AddControl(textBoxPort, _hostValidator.ValidatePort);
             _hostValidator.AddControl(textBoxLogin, _hostValidator.ValidateUsername);
-            _hostValidator.AddControl(textBoxPassword, _hostValidator.ValidateNotNullOrWhitespaces);
+            _hostValidator.AddControl(tbxPassword, validatePassword);
+            _hostValidator.AddControl(lblPrivateKeyFilename, control => control.Text, validatePrivateKeyData);
 
             _tunnelValidator = new Validator(theErrorProvider, theGoodProvider);
             _tunnelValidator.AddControl(textBoxSourcePort, validateTunnelSourcePort);
@@ -68,11 +72,36 @@ namespace SSHTunnelManagerGUI.Forms
             textBoxHostname.TextChanged += delegate { Modified = true; };
             textBoxPort.TextChanged += delegate { Modified = true; };
             textBoxLogin.TextChanged += delegate { Modified = true; };
-            textBoxPassword.TextChanged += delegate { Modified = true; };
+            tbxPassword.TextChanged += delegate { Modified = true; };
+            tbxPassphrase.TextChanged += delegate { Modified = true; };
+            rbxPassword.CheckedChanged += delegate { Modified = true; };
+            btnLoadPrivateKey.Click += delegate { Modified = true; };
             comboBoxDependsOn.SelectedIndexChanged += delegate { Modified = true; };
         }
 
+        private bool validatePassword(Control control, string text)
+        {
+            if (!rbxPassword.Checked)
+            {
+                _tunnelValidator.SetError(control, null);
+                return true;
+            }
+
+            return _hostValidator.ValidateNotNullOrWhitespaces(control, text);
+        }
+
         #region Validators
+
+        private bool validatePrivateKeyData(Control control, string text)
+        {
+            if (!rbxPrivateKey.Checked)
+            {
+                _tunnelValidator.SetError(control, null);
+                return true;
+            }
+
+            return _hostValidator.ValidateNotNullOrWhitespaces(control, _loadedPrivateKey);
+        }
 
         private bool validateAlias(Control control, string text)
         {
@@ -230,7 +259,7 @@ namespace SSHTunnelManagerGUI.Forms
                 textBoxHostname.Text = "";
                 textBoxPort.Text = "";
                 textBoxLogin.Text = "";
-                textBoxPassword.Text = "";
+                tbxPassword.Text = "";
 
                 comboBoxDependsOn.Items.Clear();
                 var hosts = _committedHosts.Where(h => h != _currentHost && !h.DeepDependsOn(_currentHost)).OrderBy(h => h.Name);
@@ -263,7 +292,20 @@ namespace SSHTunnelManagerGUI.Forms
             textBoxHostname.Text = _currentHost.Hostname;
             textBoxPort.Text = _currentHost.Port;
             textBoxLogin.Text = _currentHost.Username;
-            textBoxPassword.Text = _currentHost.Password;
+
+            if (_currentHost.AuthType == AuthenticationType.Password)
+            {
+                rbxPassword.Checked = true;
+                tbxPassword.Text = _currentHost.Password;
+            }
+            else
+            {
+                rbxPrivateKey.Checked = true;
+                tbxPassphrase.Text = _currentHost.Password;
+                lblPrivateKeyFilename.Text = "<Previously Loaded>";
+                _loadedPrivateKey = _currentHost.PrivateKeyData;
+            }
+            tbxPassword.Text = _currentHost.Password;
 
             comboBoxDependsOn.Items.Clear();
             var hosts = _committedHosts.Where(h => h != _currentHost && !h.DeepDependsOn(_currentHost)).OrderBy(h => h.Name);
@@ -294,7 +336,20 @@ namespace SSHTunnelManagerGUI.Forms
             _currentHost.Hostname = textBoxHostname.Text.Trim();
             _currentHost.Port = textBoxPort.Text.Trim();
             _currentHost.Username = textBoxLogin.Text.Trim();
-            _currentHost.Password = textBoxPassword.Text.Trim();
+            
+            if (rbxPassword.Checked)
+            {
+                _currentHost.AuthType = AuthenticationType.Password;
+                _currentHost.Password = tbxPassword.Text.Trim();
+                _currentHost.PrivateKeyData = null;
+            } else
+            {
+                _currentHost.AuthType = AuthenticationType.PrivateKey;
+                var passphrase = tbxPassphrase.Text.Trim();
+                _currentHost.Password = !string.IsNullOrEmpty(passphrase) ? passphrase : null;
+                _currentHost.PrivateKeyData = _loadedPrivateKey;
+            }
+
             var dependsOnHost = comboBoxDependsOn.SelectedItem as HostInfo;
             if (dependsOnHost != null)
             {
@@ -494,5 +549,25 @@ namespace SSHTunnelManagerGUI.Forms
         }
 
         #endregion
+
+        private void btnLoadPrivateKey_Click(object sender, EventArgs e)
+        {
+            if (openPrivateKeyFileDialog.ShowDialog(this) != DialogResult.OK)
+            {
+                return;
+            }
+
+            var filename = openPrivateKeyFileDialog.FileName;
+            _loadedPrivateKey = File.ReadAllText(filename, Encoding.ASCII);
+            lblPrivateKeyFilename.Text = Path.GetFileName(filename);
+        }
+
+        private void rbxPrivateKey_CheckedChanged(object sender, EventArgs e)
+        {
+            var privateKeysSelected = rbxPrivateKey.Checked;
+            tbxPassword.Enabled = !privateKeysSelected;
+            btnLoadPrivateKey.Enabled = privateKeysSelected;
+            tbxPassphrase.Enabled = privateKeysSelected;
+        }
     }
 }

@@ -383,7 +383,11 @@ namespace SSHTunnelManagerGUI.Forms
                 return;
 
             var hd = new HostDialog(HostDialog.EMode.EditHost, _hostsManager.HostInfoList) {Host = host.Model.Info};
-            hd.ShowDialog(this);
+            var res = hd.ShowDialog(this);
+            if (res == DialogResult.Cancel)
+            {
+                return;
+            }
 
             var dependentHosts =
                 _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(ov => ov.Object).
@@ -924,5 +928,10 @@ namespace SSHTunnelManagerGUI.Forms
         }
 
         #endregion
+
+        private void timerPrivateKeysCleanUp_Tick(object sender, EventArgs e)
+        {
+            PrivateKeysStorage.CleanUpGarbage();
+        }
     }
 }

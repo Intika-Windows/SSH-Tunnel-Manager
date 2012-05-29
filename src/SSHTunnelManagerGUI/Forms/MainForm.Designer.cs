@@ -1,4 +1,6 @@
-﻿namespace SSHTunnelManagerGUI.Forms
+﻿using SSHTunnelManager.Domain;
+
+namespace SSHTunnelManagerGUI.Forms
 {
     partial class MainForm
     {
@@ -18,6 +20,7 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
+            PrivateKeysStorage.CleanUpGarbage();
         }
 
         #region Windows Form Designer generated code
@@ -35,10 +38,7 @@
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label9;
             System.Windows.Forms.Label label5;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.hostsGridView = new System.Windows.Forms.DataGridView();
             this.hgwStatusIconColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.hgwNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,6 +105,7 @@
             this.toolStripMenuItemEditHost = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRemoveHost = new System.Windows.Forms.ToolStripMenuItem();
             this.theTimer = new System.Windows.Forms.Timer(this.components);
+            this.timerPrivateKeysCleanUp = new System.Windows.Forms.Timer(this.components);
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
@@ -582,9 +583,6 @@
             this.tunnelsGridView.AllowUserToAddRows = false;
             this.tunnelsGridView.AllowUserToDeleteRows = false;
             this.tunnelsGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.tunnelsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tunnelsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tunnelsGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tunnelsGridView.BackgroundColor = System.Drawing.SystemColors.Window;
@@ -612,12 +610,6 @@
             this.tunnelsGridView.Name = "tunnelsGridView";
             this.tunnelsGridView.ReadOnly = true;
             this.tunnelsGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            this.tunnelsGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.tunnelsGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Transparent;
-            this.tunnelsGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.tunnelsGridView.RowTemplate.Height = 18;
             this.tunnelsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tunnelsGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tunnelsGridView_CellFormatting);
             this.tunnelsGridView.SelectionChanged += new System.EventHandler(this.tunnelsGridView_SelectionChanged);
@@ -625,9 +617,6 @@
             // tgvNameColumn
             // 
             this.tgvNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.tgvNameColumn.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.tgvNameColumn, "tgvNameColumn");
             this.tgvNameColumn.Name = "tgvNameColumn";
             this.tgvNameColumn.ReadOnly = true;
@@ -712,6 +701,11 @@
             // theTimer
             // 
             this.theTimer.Interval = 10000;
+            // 
+            // timerPrivateKeysCleanUp
+            // 
+            this.timerPrivateKeysCleanUp.Interval = 300000;
+            this.timerPrivateKeysCleanUp.Tick += new System.EventHandler(this.timerPrivateKeysCleanUp_Tick);
             // 
             // MainForm
             // 
@@ -817,5 +811,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvSrcPortColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstHostColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgvDstPortColumn;
+        private System.Windows.Forms.Timer timerPrivateKeysCleanUp;
     }
 }

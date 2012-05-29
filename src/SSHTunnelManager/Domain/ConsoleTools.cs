@@ -19,7 +19,7 @@ namespace SSHTunnelManager.Domain
         public static void StartPutty(HostInfo host, PuttyProfile profile)
         {
             var fileName = Path.Combine(Util.Helper.StartupPath, PuttyLocation);
-            var args = PuttyArguments(host, profile, true);
+            var args = PuttyArguments(host, profile, host.AuthType);
             Process.Start(fileName, args);
         }
 
@@ -37,7 +37,7 @@ namespace SSHTunnelManager.Domain
             Process.Start(fileName, args);
         }
 
-        public static string PuttyArguments(HostInfo host, PuttyProfile profile, bool withPassword)
+        public static string PuttyArguments(HostInfo host, PuttyProfile profile, AuthenticationType authType)
         {
             // example: -ssh -load _stm_preset_ username@domainName -P 22 -pw password -D 5000 -L 44333:username.dyndns.org:44333
 
@@ -47,9 +47,24 @@ namespace SSHTunnelManager.Domain
                 profileArg = @" -load " + profile.Name;
             }
 
-            var args = withPassword
-                           ? String.Format(@"-ssh{0} {1}@{2} -P {3} -pw {4} -v", profileArg, host.Username, host.Hostname, host.Port, host.Password)
-                           : String.Format(@"-ssh{0} {1}@{2} -P {3} -v", profileArg, host.Username, host.Hostname, host.Port);
+            string args;
+            switch (authType)
+            {
+            case AuthenticationType.None:
+                args = String.Format(@"-ssh{0} {1}@{2} -P {3} -v", profileArg, host.Username, host.Hostname, 
+                                     host.Port);
+                break;
+            case AuthenticationType.Password:
+                args = String.Format(@"-ssh{0} {1}@{2} -P {3} -pw {4} -v", profileArg, host.Username, host.Hostname,
+                                     host.Port, host.Password);
+                break;
+            case AuthenticationType.PrivateKey:
+                args = String.Format(@"-ssh{0} {1}@{2} -P {3} -i {4} -v", profileArg, host.Username, host.Hostname,
+                                     host.Port, PrivateKeysStorage.GetPrivateKey(host).Filename);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException("authType");
+            }
             var sb = new StringBuilder(args);
             foreach (var tunnelArg in host.Tunnels.Select(tunnelArguments))
             {
@@ -62,7 +77,20 @@ namespace SSHTunnelManager.Domain
 
         private static string psftpArguments(HostInfo host)
         {
-            var args = String.Format(@"{0}@{1} -P {2} -pw {3} -batch", host.Username, host.Hostname, host.Port, host.Password);
+            string args;
+            switch (host.AuthType)
+            {
+            case AuthenticationType.Password:
+                args = String.Format(@"{0}@{1} -P {2} -pw {3} -batch", host.Username, host.Hostname, host.Port,
+                                     host.Password);
+                break;
+            case AuthenticationType.PrivateKey:
+                args = String.Format(@"{0}@{1} -P {2} -i {3} -batch", host.Username, host.Hostname, host.Port,
+                                     PrivateKeysStorage.GetPrivateKey(host).Filename);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException("authType");
+            }
             return args;
         }
 

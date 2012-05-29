@@ -91,6 +91,7 @@
     <Compile Include="Business\Config.cs" />
     <Compile Include="Business\Host.cs" />
     <Compile Include="Business\IViewModel.cs" />
+    <Compile Include="Business\AuthenticationType.cs" />
     <Compile Include="Domain\ConsoleTools.cs" />
     <Compile Include="Domain\ELinkStatus.cs" />
     <Compile Include="Domain\EncryptedStorage.cs" />
@@ -100,6 +101,8 @@
     <Compile Include="Domain\ForwardingResult.cs" />
     <Compile Include="Domain\HostsManager.cs" />
     <Compile Include="Domain\IPuttyLink.cs" />
+    <Compile Include="Domain\PrivateKey.cs" />
+    <Compile Include="Domain\PrivateKeysStorage.cs" />
     <Compile Include="Domain\PropertyType.cs" />
     <Compile Include="Domain\PuttyLink.cs" />
     <Compile Include="Domain\PuttyProfile.cs" />

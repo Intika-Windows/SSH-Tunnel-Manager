@@ -190,7 +190,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <metadata name="label3.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -226,42 +226,6 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <metadata name="label5.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 84</value>
-  </data>
-  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Password:</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
   <metadata name="label7.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -274,7 +238,7 @@
     <value>True</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 111</value>
+    <value>0, 182</value>
   </data>
   <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -298,7 +262,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <metadata name="label8.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -414,8 +378,8 @@
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="textBoxPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="lblPrivateKeyFilename.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <metadata name="theErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -423,24 +387,6 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="buttonAddHost.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="buttonAddHost.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 3</value>
-  </data>
-  <data name="buttonAddHost.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 0</value>
-  </data>
-  <data name="buttonAddHost.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="buttonAddHost.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="buttonAddHost.Text" xml:space="preserve">
-    <value>Add Host</value>
-  </data>
   <data name="&gt;&gt;buttonAddHost.Name" xml:space="preserve">
     <value>buttonAddHost</value>
   </data>
@@ -462,24 +408,6 @@
   <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="buttonClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="buttonClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>249, 3</value>
-  </data>
-  <data name="buttonClose.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
-  </data>
-  <data name="buttonClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="buttonClose.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="buttonClose.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
   <data name="&gt;&gt;buttonClose.Name" xml:space="preserve">
     <value>buttonClose</value>
   </data>
@@ -494,183 +422,6 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>448, 552</value>
-  </data>
-  <data name="flowLayoutPanelMain.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelMain.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanelAddHost.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
-  </data>
-  <data name="flowLayoutPanelAddHost.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelAddHost.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanelAddHost.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>RightToLeft</value>
-  </data>
-  <data name="flowLayoutPanelAddHost.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 368</value>
-  </data>
-  <data name="flowLayoutPanelAddHost.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelAddHost.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 26</value>
-  </data>
-  <data name="flowLayoutPanelAddHost.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelAddHost.Name" xml:space="preserve">
-    <value>flowLayoutPanelAddHost</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelAddHost.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelAddHost.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMain</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelAddHost.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanelEditHost.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
-  </data>
-  <data name="flowLayoutPanelEditHost.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelEditHost.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonApply.Location" type="System.Drawing.Point, System.Drawing">
-    <value>249, 3</value>
-  </data>
-  <data name="buttonApply.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
-  </data>
-  <data name="buttonApply.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="buttonApply.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="buttonApply.Text" xml:space="preserve">
-    <value>Apply</value>
-  </data>
-  <data name="&gt;&gt;buttonApply.Name" xml:space="preserve">
-    <value>buttonApply</value>
-  </data>
-  <data name="&gt;&gt;buttonApply.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonApply.Parent" xml:space="preserve">
-    <value>flowLayoutPanelEditHost</value>
-  </data>
-  <data name="&gt;&gt;buttonApply.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 3</value>
-  </data>
-  <data name="buttonCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 0</value>
-  </data>
-  <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="buttonCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="buttonCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.Name" xml:space="preserve">
-    <value>buttonCancel</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.Parent" xml:space="preserve">
-    <value>flowLayoutPanelEditHost</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>87, 3</value>
-  </data>
-  <data name="buttonOk.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 0</value>
-  </data>
-  <data name="buttonOk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="buttonOk.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="buttonOk.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="&gt;&gt;buttonOk.Name" xml:space="preserve">
-    <value>buttonOk</value>
-  </data>
-  <data name="&gt;&gt;buttonOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonOk.Parent" xml:space="preserve">
-    <value>flowLayoutPanelEditHost</value>
-  </data>
-  <data name="&gt;&gt;buttonOk.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="flowLayoutPanelEditHost.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>RightToLeft</value>
-  </data>
-  <data name="flowLayoutPanelEditHost.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 394</value>
-  </data>
-  <data name="flowLayoutPanelEditHost.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelEditHost.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 26</value>
-  </data>
-  <data name="flowLayoutPanelEditHost.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="flowLayoutPanelEditHost.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelEditHost.Name" xml:space="preserve">
-    <value>flowLayoutPanelEditHost</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelEditHost.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelEditHost.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMain</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelEditHost.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="flowLayoutPanelMain.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="flowLayoutPanelMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="flowLayoutPanelMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>12, 12, 12, 12</value>
-  </data>
-  <data name="flowLayoutPanelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 420</value>
-  </data>
-  <data name="flowLayoutPanelMain.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelMain.Name" xml:space="preserve">
     <value>flowLayoutPanelMain</value>
@@ -756,6 +507,12 @@
   <data name="&gt;&gt;theGoodProvider.Type" xml:space="preserve">
     <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;openPrivateKeyFileDialog.Name" xml:space="preserve">
+    <value>openPrivateKeyFileDialog</value>
+  </data>
+  <data name="&gt;&gt;openPrivateKeyFileDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>HostDialog</value>
   </data>
@@ -786,7 +543,7 @@
         AAD//wAA//8AAA==
 </value>
   </data>
-  <data name="textBoxPassword.IconPadding" type="System.Int32, mscorlib">
+  <data name="lblPrivateKeyFilename.IconPadding" type="System.Int32, mscorlib">
     <value>-20</value>
   </data>
   <metadata name="theGoodProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -816,36 +573,255 @@
         AADwDwAA//8AAA==
 </value>
   </data>
-  <data name="textBoxPassword.IconPadding1" type="System.Int32, mscorlib">
+  <data name="lblPrivateKeyFilename.IconPadding1" type="System.Int32, mscorlib">
     <value>-20</value>
   </data>
-  <data name="textBoxPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 81</value>
+  <data name="lblPrivateKeyFilename.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="textBoxPassword.MaxLength" type="System.Int32, mscorlib">
-    <value>255</value>
+  <data name="lblPrivateKeyFilename.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 45</value>
   </data>
-  <data name="textBoxPassword.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
-    <value>*</value>
+  <data name="lblPrivateKeyFilename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 13</value>
   </data>
-  <data name="textBoxPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 20</value>
+  <data name="lblPrivateKeyFilename.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
-  <data name="textBoxPassword.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="lblPrivateKeyFilename.Text" xml:space="preserve">
+    <value>&lt;Not Loaded&gt;</value>
   </data>
-  <data name="&gt;&gt;textBoxPassword.Name" xml:space="preserve">
-    <value>textBoxPassword</value>
+  <data name="&gt;&gt;lblPrivateKeyFilename.Name" xml:space="preserve">
+    <value>lblPrivateKeyFilename</value>
   </data>
-  <data name="&gt;&gt;textBoxPassword.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lblPrivateKeyFilename.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBoxPassword.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="&gt;&gt;lblPrivateKeyFilename.Parent" xml:space="preserve">
+    <value>gbxAuth</value>
   </data>
-  <data name="&gt;&gt;textBoxPassword.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblPrivateKeyFilename.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="lblPassphrase.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPassphrase.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPassphrase.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 68</value>
+  </data>
+  <data name="lblPassphrase.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 13</value>
+  </data>
+  <data name="lblPassphrase.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="lblPassphrase.Text" xml:space="preserve">
+    <value>Passphrase (optional):</value>
+  </data>
+  <data name="&gt;&gt;lblPassphrase.Name" xml:space="preserve">
+    <value>lblPassphrase</value>
+  </data>
+  <data name="&gt;&gt;lblPassphrase.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPassphrase.Parent" xml:space="preserve">
+    <value>gbxAuth</value>
+  </data>
+  <data name="&gt;&gt;lblPassphrase.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnLoadPrivateKey.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnLoadPrivateKey.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnLoadPrivateKey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>246, 40</value>
+  </data>
+  <data name="btnLoadPrivateKey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 23</value>
+  </data>
+  <data name="btnLoadPrivateKey.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnLoadPrivateKey.Text" xml:space="preserve">
+    <value>Load...</value>
+  </data>
+  <data name="&gt;&gt;btnLoadPrivateKey.Name" xml:space="preserve">
+    <value>btnLoadPrivateKey</value>
+  </data>
+  <data name="&gt;&gt;btnLoadPrivateKey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLoadPrivateKey.Parent" xml:space="preserve">
+    <value>gbxAuth</value>
+  </data>
+  <data name="&gt;&gt;btnLoadPrivateKey.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tbxPassphrase.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="tbxPassphrase.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tbxPassphrase.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 65</value>
+  </data>
+  <data name="tbxPassphrase.MaxLength" type="System.Int32, mscorlib">
+    <value>255</value>
+  </data>
+  <data name="tbxPassphrase.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="tbxPassphrase.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 20</value>
+  </data>
+  <data name="tbxPassphrase.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;tbxPassphrase.Name" xml:space="preserve">
+    <value>tbxPassphrase</value>
+  </data>
+  <data name="&gt;&gt;tbxPassphrase.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxPassphrase.Parent" xml:space="preserve">
+    <value>gbxAuth</value>
+  </data>
+  <data name="&gt;&gt;tbxPassphrase.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="rbxPrivateKey.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rbxPrivateKey.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rbxPrivateKey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 43</value>
+  </data>
+  <data name="rbxPrivateKey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 17</value>
+  </data>
+  <data name="rbxPrivateKey.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="rbxPrivateKey.Text" xml:space="preserve">
+    <value>Private key:</value>
+  </data>
+  <data name="&gt;&gt;rbxPrivateKey.Name" xml:space="preserve">
+    <value>rbxPrivateKey</value>
+  </data>
+  <data name="&gt;&gt;rbxPrivateKey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbxPrivateKey.Parent" xml:space="preserve">
+    <value>gbxAuth</value>
+  </data>
+  <data name="&gt;&gt;rbxPrivateKey.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="rbxPassword.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rbxPassword.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rbxPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 20</value>
+  </data>
+  <data name="rbxPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 17</value>
+  </data>
+  <data name="rbxPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="rbxPassword.Text" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="&gt;&gt;rbxPassword.Name" xml:space="preserve">
+    <value>rbxPassword</value>
+  </data>
+  <data name="&gt;&gt;rbxPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbxPassword.Parent" xml:space="preserve">
+    <value>gbxAuth</value>
+  </data>
+  <data name="&gt;&gt;rbxPassword.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tbxPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="tbxPassword.IconPadding" type="System.Int32, mscorlib">
+    <value>-20</value>
+  </data>
+  <data name="tbxPassword.IconPadding1" type="System.Int32, mscorlib">
+    <value>-20</value>
+  </data>
+  <data name="tbxPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 19</value>
+  </data>
+  <data name="tbxPassword.MaxLength" type="System.Int32, mscorlib">
+    <value>255</value>
+  </data>
+  <data name="tbxPassword.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="tbxPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 20</value>
+  </data>
+  <data name="tbxPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tbxPassword.Name" xml:space="preserve">
+    <value>tbxPassword</value>
+  </data>
+  <data name="&gt;&gt;tbxPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxPassword.Parent" xml:space="preserve">
+    <value>gbxAuth</value>
+  </data>
+  <data name="&gt;&gt;tbxPassword.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="gbxAuth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 81</value>
+  </data>
+  <data name="gbxAuth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 91</value>
+  </data>
+  <data name="gbxAuth.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="gbxAuth.Text" xml:space="preserve">
+    <value>Authentication</value>
+  </data>
+  <data name="&gt;&gt;gbxAuth.Name" xml:space="preserve">
+    <value>gbxAuth</value>
+  </data>
+  <data name="&gt;&gt;gbxAuth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbxAuth.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;gbxAuth.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="theGoodProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>158, 17</value>
+  </metadata>
+  <metadata name="theErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="textBoxLogin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -919,7 +895,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="comboBoxDependsOn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 107</value>
+    <value>96, 178</value>
   </data>
   <data name="comboBoxDependsOn.Size" type="System.Drawing.Size, System.Drawing">
     <value>225, 21</value>
@@ -942,27 +918,6 @@
   <data name="panel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="textBoxHostname.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
-  </data>
-  <data name="textBoxHostname.IconPadding" type="System.Int32, mscorlib">
-    <value>-20</value>
-  </data>
-  <data name="textBoxHostname.IconPadding1" type="System.Int32, mscorlib">
-    <value>-20</value>
-  </data>
-  <data name="textBoxHostname.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="textBoxHostname.MaxLength" type="System.Int32, mscorlib">
-    <value>255</value>
-  </data>
-  <data name="textBoxHostname.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 20</value>
-  </data>
-  <data name="textBoxHostname.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;textBoxHostname.Name" xml:space="preserve">
     <value>textBoxHostname</value>
   </data>
@@ -975,30 +930,6 @@
   <data name="&gt;&gt;textBoxHostname.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="textBoxPort.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="textBoxPort.IconPadding" type="System.Int32, mscorlib">
-    <value>-20</value>
-  </data>
-  <data name="textBoxPort.IconPadding1" type="System.Int32, mscorlib">
-    <value>-20</value>
-  </data>
-  <data name="textBoxPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>171, 3</value>
-  </data>
-  <data name="textBoxPort.MaxLength" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="textBoxPort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 20</value>
-  </data>
-  <data name="textBoxPort.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="textBoxPort.Text" xml:space="preserve">
-    <value>22</value>
-  </data>
   <data name="&gt;&gt;textBoxPort.Name" xml:space="preserve">
     <value>textBoxPort</value>
   </data>
@@ -1010,24 +941,6 @@
   </data>
   <data name="&gt;&gt;textBoxPort.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 6</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 13</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>:</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -1075,7 +988,7 @@
     <value>6</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 368</value>
+    <value>324, 439</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1093,52 +1006,25 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="textBoxPassword" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="textBoxLogin" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="textBoxName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBoxDependsOn" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="5" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="panel1" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label5" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label7" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="tunnelsGridView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="gbxAuth" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="textBoxLogin" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="textBoxName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBoxDependsOn" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="5" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="panel1" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label7" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="tgvNameColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="tgvNameColumn.HeaderText" xml:space="preserve">
-    <value>Alias</value>
-  </data>
   <metadata name="tgvTypeColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="tgvTypeColumn.HeaderText" xml:space="preserve">
-    <value>Type</value>
-  </data>
-  <data name="tgvTypeColumn.Width" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <metadata name="tgvSrcPortColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="tgvSrcPortColumn.HeaderText" xml:space="preserve">
-    <value>Src Port</value>
-  </data>
-  <data name="tgvSrcPortColumn.Width" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <metadata name="tgvDstHostColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="tgvDstHostColumn.HeaderText" xml:space="preserve">
-    <value>Dst Host</value>
-  </data>
-  <data name="tgvDstHostColumn.Width" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <metadata name="tgvDstPortColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="tgvDstPortColumn.HeaderText" xml:space="preserve">
-    <value>Dst Port</value>
-  </data>
-  <data name="tgvDstPortColumn.Width" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="tunnelsGridView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="tunnelsGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 40</value>
@@ -1576,7 +1462,7 @@
     <value>14</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 134</value>
+    <value>3, 205</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>318, 231</value>
@@ -1598,5 +1484,461 @@
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <metadata name="tgvNameColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="tgvNameColumn.HeaderText" xml:space="preserve">
+    <value>Alias</value>
+  </data>
+  <metadata name="tgvTypeColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="tgvTypeColumn.HeaderText" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="tgvTypeColumn.Width" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <metadata name="tgvSrcPortColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="tgvSrcPortColumn.HeaderText" xml:space="preserve">
+    <value>Src Port</value>
+  </data>
+  <data name="tgvSrcPortColumn.Width" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <metadata name="tgvDstHostColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="tgvDstHostColumn.HeaderText" xml:space="preserve">
+    <value>Dst Host</value>
+  </data>
+  <data name="tgvDstHostColumn.Width" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <metadata name="tgvDstPortColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="tgvDstPortColumn.HeaderText" xml:space="preserve">
+    <value>Dst Port</value>
+  </data>
+  <data name="tgvDstPortColumn.Width" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="textBoxHostname.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="textBoxHostname.IconPadding" type="System.Int32, mscorlib">
+    <value>-20</value>
+  </data>
+  <data name="textBoxHostname.IconPadding1" type="System.Int32, mscorlib">
+    <value>-20</value>
+  </data>
+  <data name="textBoxHostname.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="textBoxHostname.MaxLength" type="System.Int32, mscorlib">
+    <value>255</value>
+  </data>
+  <data name="textBoxHostname.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 20</value>
+  </data>
+  <data name="textBoxHostname.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxHostname.Name" xml:space="preserve">
+    <value>textBoxHostname</value>
+  </data>
+  <data name="&gt;&gt;textBoxHostname.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxHostname.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;textBoxHostname.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>158, 6</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 13</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBoxPort.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="textBoxPort.IconPadding" type="System.Int32, mscorlib">
+    <value>-20</value>
+  </data>
+  <data name="textBoxPort.IconPadding1" type="System.Int32, mscorlib">
+    <value>-20</value>
+  </data>
+  <data name="textBoxPort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 3</value>
+  </data>
+  <data name="textBoxPort.MaxLength" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="textBoxPort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 20</value>
+  </data>
+  <data name="textBoxPort.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="textBoxPort.Text" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;textBoxPort.Name" xml:space="preserve">
+    <value>textBoxPort</value>
+  </data>
+  <data name="&gt;&gt;textBoxPort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxPort.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;textBoxPort.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanelMain.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelMain.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelAddHost.Name" xml:space="preserve">
+    <value>flowLayoutPanelAddHost</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelAddHost.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelAddHost.Parent" xml:space="preserve">
+    <value>flowLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelAddHost.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEditHost.Name" xml:space="preserve">
+    <value>flowLayoutPanelEditHost</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEditHost.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEditHost.Parent" xml:space="preserve">
+    <value>flowLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEditHost.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanelMain.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanelMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="flowLayoutPanelMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>12, 12, 12, 12</value>
+  </data>
+  <data name="flowLayoutPanelMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>324, 491</value>
+  </data>
+  <data name="flowLayoutPanelMain.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelMain.Name" xml:space="preserve">
+    <value>flowLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanelAddHost.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="flowLayoutPanelAddHost.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelAddHost.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanelAddHost.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>RightToLeft</value>
+  </data>
+  <data name="flowLayoutPanelAddHost.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 439</value>
+  </data>
+  <data name="flowLayoutPanelAddHost.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelAddHost.Size" type="System.Drawing.Size, System.Drawing">
+    <value>324, 26</value>
+  </data>
+  <data name="flowLayoutPanelAddHost.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelAddHost.Name" xml:space="preserve">
+    <value>flowLayoutPanelAddHost</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelAddHost.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelAddHost.Parent" xml:space="preserve">
+    <value>flowLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelAddHost.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonClose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>249, 3</value>
+  </data>
+  <data name="buttonClose.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 0</value>
+  </data>
+  <data name="buttonClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonClose.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonClose.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;buttonClose.Name" xml:space="preserve">
+    <value>buttonClose</value>
+  </data>
+  <data name="&gt;&gt;buttonClose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonClose.Parent" xml:space="preserve">
+    <value>flowLayoutPanelAddHost</value>
+  </data>
+  <data name="&gt;&gt;buttonClose.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonAddHost.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonAddHost.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 3</value>
+  </data>
+  <data name="buttonAddHost.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 0</value>
+  </data>
+  <data name="buttonAddHost.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonAddHost.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonAddHost.Text" xml:space="preserve">
+    <value>Add Host</value>
+  </data>
+  <data name="&gt;&gt;buttonAddHost.Name" xml:space="preserve">
+    <value>buttonAddHost</value>
+  </data>
+  <data name="&gt;&gt;buttonAddHost.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAddHost.Parent" xml:space="preserve">
+    <value>flowLayoutPanelAddHost</value>
+  </data>
+  <data name="&gt;&gt;buttonAddHost.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanelEditHost.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="flowLayoutPanelEditHost.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelEditHost.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.Name" xml:space="preserve">
+    <value>buttonApply</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEditHost</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Name" xml:space="preserve">
+    <value>buttonCancel</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEditHost</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;buttonOk.Name" xml:space="preserve">
+    <value>buttonOk</value>
+  </data>
+  <data name="&gt;&gt;buttonOk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOk.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEditHost</value>
+  </data>
+  <data name="&gt;&gt;buttonOk.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanelEditHost.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>RightToLeft</value>
+  </data>
+  <data name="flowLayoutPanelEditHost.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 465</value>
+  </data>
+  <data name="flowLayoutPanelEditHost.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelEditHost.Size" type="System.Drawing.Size, System.Drawing">
+    <value>324, 26</value>
+  </data>
+  <data name="flowLayoutPanelEditHost.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="flowLayoutPanelEditHost.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEditHost.Name" xml:space="preserve">
+    <value>flowLayoutPanelEditHost</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEditHost.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEditHost.Parent" xml:space="preserve">
+    <value>flowLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEditHost.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonApply.Location" type="System.Drawing.Point, System.Drawing">
+    <value>249, 3</value>
+  </data>
+  <data name="buttonApply.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 0</value>
+  </data>
+  <data name="buttonApply.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonApply.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonApply.Text" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.Name" xml:space="preserve">
+    <value>buttonApply</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEditHost</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 3</value>
+  </data>
+  <data name="buttonCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 0</value>
+  </data>
+  <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Name" xml:space="preserve">
+    <value>buttonCancel</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEditHost</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>87, 3</value>
+  </data>
+  <data name="buttonOk.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 0</value>
+  </data>
+  <data name="buttonOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonOk.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonOk.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;buttonOk.Name" xml:space="preserve">
+    <value>buttonOk</value>
+  </data>
+  <data name="&gt;&gt;buttonOk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOk.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEditHost</value>
+  </data>
+  <data name="&gt;&gt;buttonOk.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="openPrivateKeyFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>303, 17</value>
+  </metadata>
+  <data name="openPrivateKeyFileDialog.Filter" xml:space="preserve">
+    <value>PuTTY Private Key Files|*.ppk|All Files|*.*</value>
   </data>
 </root>
