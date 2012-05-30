@@ -181,12 +181,12 @@ namespace SSHTunnelManagerGUI.Forms
             {
                 var port = text;
 
-                var otherHost = _committedHosts.Where(h => h != _currentHost).FirstOrDefault(h => h.Tunnels.Exists(t => t.LocalPort == port));
+                /*var otherHost = _committedHosts.Where(h => h != _currentHost).FirstOrDefault(h => h.Tunnels.Exists(t => t.LocalPort == port));
                 if (otherHost != null)
                 {
                     _tunnelValidator.SetError(control, string.Format(Resources.ValidatorError_LocalPortBusyAnotherHost, otherHost.Name));
                     return false;
-                }
+                }*/
                 if (tunnels().Exists(t => t.LocalPort == port))
                 {
                     _tunnelValidator.SetError(control, Resources.ValidatorError_LocalPortBusyThisHost);
