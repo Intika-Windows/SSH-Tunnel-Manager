@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using SSHTunnelManager.Business;
 using SSHTunnelManager.Properties;
+using SSHTunnelManager.Util;
 
 namespace SSHTunnelManager.Domain
 {
@@ -53,14 +54,18 @@ namespace SSHTunnelManager.Domain
             case AuthenticationType.None:
                 args = String.Format(@"-ssh{0} {1}@{2} -P {3} -v", profileArg, host.Username, host.Hostname, 
                                      host.Port);
+                Logger.Log.DebugFormat(@"plink.exe {0}", args);
                 break;
             case AuthenticationType.Password:
                 args = String.Format(@"-ssh{0} {1}@{2} -P {3} -pw {4} -v", profileArg, host.Username, host.Hostname,
                                      host.Port, host.Password);
+                Logger.Log.DebugFormat(@"plink.exe -ssh{0} {1}@{2} -P {3} -pw ******** -v", profileArg, host.Username,
+                                       host.Hostname, host.Port);
                 break;
             case AuthenticationType.PrivateKey:
                 args = String.Format(@"-ssh{0} {1}@{2} -P {3} -i {4} -v", profileArg, host.Username, host.Hostname,
-                                     host.Port, PrivateKeysStorage.GetPrivateKey(host).Filename);
+                                     host.Port, PrivateKeysStorage.CreatePrivateKey(host).Filename);
+                Logger.Log.DebugFormat(@"plink.exe {0}", args);
                 break;
             default:
                 throw new ArgumentOutOfRangeException("authType");
@@ -86,7 +91,7 @@ namespace SSHTunnelManager.Domain
                 break;
             case AuthenticationType.PrivateKey:
                 args = String.Format(@"{0}@{1} -P {2} -i {3} -batch", host.Username, host.Hostname, host.Port,
-                                     PrivateKeysStorage.GetPrivateKey(host).Filename);
+                                     PrivateKeysStorage.CreatePrivateKey(host).Filename);
                 break;
             default:
                 throw new ArgumentOutOfRangeException("authType");

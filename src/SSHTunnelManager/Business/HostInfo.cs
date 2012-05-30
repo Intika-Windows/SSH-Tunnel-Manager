@@ -10,6 +10,7 @@ namespace SSHTunnelManager.Business
     {
         private readonly List<TunnelInfo> _tunnels = new List<TunnelInfo>();
         private HostInfo _dependsOn;
+        private string _dependsOnStr;
 
         [XmlAttribute]
         public string Name { get; set; }
@@ -21,12 +22,6 @@ namespace SSHTunnelManager.Business
         public string PrivateKeyData { get; set; }
         public string Password { get; set; }
 
-        public List<TunnelInfo> Tunnels
-        {
-            get { return _tunnels; }
-        }
-
-        private string _dependsOnStr;
         public string DependsOnStr
         {
             get
@@ -51,6 +46,18 @@ namespace SSHTunnelManager.Business
             }
         }
 
+        public List<TunnelInfo> Tunnels
+        {
+            get { return _tunnels; }
+        }
+
+        public string HostAndPort { get { return string.Format(@"{0}:{1}", Hostname, Port); } }
+
+        public HostInfo()
+        {
+            AuthType = AuthenticationType.Password;
+        }
+
         public bool DeepDependsOn(HostInfo host)
         {
             if (host == null) throw new ArgumentNullException("host");
@@ -63,13 +70,6 @@ namespace SSHTunnelManager.Business
                 }
             }
             return false;
-        }
-
-        public string HostAndPort { get { return string.Format(@"{0}:{1}", Hostname, Port); } }
-
-        public HostInfo()
-        {
-            AuthType = AuthenticationType.Password;
         }
 
         #region Event Log
@@ -116,7 +116,7 @@ namespace SSHTunnelManager.Business
 
         private string uniqString()
         {
-            return string.Format(@"{0}@{1}:{2}", Username, Hostname, Port);
+            return string.Concat(Name, Username, Hostname, Port);
         }
     }
 }

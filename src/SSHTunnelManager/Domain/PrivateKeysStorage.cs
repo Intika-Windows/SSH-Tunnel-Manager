@@ -8,9 +8,10 @@ namespace SSHTunnelManager.Domain
 {
     public static class PrivateKeysStorage
     {
-        private static readonly Dictionary<HostInfo, PrivateKey> _keysCache = new Dictionary<HostInfo, PrivateKey>();
+        private static readonly Dictionary<HostInfo, List<PrivateKey>> _keysCache = 
+            new Dictionary<HostInfo, List<PrivateKey>>();
 
-        public static PrivateKey GetPrivateKey(HostInfo host)
+        public static PrivateKey CreatePrivateKey(HostInfo host)
         {
             if (host == null)
             {
@@ -20,33 +21,40 @@ namespace SSHTunnelManager.Domain
             {
                 throw new FormatException();
             }
-
-            PrivateKey key;
-            if (_keysCache.TryGetValue(host, out key) && !key.IsDisposed)
+            
+            var key = new PrivateKey(host.PrivateKeyData);
+            List<PrivateKey> values;
+            if (_keysCache.TryGetValue(host, out values))
             {
-                return key;
+                values.Add(key);
+            } else
+            {
+                _keysCache.Add(host, new List<PrivateKey>() { key });
             }
-
-            key = new PrivateKey(host.PrivateKeyData);
-            _keysCache.Add(host, key);
             return key;
         }
 
         public static void RemovePrivateKey(HostInfo host)
         {
-            PrivateKey key;
-            if (_keysCache.TryGetValue(host, out key))
+            List<PrivateKey> values;
+            if (_keysCache.TryGetValue(host, out values))
             {
-                key.Dispose();
+                foreach (var key in values)
+                {
+                    key.Dispose();
+                }
                 _keysCache.Remove(host);
             }
         }
 
         public static void CleanUpGarbage()
         {
-            foreach (var key in _keysCache)
+            foreach (var z in _keysCache)
             {
-                key.Value.Dispose();
+                foreach (var key in z.Value)
+                {
+                    key.Dispose();
+                }
             }
             _keysCache.Clear();
         }

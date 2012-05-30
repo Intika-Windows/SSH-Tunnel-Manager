@@ -291,6 +291,7 @@ namespace SSHTunnelManager.Domain
                     passphraseForKeyProvided = true;
                 }
             }
+            PrivateKeysStorage.RemovePrivateKey(Host);
             return Status == ELinkStatus.Started || 
                    Status == ELinkStatus.StartedWithWarnings;
         }
