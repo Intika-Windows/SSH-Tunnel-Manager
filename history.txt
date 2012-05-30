@@ -1,4 +1,8 @@
 ------------------------------------------------------------------------
+r42 | skara06@gmail.com | 2012-05-30 11:54:36 +0400 (╤Ё, 30 ьрщ 2012) | 1 line
+
+Fixed UI bug when you cannot clear DependsOn field while host editing (its just rolling back to previous value after apply)
+------------------------------------------------------------------------
 r41 | skara06@gmail.com | 2012-05-30 03:47:58 +0400 (╤Ё, 30 ьрщ 2012) | 4 lines
 
 - SSH Private Keys AuthMode added
