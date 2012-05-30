@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r41 | skara06@gmail.com | 2012-05-30 03:47:58 +0400 (╤Ё, 30 ьрщ 2012) | 4 lines
+
+- SSH Private Keys AuthMode added
+- UI bug in tunnels table on main form fixed
+- some minor logic bugs fixed
+
+------------------------------------------------------------------------
 r40 | skara06@gmail.com | 2011-10-06 17:27:55 +0400 (╫Є, 06 юъЄ 2011) | 1 line
 
 

@@ -351,10 +351,7 @@ namespace SSHTunnelManagerGUI.Forms
             }
 
             var dependsOnHost = comboBoxDependsOn.SelectedItem as HostInfo;
-            if (dependsOnHost != null)
-            {
-                _currentHost.DependsOn = dependsOnHost;
-            }
+            _currentHost.DependsOn = dependsOnHost;
 
             _currentHost.Tunnels.Clear();
             //_currentHost.Tunnels.AddRange(listBoxTunnels.Items.Cast<TunnelInfo>());
