@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -27,9 +28,11 @@ namespace SSHTunnelManagerGUI.Forms
 
         private bool _modified;
 
-        public MainForm(HostsManager<HostViewModel> manager)
+        public MainForm(HostsManager<HostViewModel> manager, bool startMinimized = false)
         {
             if (manager == null) throw new ArgumentNullException("manager");
+
+            StartMinimized = startMinimized;
             InitializeComponent();
             startPsftpToolStripMenuItem.Image = new Icon(Resources.psftp, 16, 16).ToBitmap();
             centerMe();
@@ -98,6 +101,7 @@ namespace SSHTunnelManagerGUI.Forms
             {
                 theTimer.Stop();
                 Thread t = new Thread(restartHostsWithWarnings);
+                t.IsBackground = true;
                 t.Start();
             }
             catch (ThreadStateException ex)
@@ -135,6 +139,49 @@ namespace SSHTunnelManagerGUI.Forms
             finally
             {
                 Invoke((Action) (() => { theTimer.Enabled = true; }));
+            }
+        }
+
+        private void restartHostsBeingActiveLastTimeAsync()
+        {
+            try
+            {
+                Thread t = new Thread(restartHostsBeingActiveLastTime);
+                t.IsBackground = true;
+                t.Start();
+            }
+            catch (ThreadStateException ex)
+            {
+                Logger.Log.ErrorFormat("Failed to start Restart-Hosts-With-Warnings thread: {0}", ex.Message);
+            }
+        }
+
+        private void restartHostsBeingActiveLastTime()
+        {
+            try
+            {
+                var hostsBeingActiveLastTime = Settings.Default.HostsBeingStartedOnLastTime.Cast<string>().ToArray();
+                var hosts = _hostsManager.HostsList.Where(h => hostsBeingActiveLastTime.Contains(h.Info.Name)).ToList();
+                foreach (var host in hosts)
+                {
+                    if (host.Link.Status != ELinkStatus.Stopped)
+                    {
+                        // Status could be changed from list creating
+                        host.Link.Stop();
+                        if (!host.Link.WaitForStop())
+                        {
+                            Logger.Log.WarnFormat(
+                                "STOP action for host '{0}' timed out. Skipping host in the Restart-Hosts-Being-Active-Last-Time sequence.",
+                                host.Info.Name);
+                            continue;
+                        }
+                    }
+                    host.Link.AsyncStart();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.ErrorFormat("Error while Restart-Hosts-Being-Active-Last-Time tick: {0}", ex.Message);
             }
         }
 
@@ -565,6 +612,7 @@ namespace SSHTunnelManagerGUI.Forms
             {
                 host.Link.Stop();
             }
+            saveActiveHostsNames();
             ReallyClose();
         }
 
@@ -573,7 +621,18 @@ namespace SSHTunnelManagerGUI.Forms
             if (!askForSave())
                 return;
 
+            saveActiveHostsNames();
             ReallyClose();
+        }
+
+        private void saveActiveHostsNames()
+        {
+            var hostsNames = _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Where(
+                o => o.Object.Model.Link.Status != ELinkStatus.Stopped).Select(o => o.Object.Name).ToArray();
+
+            Settings.Default.HostsBeingStartedOnLastTime = new StringCollection();
+            Settings.Default.HostsBeingStartedOnLastTime.AddRange(hostsNames);
+            Settings.Default.Save();
         }
 
         private void save()
@@ -844,7 +903,14 @@ namespace SSHTunnelManagerGUI.Forms
             var name = hostsGridView.Rows[e.RowIndex].Cells[hgwNameColumn.Name].Value.ToString();
             var host = _hostsManager.Hosts.Cast<ObjectView<HostViewModel>>().Select(m => m.Object).First(m => m.Name == name);
             
-            editHost(host);
+            if (host.Model.Link.Status == ELinkStatus.Stopped)
+            {
+                startHost();
+            }
+            else
+            {
+                stopHost();
+            }
         }
 
         private void hostsGridView_RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
@@ -932,6 +998,14 @@ namespace SSHTunnelManagerGUI.Forms
         private void timerPrivateKeysCleanUp_Tick(object sender, EventArgs e)
         {
             PrivateKeysStorage.CleanUpGarbage();
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            if (Settings.Default.Config_StartHostsBeingActiveLastTime)
+            {
+                restartHostsBeingActiveLastTimeAsync();
+            }
         }
     }
 }

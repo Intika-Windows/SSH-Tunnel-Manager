@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Microsoft.Win32;
 using SSHTunnelManager.Domain;
 using SSHTunnelManagerGUI.Ext.CheckGroupBox;
 using SSHTunnelManagerGUI.Properties;
@@ -29,6 +30,8 @@ namespace SSHTunnelManagerGUI.Forms
             checkBoxTraceDebug.Checked = Settings.Default.Config_TraceDebug;
             checkGroupBoxRestartHostsWithWarns.Checked = Settings.Default.Config_RestartHostsWithWarnings;
             numericUpDownRestartHWWInterval.Value = Settings.Default.Config_RestartHostsWithWarningsInterval;
+            chbxRunAtWindowsStartup.Checked = Settings.Default.Config_RunAtWindowsStartup;
+            chbxStartHostsBeingActiveLastTime.Checked = Settings.Default.Config_StartHostsBeingActiveLastTime;
             if (PuttyProfile != null)
             {
                 checkBoxLocalPortAcceptAll.Checked = PuttyProfile.LocalPortAcceptAll;
@@ -158,51 +161,85 @@ namespace SSHTunnelManagerGUI.Forms
             Settings.Default.Config_TraceDebug = checkBoxTraceDebug.Checked;
             Settings.Default.Config_RestartHostsWithWarnings = checkGroupBoxRestartHostsWithWarns.Checked;
             Settings.Default.Config_RestartHostsWithWarningsInterval = (int) numericUpDownRestartHWWInterval.Value;
+            Settings.Default.Config_RunAtWindowsStartup = chbxRunAtWindowsStartup.Checked;
+            Settings.Default.Config_StartHostsBeingActiveLastTime = chbxStartHostsBeingActiveLastTime.Checked;
             Settings.Default.Save();
             if (PuttyProfile != null)
             {
-                PuttyProfile.LocalPortAcceptAll = checkBoxLocalPortAcceptAll.Checked;
-                PuttyProfile.RemotePortAcceptAll = checkBoxRemotePortAcceptAll.Checked;
-                if (checkGroupBoxProxy.Checked)
-                {
-                    switch (comboBoxProxyType.SelectedIndex)
-                    {
-                    case 0:
-                        PuttyProfile.ProxyMethod = PuttyProfile.ProxyType.Http;
-                        break;
-                    case 1:
-                        PuttyProfile.ProxyMethod = PuttyProfile.ProxyType.Socks4;
-                        break;
-                    case 2:
-                        PuttyProfile.ProxyMethod = PuttyProfile.ProxyType.Socks5;
-                        break;
-                    default:
-                        PuttyProfile.ProxyMethod = PuttyProfile.ProxyType.None;
-                        break;
-                    }
-                }
-                else
-                {
-                    PuttyProfile.ProxyMethod = PuttyProfile.ProxyType.None;
-                }
-                PuttyProfile.ProxyHost = textBoxHostname.Text;
-                PuttyProfile.ProxyPort = int.Parse(textBoxPort.Text);
-                if (checkBoxAuthReq.Checked)
-                {
-                    PuttyProfile.ProxyUsername = textBoxUsername.Text;
-                    PuttyProfile.ProxyPassword = textBoxPassword.Text;
-                }
-                else
-                {
-                    PuttyProfile.ProxyUsername = "";
-                    PuttyProfile.ProxyPassword = "";
-                }
-                PuttyProfile.ProxyLocalhost = checkBoxProxyLocalhost.Checked;
-                PuttyProfile.ProxyExcludeList = textBoxProxyExcludes.Text.Trim();
-
-                PuttyProfile.Save();
+                updatePuttyProfile();
             }
+            updateWindowsStartup(chbxRunAtWindowsStartup.Checked);
             return true;
+        }
+
+        private void updateWindowsStartup(bool runAtWinStartup)
+        {
+            var rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+            if (rk == null)
+            {
+                MessageBox.Show(
+                    this,
+                    "Cannot open the registry key 'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run'.",
+                    Util.AssemblyTitle,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            if (runAtWinStartup)
+            {
+                var command = string.Format("\"{0}\" /minimized", Application.ExecutablePath);
+                rk.SetValue(Util.AssemblyTitle, command);
+            }
+            else
+            {
+                rk.DeleteValue(Util.AssemblyTitle, false);
+            }  
+        }
+
+        private void updatePuttyProfile()
+        {
+            PuttyProfile.LocalPortAcceptAll = checkBoxLocalPortAcceptAll.Checked;
+            PuttyProfile.RemotePortAcceptAll = checkBoxRemotePortAcceptAll.Checked;
+            if (checkGroupBoxProxy.Checked)
+            {
+                switch (comboBoxProxyType.SelectedIndex)
+                {
+                case 0:
+                    PuttyProfile.ProxyMethod = PuttyProfile.ProxyType.Http;
+                    break;
+                case 1:
+                    PuttyProfile.ProxyMethod = PuttyProfile.ProxyType.Socks4;
+                    break;
+                case 2:
+                    PuttyProfile.ProxyMethod = PuttyProfile.ProxyType.Socks5;
+                    break;
+                default:
+                    PuttyProfile.ProxyMethod = PuttyProfile.ProxyType.None;
+                    break;
+                }
+            }
+            else
+            {
+                PuttyProfile.ProxyMethod = PuttyProfile.ProxyType.None;
+            }
+            PuttyProfile.ProxyHost = textBoxHostname.Text;
+            PuttyProfile.ProxyPort = int.Parse(textBoxPort.Text);
+            if (checkBoxAuthReq.Checked)
+            {
+                PuttyProfile.ProxyUsername = textBoxUsername.Text;
+                PuttyProfile.ProxyPassword = textBoxPassword.Text;
+            }
+            else
+            {
+                PuttyProfile.ProxyUsername = "";
+                PuttyProfile.ProxyPassword = "";
+            }
+            PuttyProfile.ProxyLocalhost = checkBoxProxyLocalhost.Checked;
+            PuttyProfile.ProxyExcludeList = textBoxProxyExcludes.Text.Trim();
+
+            PuttyProfile.Save();
         }
 
         private void radioButtonMakeDelay_CheckedChanged(object sender, EventArgs e)

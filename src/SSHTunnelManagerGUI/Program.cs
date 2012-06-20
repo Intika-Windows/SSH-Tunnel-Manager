@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
@@ -13,13 +14,18 @@ using log4net.Core;
 
 namespace SSHTunnelManagerGUI
 {
-    static class Program
+    public static class Program
     {
+        private class StartUpArgs
+        {
+            public bool Minimized { get; set; }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main(string[] args)
         {
             /*var enc = CryptoHelper.EncryptStringAes("Hello, World!...", "qwerty7");
             var ret = CryptoHelper.DecryptStringAes(enc, "qwerty7");*/
@@ -39,6 +45,8 @@ namespace SSHTunnelManagerGUI
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
+                var startUpArgs = parseArgs(args);
+
                 var startUpDlg = new StartUpDialog();
                 if (startUpDlg.DialogRequired && startUpDlg.ShowDialog() == DialogResult.Cancel)
                     return;
@@ -57,19 +65,31 @@ namespace SSHTunnelManagerGUI
 
                 var hm = new HostsManager<HostViewModel>(cfg, startUpDlg.Storage, startUpDlg.Filename, startUpDlg.Password);
 
+                bool firstStart = true;
+
                 // changeSource request handling
                 while (true)
                 {
-                    var mainForm = new MainForm(hm);
+                    var mainForm = new MainForm(hm, firstStart && startUpArgs.Minimized);
+                    firstStart = false;
+
                     Application.Run(mainForm);
 
                     if (mainForm.ChangeSourceRequested)
                     {
                         startUpDlg = new StartUpDialog();
                         if (startUpDlg.ShowDialog() == DialogResult.Cancel)
+                        {
                             return;
-                        hm = new HostsManager<HostViewModel>(cfg, startUpDlg.Storage, startUpDlg.Filename, startUpDlg.Password);
-                    } else
+                        }
+
+                        hm = new HostsManager<HostViewModel>(
+                            cfg,
+                            startUpDlg.Storage,
+                            startUpDlg.Filename,
+                            startUpDlg.Password);
+                    }
+                    else
                     {
                         break;
                     }
@@ -80,6 +100,23 @@ namespace SSHTunnelManagerGUI
                 // We are not the only running instance of this program. So do this.
                 HandleRunningInstance(instance);
             }
+        }
+
+        private static StartUpArgs parseArgs(string[] args)
+        {
+            var ret = new StartUpArgs();
+            for (int i = 0; i < args.Length; i++)
+            {
+                var s = args[i];
+                if (s.Equals("/minimized", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ret.Minimized = true;
+                }
+
+                // TODO: Extend it or simply switch to external parseArgs solution.
+            }
+
+            return ret;
         }
 
         // Look at all currently runninng processes and see if there is already one of

@@ -14,6 +14,8 @@ namespace SSHTunnelManagerGUI.Forms
         protected readonly ToolStripMenuItem _exitToolStripMenuItem = new ToolStripMenuItem();
         protected readonly ToolStripMenuItem _hideShowToolStripMenuItem = new ToolStripMenuItem();
 
+        public bool StartMinimized { get; set; }
+
         public TrayForm()
         {
             //_theNotifyIcon = new NotifyIcon(components);
@@ -23,6 +25,7 @@ namespace SSHTunnelManagerGUI.Forms
             FormClosing += TrayForm_FormClosing;
             Resize += TrayForm_Resize;
             TrayMouseClick += theNotifyIcon_MouseClick;
+            Shown += TrayForm_Shown;
 
             // 
             // hideShowToolStripMenuItem
@@ -43,6 +46,14 @@ namespace SSHTunnelManagerGUI.Forms
             TrayContextMenuStrip.Items.Add(_hideShowToolStripMenuItem);
             TrayContextMenuStrip.Items.Add(@"-");
             TrayContextMenuStrip.Items.Add(_exitToolStripMenuItem);
+        }
+
+        private void TrayForm_Shown(object sender, EventArgs args)
+        {
+            if (StartMinimized)
+            {
+                ToggleTrayState();
+            }
         }
 
         public override string Text
@@ -79,7 +90,7 @@ namespace SSHTunnelManagerGUI.Forms
             set { _theNotifyIcon.ContextMenuStrip = value; }
         }
 
-        private void toggleTrayState()
+        public void ToggleTrayState()
         {
             // Toggle our WindowState to the opposite of what it is now.
             if (WindowState == FormWindowState.Minimized)
@@ -148,12 +159,12 @@ namespace SSHTunnelManagerGUI.Forms
         {
             if (e.Button != MouseButtons.Left)
                 return;
-            toggleTrayState();
+            ToggleTrayState();
         }
 
         private void hideShowClick(object sender, EventArgs e)
         {
-            toggleTrayState();
+            ToggleTrayState();
         }
 
         private void exitClick(object sender, EventArgs e)
