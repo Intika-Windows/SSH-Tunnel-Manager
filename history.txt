@@ -1,4 +1,20 @@
 ------------------------------------------------------------------------
+r49 | skara06@gmail.com | 2012-06-20 20:22:08 +0400 (╤Ё, 20 ш■э 2012) | 5 lines
+
+Small changes in UI behavior: double click on a host in the main window hosts list triggers host start/stop instead of host edit action.
+Some new features has been added:
+- Run at windows startup for current user
+- Restart hosts being active last time the program has been closed
+
+------------------------------------------------------------------------
+r48 | skara06@gmail.com | 2012-05-30 21:59:18 +0400 (╤Ё, 30 ьрщ 2012) | 1 line
+
+
+------------------------------------------------------------------------
+r47 | skara06@gmail.com | 2012-05-30 21:56:24 +0400 (╤Ё, 30 ьрщ 2012) | 1 line
+
+
+------------------------------------------------------------------------
 r46 | skara06@gmail.com | 2012-05-30 21:41:02 +0400 (╤Ё, 30 ьрщ 2012) | 1 line
 
 

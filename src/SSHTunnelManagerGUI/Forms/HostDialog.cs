@@ -74,6 +74,7 @@ namespace SSHTunnelManagerGUI.Forms
             textBoxLogin.TextChanged += delegate { Modified = true; };
             tbxPassword.TextChanged += delegate { Modified = true; };
             tbxPassphrase.TextChanged += delegate { Modified = true; };
+            tbxRemoteCommand.TextChanged += delegate { Modified = true; };
             rbxPassword.CheckedChanged += delegate { Modified = true; };
             btnLoadPrivateKey.Click += delegate { Modified = true; };
             comboBoxDependsOn.SelectedIndexChanged += delegate { Modified = true; };
@@ -260,6 +261,7 @@ namespace SSHTunnelManagerGUI.Forms
                 textBoxPort.Text = "";
                 textBoxLogin.Text = "";
                 tbxPassword.Text = "";
+                tbxRemoteCommand.Text = "";
 
                 comboBoxDependsOn.Items.Clear();
                 var hosts = _committedHosts.Where(h => h != _currentHost && !h.DeepDependsOn(_currentHost)).OrderBy(h => h.Name);
@@ -305,7 +307,9 @@ namespace SSHTunnelManagerGUI.Forms
                 lblPrivateKeyFilename.Text = "<Previously Loaded>";
                 _loadedPrivateKey = _currentHost.PrivateKeyData;
             }
+
             tbxPassword.Text = _currentHost.Password;
+            tbxRemoteCommand.Text = _currentHost.RemoteCommand;
 
             comboBoxDependsOn.Items.Clear();
             var hosts = _committedHosts.Where(h => h != _currentHost && !h.DeepDependsOn(_currentHost)).OrderBy(h => h.Name);
@@ -324,6 +328,7 @@ namespace SSHTunnelManagerGUI.Forms
             {
                 addTunnel(tunnel);
             }
+
             buttonRemoveTunnel.Enabled = tunnelsGridView.SelectedRows.Count > 0;
 
             _hostValidator.Reset();
@@ -336,13 +341,15 @@ namespace SSHTunnelManagerGUI.Forms
             _currentHost.Hostname = textBoxHostname.Text.Trim();
             _currentHost.Port = textBoxPort.Text.Trim();
             _currentHost.Username = textBoxLogin.Text.Trim();
-            
+            _currentHost.RemoteCommand = tbxRemoteCommand.Text.Trim();
+
             if (rbxPassword.Checked)
             {
                 _currentHost.AuthType = AuthenticationType.Password;
                 _currentHost.Password = tbxPassword.Text.Trim();
                 _currentHost.PrivateKeyData = null;
-            } else
+            }
+            else
             {
                 _currentHost.AuthType = AuthenticationType.PrivateKey;
                 var passphrase = tbxPassphrase.Text.Trim();

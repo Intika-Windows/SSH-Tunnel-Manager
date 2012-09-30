@@ -82,7 +82,7 @@ namespace SSHTunnelManager.Domain
                         return null;
                     }
 
-                    if (_defaultProfileProperties.Select(v => v.Key).Except(profileKey.GetValueNames()).Count() > 0)
+                    if (_defaultProfileProperties.Select(v => v.Key).Except(profileKey.GetValueNames()).Any())
                     {
                         Logger.Log.Info(Resources.PuttyProfile_NotAllPropertiesSet);
                         return null;
@@ -260,7 +260,7 @@ namespace SSHTunnelManager.Domain
             PuttyProfileProperty property;
             if (!Properties.TryGetValue(name, out property))
             {
-                return Properties[@"LocalPortAcceptAll"] = new PuttyProfileProperty(name);
+                return Properties[name] = new PuttyProfileProperty(name);
             }
             return property;
         }

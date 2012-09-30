@@ -237,6 +237,9 @@
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 182</value>
   </data>
@@ -381,8 +384,8 @@
   <data name="lblPrivateKeyFilename.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <metadata name="theErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <metadata name="theGoodProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>158, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -391,7 +394,7 @@
     <value>None</value>
   </data>
   <data name="buttonAddHost.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 3</value>
+    <value>171, 3</value>
   </data>
   <data name="buttonAddHost.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 0</value>
@@ -430,7 +433,7 @@
     <value>None</value>
   </data>
   <data name="buttonClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>249, 3</value>
+    <value>252, 3</value>
   </data>
   <data name="buttonClose.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -478,13 +481,13 @@
     <value>RightToLeft</value>
   </data>
   <data name="flowLayoutPanelAddHost.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 439</value>
+    <value>0, 465</value>
   </data>
   <data name="flowLayoutPanelAddHost.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelAddHost.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 26</value>
+    <value>327, 26</value>
   </data>
   <data name="flowLayoutPanelAddHost.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -511,7 +514,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonApply.Location" type="System.Drawing.Point, System.Drawing">
-    <value>249, 3</value>
+    <value>252, 3</value>
   </data>
   <data name="buttonApply.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -538,7 +541,7 @@
     <value>0</value>
   </data>
   <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 3</value>
+    <value>171, 3</value>
   </data>
   <data name="buttonCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 0</value>
@@ -565,7 +568,7 @@
     <value>1</value>
   </data>
   <data name="buttonOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>87, 3</value>
+    <value>90, 3</value>
   </data>
   <data name="buttonOk.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 0</value>
@@ -595,13 +598,13 @@
     <value>RightToLeft</value>
   </data>
   <data name="flowLayoutPanelEditHost.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 465</value>
+    <value>0, 491</value>
   </data>
   <data name="flowLayoutPanelEditHost.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelEditHost.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 26</value>
+    <value>327, 26</value>
   </data>
   <data name="flowLayoutPanelEditHost.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -631,7 +634,7 @@
     <value>12, 12, 12, 12</value>
   </data>
   <data name="flowLayoutPanelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 491</value>
+    <value>327, 517</value>
   </data>
   <data name="flowLayoutPanelMain.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -732,36 +735,6 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="theErrorProvider.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABf/wAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHL/ERHY/wAAcv8AAAAAAAAAAAAAAAAAAAAAAABy/xER
-        2P8AAHL/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIL/ERHQ/xER0P8REdD/AACC/wAAAAAAAAAAAACC/xER
-        0P8REdD/ERHQ/wAAgv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAh/8REcT/ERHE/xERxP8AAIf/AACH/xER
-        xP8REcT/ERHE/wAAh/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACN/xERuP8REbj/ERG4/xER
-        uP8REbj/ERG4/wAAjf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJL/FRWv/xER
-        rP8REaz/ERGs/wAAkv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACX/yUl
-        tP8REaL/ERGi/xQUpf8AAJf/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACb/1NT
-        2/8uLrf/PT3G/zExuv8VFZ//Hh6o/wAAm/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACg/2dn
-        7/82Nr7/Xl7m/wAAoP8AAKD/T0/X/zY2vv9FRc3/AACg/wAAAAAAAAAAAAAAAAAAAAAAAAAAAACj/3Z2
-        /v9MTNT/cnL6/wAAo/8AAAAAAAAAAAAAo/9iYur/TEzU/1xc5P8AAKP/AAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAKf/d3f//wAAp/8AAAAAAAAAAAAAAAAAAAAAAACn/3Bw+P8AAKf/AAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAqv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKr/AAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAA//8AAP//AAD37wAA48cAAMGDAADgBwAA8A8AAPgfAAD4HwAA8A8AAOAHAADBgwAA48cAAPfv
-        AAD//wAA//8AAA==
-</value>
-  </data>
-  <data name="lblPrivateKeyFilename.IconPadding" type="System.Int32, mscorlib">
-    <value>-20</value>
-  </data>
-  <metadata name="theGoodProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>158, 17</value>
-  </metadata>
   <data name="theGoodProvider.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA
@@ -784,6 +757,36 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAgAEAAIABAADgBwAAwAMAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAwAMAAOAH
         AADwDwAA//8AAA==
+</value>
+  </data>
+  <data name="lblPrivateKeyFilename.IconPadding" type="System.Int32, mscorlib">
+    <value>-20</value>
+  </data>
+  <metadata name="theErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="theErrorProvider.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABf/wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHL/ERHY/wAAcv8AAAAAAAAAAAAAAAAAAAAAAABy/xER
+        2P8AAHL/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIL/ERHQ/xER0P8REdD/AACC/wAAAAAAAAAAAACC/xER
+        0P8REdD/ERHQ/wAAgv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAh/8REcT/ERHE/xERxP8AAIf/AACH/xER
+        xP8REcT/ERHE/wAAh/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACN/xERuP8REbj/ERG4/xER
+        uP8REbj/ERG4/wAAjf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJL/FRWv/xER
+        rP8REaz/ERGs/wAAkv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACX/yUl
+        tP8REaL/ERGi/xQUpf8AAJf/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACb/1NT
+        2/8uLrf/PT3G/zExuv8VFZ//Hh6o/wAAm/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACg/2dn
+        7/82Nr7/Xl7m/wAAoP8AAKD/T0/X/zY2vv9FRc3/AACg/wAAAAAAAAAAAAAAAAAAAAAAAAAAAACj/3Z2
+        /v9MTNT/cnL6/wAAo/8AAAAAAAAAAAAAo/9iYur/TEzU/1xc5P8AAKP/AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAKf/d3f//wAAp/8AAAAAAAAAAAAAAAAAAAAAAACn/3Bw+P8AAKf/AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAqv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKr/AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA//8AAP//AAD37wAA48cAAMGDAADgBwAA8A8AAPgfAAD4HwAA8A8AAOAHAADBgwAA48cAAPfv
+        AAD//wAA//8AAA==
 </value>
   </data>
   <data name="lblPrivateKeyFilename.IconPadding1" type="System.Int32, mscorlib">
@@ -1039,7 +1042,7 @@
     <value>-20</value>
   </data>
   <data name="textBoxLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 55</value>
+    <value>99, 55</value>
   </data>
   <data name="textBoxLogin.MaxLength" type="System.Int32, mscorlib">
     <value>255</value>
@@ -1072,7 +1075,7 @@
     <value>-20</value>
   </data>
   <data name="textBoxName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 3</value>
+    <value>99, 3</value>
   </data>
   <data name="textBoxName.MaxLength" type="System.Int32, mscorlib">
     <value>255</value>
@@ -1102,7 +1105,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="comboBoxDependsOn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 178</value>
+    <value>99, 178</value>
   </data>
   <data name="comboBoxDependsOn.Size" type="System.Drawing.Size, System.Drawing">
     <value>225, 21</value>
@@ -1225,7 +1228,7 @@
     <value>2</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 26</value>
+    <value>96, 26</value>
   </data>
   <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1248,6 +1251,75 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="lblRemoteCommand.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="lblRemoteCommand.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lblRemoteCommand.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblRemoteCommand.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblRemoteCommand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 208</value>
+  </data>
+  <data name="lblRemoteCommand.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="lblRemoteCommand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 13</value>
+  </data>
+  <data name="lblRemoteCommand.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lblRemoteCommand.Text" xml:space="preserve">
+    <value>Remote command:</value>
+  </data>
+  <data name="&gt;&gt;lblRemoteCommand.Name" xml:space="preserve">
+    <value>lblRemoteCommand</value>
+  </data>
+  <data name="&gt;&gt;lblRemoteCommand.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblRemoteCommand.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;lblRemoteCommand.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="tbxRemoteCommand.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="tbxRemoteCommand.IconPadding" type="System.Int32, mscorlib">
+    <value>-20</value>
+  </data>
+  <data name="tbxRemoteCommand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 205</value>
+  </data>
+  <data name="tbxRemoteCommand.MaxLength" type="System.Int32, mscorlib">
+    <value>255</value>
+  </data>
+  <data name="tbxRemoteCommand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 20</value>
+  </data>
+  <data name="tbxRemoteCommand.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tbxRemoteCommand.Name" xml:space="preserve">
+    <value>tbxRemoteCommand</value>
+  </data>
+  <data name="&gt;&gt;tbxRemoteCommand.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxRemoteCommand.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tbxRemoteCommand.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -1255,10 +1327,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 439</value>
+    <value>327, 465</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1276,7 +1348,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="gbxAuth" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="textBoxLogin" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="textBoxName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBoxDependsOn" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="5" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="panel1" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label7" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="gbxAuth" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="textBoxLogin" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="textBoxName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBoxDependsOn" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="6" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="panel1" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label7" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lblRemoteCommand" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbxRemoteCommand" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tunnelsGridView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1327,7 +1399,7 @@
     <value>8, 40</value>
   </data>
   <data name="tunnelsGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>304, 69</value>
+    <value>307, 69</value>
   </data>
   <data name="tunnelsGridView.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1366,7 +1438,7 @@
     <value>255</value>
   </data>
   <data name="textBoxDestHost.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 20</value>
+    <value>150, 20</value>
   </data>
   <data name="textBoxDestHost.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1393,7 +1465,7 @@
     <value>True</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>243, 158</value>
+    <value>246, 158</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>10, 13</value>
@@ -1423,7 +1495,7 @@
     <value>True</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>243, 184</value>
+    <value>246, 184</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>10, 13</value>
@@ -1480,7 +1552,7 @@
     <value>Top, Right</value>
   </data>
   <data name="buttonRemoveTunnel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 15</value>
+    <value>240, 15</value>
   </data>
   <data name="buttonRemoveTunnel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1537,7 +1609,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="buttonAddTunnel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>238, 204</value>
+    <value>241, 204</value>
   </data>
   <data name="buttonAddTunnel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1735,7 +1807,7 @@
     <value>Courier New, 8.25pt</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 158</value>
+    <value>176, 158</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 14</value>
@@ -1759,10 +1831,10 @@
     <value>14</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 205</value>
+    <value>3, 231</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 231</value>
+    <value>321, 231</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>

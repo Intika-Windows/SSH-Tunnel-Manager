@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Windows.Forms;
 using SSHTunnelManager.Business;
 using SSHTunnelManager.Properties;
 using SSHTunnelManager.Util;
+using log4net;
 
 namespace SSHTunnelManager.Domain
 {
@@ -28,6 +28,7 @@ namespace SSHTunnelManager.Domain
         private readonly object _forwardingResultsLock = new object();
 
         private readonly StringBuilder _multilineError = new StringBuilder();
+        private Timer _deferredCallTimer;
 
         public DateTime LastStartTime { get; private set; }
         public HostInfo Host { get; private set; }
@@ -141,9 +142,10 @@ namespace SSHTunnelManager.Domain
             {
                 throw new InvalidOperationException(Resources.PuttyLink_Error_LinkAlreadyStarted);
             }
+
             try
             {
-                log4net.ThreadContext.Properties[@"Host"] = Host;
+                ThreadContext.Properties[@"Host"] = Host;
                 _stopRequested = false;
                 LastStartError = "";
 
@@ -173,7 +175,6 @@ namespace SSHTunnelManager.Domain
             catch (Exception e)
             {
                 LastStartError = e.Message;
-                return;
             }
             finally
             {
@@ -271,6 +272,7 @@ namespace SSHTunnelManager.Domain
 
                 _process.StandardOutput.DiscardBufferedData();
                 string data = buffer.ToString().ToLower();
+
                 buffer.Clear();
 
                 if (data.Contains(@"login as:"))
@@ -290,10 +292,17 @@ namespace SSHTunnelManager.Domain
                     writeLineStdIn(Host.Password);
                     passphraseForKeyProvided = true;
                 }
+                else
+                {
+                    foreach (var line in data.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        Logger.Log.Debug(line);
+                    }
+                }
             }
+
             PrivateKeysStorage.RemovePrivateKey(Host);
-            return Status == ELinkStatus.Started || 
-                   Status == ELinkStatus.StartedWithWarnings;
+            return Status == ELinkStatus.Started || Status == ELinkStatus.StartedWithWarnings;
         }
 
         private void writeStdIn(string text)
@@ -308,7 +317,7 @@ namespace SSHTunnelManager.Domain
         {
             if (args.Data == null)
                 return;
-            log4net.ThreadContext.Properties[@"Host"] = Host; // Set up context for working thread
+            ThreadContext.Properties[@"Host"] = Host; // Set up context for working thread
             Logger.Log.Debug(args.Data);
             // LOCAL tunnels error
             var m = Regex.Match(args.Data, @"Local port (?<srcPort>\d+) forwarding to (?<dstHost>[^:]+):(?<dstPort>\d+) failed: (?<errorString>.*)", RegexOptions.IgnoreCase);
@@ -326,6 +335,7 @@ namespace SSHTunnelManager.Domain
                     {
                         _forwardingResults[tunnel] = ForwardingResult.CreateFailed(errorString);
                     }
+
                     Logger.Log.WarnFormat("[{0}] [{1}] {2}", Host.Name, tunnel.SimpleString, errorString);
                 }
             }
@@ -369,13 +379,40 @@ namespace SSHTunnelManager.Domain
             {
                 // Доступ открыт, можно удалить ключ
                 PrivateKeysStorage.RemovePrivateKey(Host);
+                Logger.Log.Debug(string.Format("Access granted called: {0}", Host));
+
+                // Make delay for a couple of seconds and set status to 'Started' if a shell is not supposed to be started
+                if (Host.RemoteCommand == null)
+                {
+                    _deferredCallTimer = new Timer(
+                        delegate
+                        {
+                            bool forwardingFailed;
+                            lock (_forwardingResultsLock)
+                            {
+                                forwardingFailed = _forwardingResults.Any(p => !p.Value.Success);
+                            }
+
+                            ThreadContext.Properties[@"Host"] = Host;
+                            Logger.Log.Debug(string.Format("Delegate called: {0}", Host));
+                            Status = forwardingFailed
+                                         ? ELinkStatus.StartedWithWarnings
+                                         : ELinkStatus.Started;
+                            ThreadContext.Properties[@"Host"] = null;
+                        },
+                        null,
+                        1500,
+                        Timeout.Infinite);
+                }
             }
+
             // Fatal errors
             m = Regex.Match(args.Data, @"^FATAL ERROR:\s*(?<msg>.*)$");
             if (m.Success)
             {
                 LastStartError = m.Groups["msg"].Value;
             }
+
             // connection establishing
             if (args.Data.Contains(ShellStartedMessage))
             {
@@ -384,8 +421,22 @@ namespace SSHTunnelManager.Domain
                 {
                     forwardingFails = _forwardingResults.Any(p => !p.Value.Success);
                 }
+
                 Status = forwardingFails ? ELinkStatus.StartedWithWarnings : ELinkStatus.Started;
+
+                // Start a command to be executed after connection establishment
+                _deferredCallTimer = new Timer(
+                    delegate
+                    {
+                        ThreadContext.Properties[@"Host"] = Host;
+                        writeLineStdIn(Host.RemoteCommand);
+                        ThreadContext.Properties[@"Host"] = null;
+                    },
+                    null,
+                    1000,
+                    Timeout.Infinite);
             }
+
             // multiline error?
             if (_multilineError.Length > 0)
             {
@@ -394,7 +445,8 @@ namespace SSHTunnelManager.Domain
                 _multilineError.Clear();
                 stop();
             }
-            log4net.ThreadContext.Properties[@"Host"] = null;
+
+            ThreadContext.Properties[@"Host"] = null;
         }
     }
 }

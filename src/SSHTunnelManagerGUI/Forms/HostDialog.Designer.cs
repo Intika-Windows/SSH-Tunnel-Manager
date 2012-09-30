@@ -40,6 +40,7 @@
             System.Windows.Forms.GroupBox groupBox1;
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label11;
+            System.Windows.Forms.Label lblRemoteCommand;
             this.tunnelsGridView = new System.Windows.Forms.DataGridView();
             this.tgvNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgvTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,6 +85,7 @@
             this.theErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.theGoodProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.openPrivateKeyFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.tbxRemoteCommand = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -94,6 +96,7 @@
             groupBox1 = new System.Windows.Forms.GroupBox();
             label6 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
+            lblRemoteCommand = new System.Windows.Forms.Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tunnelsGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -314,8 +317,8 @@
             // textBoxName
             // 
             resources.ApplyResources(this.textBoxName, "textBoxName");
-            this.theErrorProvider.SetIconPadding(this.textBoxName, ((int)(resources.GetObject("textBoxName.IconPadding"))));
-            this.theGoodProvider.SetIconPadding(this.textBoxName, ((int)(resources.GetObject("textBoxName.IconPadding1"))));
+            this.theGoodProvider.SetIconPadding(this.textBoxName, ((int)(resources.GetObject("textBoxName.IconPadding"))));
+            this.theErrorProvider.SetIconPadding(this.textBoxName, ((int)(resources.GetObject("textBoxName.IconPadding1"))));
             this.textBoxName.Name = "textBoxName";
             // 
             // textBoxHostname
@@ -333,8 +336,8 @@
             // textBoxLogin
             // 
             resources.ApplyResources(this.textBoxLogin, "textBoxLogin");
-            this.theErrorProvider.SetIconPadding(this.textBoxLogin, ((int)(resources.GetObject("textBoxLogin.IconPadding"))));
-            this.theGoodProvider.SetIconPadding(this.textBoxLogin, ((int)(resources.GetObject("textBoxLogin.IconPadding1"))));
+            this.theGoodProvider.SetIconPadding(this.textBoxLogin, ((int)(resources.GetObject("textBoxLogin.IconPadding"))));
+            this.theErrorProvider.SetIconPadding(this.textBoxLogin, ((int)(resources.GetObject("textBoxLogin.IconPadding1"))));
             this.textBoxLogin.Name = "textBoxLogin";
             // 
             // tableLayoutPanel1
@@ -344,12 +347,14 @@
             this.tableLayoutPanel1.Controls.Add(this.textBoxLogin, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBoxName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.comboBoxDependsOn, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(groupBox1, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(groupBox1, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(label7, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(lblRemoteCommand, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.tbxRemoteCommand, 1, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // gbxAuth
@@ -369,8 +374,8 @@
             // lblPrivateKeyFilename
             // 
             resources.ApplyResources(this.lblPrivateKeyFilename, "lblPrivateKeyFilename");
-            this.theErrorProvider.SetIconPadding(this.lblPrivateKeyFilename, ((int)(resources.GetObject("lblPrivateKeyFilename.IconPadding"))));
-            this.theGoodProvider.SetIconPadding(this.lblPrivateKeyFilename, ((int)(resources.GetObject("lblPrivateKeyFilename.IconPadding1"))));
+            this.theGoodProvider.SetIconPadding(this.lblPrivateKeyFilename, ((int)(resources.GetObject("lblPrivateKeyFilename.IconPadding"))));
+            this.theErrorProvider.SetIconPadding(this.lblPrivateKeyFilename, ((int)(resources.GetObject("lblPrivateKeyFilename.IconPadding1"))));
             this.lblPrivateKeyFilename.Name = "lblPrivateKeyFilename";
             // 
             // lblPassphrase
@@ -513,6 +518,17 @@
             // 
             resources.ApplyResources(this.openPrivateKeyFileDialog, "openPrivateKeyFileDialog");
             // 
+            // lblRemoteCommand
+            // 
+            resources.ApplyResources(lblRemoteCommand, "lblRemoteCommand");
+            lblRemoteCommand.Name = "lblRemoteCommand";
+            // 
+            // tbxRemoteCommand
+            // 
+            resources.ApplyResources(this.tbxRemoteCommand, "tbxRemoteCommand");
+            this.theGoodProvider.SetIconPadding(this.tbxRemoteCommand, ((int)(resources.GetObject("tbxRemoteCommand.IconPadding"))));
+            this.tbxRemoteCommand.Name = "tbxRemoteCommand";
+            // 
             // HostDialog
             // 
             this.AcceptButton = this.buttonAddHost;
@@ -591,5 +607,6 @@
         private System.Windows.Forms.RadioButton rbxPassword;
         private System.Windows.Forms.TextBox tbxPassword;
         private System.Windows.Forms.OpenFileDialog openPrivateKeyFileDialog;
+        private System.Windows.Forms.TextBox tbxRemoteCommand;
     }
 }

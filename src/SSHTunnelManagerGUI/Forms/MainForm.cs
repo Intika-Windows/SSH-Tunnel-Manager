@@ -662,7 +662,12 @@ namespace SSHTunnelManagerGUI.Forms
             }
 
             // This log message relates to Host
-            var h = (HostInfo) o;
+            var h = o as HostInfo;
+            if (h == null)
+            {
+                return;
+            }
+
             h.AddEventToLog(e.AppendedData);
             if (_bindingSource.Current != null && 
                 ((ObjectView<HostViewModel>)_bindingSource.Current).Object.Model.Info == h)

@@ -48,23 +48,29 @@ namespace SSHTunnelManager.Domain
                 profileArg = @" -load " + profile.Name;
             }
 
+            var startShellOption = "";
+            if (string.IsNullOrWhiteSpace(host.RemoteCommand))
+            {
+                startShellOption = " -N";
+            }
+
             string args;
             switch (authType)
             {
             case AuthenticationType.None:
-                args = String.Format(@"-ssh{0} {1}@{2} -P {3} -v", profileArg, host.Username, host.Hostname, 
-                                     host.Port);
+                args = String.Format(@"-ssh{0} {1}@{2} -P {3} -v{4}", profileArg, host.Username, host.Hostname,
+                                     host.Port, startShellOption);
                 Logger.Log.DebugFormat(@"plink.exe {0}", args);
                 break;
             case AuthenticationType.Password:
-                args = String.Format(@"-ssh{0} {1}@{2} -P {3} -pw {4} -v", profileArg, host.Username, host.Hostname,
-                                     host.Port, host.Password);
-                Logger.Log.DebugFormat(@"plink.exe -ssh{0} {1}@{2} -P {3} -pw ******** -v", profileArg, host.Username,
+                args = String.Format(@"-ssh{0} {1}@{2} -P {3} -pw {4} -v{5}", profileArg, host.Username, host.Hostname,
+                                     host.Port, host.Password, startShellOption);
+                Logger.Log.DebugFormat(@"plink.exe -ssh{0} {1}@{2} -P {3} -pw ******** -v -N", profileArg, host.Username,
                                        host.Hostname, host.Port);
                 break;
             case AuthenticationType.PrivateKey:
-                args = String.Format(@"-ssh{0} {1}@{2} -P {3} -i {4} -v", profileArg, host.Username, host.Hostname,
-                                     host.Port, PrivateKeysStorage.CreatePrivateKey(host).Filename);
+                args = String.Format(@"-ssh{0} {1}@{2} -P {3} -i {4} -v{5}", profileArg, host.Username, host.Hostname,
+                                     host.Port, PrivateKeysStorage.CreatePrivateKey(host).Filename, startShellOption);
                 Logger.Log.DebugFormat(@"plink.exe {0}", args);
                 break;
             default:

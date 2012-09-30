@@ -21,6 +21,7 @@ namespace SSHTunnelManager.Business
         public AuthenticationType AuthType { get; set; }
         public string PrivateKeyData { get; set; }
         public string Password { get; set; }
+        public string RemoteCommand { get; set; }
 
         public string DependsOnStr
         {
