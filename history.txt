@@ -1,4 +1,9 @@
 ------------------------------------------------------------------------
+r50 | skara06@gmail.com | 2012-09-30 15:47:33 +0400 (┬ё, 30 ёхэ 2012) | 2 lines
+
+Fixed an authentication problem with the 'tunnel-only' SSH 2.0 server connections.
+Added a feature to run a remote command after connection establishment.
+------------------------------------------------------------------------
 r49 | skara06@gmail.com | 2012-06-20 20:22:08 +0400 (╤Ё, 20 ш■э 2012) | 5 lines
 
 Small changes in UI behavior: double click on a host in the main window hosts list triggers host start/stop instead of host edit action.

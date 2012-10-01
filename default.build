@@ -17,12 +17,12 @@
   <property name="project.config" value="release" overwrite="false" /> <!-- debug | release -->
   <property name="project.version.major" value="0" overwrite="false" />
   <property name="project.version.minor" value="9" overwrite="false" />
-  <property name="project.version.build" value="3" overwrite="false" />
+  <property name="project.version.build" value="4" overwrite="false" />
   <property name="project.version.revision" value="0" overwrite="false" />
-  <property name="project.version.release_code" value="b" overwrite="false" />
-  <property name="project.version" value="0.9.3.0b" overwrite="false" />
+  <property name="project.version.release_code" value="" overwrite="false" />
+  <property name="project.version" value="0.9.4.0" overwrite="false" />
 
-  <property name="filezilla-version" value="3.5.0" />
+  <property name="filezilla-version" value="3.5.3" />
 
   <!-- named configurations -->
   <target name="init" description="Initializes building properties">
