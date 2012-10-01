@@ -382,7 +382,7 @@ namespace SSHTunnelManager.Domain
                 Logger.Log.Debug(string.Format("Access granted called: {0}", Host));
 
                 // Make delay for a couple of seconds and set status to 'Started' if a shell is not supposed to be started
-                if (Host.RemoteCommand == null)
+                if (string.IsNullOrWhiteSpace(Host.RemoteCommand))
                 {
                     _deferredCallTimer = new Timer(
                         delegate
@@ -425,16 +425,19 @@ namespace SSHTunnelManager.Domain
                 Status = forwardingFails ? ELinkStatus.StartedWithWarnings : ELinkStatus.Started;
 
                 // Start a command to be executed after connection establishment
-                _deferredCallTimer = new Timer(
-                    delegate
-                    {
-                        ThreadContext.Properties[@"Host"] = Host;
-                        writeLineStdIn(Host.RemoteCommand);
-                        ThreadContext.Properties[@"Host"] = null;
-                    },
-                    null,
-                    1000,
-                    Timeout.Infinite);
+                if (!string.IsNullOrWhiteSpace(Host.RemoteCommand))
+                {
+                    _deferredCallTimer = new Timer(
+                        delegate
+                        {
+                            ThreadContext.Properties[@"Host"] = Host;
+                            writeLineStdIn(Host.RemoteCommand);
+                            ThreadContext.Properties[@"Host"] = null;
+                        },
+                        null,
+                        1000,
+                        Timeout.Infinite);
+                }
             }
 
             // multiline error?
