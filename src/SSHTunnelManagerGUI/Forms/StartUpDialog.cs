@@ -138,12 +138,14 @@ namespace SSHTunnelManagerGUI.Forms
                 tableLayoutPanelOpen.Visible = false;
                 buttonCreate.Visible = true;
                 buttonOpen.Visible = false;
+                this.AcceptButton = buttonCreate;
                 break;
             case StorageSource.OpenStorage:
                 tableLayoutPanelCreate.Visible = false;
                 tableLayoutPanelOpen.Visible = true;
                 buttonCreate.Visible = false;
                 buttonOpen.Visible = true;
+                this.AcceptButton = buttonOpen;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

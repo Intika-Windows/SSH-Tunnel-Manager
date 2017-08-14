@@ -1,4 +1,10 @@
 ------------------------------------------------------------------------
+r53 | Intika | 2017-08-14
+
+Fixed compilation issue
+Added feature (return/enter) on startup page is assigned to open/create button 
+
+------------------------------------------------------------------------
 r51 | skara06@gmail.com | 2012-10-02 02:27:01 +0400 (┬Є, 02 юъЄ 2012) | 1 line
 
 
