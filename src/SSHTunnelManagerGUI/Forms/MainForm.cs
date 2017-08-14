@@ -199,24 +199,7 @@ namespace SSHTunnelManagerGUI.Forms
                 GroupBy(HostViewModel.GetStatusText).ToArray();
             foreach (var status in statuses)
             {
-                var statuscur = status.First();
                 imageListStates.Images.Add(status.Key, HostViewModel.GetStatusIcon(status.First()));
-                
-                //Update tray icon depending on the mood 
-                this.TrayIcon.Icon = Properties.Resources.terminal;
-                if (HostViewModel.GetStatusIcon(status.First()) == Resources.redCircle)
-                {
-                    this.TrayIcon.Icon = Properties.Resources.terminal_red;
-                }
-                if (HostViewModel.GetStatusIcon(status.First()) == Resources.yellowCircle)
-                {
-                    this.TrayIcon.Icon = Properties.Resources.terminal_red;
-                }
-                if (HostViewModel.GetStatusIcon(status.First()) == Resources.greenCircle)
-                {
-                    this.TrayIcon.Icon = Properties.Resources.terminal_green;
-                }
-
             }
             var nodes = statuses.Select(g => new TreeNode(g.Key, imageListStates.Images.IndexOfKey(g.Key),
                                                           imageListStates.Images.IndexOfKey(g.Key)) 
@@ -521,7 +504,8 @@ namespace SSHTunnelManagerGUI.Forms
             var host = viewmodel.Model.Info;
 
             if (viewmodel.Model.Link.Status != ELinkStatus.Stopped)
-                return;
+            return;
+                
 
             // building dependency list
             var depList = new List<Host>();
@@ -578,7 +562,7 @@ namespace SSHTunnelManagerGUI.Forms
             {
                 var viewmodel = ((ObjectView<HostViewModel>)_bindingSource.Current).Object;
                 var host = viewmodel.Model.Info;
-            
+                
                 ConsoleTools.StartPutty(host, _hostsManager.PuttyProfile);
             }
             catch (Exception e)
@@ -593,7 +577,7 @@ namespace SSHTunnelManagerGUI.Forms
             {
                 var viewmodel = ((ObjectView<HostViewModel>)_bindingSource.Current).Object;
                 var host = viewmodel.Model.Info;
-
+                
                 ConsoleTools.StartPsftp(host);
             }
             catch (Exception e)
@@ -608,7 +592,7 @@ namespace SSHTunnelManagerGUI.Forms
             {
                 var viewmodel = ((ObjectView<HostViewModel>)_bindingSource.Current).Object;
                 var host = viewmodel.Model.Info;
-
+                
                 ConsoleTools.StartFileZilla(host);
             }
             catch (Exception e)
@@ -716,6 +700,7 @@ namespace SSHTunnelManagerGUI.Forms
             // This handler executing not in UI thread.
             Invoke((Action)delegate
                                {
+
                                    var hvm = (HostViewModel)sender;
                                    updateHost(hvm);
                                    if (_bindingSource.Current == hvm)
@@ -723,9 +708,26 @@ namespace SSHTunnelManagerGUI.Forms
                                        updateCurrentHostDetails();
                                    }
                                    updateFilter(treeViewFilter.SelectedNode);
+
+                                   if (hvm.Model.Link.Status == ELinkStatus.Started)
+                                       this.TrayIcon.Icon = Properties.Resources.terminal_green;
+
+                                   if (hvm.Model.Link.Status == ELinkStatus.StartedWithWarnings)
+                                       this.TrayIcon.Icon = Properties.Resources.terminal_red;
+
+                                   if (hvm.Model.Link.Status == ELinkStatus.Stopped)
+                                       this.TrayIcon.Icon = Properties.Resources.terminal;
+
+                                   if (hvm.Model.Link.Status == ELinkStatus.Waiting)
+                                       this.TrayIcon.Icon = Properties.Resources.terminal_red;
+
+                                   if (hvm.Model.Link.Status == ELinkStatus.Starting)
+                                       this.TrayIcon.Icon = Properties.Resources.terminal_red;
+
                                    if (hvm.Model.Link.Status == ELinkStatus.Stopped && !string.IsNullOrEmpty(hvm.Model.Link.LastStartError))
                                    {
                                        // host stopped with error
+                                       this.TrayIcon.Icon = Properties.Resources.terminal_red;
                                        TrayIcon.ShowBalloonTip(2000, Util.AssemblyTitle, string.Format(@"[{0}] {1}", hvm.Name, hvm.Model.Link.LastStartError), ToolTipIcon.Error);
                                    }
                                });
@@ -927,6 +929,7 @@ namespace SSHTunnelManagerGUI.Forms
             
             if (host.Model.Link.Status == ELinkStatus.Stopped)
             {
+
                 startHost();
             }
             else
@@ -1008,9 +1011,10 @@ namespace SSHTunnelManagerGUI.Forms
                 forecolor = Color.Black;
             }
             else
-            {
+            {                
                 forecolor = Color.DarkBlue;
             }
+            
             TextRenderer.DrawText(e.Graphics, item.Text, listViewLog.Font, e.Bounds, forecolor, TextFormatFlags.Left);
             e.DrawFocusRectangle(e.Bounds);
         }

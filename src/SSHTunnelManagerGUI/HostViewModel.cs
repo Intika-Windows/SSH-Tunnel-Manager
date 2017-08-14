@@ -88,11 +88,11 @@ namespace SSHTunnelManagerGUI
             switch (status)
             {
             case ELinkStatus.Stopped:
-                return Resources.redCircle;
+                    return Resources.redCircle;
             case ELinkStatus.Starting:
             case ELinkStatus.StartedWithWarnings:
             case ELinkStatus.Waiting:
-                return Resources.yellowCircle;
+                    return Resources.yellowCircle;
             case ELinkStatus.Started:
                 return Resources.greenCircle;
             default:

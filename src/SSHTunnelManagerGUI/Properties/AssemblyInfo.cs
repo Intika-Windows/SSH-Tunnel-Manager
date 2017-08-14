@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SSH Tunnel Manager")]
+[assembly: AssemblyTitle("SSH Tunnel Manager - Intika MoD")]
 [assembly: AssemblyDescription("SSH Tunnel Manager is based on PuTTY project and provides an easy way to manage your SSH connections. " +
                                "This is an open source project hosted on Google Code. Any contributions are welcomed.\r\n\r\n" +
                                "This project is licensed under a GNU GPL v3 license.\r\n\r\n" +
@@ -14,8 +14,8 @@ using System.Runtime.InteropServices;
                                "Some Icons are Copyright © Yusuke Kamiyamane. All rights reserved. Licensed under a Creative Commons Attribution 3.0 license.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SSH Tunnel Manager")]
-[assembly: AssemblyCopyright("Copyright © x.Skara 2011")]
+[assembly: AssemblyProduct("SSH Tunnel Manager - Intika MoD")]
+[assembly: AssemblyCopyright("Copyright © x.Skara 2011 - Intika 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -36,6 +36,6 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("0.9.4.56")]
-[assembly: AssemblyVersion("0.9.4.56")]
-[assembly: AssemblyFileVersion("0.9.4.56")]
+// [assembly: AssemblyVersion("0.9.4.57")]
+[assembly: AssemblyVersion("0.9.4.57")]
+[assembly: AssemblyFileVersion("0.9.4.57")]

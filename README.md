@@ -1,4 +1,4 @@
-# SSH-Tunnel-Manager
+# SSH-Tunnel-Manager - Intika MoD
 Automatically exported from code.google.com/p/ssh-tunnel-manager
 
 As the project is somehow sleeping/abandoned i am adding some needed features for my usage... 
@@ -9,8 +9,23 @@ Original Project Page :
 http://code.google.com/p/ssh-tunnel-manager
 
 
+Downloads :
+-----------
+
+https://github.com/intika/ssh-tunnel-manager/releases
+
+
 Current Release & Changelog: 
 ----------------------------
+
+
+v0.9.4.57 :
+
+Fixing bug on new features
+
+Improving new features
+
+Changing application name
 
 
 v0.9.4.56 :

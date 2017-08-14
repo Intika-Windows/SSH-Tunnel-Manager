@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SSH Tunnel Manager")]
+[assembly: AssemblyProduct("SSH Tunnel Manager - Intika MoD")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -31,7 +31,7 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("0.9.4.56")]
-[assembly: AssemblyInformationalVersion("0.9.4.56")]
-[assembly: AssemblyVersion("0.9.4.56")]
-[assembly: AssemblyFileVersion("0.9.4.56")]
+// [assembly: AssemblyVersion("0.9.4.57")]
+[assembly: AssemblyInformationalVersion("0.9.4.57")]
+[assembly: AssemblyVersion("0.9.4.57")]
+[assembly: AssemblyFileVersion("0.9.4.57")]
