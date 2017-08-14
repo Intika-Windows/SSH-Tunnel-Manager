@@ -70,14 +70,12 @@
             // 
             this.tableLayoutPanel.SetColumnSpan(this.labelProductName, 2);
             resources.ApplyResources(this.labelProductName, "labelProductName");
-            this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelProductName.Name = "labelProductName";
             // 
             // labelVersion
             // 
             this.tableLayoutPanel.SetColumnSpan(this.labelVersion, 2);
             resources.ApplyResources(this.labelVersion, "labelVersion");
-            this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelVersion.Name = "labelVersion";
             // 
             // linkLabelProjectPage

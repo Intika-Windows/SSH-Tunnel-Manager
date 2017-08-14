@@ -3,14 +3,26 @@ Automatically exported from code.google.com/p/ssh-tunnel-manager
 
 As the project is somehow sleeping/abandoned i am adding some needed features for my usage... 
 
-Current release : 
------------------
+Original Project Page : 
+-----------------------
 
-Version 0.9.4.54
+http://code.google.com/p/ssh-tunnel-manager
 
 
-Change log : 
-------------
+Current Release & Changelog: 
+----------------------------
+
+
+v0.9.4.56 :
+
+Solved maximize bug, and maximise function restored 
+
+
+v0.9.4.55 :
+
+Adding feature to change the tray icon according to the connection state 
+
+Disabled maximise
 
 
 v0.9.4.54 :

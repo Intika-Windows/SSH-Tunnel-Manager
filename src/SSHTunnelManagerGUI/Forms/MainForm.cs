@@ -199,7 +199,24 @@ namespace SSHTunnelManagerGUI.Forms
                 GroupBy(HostViewModel.GetStatusText).ToArray();
             foreach (var status in statuses)
             {
+                var statuscur = status.First();
                 imageListStates.Images.Add(status.Key, HostViewModel.GetStatusIcon(status.First()));
+                
+                //Update tray icon depending on the mood 
+                this.TrayIcon.Icon = Properties.Resources.terminal;
+                if (HostViewModel.GetStatusIcon(status.First()) == Resources.redCircle)
+                {
+                    this.TrayIcon.Icon = Properties.Resources.terminal_red;
+                }
+                if (HostViewModel.GetStatusIcon(status.First()) == Resources.yellowCircle)
+                {
+                    this.TrayIcon.Icon = Properties.Resources.terminal_red;
+                }
+                if (HostViewModel.GetStatusIcon(status.First()) == Resources.greenCircle)
+                {
+                    this.TrayIcon.Icon = Properties.Resources.terminal_green;
+                }
+
             }
             var nodes = statuses.Select(g => new TreeNode(g.Key, imageListStates.Images.IndexOfKey(g.Key),
                                                           imageListStates.Images.IndexOfKey(g.Key)) 

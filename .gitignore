@@ -3,3 +3,14 @@ src/.vs/SSHTunnelManager/v14/.suo
 src/SSHTunnelManager/obj/Release/TempPE/Properties.Resources.Designer.cs.dll
 *.cache
 src/SSHTunnelManagerGUI/obj/Release/TempPE/Properties.Resources.Designer.cs.dll
+src/SSHTunnelManager/obj/Debug/TempPE/Properties.Resources.Designer.cs.dll
+Notepad++.Session
+src/SSHTunnelManagerGUI/bin/Debug/log.txt
+src/SSHTunnelManagerGUI/bin/Debug/SSHTunnelManagerGUI.vshost.exe
+src/SSHTunnelManagerGUI/bin/Debug/SSHTunnelManagerGUI.vshost.exe.config
+src/SSHTunnelManagerGUI/bin/Debug/SSHTunnelManagerGUI.vshost.exe.manifest
+src/SSHTunnelManagerGUI/bin/Release/log.txt
+src/SSHTunnelManagerGUI/bin/Release/log4net.dll
+src/SSHTunnelManagerGUI/bin/Release/SSHTunnelManagerGUI.vshost.exe
+*.config
+src/SSHTunnelManagerGUI/bin/Release/SSHTunnelManagerGUI.vshost.exe.manifest

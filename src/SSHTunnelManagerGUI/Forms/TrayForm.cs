@@ -150,6 +150,7 @@ namespace SSHTunnelManagerGUI.Forms
             {
                 hideToTray();
             } else
+            if (WindowState != FormWindowState.Maximized)
             {
                 restoreFromTray();
             }

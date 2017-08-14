@@ -415,64 +415,64 @@
     <value>&amp;File</value>
   </data>
   <data name="addHostToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="addHostToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Add host...</value>
   </data>
   <data name="editHostToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="editHostToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Edit host...</value>
   </data>
   <data name="removeHostToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Delete</value>
+    <value>Suppr</value>
   </data>
   <data name="removeHostToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="removeHostToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Remove host</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 6</value>
+    <value>178, 6</value>
   </data>
   <data name="startToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>F5</value>
   </data>
   <data name="startToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="startToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Start</value>
   </data>
   <data name="stopToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Shift+F5</value>
+    <value>Maj+F5</value>
   </data>
   <data name="stopToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="stopToolStripMenuItem.Text" xml:space="preserve">
     <value>S&amp;top</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 6</value>
+    <value>178, 6</value>
   </data>
   <data name="startPuTTYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="startPuTTYToolStripMenuItem.Text" xml:space="preserve">
     <value>Start &amp;PuTTY</value>
   </data>
   <data name="startPsftpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="startPsftpToolStripMenuItem.Text" xml:space="preserve">
     <value>Start ps&amp;ftp</value>
   </data>
   <data name="startFileZillaSFTPToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="startFileZillaSFTPToolStripMenuItem.Text" xml:space="preserve">
     <value>Start F&amp;ileZilla SFTP</value>
@@ -490,7 +490,7 @@
     <value>&amp;Options...</value>
   </data>
   <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
+    <value>47, 20</value>
   </data>
   <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Tools</value>
@@ -665,7 +665,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAc
-        CgAAAk1TRnQBSQFMAgEBBQEAAZABAgGQAQIBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBBQEAAagBAgGoAQIBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -718,28 +718,30 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQ0AAAAEVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4
-        CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQJY2hp
-        bGRyZW4wCWNoaWxkcmVuMQljaGlsZHJlbjIJY2hpbGRyZW4zCFVzZXJEYXRhAQEAAAEAAQAEBAQEAQEI
-        CAgdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUCAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRy
-        ZWVOb2RlAgAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQIAAAAdU3lzdGVtLldpbmRvd3Mu
-        Rm9ybXMuVHJlZU5vZGUCAAAAAgAAAAYDAAAACUFsbCBob3N0cwYEAAAAEmZpbHRlckFsbEhvc3RzTm9k
-        ZQD/////BgUAAAAA/////wkFAAAABAAAAAkGAAAACQcAAAAJCAAAAAkJAAAACQUAAAAFBgAAAB1TeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4
-        CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQIVXNl
-        ckRhdGEBAQAAAQABAAEBCAgIAgAAAAYLAAAAB1N0b3BwZWQGDAAAABZmaWx0ZXJTdG9wcGVkSG9zdHNO
-        b2RlAP////8JBQAAAP////8JBQAAAAAAAAAGDgAAAAExBQcAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMu
-        VHJlZU5vZGUJAAAABFRleHQETmFtZQlJc0NoZWNrZWQKSW1hZ2VJbmRleAhJbWFnZUtleRJTZWxlY3Rl
-        ZEltYWdlSW5kZXgQU2VsZWN0ZWRJbWFnZUtleQpDaGlsZENvdW50CFVzZXJEYXRhAQEAAAEAAQABAQgI
-        CAIAAAAGDwAAAAhTdGFydGluZwYQAAAAFmZpbHRlclVua25vd25Ib3N0c05vZGUA/////wkFAAAA////
-        /wkFAAAAAAAAAAYSAAAAATIFCAAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4
-        dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxl
-        Y3RlZEltYWdlS2V5CkNoaWxkQ291bnQIVXNlckRhdGEBAQAAAQABAAEBCAgIAgAAAAYTAAAAB1dhaXRp
-        bmcGFAAAABZmaWx0ZXJXYWl0aW5nSG9zdHNOb2RlAP////8JBQAAAP////8JBQAAAAAAAAAGFgAAAAEz
-        BQkAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUJAAAABFRleHQETmFtZQlJc0NoZWNrZWQK
-        SW1hZ2VJbmRleAhJbWFnZUtleRJTZWxlY3RlZEltYWdlSW5kZXgQU2VsZWN0ZWRJbWFnZUtleQpDaGls
-        ZENvdW50CFVzZXJEYXRhAQEAAAEAAQABAQgICAIAAAAGFwAAAAdTdGFydGVkBhgAAAAWZmlsdGVyU3Rh
-        cnRlZEhvc3RzTm9kZQD/////CQUAAAD/////CQUAAAAAAAAABhoAAAABNAs=
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQ4AAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
+        ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
+        aWxkQ291bnQJY2hpbGRyZW4wCWNoaWxkcmVuMQljaGlsZHJlbjIJY2hpbGRyZW4zCFVzZXJEYXRhAQEB
+        AAABAAEABAQEBAEBCAgIHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlAgAAAB1TeXN0ZW0uV2lu
+        ZG93cy5Gb3Jtcy5UcmVlTm9kZQIAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUCAAAAHVN5
+        c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlAgAAAAIAAAAGAwAAAAlBbGwgaG9zdHMGBAAAAAAGBQAA
+        ABJmaWx0ZXJBbGxIb3N0c05vZGUA/////wkEAAAA/////wkEAAAABAAAAAkHAAAACQgAAAAJCQAAAAkK
+        AAAACQQAAAAFBwAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQoAAAAEVGV4dAtUb29sVGlw
+        VGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBT
+        ZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQIVXNlckRhdGEBAQEAAAEAAQABAQgICAIAAAAGDAAAAAdT
+        dG9wcGVkCQQAAAAGDgAAABZmaWx0ZXJTdG9wcGVkSG9zdHNOb2RlAP////8JBAAAAP////8JBAAAAAAA
+        AAAGEAAAAAExBQgAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUKAAAABFRleHQLVG9vbFRp
+        cFRleHQETmFtZQlJc0NoZWNrZWQKSW1hZ2VJbmRleAhJbWFnZUtleRJTZWxlY3RlZEltYWdlSW5kZXgQ
+        U2VsZWN0ZWRJbWFnZUtleQpDaGlsZENvdW50CFVzZXJEYXRhAQEBAAABAAEAAQEICAgCAAAABhEAAAAI
+        U3RhcnRpbmcJBAAAAAYTAAAAFmZpbHRlclVua25vd25Ib3N0c05vZGUA/////wkEAAAA/////wkEAAAA
+        AAAAAAYVAAAAATIFCQAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQoAAAAEVGV4dAtUb29s
+        VGlwVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRl
+        eBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQIVXNlckRhdGEBAQEAAAEAAQABAQgICAIAAAAGFgAA
+        AAdXYWl0aW5nCQQAAAAGGAAAABZmaWx0ZXJXYWl0aW5nSG9zdHNOb2RlAP////8JBAAAAP////8JBAAA
+        AAAAAAAGGgAAAAEzBQoAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUKAAAABFRleHQLVG9v
+        bFRpcFRleHQETmFtZQlJc0NoZWNrZWQKSW1hZ2VJbmRleAhJbWFnZUtleRJTZWxlY3RlZEltYWdlSW5k
+        ZXgQU2VsZWN0ZWRJbWFnZUtleQpDaGlsZENvdW50CFVzZXJEYXRhAQEBAAABAAEAAQEICAgCAAAABhsA
+        AAAHU3RhcnRlZAkEAAAABh0AAAAWZmlsdGVyU3RhcnRlZEhvc3RzTm9kZQD/////CQQAAAD/////CQQA
+        AAAAAAAABh8AAAABNAs=
 </value>
   </data>
   <data name="treeViewFilter.SelectedImageIndex" type="System.Int32, mscorlib">
@@ -1580,6 +1582,6 @@
     <value>MainForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>SSHTunnelManagerGUI.Forms.TrayForm, SSHTunnelManagerGUI, Version=0.9.2.46, Culture=neutral, PublicKeyToken=null</value>
+    <value>SSHTunnelManagerGUI.Forms.TrayForm, SSHTunnelManagerGUI, Version=0.9.4.55, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
