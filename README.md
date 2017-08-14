@@ -13,9 +13,12 @@ Change log :
 ------------
 
 
-0.9.4.54 :
+v0.9.4.54 :
+
 Adding readme.md plus switching changelog location to readme.md
 
-0.9.4.53 :
+
+v0.9.4.53 :
+
 Fixed compilation issue
 Added feature (return/enter) on startup page is assigned to open/create button 
